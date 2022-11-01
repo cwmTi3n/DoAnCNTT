@@ -62,5 +62,10 @@ public class PhongServiceImpl implements IPhongService
 		}
 		return phongDao.deletePhong(id_p);
 	}
+	@Override
+	public List<Phong> getAll()
+	{
+		return phongDao.getAll();
+	}
 	
 }

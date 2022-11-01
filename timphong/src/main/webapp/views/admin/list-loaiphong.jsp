@@ -21,7 +21,7 @@
 					<td>${lp.id_lp}</td>
 					<td><a href="<c:url value='/admin/loaiphong?id_lp=${lp.id_lp }'/>">${lp.tenloai}</a></td>
 					<td>0</td>
-					<td><a href="<c:url value='/xoa-loaiphong?id_lp=${lp.id_lp }'/>">Xóa</a></td>
+					<td><a href="<c:url value='/admin/xoa-loaiphong?id_lp=${lp.id_lp }'/>">Xóa</a></td>
 				</tr>
 		</c:forEach>
 	</tbody>
