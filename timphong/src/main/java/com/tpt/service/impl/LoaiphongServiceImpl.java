@@ -29,5 +29,15 @@ public class LoaiphongServiceImpl implements ILoaiphongService
 //		System.out.println(lpService.getAll().size());
 		lpService.insertLoaiphong(loaiphong);
 	}
+	@Override
+	public Loaiphong getLoaiphong(int id_lp)
+	{
+		return loaiphongDao.getLoaiphong(id_lp);
+	}
+	@Override
+	public boolean deleteLoaiphong(int id_lp)
+	{
+		return loaiphongDao.deleteLoaiphong(id_lp);
+	}
 
 }
