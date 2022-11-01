@@ -1,5 +1,6 @@
 package com.tpt.model;
 
+import java.sql.Date;
 import java.util.List;
 
 public class Phong
@@ -14,6 +15,7 @@ public class Phong
 	private int yeuthich;
 	private String dcchitiet;
 	private String mota;
+	private Date ngaydang;
 	private int id_lp;
 	private int matinh;
 	private int id_tk;
@@ -25,8 +27,8 @@ public class Phong
 	{
 	}
 	public Phong(int id_p, String ten, boolean trangthai, String hinhanh, float chieudai, float chieurong, int gia,
-			int yeuthich, String dcchitiet, String mota, int id_lp, int matinh, int id_tk, Loaiphong loaiphong,
-			Tinh tinh, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
+			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int matinh, int id_tk,
+			Loaiphong loaiphong, Tinh tinh, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
 	{
 		super();
 		this.id_p = id_p;
@@ -39,6 +41,7 @@ public class Phong
 		this.yeuthich = yeuthich;
 		this.dcchitiet = dcchitiet;
 		this.mota = mota;
+		this.ngaydang = ngaydang;
 		this.id_lp = id_lp;
 		this.matinh = matinh;
 		this.id_tk = id_tk;
@@ -127,6 +130,14 @@ public class Phong
 	{
 		this.mota = mota;
 	}
+	public Date getNgaydang()
+	{
+		return ngaydang;
+	}
+	public void setNgaydang(Date ngaydang)
+	{
+		this.ngaydang = ngaydang;
+	}
 	public int getId_lp()
 	{
 		return id_lp;
@@ -139,7 +150,7 @@ public class Phong
 	{
 		return matinh;
 	}
-	public void setMatinh(int matinh)
+	public void setId_t(int matinh)
 	{
 		this.matinh = matinh;
 	}
@@ -183,12 +194,5 @@ public class Phong
 	{
 		this.ngdatPhongs = ngdatPhongs;
 	}
-	
-	
-	
-	
-	
-	
-	
 	
 }
