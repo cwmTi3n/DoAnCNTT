@@ -21,7 +21,6 @@ public class XoaPhong extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html");
 		String id_pString = req.getParameter("id_p");
-		String id_tk  = req.getParameter("id_tk");
 		int id_p;
 		IPhongService phongService = new PhongServiceImpl();
 		if(id_pString != null)
@@ -29,6 +28,15 @@ public class XoaPhong extends HttpServlet
 			id_p = Integer.parseInt(id_pString);
 			phongService.deletePhong(id_p);
 		}
-		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
+		String id_taikhoan  = req.getParameter("id_taikhoan");
+		String id_loaip = req.getParameter("id_loaip");
+		if(id_taikhoan != null)
+		{
+			resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_taikhoan);
+		}
+		if(id_loaip != null)
+		{
+			resp.sendRedirect(req.getContextPath() + "/admin/loaiphong?id_lp=" + id_loaip);
+		}
 	}
 }
