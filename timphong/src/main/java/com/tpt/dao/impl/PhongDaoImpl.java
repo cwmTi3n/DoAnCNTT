@@ -70,7 +70,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			Connection connection = super.getConnection();
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
-			pStatement.setBoolean(2, newPhong.isTrangthai());
+			pStatement.setInt(2, newPhong.getTrangthai());
 			pStatement.setString(3, newPhong.getHinhanh());
 			pStatement.setFloat(4, newPhong.getChieudai());
 			pStatement.setFloat(5, newPhong.getChieurong());
@@ -84,7 +84,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			return true;
 		} catch (Exception e)
 		{
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return false;
 	}
@@ -110,13 +110,13 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean editPhong(Phong newPhong)
 	{
-		String sql = "update phong set ten=?, trangthai=?, hinhanh=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=? where id_p=?";
+		String sql = "update phong set ten=?, trangthai=?, hinhanh=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=? where id_p=?";
 		try
 		{
 			Connection connection = super.getConnection();
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
-			pStatement.setBoolean(2, newPhong.isTrangthai());
+			pStatement.setInt(2, newPhong.getTrangthai());
 			pStatement.setString(3, newPhong.getHinhanh());
 			pStatement.setFloat(4, newPhong.getChieudai());
 			pStatement.setFloat(5, newPhong.getChieurong());
@@ -125,7 +125,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(8, newPhong.getDcchitiet());
 			pStatement.setString(9, newPhong.getMota());
 			pStatement.setInt(10, newPhong.getId_tk());
-			pStatement.setInt(11, newPhong.getId_p());
+			pStatement.setInt(11, newPhong.getId_lp());
+			pStatement.setInt(12, newPhong.getId_p());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)
