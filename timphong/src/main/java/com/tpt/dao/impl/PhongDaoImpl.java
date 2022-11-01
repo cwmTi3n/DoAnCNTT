@@ -165,4 +165,26 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 //		IPhongDao phongDao = new PhongDaoImpl();
 //		System.out.println(phongDao.getPhongLoaiphong(1).size());
 //	}
+	@Override
+	public List<Phong> getAll()
+	{
+		String sql = "select * from phong";
+		List<Phong> phongs = new ArrayList<Phong>();
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				phongs.add(mapPhong.mapPhong(rSet));
+			}
+			return phongs;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
+	}
 }
