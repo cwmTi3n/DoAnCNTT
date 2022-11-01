@@ -46,7 +46,7 @@
 									<img height="120" width="160" src="${hinhanh}"/>
 								</a>
 							</td>
-							<td>${phongct.trangthai}</td>
+							<td>${phongct.trangthai==1 ? "Hiện":"Ẩn"}</td>
 							<td>${phongct.gia}</td>
 							<td>${phongct.chieudai}*${phongct.chieurong}</td>
 							<td><a href="<c:url value="/admin/xoa-phong?id_p=${phongct.id_p }&id_tk=${user.id_tk }"/>">Xóa</a></td>
