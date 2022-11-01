@@ -34,6 +34,7 @@ public class mapAttributeSQL
 			phong.setMota(rSet.getString("mota"));
 			phong.setId_lp(rSet.getInt("id_lp"));
 			phong.setId_tk(rSet.getInt("id_tk"));
+			//Chưa có ngaydang và matinh
 			return phong;
 		} catch (Exception e)
 		{
@@ -95,7 +96,7 @@ public class mapAttributeSQL
 		Tinh tinh = new Tinh();
 		try
 		{
-			tinh.setMatinh(rSet.getInt("matinh"));
+			tinh.setMatinh(rSet.getInt("ID"));
 			tinh.setTentinh(rSet.getString("tentinh"));
 			return tinh;
 		} catch (Exception e)
@@ -109,7 +110,7 @@ public class mapAttributeSQL
 		Huyen huyen = new Huyen();
 		try
 		{
-			huyen.setMahuyen(rSet.getInt("mahuyen"));
+			huyen.setMahuyen(rSet.getInt("ID"));
 			huyen.setTenhuyen(rSet.getString("tenhuyen"));
 			return huyen;
 		} catch (Exception e)
@@ -124,7 +125,7 @@ public class mapAttributeSQL
 		Xa xa = new Xa();
 		try
 		{
-			xa.setMaxa(rSet.getInt("maxa"));
+			xa.setMaxa(rSet.getInt("ID"));
 			xa.setTenxa(rSet.getString("tenxa"));
 			return xa;
 		} catch (Exception e)
