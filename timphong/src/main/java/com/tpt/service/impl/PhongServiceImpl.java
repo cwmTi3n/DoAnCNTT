@@ -18,6 +18,11 @@ public class PhongServiceImpl implements IPhongService
 		return phongDao.getPhongSeller(id_tk);
 	}
 	@Override
+	public List<Phong> getPhongLoaiphong(int id_lp)
+	{
+		return phongDao.getPhongLoaiphong(id_lp);
+	}
+	@Override
 	public Phong getPhong(int id_p)
 	{
 		return phongDao.getPhong(id_p);
