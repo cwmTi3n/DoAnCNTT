@@ -78,9 +78,20 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 	}
 
 	@Override
-	public boolean deleteLoaiphong()
+	public boolean deleteLoaiphong(int id_lp)
 	{
-		// TODO Auto-generated method stub
+		String sql = "delete loaiphong where id_lp=?";
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, id_lp);
+			pStatement.executeUpdate();
+			return true;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
 		return false;
 	}
 
