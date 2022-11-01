@@ -1,10 +1,8 @@
 package com.tpt.controller.admin;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -36,14 +34,14 @@ public class PhongController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html");
-		String id_tk  = req.getParameter("id_tk");
 		String id_p =req.getParameter("id_p");
 		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		String id_taikhoan = req.getParameter("id_taikhoan");
 		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
-		req.setAttribute("id_tk", id_tk);
+		req.setAttribute("id_taikhoan", id_taikhoan);
 		req.getRequestDispatcher("/views/admin/detail-phong.jsp").forward(req, resp);
 	}
 	@Override
@@ -87,8 +85,13 @@ public class PhongController extends HttpServlet
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
 		String id_tk = req.getParameter("id_tk");
+		String id_taikhoan = req.getParameter("id_taikhoan");
 		phong.setId_tk(Integer.parseInt(id_tk));
 		phongService.editPhong(phong);
+//		if(id_taikhoan != null)
+//		{
+//			resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_taikhoan);
+//		}
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 		
 	}
