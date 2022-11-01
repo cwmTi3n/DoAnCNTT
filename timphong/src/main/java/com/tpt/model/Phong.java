@@ -7,7 +7,7 @@ public class Phong
 {
 	private int id_p;
 	private String ten;
-	private boolean trangthai;
+	private int trangthai;
 	private String hinhanh;
 	private float chieudai;
 	private float chieurong;
@@ -26,7 +26,7 @@ public class Phong
 	public Phong()
 	{
 	}
-	public Phong(int id_p, String ten, boolean trangthai, String hinhanh, float chieudai, float chieurong, int gia,
+	public Phong(int id_p, String ten, int trangthai, String hinhanh, float chieudai, float chieurong, int gia,
 			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int matinh, int id_tk,
 			Loaiphong loaiphong, Tinh tinh, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
 	{
@@ -66,11 +66,11 @@ public class Phong
 	{
 		this.ten = ten;
 	}
-	public boolean isTrangthai()
+	public int getTrangthai()
 	{
 		return trangthai;
 	}
-	public void setTrangthai(boolean trangthai)
+	public void setTrangthai(int trangthai)
 	{
 		this.trangthai = trangthai;
 	}
@@ -150,7 +150,7 @@ public class Phong
 	{
 		return matinh;
 	}
-	public void setId_t(int matinh)
+	public void setMatinh(int matinh)
 	{
 		this.matinh = matinh;
 	}
@@ -194,5 +194,6 @@ public class Phong
 	{
 		this.ngdatPhongs = ngdatPhongs;
 	}
+	
 	
 }
