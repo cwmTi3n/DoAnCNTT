@@ -15,6 +15,9 @@ import com.tpt.util.mapAttributeSQL;
 
 public class PhongDaoImpl extends DBConnection implements IPhongDao
 {
+	Connection connection = null;
+	PreparedStatement pStatement = null;
+	ResultSet rSet = null;
 	@Override
 	public List<Phong> getPhongSeller(int id_tk)
 	{
@@ -22,10 +25,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		List<Phong> phongSeller = new ArrayList<Phong>();
 		try
 		{
-			Connection connection = super.getConnection();
-			PreparedStatement pStatement = connection.prepareStatement(sql);
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, id_tk);
-			ResultSet rSet = pStatement.executeQuery();
+			rSet = pStatement.executeQuery();
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while (rSet.next())
 			{
@@ -38,7 +41,29 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return phongSeller;
 	}
-	
+	@Override
+	public List<Phong> getPhongLoaiphong(int id_lp)
+	{
+		String sql = "select * from phong where id_lp=?";
+		List<Phong> phongs = new ArrayList<Phong>();
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, id_lp);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				phongs.add(mapPhong.mapPhong(rSet));
+			}
+			return phongs;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
+	}
 	@Override
 	public Phong getPhong(int id_p)
 	{
@@ -67,8 +92,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		String sql = "insert into phong(ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try
 		{
-			Connection connection = super.getConnection();
-			PreparedStatement pStatement = connection.prepareStatement(sql);
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
 			pStatement.setInt(2, newPhong.getTrangthai());
 			pStatement.setString(3, newPhong.getHinhanh());
@@ -95,8 +120,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		String sql = "delete phong where id_p=?";
 		try
 		{
-			Connection connection = super.getConnection();
-			PreparedStatement pStatement = connection.prepareStatement(sql);
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, id_p);
 			pStatement.executeUpdate();
 			return true;
@@ -113,8 +138,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		String sql = "update phong set ten=?, trangthai=?, hinhanh=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=? where id_p=?";
 		try
 		{
-			Connection connection = super.getConnection();
-			PreparedStatement pStatement = connection.prepareStatement(sql);
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
 			pStatement.setInt(2, newPhong.getTrangthai());
 			pStatement.setString(3, newPhong.getHinhanh());
@@ -138,8 +163,6 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 //	public static void main(String[] args)
 //	{
 //		IPhongDao phongDao = new PhongDaoImpl();
-//		Phong newPhong = phongDao.getPhong(58);
-//		newPhong.setTen("new");
-//		phongDao.editPhong(newPhong);
+//		System.out.println(phongDao.getPhongLoaiphong(1).size());
 //	}
 }
