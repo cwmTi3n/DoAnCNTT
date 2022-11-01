@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -13,8 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
+import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
+import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.util.Constant;
 
@@ -24,6 +29,7 @@ public class PhongController extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 	IPhongService phongService = new PhongServiceImpl();
+	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -33,6 +39,9 @@ public class PhongController extends HttpServlet
 		String id_tk  = req.getParameter("id_tk");
 		String id_p =req.getParameter("id_p");
 		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
+		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
+		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
 		req.setAttribute("id_tk", id_tk);
 		req.getRequestDispatcher("/views/admin/detail-phong.jsp").forward(req, resp);
@@ -68,7 +77,7 @@ public class PhongController extends HttpServlet
 		Phong phong = new Phong();
 		phong.setId_p(Integer.parseInt(req.getParameter("id_p")));
 		phong.setTen(req.getParameter("ten"));
-		phong.setTrangthai(true);
+		phong.setTrangthai(Integer.parseInt(req.getParameter("trangthai")));
 		phong.setHinhanh(filename);
 		phong.setChieudai(Float.parseFloat(req.getParameter("chieudai")));
 		phong.setChieurong(Float.parseFloat(req.getParameter("chieurong")));
