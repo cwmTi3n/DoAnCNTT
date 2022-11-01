@@ -11,4 +11,5 @@ public interface IPhongDao
 	public boolean insertPhong(Phong phong);
 	public boolean deletePhong(int id_p);
 	public boolean editPhong(Phong newPhong);
+	public List<Phong> getPhongLoaiphong(int id_lp);
 }
