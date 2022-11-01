@@ -2,6 +2,8 @@ package com.tpt.util;
 
 import java.sql.ResultSet;
 
+import com.tpt.dao.ILoaiphongDao;
+import com.tpt.dao.impl.LoaiphongDaoImpl;
 import com.tpt.model.Dathen;
 import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
@@ -10,6 +12,7 @@ import com.tpt.model.Taikhoan;
 import com.tpt.model.Theodoi;
 import com.tpt.model.Tinh;
 import com.tpt.model.Xa;
+import com.tpt.service.ILoaiphongService;
 
 public class mapAttributeSQL
 {
@@ -19,12 +22,14 @@ public class mapAttributeSQL
 
 	public Phong mapPhong(ResultSet rSet)
 	{
+		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
 		Phong phong = new Phong();
 		try
 		{
+			int id_lp = rSet.getInt("id_lp");
 			phong.setId_p(rSet.getInt("id_p"));
 			phong.setTen(rSet.getString("ten"));
-			phong.setTrangthai(rSet.getBoolean("trangthai"));
+			phong.setTrangthai(rSet.getInt("trangthai"));
 			phong.setHinhanh(rSet.getString("hinhanh"));
 			phong.setChieudai(rSet.getFloat("chieudai"));
 			phong.setChieurong(rSet.getFloat("chieurong"));
@@ -32,8 +37,9 @@ public class mapAttributeSQL
 			phong.setYeuthich(rSet.getInt("yeuthich"));
 			phong.setDcchitiet(rSet.getString("dcchitiet"));
 			phong.setMota(rSet.getString("mota"));
-			phong.setId_lp(rSet.getInt("id_lp"));
+			phong.setId_lp(id_lp);
 			phong.setId_tk(rSet.getInt("id_tk"));
+			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
 			//Chưa có ngaydang và matinh
 			return phong;
 		} catch (Exception e)
