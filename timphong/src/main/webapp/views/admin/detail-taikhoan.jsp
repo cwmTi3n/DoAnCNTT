@@ -41,7 +41,7 @@
 							<th scope="row">${STT.index+1}</th>
 							<td>${phongct.id_p}</td>
 							<td>
-								<a href="<c:url value="/admin/phong?id_tk=${phongct.id_tk }&id_p=${phongct.id_p }"/>">
+								<a href="<c:url value="/admin/phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">
 									<c:url value="/hinhanh?fname=${phongct.hinhanh}" var="hinhanh"/>
 									<img height="120" width="160" src="${hinhanh}"/>
 								</a>
@@ -49,7 +49,7 @@
 							<td>${phongct.trangthai==1 ? "Hiện":"Ẩn"}</td>
 							<td>${phongct.gia}</td>
 							<td>${phongct.chieudai}*${phongct.chieurong}</td>
-							<td><a href="<c:url value="/admin/xoa-phong?id_p=${phongct.id_p }&id_tk=${user.id_tk }"/>">Xóa</a></td>
+							<td><a href="<c:url value="/admin/xoa-phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">Xóa</a></td>
 							
 						</tr>
 				</c:forEach>
