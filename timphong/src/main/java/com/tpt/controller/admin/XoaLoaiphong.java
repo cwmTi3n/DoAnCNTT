@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 
-@WebServlet(urlPatterns = {"/xoa-loaiphong"})
+@WebServlet(urlPatterns = {"/admin/xoa-loaiphong"})
 public class XoaLoaiphong extends HttpServlet
 {
 
