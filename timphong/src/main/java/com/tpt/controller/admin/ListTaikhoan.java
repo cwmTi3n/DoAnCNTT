@@ -32,6 +32,5 @@ public class ListTaikhoan extends HttpServlet
 		req.setAttribute("sellers", sellers);
 		req.setAttribute("users", users);
 		req.getRequestDispatcher("/views/admin/list-taikhoan.jsp").forward(req, resp);
-		System.out.println();
 	}
 }
