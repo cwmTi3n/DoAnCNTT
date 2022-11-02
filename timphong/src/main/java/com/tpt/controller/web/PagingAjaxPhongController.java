@@ -37,7 +37,7 @@ public class PagingAjaxPhongController extends HttpServlet
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
 					+ "              <div class=\"ftco-media-1\">\r\n"
 					+ "                  <div class=\"ftco-media-1-inner\">\r\n"
-					+ "                    <a href=\"property-single.html\" class=\"d-inline-block mb-4\"><img src=\"/timphong/hinhanh?fname="+ p.getHinhanh() + "\" alt=\"Free website template by Free-Template.co\" class=\"img-fluid\"></a>\r\n"
+					+ "                    <a href=\"/timphong/detail-phong?id_p="+ p.getId_p() +"\" class=\"d-inline-block mb-4\"><img src=\"/timphong/hinhanh?fname="+ p.getHinhanh() + "\" alt=\"Free website template by Free-Template.co\" class=\"img-fluid\"></a>\r\n"
 					+ "                    <div class=\"ftco-media-details\">\r\n"
 					+ "                      <h3>" + p.getTen()+ "</h3>\r\n"
 					+ "                      <p>" + p.getMota() + "</p>\r\n"

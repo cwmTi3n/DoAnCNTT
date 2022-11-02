@@ -31,22 +31,21 @@
         	 	<div class="phong col-md-6 col-lg-4 mb-5 mb-lg-5 ">
 					<div class="ftco-media-1">
 						<div class="ftco-media-1-inner">
-							<a href="property-single.html" class="d-inline-block mb-4">
-							<img src="<c:url value="/hinhanh?fname=${phong.hinhanh}"/>" alt="Image" class="img-fluid"></a>
+							<a href="<c:url value='/detail-phong?id_p=${phong.id_p}'/>" class="d-inline-block mb-4">
+								<img src="<c:url value="/hinhanh?fname=${phong.hinhanh}"/>" alt="Image" class="img-fluid">
+							</a>
 							<div class="ftco-media-details">
 								<h3>${phong.ten }</h3>
 								<p>${phong.mota }</p>
 								<strong>$${phong.gia }</strong>
 							</div>
-
 						</div>
 					</div>
 				</div>
         	</c:forEach>
+		</div>		
+		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>	</div>
 		</div>
-		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
-	</div>
-</div>
 
 <script>
 	function loadMore() {
