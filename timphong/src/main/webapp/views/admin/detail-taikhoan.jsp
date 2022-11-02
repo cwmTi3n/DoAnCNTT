@@ -57,6 +57,6 @@
 		</table>
 	</div>
 </c:if>
-<h2>Đang theo dỗi</h2>
-<h2>Người theo dỗi</h2>
+<h2>Đang theo dõi</h2>
+<h2>Người theo dõi</h2>
 <h2>Đặt hẹn</h2>

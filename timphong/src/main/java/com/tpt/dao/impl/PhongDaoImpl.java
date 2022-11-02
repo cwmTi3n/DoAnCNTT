@@ -164,7 +164,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<Phong> get3Phong()
 	{
-		String sql = "select top 3 * from phong";
+		String sql = "select top 3 * from phong where trangthai=1";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
@@ -186,7 +186,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<Phong> pagingPhong(int index)
 	{
-		String sql = "select * from phong order by id_p OFFSET ? row fetch next 3 row only";
+		String sql = "select * from phong where trangthai=1 order by id_p OFFSET ? row fetch next 3 row only";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
