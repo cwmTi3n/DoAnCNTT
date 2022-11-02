@@ -25,10 +25,6 @@ public class ListTaikhoan extends HttpServlet
 		ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
 		List<Taikhoan> sellers = taikhoanService.getAllSeller();
 		List<Taikhoan> users = taikhoanService.getAllUser();
-		int tongSeller = sellers.size();
-		int tongUser = users.size();
-		req.setAttribute("tongSeller", tongSeller);
-		req.setAttribute("tongUser", tongUser);
 		req.setAttribute("sellers", sellers);
 		req.setAttribute("users", users);
 		req.getRequestDispatcher("/views/admin/list-taikhoan.jsp").forward(req, resp);

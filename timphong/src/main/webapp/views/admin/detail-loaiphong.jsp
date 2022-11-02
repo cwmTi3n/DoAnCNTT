@@ -12,7 +12,7 @@
     </form>
 </div>
 	<div>
-		<h2>Phòng đang đăng: ${tongPhong }</h2>
+		<h2>Phòng đang đăng: ${lp.phongs.size() }</h2>
 		<table class="table">
 			<thead class="thead-dark">
 				<tr>
@@ -26,7 +26,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${phongs}" var="phong" varStatus="STT">
+				<c:forEach items="${lp.phongs}" var="phong" varStatus="STT">
 						<tr>
 							<th scope="row">${STT.index+1}</th>
 							<td>${phong.id_p}</td>

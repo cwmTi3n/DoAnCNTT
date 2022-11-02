@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.ILoaiphongDao;
+import com.tpt.dao.IPhongDao;
 import com.tpt.model.Loaiphong;
 import com.tpt.util.mapAttributeSQL;
 
@@ -16,6 +18,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 	Connection connection = null;
 	PreparedStatement pStatement = null;
 	ResultSet rSet = null;
+	IPhongDao phongDao = new PhongDaoImpl();
 	@Override
 	public List<Loaiphong> getAll()
 	{
@@ -30,6 +33,10 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 			while(rSet.next())
 			{
 				loaiphongs.add(mapLoaiphong.mapLoaiphong(rSet));
+			}
+			for(Loaiphong lp : loaiphongs)
+			{
+				lp.setPhongs(phongDao.getPhongLoaiphong(lp.getId_lp()));
 			}
 			return loaiphongs;
 		} catch (Exception e)
@@ -53,6 +60,7 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 			{
 				return mapLoaiphong.mapLoaiphong(rSet);
 			}
+			
 		} catch (Exception e)
 		{
 			// TODO: handle exception

@@ -34,11 +34,8 @@ public class LoaiphongController extends HttpServlet
 		int id_lp = Integer.parseInt(id_lpString);
 		Loaiphong loaiphong = loaiphongService.getLoaiphong(id_lp);
 		List<Phong> phongsLp = phongService.getPhongLoaiphong(id_lp);
-		int tongPhong = 1;
+		loaiphong.setPhongs(phongsLp);
 		req.setAttribute("lp", loaiphong);
-		req.setAttribute("phongs", phongsLp);
-		req.setAttribute("tongPhong", tongPhong);
-		
 		req.getRequestDispatcher("/views/admin/detail-loaiphong.jsp").forward(req, resp);
 	}
 }

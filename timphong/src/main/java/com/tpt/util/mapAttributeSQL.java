@@ -1,9 +1,13 @@
 package com.tpt.util;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.tpt.dao.ILoaiphongDao;
+import com.tpt.dao.IPhongDao;
 import com.tpt.dao.impl.LoaiphongDaoImpl;
+import com.tpt.dao.impl.PhongDaoImpl;
 import com.tpt.model.Dathen;
 import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
@@ -12,7 +16,6 @@ import com.tpt.model.Taikhoan;
 import com.tpt.model.Theodoi;
 import com.tpt.model.Tinh;
 import com.tpt.model.Xa;
-import com.tpt.service.ILoaiphongService;
 
 public class mapAttributeSQL
 {
@@ -73,7 +76,8 @@ public class mapAttributeSQL
 		Loaiphong loaiphong = new Loaiphong();
 		try
 		{
-			loaiphong.setId_lp(rSet.getInt("id_lp"));
+			int id_lp = rSet.getInt("id_lp");
+			loaiphong.setId_lp(id_lp);
 			loaiphong.setTenloai(rSet.getString("tenloai"));
 			return loaiphong;
 		} catch (Exception e)

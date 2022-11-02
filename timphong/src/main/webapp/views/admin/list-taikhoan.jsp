@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <button><a href="<c:url value="/admin/themtk"/>">Thêm Tài Khoản</a></button>
-<h2>Danh sách Seller: ${tongSeller }</h2>
+<h2>Danh sách Seller: ${sellers.size() }</h2>
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
@@ -29,7 +29,7 @@
 		</c:forEach>
 	</tbody>
 </table>
-<h2>Danh sách User: ${tongUser }</h2>
+<h2>Danh sách User: ${users.size() }</h2>
 <table class="table">
 	<thead class="thead-dark">
 		<tr>
