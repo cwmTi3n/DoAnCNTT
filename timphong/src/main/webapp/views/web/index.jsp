@@ -26,7 +26,7 @@
 
 <div class="site-section" id="properties-section">
 	<div class="container">
-        <div class="row large-gutters">
+        <div id="load" class="row large-gutters">
         	<c:forEach items="${phongs }" var="phong">
         	 	<div class="phong col-md-6 col-lg-4 mb-5 mb-lg-5 ">
 					<div class="ftco-media-1">
@@ -45,8 +45,6 @@
         	</c:forEach>
 		</div>
 		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
-	</div>
-	<div id="load">
 	</div>
 </div>
 

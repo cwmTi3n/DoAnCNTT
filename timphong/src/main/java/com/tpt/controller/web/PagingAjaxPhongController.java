@@ -26,9 +26,7 @@ public class PagingAjaxPhongController extends HttpServlet
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		
 		String coutString = req.getParameter("exits");
 		int cout = Integer.parseInt(coutString);
@@ -36,7 +34,19 @@ public class PagingAjaxPhongController extends HttpServlet
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{
-			out.println();
+			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
+					+ "              <div class=\"ftco-media-1\">\r\n"
+					+ "                  <div class=\"ftco-media-1-inner\">\r\n"
+					+ "                    <a href=\"property-single.html\" class=\"d-inline-block mb-4\"><img src=\"/timphong/hinhanh?fname="+ p.getHinhanh() + "\" alt=\"Free website template by Free-Template.co\" class=\"img-fluid\"></a>\r\n"
+					+ "                    <div class=\"ftco-media-details\">\r\n"
+					+ "                      <h3>" + p.getTen()+ "</h3>\r\n"
+					+ "                      <p>" + p.getMota() + "</p>\r\n"
+					+ "                      <strong>$"+ p.getGia() + "</strong>\r\n"
+					+ "                    </div>\r\n"
+					+ "      \r\n"
+					+ "                  </div> \r\n"
+					+ "                </div>\r\n"
+					+ "          </div>");
 		}
 	}
 }
