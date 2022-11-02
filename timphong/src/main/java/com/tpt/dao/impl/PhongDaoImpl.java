@@ -160,15 +160,11 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return false;
 	}
-//	public static void main(String[] args)
-//	{
-//		IPhongDao phongDao = new PhongDaoImpl();
-//		System.out.println(phongDao.getPhongLoaiphong(1).size());
-//	}
+
 	@Override
-	public List<Phong> getAll()
+	public List<Phong> get3Phong()
 	{
-		String sql = "select * from phong";
+		String sql = "select top 3 * from phong";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
@@ -186,5 +182,34 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			// TODO: handle exception
 		}
 		return null;
+	}
+	@Override
+	public List<Phong> pagingPhong(int index)
+	{
+		String sql = "select * from phong order by id_p OFFSET ? row fetch next 3 row only";
+		List<Phong> phongs = new ArrayList<Phong>();
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, index);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				phongs.add(mapPhong.mapPhong(rSet));
+			}
+			return phongs;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
+	public static void main(String[] args)
+	{
+		IPhongDao phongDao = new PhongDaoImpl();
+		System.out.println(phongDao.pagingPhong(3).size());
 	}
 }

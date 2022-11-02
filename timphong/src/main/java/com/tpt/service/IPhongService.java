@@ -13,5 +13,6 @@ public interface IPhongService
 	public boolean insertPhong(Phong phong);
 	public boolean deletePhong(int id_p);
 	
-	public List<Phong> getAll();
+	public List<Phong> get3Phong();
+	public List<Phong> pagingPhong(int index);
 }

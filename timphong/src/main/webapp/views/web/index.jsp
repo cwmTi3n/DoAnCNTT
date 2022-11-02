@@ -28,12 +28,11 @@
 	<div class="container">
         <div class="row large-gutters">
         	<c:forEach items="${phongs }" var="phong">
-        	 	<div class="col-md-6 col-lg-4 mb-5 mb-lg-5 ">
+        	 	<div class="phong col-md-6 col-lg-4 mb-5 mb-lg-5 ">
 					<div class="ftco-media-1">
 						<div class="ftco-media-1-inner">
-							<c:url value="/hinhanh?fname=${phong.hinhanh}" var="hinhanh"/>
 							<a href="property-single.html" class="d-inline-block mb-4">
-							<img src="${hinhanh }" alt="Image" class="img-fluid"></a>
+							<img src="<c:url value="/hinhanh?fname=${phong.hinhanh}"/>" alt="Image" class="img-fluid"></a>
 							<div class="ftco-media-details">
 								<h3>${phong.ten }</h3>
 								<p>${phong.mota }</p>
@@ -45,5 +44,25 @@
 				</div>
         	</c:forEach>
 		</div>
+		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
+	</div>
+	<div id="load">
 	</div>
 </div>
+
+<script>
+	function loadMore() {
+		/* tạo viên amount để Gọi và đếm classname là product */
+		var amount = document.getElementsByClassName("phong").length;
+		$.ajax({
+			url : "/timphong/more", //send to Controller
+			type : "get", //send it through get method
+			data : {
+				exits : amount
+			},
+			success : function(data) {
+				$("#load").append(data);
+			}
+		});
+	};
+</script>
