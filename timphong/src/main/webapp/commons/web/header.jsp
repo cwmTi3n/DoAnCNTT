@@ -20,7 +20,7 @@
 
 					<ul
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-						<li><a href="<c:url value='/'/>" class="nav-link">Trang
+						<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang
 								chủ</a></li>
 						<li><a href="#properties-section" class="nav-link">Phòng
 								đang hot</a></li>
