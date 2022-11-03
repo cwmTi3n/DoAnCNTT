@@ -13,7 +13,7 @@ import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
-@WebServlet(urlPatterns = {"/trangchu"})
+@WebServlet(urlPatterns = {"/"})
 public class TrangchuController extends HttpServlet
 {
 
