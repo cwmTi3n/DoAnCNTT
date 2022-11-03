@@ -43,7 +43,7 @@ public class mapAttributeSQL
 			phong.setId_lp(id_lp);
 			phong.setId_tk(rSet.getInt("id_tk"));
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
-			//Chưa có ngaydang và matinh
+			//Chưa có ngaydang và maxa
 			return phong;
 		} catch (Exception e)
 		{
