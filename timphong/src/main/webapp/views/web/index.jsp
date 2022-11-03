@@ -44,13 +44,16 @@
 				</div>
         	</c:forEach>
 		</div>		
-		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>	</div>
-		</div>
+ 		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>	
+	</div>
+</div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+	
 	function loadMore() {
-		/* tạo viên amount để Gọi và đếm classname là product */
 		var amount = document.getElementsByClassName("phong").length;
+		/* tạo viên amount để Gọi và đếm classname là product */
 		$.ajax({
 			url : "/timphong/more", //send to Controller
 			type : "get", //send it through get method
