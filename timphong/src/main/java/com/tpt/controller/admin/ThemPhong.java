@@ -34,7 +34,6 @@ public class ThemPhong extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String id_tk  = req.getParameter("id_tk");
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -46,7 +45,6 @@ public class ThemPhong extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String filename=null;
 		try
 		{

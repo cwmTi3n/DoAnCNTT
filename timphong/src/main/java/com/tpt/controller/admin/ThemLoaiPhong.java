@@ -31,7 +31,6 @@ public class ThemLoaiPhong extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		resp.setCharacterEncoding("utf-8");
 		Loaiphong loaiphong = new Loaiphong();
 		loaiphong.setTenloai(req.getParameter("tenloai"));

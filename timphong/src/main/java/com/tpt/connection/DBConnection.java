@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 
 public class DBConnection
 {
-	private final String userID = "lnlam";
-	private final String passWord = "01274757673";
+	private final String userID = "sa";
+	private final String passWord = "12346";
 	private final String url="jdbc:sqlserver://localhost:1433;databaseName=timphong;user="+userID+";password="+passWord;
 	public DBConnection()
 	{

@@ -24,7 +24,6 @@ public class XoaLoaiphong extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		
 		String id_lpString = req.getParameter("id_lp");
 		

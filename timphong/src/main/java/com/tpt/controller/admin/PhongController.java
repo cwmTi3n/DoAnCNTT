@@ -34,7 +34,6 @@ public class PhongController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String id_p =req.getParameter("id_p");
 		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
@@ -51,7 +50,6 @@ public class PhongController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String filename=null;
 		Part part = req.getPart("hinhanh");
 		String newFilename = part.getSubmittedFileName();

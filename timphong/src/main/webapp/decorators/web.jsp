@@ -17,27 +17,28 @@
 
     	<link rel="shortcut icon" href="ftco-32x32.png">
 
-    	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet">
-    	<link rel="stylesheet" href="${url }fonts/icomoon/style.css">
+    	<link type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700" rel="stylesheet">
+    	<link rel="stylesheet" type="text/css" href="${url }fonts/icomoon/style.css">
 
-    	<link rel="stylesheet" href="${url }css/bootstrap.min.css">
-    	<link rel="stylesheet" href="${url }css/jquery-ui.css">
-    	<link rel="stylesheet" href="${url }css/owl.carousel.min.css">
-    	<link rel="stylesheet" href="${url }css/owl.theme.default.min.css">
-    	<link rel="stylesheet" href="${url }css/owl.theme.default.min.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/bootstrap.min.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/jquery-ui.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/owl.carousel.min.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/owl.theme.default.min.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/owl.theme.default.min.css">
 
-    	<link rel="stylesheet" href="${url }css/jquery.fancybox.min.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/jquery.fancybox.min.css">
 
-    	<link rel="stylesheet" href="${url }css/bootstrap-datepicker.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/bootstrap-datepicker.css">
 
-    	<link rel="stylesheet" href="${url }fonts/flaticon/font/flaticon.css">
+    	<link rel="stylesheet" type="text/css" href="${url }fonts/flaticon/font/flaticon.css">
 
-    	<link rel="stylesheet" href="${url }css/aos.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/aos.css">
 
-    	<link rel="stylesheet" href="${url }css/style.css">
+    	<link rel="stylesheet" type="text/css" href="${url }css/style.css">
     
   	</head>
 	<body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+		
 		<div class="site-wrap">
 			<div class="site-mobile-menu site-navbar-target">
 				<div class="site-mobile-menu-header">
@@ -56,9 +57,7 @@
 		</div>
 		
 			  <!-- .site-wrap -->
-	
-		<a href="#top" class="gototop"><span class="icon-angle-double-up"></span></a>
-	
+		
 		<script src="${url }js/jquery-3.3.1.min.js"></script>
 		<script src="${url }js/jquery-ui.js"></script>
 		<script src="${url }js/popper.min.js"></script>
@@ -71,5 +70,7 @@
 		<script src="${url }js/jquery.fancybox.min.js"></script>
 		<script src="${url }js/jquery.sticky.js"></script>
 		<script src="${url }js/main.js"></script>
+		
+		<a href="#top" class="gototop"><span class="icon-angle-double-up"></span></a>
 	</body>
 </html>

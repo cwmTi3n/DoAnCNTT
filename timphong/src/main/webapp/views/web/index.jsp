@@ -47,7 +47,9 @@
 		<br> <button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>	</div>
 		</div>
 
+
 <script>
+
 	function loadMore() {
 		/* tạo viên amount để Gọi và đếm classname là product */
 		var amount = document.getElementsByClassName("phong").length;

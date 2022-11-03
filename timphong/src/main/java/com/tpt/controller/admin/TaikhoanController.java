@@ -50,7 +50,6 @@ public class TaikhoanController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		Taikhoan taikhoan = new Taikhoan();
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;

@@ -19,7 +19,6 @@ public class XoaPhong extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String id_pString = req.getParameter("id_p");
 		int id_p;
 		IPhongService phongService = new PhongServiceImpl();

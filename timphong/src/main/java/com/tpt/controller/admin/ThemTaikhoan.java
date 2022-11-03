@@ -33,7 +33,6 @@ public class ThemTaikhoan extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		
 		Taikhoan taikhoan = new Taikhoan();
 		taikhoan.setTentk(req.getParameter("tentk"));

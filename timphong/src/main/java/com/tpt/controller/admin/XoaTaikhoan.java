@@ -26,7 +26,6 @@ public class XoaTaikhoan extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html");
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;
 		if(id_tkString != null)
