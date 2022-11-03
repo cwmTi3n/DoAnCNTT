@@ -28,7 +28,8 @@ public class TrangchuController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		
-		List<Phong> phongs = phongService.get3Phong();
+		// Hiện ra 9 phòng đầu tiên cho trang chủ
+		List<Phong> phongs = phongService.get9Phong();
 		
 		req.setAttribute("phongs", phongs);
 		req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);

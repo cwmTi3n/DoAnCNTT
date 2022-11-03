@@ -65,9 +65,9 @@ public class PhongServiceImpl implements IPhongService
 	}
 	
 	@Override
-	public List<Phong> get3Phong()
+	public List<Phong> get9Phong()
 	{
-		return phongDao.get3Phong();
+		return phongDao.get9Phong();
 	}
 	
 	@Override

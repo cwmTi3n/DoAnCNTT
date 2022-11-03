@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 
 <header class="site-navbar py-4 js-sticky-header site-navbar-target"
@@ -20,12 +20,14 @@
 
 					<ul
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-						<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang chủ</a></li>
-						<li><a href="#properties-section" class="nav-link">Phòng đang hot</a></li>
+						<li><a href="<c:url value='/'/>" class="nav-link">Trang
+								chủ</a></li>
+						<li><a href="#properties-section" class="nav-link">Phòng
+								đang hot</a></li>
 						<li><a href="./listings.html" class="nav-link">Tìm kiếm</a></li>
 						<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-						<li><a href="../login/index.html" class="nav-link">Đăng nhập</a></li>
-						<!-- <li><a href="#contact-section" class="nav-link">Contact</a></li> -->
+						<li><a href="../login/index.html" class="nav-link">Đăng
+								nhập</a></li>
 					</ul>
 				</nav>
 			</div>

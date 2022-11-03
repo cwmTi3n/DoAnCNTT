@@ -20,7 +20,7 @@ public class Phong
 	private int matinh;
 	private int id_tk;
 	private Loaiphong loaiphong;
-	private Tinh tinh;
+	private Xa xa;
 	private Taikhoan taikhoan;
 	private List<Taikhoan> ngdatPhongs;
 	public Phong()
@@ -28,7 +28,7 @@ public class Phong
 	}
 	public Phong(int id_p, String ten, int trangthai, String hinhanh, float chieudai, float chieurong, int gia,
 			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int matinh, int id_tk,
-			Loaiphong loaiphong, Tinh tinh, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
+			Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
 	{
 		super();
 		this.id_p = id_p;
@@ -46,7 +46,7 @@ public class Phong
 		this.matinh = matinh;
 		this.id_tk = id_tk;
 		this.loaiphong = loaiphong;
-		this.tinh = tinh;
+		this.xa = xa;
 		this.taikhoan = taikhoan;
 		this.ngdatPhongs = ngdatPhongs;
 	}
@@ -170,13 +170,13 @@ public class Phong
 	{
 		this.loaiphong = loaiphong;
 	}
-	public Tinh getTinh()
+	public Xa getXa()
 	{
-		return tinh;
+		return xa;
 	}
-	public void setTinh(Tinh tinh)
+	public void setXa(Xa xa)
 	{
-		this.tinh = tinh;
+		this.xa = xa;
 	}
 	public Taikhoan getTaikhoan()
 	{
