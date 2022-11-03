@@ -25,6 +25,7 @@ public class LoaiphongController extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
 	IPhongService phongService = new PhongServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{

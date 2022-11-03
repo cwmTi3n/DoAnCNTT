@@ -1,4 +1,5 @@
 USE [timphong]
+
 go
 CREATE TABLE [dbo].[taikhoan](
 	id_tk INT IDENTITY(1,1) PRIMARY KEY,
@@ -39,7 +40,7 @@ CREATE TABLE [dbo].[phong](
 	ngaydang DATE,
 	id_lp INT FOREIGN KEY REFERENCES [dbo].[loaiphong](id_lp)
 	on delete set null,
-	id_t BIGINT FOREIGN KEY REFERENCES [dbo].[TinhThanhPho](ID)
+	id_x BIGINT FOREIGN KEY REFERENCES [dbo].[XaPhuong](ID)
 	on delete set null,
 	id_tk INT FOREIGN KEY REFERENCES [dbo].[taikhoan](id_tk)
 	on delete cascade

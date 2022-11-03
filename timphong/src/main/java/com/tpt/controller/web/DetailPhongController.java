@@ -15,12 +15,12 @@ import com.tpt.service.impl.PhongServiceImpl;
 @WebServlet(urlPatterns = {"/detail-phong"})
 public class DetailPhongController extends HttpServlet
 {
-
-	/**
-	 * 
-	 */
+	
+//	Hiển thị chi tiết phòng
+	
 	IPhongService phongService = new PhongServiceImpl();
 	private static final long serialVersionUID = 1L;
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{

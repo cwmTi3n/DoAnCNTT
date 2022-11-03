@@ -15,4 +15,5 @@ public interface IPhongDao
 	
 	public List<Phong> get3Phong();
 	public List<Phong> pagingPhong(int index);
+	public List<Phong> getAll();
 }

@@ -46,6 +46,7 @@ public class PhongServiceImpl implements IPhongService
 		}
 		return phongDao.editPhong(newPhong);
 	}
+	
 	@Override
 	public boolean insertPhong(Phong phong)
 	{
@@ -62,15 +63,22 @@ public class PhongServiceImpl implements IPhongService
 		}
 		return phongDao.deletePhong(id_p);
 	}
+	
 	@Override
 	public List<Phong> get3Phong()
 	{
 		return phongDao.get3Phong();
 	}
+	
 	@Override
 	public List<Phong> pagingPhong(int index)
 	{
 		return phongDao.pagingPhong(index);
+	}
+	
+	@Override
+	public List<Phong> getAll() {
+		return phongDao.getAll();
 	}
 	
 }

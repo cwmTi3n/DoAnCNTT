@@ -1,4 +1,4 @@
-package com.tpt.controller.web;
+package com.tpt.controller.seller;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,24 +13,20 @@ import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
-@WebServlet(urlPatterns = {"/"})
-public class TrangchuController extends HttpServlet
-{
+public class ListPhong extends HttpServlet{
 
-	/**
-	 * Trang chủ của web
-	 */
+	private static final long serialVersionUID = 1L;
 	
 	IPhongService phongService = new PhongServiceImpl();
-	private static final long serialVersionUID = 1L;
+	
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		
-		List<Phong> phongs = phongService.get3Phong();
-		
+		String id_tk = req.getParameter("id_tk");
+		List<Phong> phongs = phongService.getPhongSeller(Integer.parseInt(id_tk));
 		req.setAttribute("phongs", phongs);
-		req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("").forward(req, resp);
 	}
 }

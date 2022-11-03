@@ -17,10 +17,10 @@
  	       		<select name="trangthai">
 	       			<c:if test='${phong.trangthai == 1 }'>
 						<option value="1">Hiện</option>
-						<option value="0">Ẩn</option>
+						<option value="2">Ẩn</option>
 					</c:if>
 					<c:if test='${phong.trangthai != 1 }'>
-						<option value="0">Ẩn</option>
+						<option value="2">Ẩn</option>
 						<option value="1">Hiện</option>
 					</c:if>
 				</select>

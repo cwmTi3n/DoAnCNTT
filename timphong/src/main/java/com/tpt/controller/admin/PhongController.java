@@ -28,6 +28,7 @@ public class PhongController extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -44,6 +45,7 @@ public class PhongController extends HttpServlet
 		req.setAttribute("id_taikhoan", id_taikhoan);
 		req.getRequestDispatcher("/views/admin/detail-phong.jsp").forward(req, resp);
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
