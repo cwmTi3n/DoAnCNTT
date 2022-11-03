@@ -10,7 +10,7 @@
 
 			<div class="col-6 col-xl-2">
 				<h1 class="mb-0 site-logo m-0 p-0">
-					<a href="index.html" class="mb-0">Find Room</a>
+					<a href="<c:url value='/trangchu'/>" class="mb-0">Find Room</a>
 				</h1>
 			</div>
 
@@ -20,13 +20,13 @@
 
 					<ul
 						class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-						<li><a href="<c:url value='/'/>" class="nav-link">Trang
+						<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang
 								chủ</a></li>
 						<li><a href="#properties-section" class="nav-link">Phòng
 								đang hot</a></li>
-						<li><a href="./listings.html" class="nav-link">Tìm kiếm</a></li>
+						<li><a href="/timphong/views/web/listings.jsp" class="nav-link">Tìm kiếm</a></li>
 						<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-						<li><a href="../login/index.html" class="nav-link">Đăng
+						<li><a href="/timphong/views/web/login.jsp" class="nav-link">Đăng
 								nhập</a></li>
 					</ul>
 				</nav>

@@ -1,0 +1,135 @@
+@media (max-width: 1400px) and (min-width:1201px) {
+    .navbar__item{
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .navbar{
+        flex-direction: column;
+    }
+
+    .navbar__list{
+        display: none;
+    }
+
+    .slider__list{
+        flex-direction: column;
+    }
+
+    .navbar__menu {
+        margin-top: 8px;
+    }
+    
+    .slider{
+        padding-top: 1400px;
+    }
+
+    .slider__item {
+        margin: 16px;
+    }
+
+    .slider__link{
+        width: 100%;
+    }
+
+    .slider__input {
+        margin: 65px 16px;
+    }
+
+    .second-content__body{
+        flex-direction: column;
+    }
+
+    .fourth-content{
+        flex-direction: column;
+    }
+
+    .third-content__time{
+        width: 100%;
+        top: calc(100% - 52px);
+        left: 0;
+    }
+
+    .slider__input-select {
+        width: 100%;
+        max-width: unset;
+    }
+
+    .third-content__text{
+        margin-bottom: 64px;
+    }
+
+    .third-content__about {
+        margin-bottom: 40px;
+    }
+
+    .fiveth-content__item{
+        margin-bottom: 32px;
+    }
+
+    .footer__heading{
+        flex-direction: column;
+    }
+
+    .second-content{
+        padding-top: 370px;
+    }
+
+    .second-content__text {
+        margin: 16px;
+    }
+
+    .footer{
+        padding-top: 1400px;
+    }
+
+    .footer__body{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+}
+
+@media (max-width: 739px){
+    .row{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .icon-fixed{
+        display: none;
+    }
+
+    
+    .footer__heading{
+        align-items: unset;
+    }
+
+    .footer__copyright{
+        height: auto;
+        flex-direction: column;
+    }
+
+    .footer {
+    padding-top: 1500px;
+    }
+
+    .footer__input {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .footer__input-btn {
+        margin-left: 0;
+    }
+
+    .footer__input-btn{
+        width: 100%;
+    }
+
+    .footer__body {
+        top: 300px;
+    }
+}
