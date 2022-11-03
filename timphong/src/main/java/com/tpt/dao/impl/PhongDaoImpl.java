@@ -162,9 +162,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 
 	@Override
-	public List<Phong> get3Phong()
+	public List<Phong> get9Phong()
 	{
-		String sql = "select top 3 * from phong where trangthai=1";
+		String sql = "select top 9 * from phong where trangthai=1";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{

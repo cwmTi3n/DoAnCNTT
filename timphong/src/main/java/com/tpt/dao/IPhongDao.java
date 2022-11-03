@@ -13,7 +13,7 @@ public interface IPhongDao
 	public boolean editPhong(Phong newPhong);
 	public List<Phong> getPhongLoaiphong(int id_lp);
 	
-	public List<Phong> get3Phong();
+	public List<Phong> get9Phong();
 	public List<Phong> pagingPhong(int index);
 	public List<Phong> getAll();
 }
