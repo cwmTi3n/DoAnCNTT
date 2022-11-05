@@ -13,7 +13,6 @@
 			<th scope="col">Họ và tên</th>
 			<th scope="col">SDT</th>
 			<th scope="col">Email</th>
-			<th scope="col"></th>
 		</tr>
 	</thead>
 	<tbody>

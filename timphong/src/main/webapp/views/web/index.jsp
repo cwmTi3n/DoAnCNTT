@@ -18,8 +18,8 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="" target="_blank" class="btn btn-primary px-5 py-3">Đăng
-								nhập</a>
+							<a href="/timphong/views/web/login.jsp" target="_blank"
+								class="btn btn-primary px-5 py-3">Đăng nhập</a>
 						</p>
 
 					</div>
@@ -38,7 +38,7 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="https://free-template.co" target="_blank"
+							<a href="/timphong/views/web/login.jsp" target="_blank"
 								class="btn btn-primary px-5 py-3">Đăng nhập</a>
 						</p>
 
@@ -79,7 +79,6 @@
 
 
 <script>
-
 	function loadMore() {
 		/* tạo viên amount để Gọi và đếm classname là product */
 		var amount = document.getElementsByClassName("phong").length;
