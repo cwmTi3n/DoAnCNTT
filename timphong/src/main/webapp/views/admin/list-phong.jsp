@@ -10,6 +10,7 @@
 					<th scope="col">STT</th>
 					<th scope="col">Id</th>
 					<th scope="col">Hình ảnh</th>
+					<th scope="col">Tên phòng</th>
 					<th scope="col">Trạng thái</th>
 					<th scope="col">Giá</th>
 					<th scope="col">Diện tích</th>
@@ -27,6 +28,7 @@
 									<img height="120" width="160" src="${hinhanh}"/>
 								</a>
 							</td>
+							<td>${phong.ten }</td>
 							<td>${phong.trangthai==1 ? "Hiện":"Ẩn"}</td>
 							<td>${phong.gia}</td>
 							<td>${phong.chieudai}*${phong.chieurong}</td>

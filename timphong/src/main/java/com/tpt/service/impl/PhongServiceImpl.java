@@ -1,11 +1,7 @@
 package com.tpt.service.impl;
 
 import java.io.File;
-import java.util.Iterator;
 import java.util.List;
-
-import org.apache.jasper.tagplugins.jstl.core.If;
-import org.omg.CORBA.StringHolder;
 
 import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.IPhongDao;
