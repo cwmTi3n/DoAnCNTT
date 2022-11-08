@@ -27,7 +27,6 @@ public class XoaAnhPhongController extends HttpServlet
 		
 		String id_pString = req.getParameter("id_p");
 		String hinhanh = req.getParameter("hinhanh");
-		System.out.println(hinhanh);
 		hinhanhService.deleteHinhanh(hinhanh);
 		resp.sendRedirect(req.getContextPath() + "/admin/phong?id_p=" + id_pString);
 		
