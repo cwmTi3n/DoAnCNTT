@@ -1,11 +1,13 @@
 package com.tpt.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.impl.HinhanhDaoImpl;
 import com.tpt.model.Hinhanh;
 import com.tpt.service.IHinhanhService;
+import com.tpt.util.Constant;
 
 public class HinhanhServiceImpl implements IHinhanhService
 {
@@ -27,7 +29,12 @@ public class HinhanhServiceImpl implements IHinhanhService
 	public boolean deleteHinhanh(String hinhanh)
 	{
 		// TODO Auto-generated method stub
-		return false;
+		boolean check =  hinhanhDao.deleteHinhanh(hinhanh);
+		if(check)
+		{
+			deleteFileHinhanh(hinhanh);
+		}
+		return check;
 	}
 
 	@Override
@@ -41,6 +48,17 @@ public class HinhanhServiceImpl implements IHinhanhService
 	public boolean deleteHinhanhP(int id_p)
 	{
 		// TODO Auto-generated method stub
+		return false;
+	}
+	boolean deleteFileHinhanh(String filename)
+	{
+		String filePath = Constant.DIR + "/phong/" + filename;
+		File file = new File(filePath);
+		if(file.exists())
+		{
+			file.delete();
+			return true;
+		}
 		return false;
 	}
 

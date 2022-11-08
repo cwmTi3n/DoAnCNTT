@@ -11,18 +11,20 @@
 				<label>Hình ảnh chính: </label>
 				<c:url value="/hinhanh?fname=${phong.anhchinh}" var="anh" />
 				<img height="180" width="240" src="${anh }"> 
-				<input type="file" name="hinhanh"><br />
+				<input type="file" name="hinhanh">
+				<a href="<c:url value='/admin/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${phong.anhchinh }'/>">Xóa</a><br/>
 			</div>
 			<c:forEach items="${phong.getHinhanhs() }" var="ha">
 				<div>
 					<label>Hình ảnh: </label>
 					<c:url value="/hinhanh?fname=${ha.hinhanh}" var="anh" />
 					<img height="180" width="240" src="${anh }"> 
-					<input type="file" name="hinhanh"><br />
+					<input type="file" name="hinhanh">
+					<a href="<c:url value='/admin/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${ha.hinhanh }'/>">Xóa</a><br/>
 				</div>
 			</c:forEach>
  			<c:if test="${phong.getHinhanhs().size() < 2 }">
-				<button><a href="<c:url value="/admin/them-anh-phong?id_p=${phong.id_p}"/>">Thêm Ảnh</a></button></br>
+				<button><a href="<c:url value='/admin/them-anh-phong?id_p=${phong.id_p}'/>">Thêm Ảnh</a></button><br/>
 			</c:if>
 			<label>Id: </label><input type="text" name="id_p" value="${phong.id_p }"><br/>
 	        <label>Tên: </label><input type="text" name="ten" value="${phong.ten }"><br/>
