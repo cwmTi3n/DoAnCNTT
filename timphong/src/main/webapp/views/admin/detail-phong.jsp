@@ -21,6 +21,9 @@
 					<input type="file" name="hinhanh"><br />
 				</div>
 			</c:forEach>
+ 			<c:if test="${phong.getHinhanhs().size() < 2 }">
+				<button><a href="<c:url value="/admin/them-anh-phong?id_p=${phong.id_p}"/>">Thêm Ảnh</a></button></br>
+			</c:if>
 			<label>Id: </label><input type="text" name="id_p" value="${phong.id_p }"><br/>
 	        <label>Tên: </label><input type="text" name="ten" value="${phong.ten }"><br/>
 	        <label>Trạng thái: </label>
