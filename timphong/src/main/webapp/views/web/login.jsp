@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/templates/" var="url"></c:url>
 
+
+
     <div class="NUS">
         <div class="container-login">
             <div class="grid wide">
