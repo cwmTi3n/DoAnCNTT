@@ -1,4 +1,4 @@
-USE [timphong1]
+USE [timphong]
 
 go
 CREATE TABLE [dbo].[taikhoan](

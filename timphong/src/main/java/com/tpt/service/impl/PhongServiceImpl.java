@@ -39,6 +39,13 @@ public class PhongServiceImpl implements IPhongService
 	public boolean editPhong(Phong newPhong, String newHinhanhs[])
 	{
 		Phong oldPhong = phongDao.getPhong(newPhong.getId_p());
+		for(int i = 0; i < Constant.SoHinh; i++)
+		{
+			if(newHinhanhs[i] == null)
+			{
+				newHinhanhs[i] = ".";
+			}
+		}
 		int chk = newHinhanhs[0].lastIndexOf(".");
 		boolean chkDelete = false;
 		if(newHinhanhs[0].substring(chk+1).length() != 0)

@@ -48,7 +48,7 @@ public class ThemPhong extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		
 		int temp = 0;
-		String hinhanhs[] = new String[3];
+		String hinhanhs[] = new String[Constant.SoHinh];
 		for(Part part : req.getParts())
 		{
 			String filename = null;
@@ -67,7 +67,10 @@ public class ThemPhong extends HttpServlet
 					{
 						Files.createDirectories(Paths.get(realPath));
 					}
-					part.write(realPath + "/" + filename);
+					if(ext.length() != 0)
+					{
+						part.write(realPath + "/" + filename);
+					}
 					hinhanhs[temp++] = filename;
 				} catch (Exception e)
 				{
