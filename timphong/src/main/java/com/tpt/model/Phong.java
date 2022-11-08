@@ -3,8 +3,6 @@ package com.tpt.model;
 import java.sql.Date;
 import java.util.List;
 
-import org.omg.CORBA.StringHolder;
-
 public class Phong
 {
 	private int id_p;
