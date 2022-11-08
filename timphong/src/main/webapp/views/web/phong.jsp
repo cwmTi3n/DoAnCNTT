@@ -22,7 +22,14 @@
         <div class="row">
           <div class="col-lg-7">
             <div class="owl-carousel slide-one-item with-dots">
-              <div><img src="<c:url value="/hinhanh?fname=${phong.hinhanh}"/>" alt="Image" class="img-fluid"></div>
+            <div>
+              	<img src="<c:url value="/hinhanh?fname=${phong.anhchinh}"/>" alt="Image" class="img-fluid">
+            </div>
+            <c:forEach items="${phong.getHinhanhs() }" var="hinhanh">
+              <div>
+              	<img src="<c:url value="/hinhanh?fname=${hinhanh.hinhanh}"/>" alt="Image" class="img-fluid">
+              </div>
+            </c:forEach>
 <%--               <div><img src="${url }images/property_2.jpg" alt="Image" class="img-fluid"></div>
               <div><img src="${url }images/property_3.jpg" alt="Image" class="img-fluid"></div> --%>
             </div>

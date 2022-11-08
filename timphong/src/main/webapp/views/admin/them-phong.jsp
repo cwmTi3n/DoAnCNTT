@@ -11,7 +11,6 @@
 					<option value="2">Ẩn</option>
 			</select>
         <br/>
-        <label>Hình ảnh: </label><input type="file" name="hinhanh"><br/>
         <label>Chiều dài: </label><input type="text" name="chieudai"><br/>
         <label>Chiều rộng: </label><input type="text" name="chieurong"><br/>
         <label>Giá: </label><input type="text" name="gia"><br/>
@@ -23,9 +22,11 @@
 	        	<c:forEach items="${loaiphongs}" var="lp">
 					<option value="${lp.id_lp }">${lp.tenloai }</option>
 				</c:forEach>
-			</select>
-			 
+			</select>	 
 		<br/><label>Chủ phòng: </label><input type="text" name="id_tk" value="${id_tk }"><br/>
+		<label>Hình ảnh chính: </label><input type="file" name="hinhanh"><br/>
+		<label>Hình ảnh phụ: </label><input type="file" name="hinhanh"><br/>
+		<label>Hình ảnh phụ: </label><input type="file" name="hinhanh"><br/>
         <button type="submit">Thêm</button>
     </form>
 </div>

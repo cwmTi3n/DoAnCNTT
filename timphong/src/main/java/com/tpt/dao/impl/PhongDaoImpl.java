@@ -10,6 +10,7 @@ import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IPhongDao;
+import com.tpt.model.Hinhanh;
 import com.tpt.model.Phong;
 import com.tpt.util.mapAttributeSQL;
 
@@ -89,14 +90,14 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean insertPhong(Phong newPhong)
 	{
-		String sql = "insert into phong(ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into phong(ten, anhchinh, trangthai, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try
 		{
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
-			pStatement.setInt(2, newPhong.getTrangthai());
-			pStatement.setString(3, newPhong.getHinhanh());
+			pStatement.setString(2, newPhong.getAnhchinh());
+			pStatement.setInt(3, newPhong.getTrangthai());
 			pStatement.setFloat(4, newPhong.getChieudai());
 			pStatement.setFloat(5, newPhong.getChieurong());
 			pStatement.setInt(6, newPhong.getGia());
@@ -135,14 +136,14 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean editPhong(Phong newPhong)
 	{
-		String sql = "update phong set ten=?, trangthai=?, hinhanh=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=? where id_p=?";
+		String sql = "update phong set ten=?, anhchinh=?, trangthai=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=? where id_p=?";
 		try
 		{
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, newPhong.getTen());
-			pStatement.setInt(2, newPhong.getTrangthai());
-			pStatement.setString(3, newPhong.getHinhanh());
+			pStatement.setString(2, newPhong.getAnhchinh());
+			pStatement.setInt(3, newPhong.getTrangthai());
 			pStatement.setFloat(4, newPhong.getChieudai());
 			pStatement.setFloat(5, newPhong.getChieurong());
 			pStatement.setInt(6, newPhong.getGia());
@@ -207,14 +208,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	
-	public static void main(String[] args)
-	{
-		IPhongDao phongDao = new PhongDaoImpl();
-		System.out.println(phongDao.pagingPhong(3).size());
-	}
-	
 	@Override
-	public List<Phong> getAll() {
+	public List<Phong> getAll() 
+	{
 		String sql = "select * from phong";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try {
@@ -232,4 +228,33 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return null;
 	}
+	
+	public int getIdPhong(String anhchinh)
+	{
+		String sql = "select id_p from phong where anhchinh=?";
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, anhchinh);
+			rSet = pStatement.executeQuery();
+			while(rSet.next())
+			{
+				return rSet.getInt("id_p");
+			}
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return 0;
+	}
+//	public static void main(String[] args)
+//	{
+//		IPhongDao phongDao = new PhongDaoImpl();
+//		Phong phong = phongDao.getPhong(1);
+//		for(Hinhanh hinhanh : phong.getHinhanhs())
+//		{
+//			System.out.println(hinhanh.getHinhanh());
+//		}
+//	}
 }

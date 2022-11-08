@@ -5,13 +5,23 @@
 
 <div>
 	<div>
-		<c:url value="/hinhanh?fname=${phong.hinhanh}" var="anh"/>
-		<img height="auto" width="50%" src="${anh }" >
-	</div>
-	<div>
 		<h2>Chinh sua phong</h2>
 	    <form action="phong" method="post" enctype="multipart/form-data">
-	    	<label>Id: </label><input type="text" name="id_p" value="${phong.id_p }"><br/>
+			<div>
+				<label>Hình ảnh chính: </label>
+				<c:url value="/hinhanh?fname=${phong.anhchinh}" var="anh" />
+				<img height="180" width="240" src="${anh }"> 
+				<input type="file" name="hinhanh"><br />
+			</div>
+			<c:forEach items="${phong.getHinhanhs() }" var="ha">
+				<div>
+					<label>Hình ảnh: </label>
+					<c:url value="/hinhanh?fname=${ha.hinhanh}" var="anh" />
+					<img height="180" width="240" src="${anh }"> 
+					<input type="file" name="hinhanh"><br />
+				</div>
+			</c:forEach>
+			<label>Id: </label><input type="text" name="id_p" value="${phong.id_p }"><br/>
 	        <label>Tên: </label><input type="text" name="ten" value="${phong.ten }"><br/>
 	        <label>Trạng thái: </label>
  	       		<select name="trangthai">
@@ -25,7 +35,6 @@
 					</c:if>
 				</select>
 	        <br/>
-	        <label>Hình ảnh: </label><input type="file" name="hinhanh"><br/>
 	        <label>Chiều dài: </label><input type="text" name="chieudai" value="${phong.chieudai }"><br/>
 	        <label>Chiều rộng: </label><input type="text" name="chieurong" value="${phong.chieurong }"><br/>
 	        <label>Giá: </label><input type="text" name="gia" value="${phong.gia }"><br/>

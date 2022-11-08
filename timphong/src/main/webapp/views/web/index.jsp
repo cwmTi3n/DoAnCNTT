@@ -59,7 +59,7 @@
 						<div class="ftco-media-1-inner">
 							<a href="<c:url value='/detail-phong?id_p=${phong.id_p}'/>"
 								class="d-inline-block mb-4"> <img
-								src="<c:url value="/hinhanh?fname=${phong.hinhanh}"/>"
+								src="<c:url value="/hinhanh?fname=${phong.anhchinh}"/>"
 								alt="Image" class="img-fluid">
 							</a>
 							<div class="ftco-media-details">

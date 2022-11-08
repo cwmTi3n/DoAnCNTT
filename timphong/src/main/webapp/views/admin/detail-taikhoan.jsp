@@ -42,7 +42,7 @@
 							<td>${phongct.id_p}</td>
 							<td>
 								<a href="<c:url value="/admin/phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">
-									<c:url value="/hinhanh?fname=${phongct.hinhanh}" var="hinhanh"/>
+									<c:url value="/hinhanh?fname=${phongct.anhchinh}" var="hinhanh"/>
 									<img height="120" width="160" src="${hinhanh}"/>
 								</a>
 							</td>

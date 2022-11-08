@@ -3,12 +3,14 @@ package com.tpt.model;
 import java.sql.Date;
 import java.util.List;
 
+import org.omg.CORBA.StringHolder;
+
 public class Phong
 {
 	private int id_p;
 	private String ten;
+	private String anhchinh;
 	private int trangthai;
-	private String hinhanh;
 	private float chieudai;
 	private float chieurong;
 	private int gia;
@@ -17,24 +19,25 @@ public class Phong
 	private String mota;
 	private Date ngaydang;
 	private int id_lp;
-	private int matinh;
+	private int maxa;
 	private int id_tk;
 	private Loaiphong loaiphong;
 	private Xa xa;
 	private Taikhoan taikhoan;
 	private List<Taikhoan> ngdatPhongs;
+	private List<Hinhanh> hinhanhs;
 	public Phong()
 	{
 	}
-	public Phong(int id_p, String ten, int trangthai, String hinhanh, float chieudai, float chieurong, int gia,
-			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int matinh, int id_tk,
-			Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs)
+	public Phong(int id_p, String ten, String anhchinh, int trangthai, float chieudai, float chieurong, int gia,
+			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk,
+			Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs, List<Hinhanh> hinhanhs)
 	{
 		super();
 		this.id_p = id_p;
 		this.ten = ten;
+		this.anhchinh = anhchinh;
 		this.trangthai = trangthai;
-		this.hinhanh = hinhanh;
 		this.chieudai = chieudai;
 		this.chieurong = chieurong;
 		this.gia = gia;
@@ -43,12 +46,13 @@ public class Phong
 		this.mota = mota;
 		this.ngaydang = ngaydang;
 		this.id_lp = id_lp;
-		this.matinh = matinh;
+		this.maxa = maxa;
 		this.id_tk = id_tk;
 		this.loaiphong = loaiphong;
 		this.xa = xa;
 		this.taikhoan = taikhoan;
 		this.ngdatPhongs = ngdatPhongs;
+		this.hinhanhs = hinhanhs;
 	}
 	public int getId_p()
 	{
@@ -66,6 +70,14 @@ public class Phong
 	{
 		this.ten = ten;
 	}
+	public String getAnhchinh()
+	{
+		return anhchinh;
+	}
+	public void setAnhchinh(String anhchinh)
+	{
+		this.anhchinh = anhchinh;
+	}
 	public int getTrangthai()
 	{
 		return trangthai;
@@ -73,14 +85,6 @@ public class Phong
 	public void setTrangthai(int trangthai)
 	{
 		this.trangthai = trangthai;
-	}
-	public String getHinhanh()
-	{
-		return hinhanh;
-	}
-	public void setHinhanh(String hinhanh)
-	{
-		this.hinhanh = hinhanh;
 	}
 	public float getChieudai()
 	{
@@ -146,13 +150,13 @@ public class Phong
 	{
 		this.id_lp = id_lp;
 	}
-	public int getMatinh()
+	public int getMaxa()
 	{
-		return matinh;
+		return maxa;
 	}
-	public void setMatinh(int matinh)
+	public void setMaxa(int maxa)
 	{
-		this.matinh = matinh;
+		this.maxa = maxa;
 	}
 	public int getId_tk()
 	{
@@ -193,6 +197,14 @@ public class Phong
 	public void setNgdatPhongs(List<Taikhoan> ngdatPhongs)
 	{
 		this.ngdatPhongs = ngdatPhongs;
+	}
+	public List<Hinhanh> getHinhanhs()
+	{
+		return hinhanhs;
+	}
+	public void setHinhanhs(List<Hinhanh> hinhanhs)
+	{
+		this.hinhanhs = hinhanhs;
 	}
 	
 	

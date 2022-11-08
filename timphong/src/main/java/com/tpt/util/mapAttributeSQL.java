@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.ILoaiphongDao;
 import com.tpt.dao.IPhongDao;
+import com.tpt.dao.impl.HinhanhDaoImpl;
 import com.tpt.dao.impl.LoaiphongDaoImpl;
 import com.tpt.dao.impl.PhongDaoImpl;
 import com.tpt.model.Dathen;
@@ -26,14 +28,16 @@ public class mapAttributeSQL
 	public Phong mapPhong(ResultSet rSet)
 	{
 		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
+		IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
 		Phong phong = new Phong();
 		try
 		{
 			int id_lp = rSet.getInt("id_lp");
-			phong.setId_p(rSet.getInt("id_p"));
+			int id_p = rSet.getInt("id_p");
+			phong.setId_p(id_p);
 			phong.setTen(rSet.getString("ten"));
+			phong.setAnhchinh(rSet.getString("anhchinh"));
 			phong.setTrangthai(rSet.getInt("trangthai"));
-			phong.setHinhanh(rSet.getString("hinhanh"));
 			phong.setChieudai(rSet.getFloat("chieudai"));
 			phong.setChieurong(rSet.getFloat("chieurong"));
 			phong.setGia(rSet.getInt("gia"));
@@ -43,6 +47,7 @@ public class mapAttributeSQL
 			phong.setId_lp(id_lp);
 			phong.setId_tk(rSet.getInt("id_tk"));
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
+			phong.setHinhanhs(hinhanhDao.getHinhanhP(id_p));
 			//Chưa có ngaydang và maxa
 			return phong;
 		} catch (Exception e)

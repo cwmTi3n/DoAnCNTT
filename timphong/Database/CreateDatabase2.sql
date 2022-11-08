@@ -1,4 +1,4 @@
-USE [timphong]
+USE [timphong1]
 
 go
 CREATE TABLE [dbo].[taikhoan](
@@ -29,8 +29,8 @@ CREATE TABLE [dbo].[loaiphong](
 CREATE TABLE [dbo].[phong](
 	id_p INT IDENTITY(1,1) PRIMARY KEY,
 	ten NVARCHAR(100) NOT NULL,
+	anhchinh nvarchar(100) unique,
 	trangthai INT NOT NULL,
-	hinhanh NVARCHAR(500) NOT NULL,
 	chieudai FLOAT NOT NULL,
 	chieurong FLOAT NOT NULL,
 	gia INT NOT NULL,
@@ -46,6 +46,15 @@ CREATE TABLE [dbo].[phong](
 	on delete cascade
 );
 
+CREATE TABLE [dbo].[hinhanh](
+	id_p int,
+	stt int IDENTITY(1,1) ,
+	hinhanh nvarchar(100),
+	PRIMARY KEY (id_p, hinhanh),
+	CONSTRAINT FK_hinhanh_p FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
+	on delete cascade
+);
+
 CREATE TABLE [dbo].[dathen](
 	id_tk INT NOT NULL,
 	id_p INT NOT NULL,
@@ -54,7 +63,7 @@ CREATE TABLE [dbo].[dathen](
 	ngay DATE,
 	gio TIME
 	PRIMARY KEY (id_tk, id_p),
-	CONSTRAINT FK_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk)
+	CONSTRAINT FK_dathen_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk)
 	on delete cascade,
-	CONSTRAINT FK_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
+	CONSTRAINT FK_dathen_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
 );

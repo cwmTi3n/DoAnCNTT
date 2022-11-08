@@ -50,33 +50,44 @@ public class PhongController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		String filename=null;
-		Part part = req.getPart("hinhanh");
-		String newFilename = part.getSubmittedFileName();
-		if(!newFilename.isEmpty())
+		int temp = 0;
+		String hinhanhs[] = new String[3];
+		for(Part part : req.getParts())
 		{
-			try
+			String filename = null;
+			String newFilename = part.getSubmittedFileName();
+			if(newFilename != null)
 			{
-				String realPath = Constant.DIR + "/phong";
-				String realFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-				int index = realFileName.lastIndexOf(".");
-				String ext = realFileName.substring(index+1);
-				filename = System.currentTimeMillis() + "." + ext;
-				if(!Files.exists(Paths.get(realPath)))
+				try
 				{
-					Files.createDirectories(Paths.get(realPath));
+					String realPath = Constant.DIR + "/phong";					
+					String realFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+					int index = realFileName.lastIndexOf(".");
+					String ext = realFileName.substring(index+1);
+					Long time = System.currentTimeMillis() + temp;
+					filename = time.toString() + "." + ext;
+					if(!Files.exists(Paths.get(realPath)))
+					{
+						Files.createDirectories(Paths.get(realPath));
+					}
+					if(ext.length() != 0)
+					{
+						part.write(realPath + "/" + filename);
+					}
+					hinhanhs[temp++] = filename;
+				} catch (Exception e)
+				{
+					System.out.println("ERR");
 				}
-				part.write(realPath + "/" + filename);
-			} catch (Exception e)
-			{
-				// TODO: handle exception
 			}
+
 		}
+
 		Phong phong = new Phong();
 		phong.setId_p(Integer.parseInt(req.getParameter("id_p")));
 		phong.setTen(req.getParameter("ten"));
 		phong.setTrangthai(Integer.parseInt(req.getParameter("trangthai")));
-		phong.setHinhanh(filename);
+		//phong.setHinhanh(filename);
 		phong.setChieudai(Float.parseFloat(req.getParameter("chieudai")));
 		phong.setChieurong(Float.parseFloat(req.getParameter("chieurong")));
 		phong.setGia(Integer.parseInt(req.getParameter("gia")));
@@ -86,7 +97,7 @@ public class PhongController extends HttpServlet
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
 		String id_tk = req.getParameter("id_tk");
 		phong.setId_tk(Integer.parseInt(id_tk));
-		phongService.editPhong(phong);
+		phongService.editPhong(phong, hinhanhs);
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 		
 	}
