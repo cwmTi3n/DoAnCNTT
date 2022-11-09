@@ -88,7 +88,7 @@ public class PhongServiceImpl implements IPhongService
 			Hinhanh ha = new Hinhanh();
 			int id_p = phongDao.getIdPhong(phong.getAnhchinh());
 			ha.setId_p(id_p);
-			for(int i = 1; i < 3; i++)
+			for(int i = 1; i < Constant.SoHinh; i++)
 			{
 				int kt = hinhanhs[i].lastIndexOf(".");
 				if(hinhanhs[i].substring(kt+1).length() != 0)
