@@ -32,7 +32,7 @@
 					<td>${phong.id_p}</td>
 					<td><a
 						href="<c:url value="/admin/phong?id_p=${phong.id_p }"/>"> <c:url
-								value="/hinhanh?fname=${phong.hinhanh}" var="hinhanh" /> <img
+								value="/hinhanh?fname=${phong.anhchinh}" var="hinhanh" /> <img
 							height="120" width="160" src="${hinhanh}" />
 					</a></td>
 					<td>${phong.trangthai==1 ? "Hiện":"Ẩn"}</td>
