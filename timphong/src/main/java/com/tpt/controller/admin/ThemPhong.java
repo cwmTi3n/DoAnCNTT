@@ -17,10 +17,13 @@ import javax.servlet.http.Part;
 
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
+import com.tpt.model.Tinh;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
+import com.tpt.service.ITinhService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
+import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
 
 @WebServlet(urlPatterns = {"/admin/them-phong"})
@@ -30,6 +33,7 @@ public class ThemPhong extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	ITinhService tinhService = new TinhServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -37,7 +41,9 @@ public class ThemPhong extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		String id_tk  = req.getParameter("id_tk");
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		List<Tinh> tinhs = tinhService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
+		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("id_tk", id_tk);
 		req.getRequestDispatcher("/views/admin/them-phong.jsp").forward(req, resp);
 	}
