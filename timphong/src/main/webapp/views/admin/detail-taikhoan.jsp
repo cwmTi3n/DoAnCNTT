@@ -14,7 +14,17 @@
         <label>Mật khẩu: </label><input type="text" name="matkhau" value="${user.matkhau }"><br/>
         <label>Họ: </label><input type="text" name="ho" value="${user.ho }"><br/>
         <label>Tên: </label><input type="text" name="ten" value="${user.ten }"><br/>
-        <label>Quyền: </label><input type="text" name="quyen" value="${user.quyen }"><br/>
+        <label>Quyền: </label>
+        <select name="quyen">
+        	<c:if test="${user.quyen == 2 }">
+        		<option value="2">User</option>
+        		<option value="3">Seller</option>
+        	</c:if>
+        	<c:if test="${user.quyen == 3 }">
+        		<option value="3">Seller</option>
+        		<option value="2">User</option>
+        	</c:if>
+        </select><br/>
         <label>SDT: </label><input type="text" name="sdt" value="${user.sdt }"><br/>
         <label>Email: </label><input type="text" name="email" value="${user.email }"><br/>
         <button type="submit">Chỉnh sửa</button>
