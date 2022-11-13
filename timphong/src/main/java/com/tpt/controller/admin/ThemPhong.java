@@ -15,14 +15,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
 import com.tpt.model.Tinh;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
+import com.tpt.service.IQuanhuyenService;
 import com.tpt.service.ITinhService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
+import com.tpt.service.impl.QuanhuyenServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
 
@@ -34,6 +37,7 @@ public class ThemPhong extends HttpServlet
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
 	ITinhService tinhService = new TinhServiceImpl();
+	IQuanhuyenService huyenService = new QuanhuyenServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -42,6 +46,7 @@ public class ThemPhong extends HttpServlet
 		String id_tk  = req.getParameter("id_tk");
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
+		List<Huyen> huyens = huyenService.getByTinh(0);
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("id_tk", id_tk);

@@ -2,19 +2,22 @@ var citis = document.getElementById("city");
 var districts = document.getElementById("district");
 var wards = document.getElementById("ward");
 
+var id_t = $('#city').find(":selected").val();
+console.log()
 var Parameter = {
-  url: "/timphong/listtinh", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
+  url: "/timphong/listhuyen", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
   method: "GET", //do backend cung cấp
   //responseType: "application/json", //kiểu Dữ liệu trả về do backend cung cấp
-  /*
+  
   data:{
 	
-},
+				exits : id_t
+	},
   
   success: function(data) {
-				renderCity(data.data);
+				renderCity(data);
 			}
-			*/
+			
 };
 //gọi ajax = axios => nó trả về cho chúng ta là một promise
 

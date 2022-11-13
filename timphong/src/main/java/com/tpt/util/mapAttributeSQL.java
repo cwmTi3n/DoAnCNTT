@@ -126,7 +126,7 @@ public class mapAttributeSQL
 		try
 		{
 			huyen.setMahuyen(rSet.getInt("ID"));
-			huyen.setTenhuyen(rSet.getString("tenhuyen"));
+			huyen.setTenhuyen(rSet.getString("tenquanhuyen"));
 			return huyen;
 		} catch (Exception e)
 		{
@@ -141,7 +141,7 @@ public class mapAttributeSQL
 		try
 		{
 			xa.setMaxa(rSet.getInt("ID"));
-			xa.setTenxa(rSet.getString("tenxa"));
+			xa.setTenxa(rSet.getString("tenxaphuong"));
 			return xa;
 		} catch (Exception e)
 		{

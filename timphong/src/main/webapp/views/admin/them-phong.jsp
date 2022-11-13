@@ -17,17 +17,18 @@
         <label>Địa chỉ chi tiết: </label><input type="text" name="dcchitiet"><br/>
         
          <div class="col-md-auto">
-          <select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
+          <select onchange="loadHuyen()" class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
+            <option value="" selected>Chọn tỉnh, thành phố</option>
             <c:forEach items="${tinhs }" var="tinh">
             	<option value="${tinh.matinh }" >${tinh.tentinh }</option>           
             </c:forEach>
           </select>
           
-          <select class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
+          <select onchange="loadXa()" disabled class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
             <option value="" selected>Chọn quận huyện</option>
           </select>
 
-          <select class="form-select form-select-sm" id="ward" aria-label=".form-select-sm">
+          <select disabled class="form-select form-select-sm" id="ward" aria-label=".form-select-sm">
             <option value="" selected>Chọn phường xã</option>
           </select>
         </div>    
@@ -51,52 +52,55 @@
 
 <script>
 	function loadHuyen() {
+		var id_t = $('#city').find(":selected").val();
 		
 		var citis = document.getElementById("city");
 		var districts = document.getElementById("district");
 		var wards = document.getElementById("ward");
+		
+		districts.disabled = false;
+		
 		$.ajax({
-			url : "/timphong/listtinh", //send to Controller
+			url : "/timphong/listhuyen", //send to Controller
 			type : "get", //send it through get method
 			data : {
-				exits : citis
+				exits : id_t
 			},
 			success : function(data) {
-				//$("#load").append(data);
-				renderCity(data);
+				removeData(districts);
+				$("#district").append(data);
 			}
 		});
 	};
 	
-	function renderCity(data) {
-		  //for (const x of data) {
-		    //citis.options[citis.options.length] = new Option(x.tenTinhThanhPho, x.ID);
-		  //}
+	function loadXa() {
+		var id_h = $('#district').find(":selected").val();
+		
+		var citis = document.getElementById("city");
+		var districts = document.getElementById("district");
+		var wards = document.getElementById("ward");
 
-		  // xứ lý khi thay đổi tỉnh thành thì sẽ hiển thị ra quận huyện thuộc tỉnh thành đó
-		  citis.onchange = function () {
-		    district.length = 1;
-		    ward.length = 1;
-		    if(this.value != ""){
-		      const result = data.filter(n => n.Id === this.value);
-
-		      for (const k of result[0].Districts) {
-		        district.options[district.options.length] = new Option(k.Name, k.Id);
-		      }
-		    }
-		  };
-
-		   // xứ lý khi thay đổi quận huyện thì sẽ hiển thị ra phường xã thuộc quận huyện đó
-		  district.onchange = function () {
-		    ward.length = 1;
-		    const dataCity = data.filter((n) => n.Id === citis.value);
-		    if (this.value != "") {
-		      const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-
-		      for (const w of dataWards) {
-		        wards.options[wards.options.length] = new Option(w.Name, w.Id);
-		      }
-		    }
-		  };
+		wards.disabled = false;
+		
+		$.ajax({
+			url : "/timphong/listxa", //send to Controller
+			type : "get", //send it through get method
+			data : {
+				exits : id_h
+			},
+			success : function(data) {
+				removeData(wards);
+				$("#ward").append(data);
+			}
+		});
+	};
+	
+	function removeData(data){
+		if(data !== undefined){			
+		 var i, L = data.options.length - 1;
+		   for(i = L; i >= 1; i--) {
+		      data.remove(i);
+		   }
 		}
+	}
 </script>

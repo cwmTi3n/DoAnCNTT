@@ -17,7 +17,7 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 
 	@Override
 	public List<Tinh> getAll() {
-		{
+		
 			String sql = "select id, tentinhthanhpho from tinhthanhpho";
 			List<Tinh> tinhs = new ArrayList<Tinh>();
 			
@@ -38,7 +38,7 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 				// TODO: handle exception
 			}
 			return null;
-		}
+		
 	}
 
 }
