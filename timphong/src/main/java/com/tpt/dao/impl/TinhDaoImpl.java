@@ -18,7 +18,7 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 	@Override
 	public List<Tinh> getAll() {
 		{
-			String sql = "select * from tinhthanhpho";
+			String sql = "select id, tentinhthanhpho from tinhthanhpho";
 			List<Tinh> tinhs = new ArrayList<Tinh>();
 			
 			try

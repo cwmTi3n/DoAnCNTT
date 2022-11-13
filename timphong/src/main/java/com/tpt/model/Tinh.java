@@ -6,8 +6,8 @@ public class Tinh
 {
 	private int matinh;
 	private String tentinh;
-	private List<Huyen> huyens;
-	private List<Phong> phongs;
+	//private List<Huyen> huyens;
+	//private List<Phong> phongs;
 	public Tinh()
 	{
 	}
@@ -16,8 +16,8 @@ public class Tinh
 		super();
 		this.matinh = matinh;
 		this.tentinh = tentinh;
-		this.huyens = huyens;
-		this.phongs = phongs;
+		//this.huyens = huyens;
+		//this.phongs = phongs;
 	}
 	public int getMatinh()
 	{
@@ -35,6 +35,7 @@ public class Tinh
 	{
 		this.tentinh = tentinh;
 	}
+	/*
 	public List<Huyen> getHuyens()
 	{
 		return huyens;
@@ -51,7 +52,7 @@ public class Tinh
 	{
 		this.phongs = phongs;
 	}
-	
+	*/
 	
 	
 }

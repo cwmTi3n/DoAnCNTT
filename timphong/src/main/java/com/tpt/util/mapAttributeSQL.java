@@ -112,7 +112,7 @@ public class mapAttributeSQL
 		try
 		{
 			tinh.setMatinh(rSet.getInt("ID"));
-			tinh.setTentinh(rSet.getString("tentinh"));
+			tinh.setTentinh(rSet.getString("tentinhthanhpho"));
 			return tinh;
 		} catch (Exception e)
 		{

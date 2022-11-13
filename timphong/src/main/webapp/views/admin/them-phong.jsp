@@ -19,7 +19,7 @@
          <div class="col-md-auto">
           <select class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
             <c:forEach items="${tinhs }" var="tinh">
-            	<option value="${tinh.id }" >${tinh.tenTinhThanhPho }</option>           
+            	<option value="${tinh.matinh }" >${tinh.tentinh }</option>           
             </c:forEach>
           </select>
           
@@ -47,3 +47,56 @@
         <button type="submit">Thêm</button>
     </form>
 </div>
+
+
+<script>
+	function loadHuyen() {
+		
+		var citis = document.getElementById("city");
+		var districts = document.getElementById("district");
+		var wards = document.getElementById("ward");
+		$.ajax({
+			url : "/timphong/listtinh", //send to Controller
+			type : "get", //send it through get method
+			data : {
+				exits : citis
+			},
+			success : function(data) {
+				//$("#load").append(data);
+				renderCity(data);
+			}
+		});
+	};
+	
+	function renderCity(data) {
+		  //for (const x of data) {
+		    //citis.options[citis.options.length] = new Option(x.tenTinhThanhPho, x.ID);
+		  //}
+
+		  // xứ lý khi thay đổi tỉnh thành thì sẽ hiển thị ra quận huyện thuộc tỉnh thành đó
+		  citis.onchange = function () {
+		    district.length = 1;
+		    ward.length = 1;
+		    if(this.value != ""){
+		      const result = data.filter(n => n.Id === this.value);
+
+		      for (const k of result[0].Districts) {
+		        district.options[district.options.length] = new Option(k.Name, k.Id);
+		      }
+		    }
+		  };
+
+		   // xứ lý khi thay đổi quận huyện thì sẽ hiển thị ra phường xã thuộc quận huyện đó
+		  district.onchange = function () {
+		    ward.length = 1;
+		    const dataCity = data.filter((n) => n.Id === citis.value);
+		    if (this.value != "") {
+		      const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
+
+		      for (const w of dataWards) {
+		        wards.options[wards.options.length] = new Option(w.Name, w.Id);
+		      }
+		    }
+		  };
+		}
+</script>
