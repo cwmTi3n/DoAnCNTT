@@ -25,7 +25,8 @@
 				class="form-select form-select-sm mb-3" id="district"
 				aria-label=".form-select-sm">
 				<option value="0" selected>Chọn quận huyện</option>
-			</select> <select disabled class="form-select form-select-sm" id="ward"
+			</select> 
+			<select disabled class="form-select form-select-sm" id="ward"
 				aria-label=".form-select-sm" name="xa">
 				<option value="0" selected>Chọn phường xã</option>
 			</select>
@@ -49,13 +50,15 @@
 <script>
 	function loadHuyen() {
 		var id_t = $('#city').find(":selected").val();
-
+		var labelXa = "<option value='0' selected>Chọn phường xã</option>"
 		var citis = document.getElementById("city");
 		var districts = document.getElementById("district");
 		var wards = document.getElementById("ward");
 
 		if (id_t != 0) {
 			districts.disabled = false;
+			//wards.disabled = true;
+			wards.innerHTML = labelXa;
 			$.ajax({
 				url : "/timphong/listhuyen", //send to Controller
 				type : "get", //send it through get method
@@ -63,9 +66,11 @@
 					exits : id_t
 				},
 				success : function(data) {
-					removeData(districts);
+/* 					removeData(districts);
 					removeData(ward);
-					$("#district").append(data);
+					$("#district").append(data); */
+					
+					districts.innerHTML = data;
 				}
 			});
 		} else {
@@ -94,8 +99,9 @@
 					exits : id_h
 				},
 				success : function(data) {
-					removeData(wards);
-					$("#ward").append(data);
+/* 					removeData(wards);
+					$("#ward").append(data); */
+					wards.innerHTML = data;
 				}
 			});
 		} else {
@@ -104,12 +110,12 @@
 		}
 	};
 
-	function removeData(data) {
+/* 	function removeData(data) {
 		if (data !== undefined) {
 			var i, L = data.options.length - 1;
 			for (i = L; i >= 1; i--) {
 				data.remove(i);
 			}
 		}
-	}
+	} */
 </script>
