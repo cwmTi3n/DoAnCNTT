@@ -2,8 +2,12 @@
 	display: flex;
 }
 
-.site-navbar--admin{
-	border-bottom: none !important;
+.sticky-wrapper--admin {
+	width: 280px !important;
+	height: 100em !important;
+	position: relative !important;
+    background: #fff;
+    box-shadow: 4px 0 20px -5px rgb(0 0 0 / 20%);
 }
 
 .is-sticky .site-navbar--admin{
@@ -15,12 +19,39 @@
     transition: none!important;
 }
 
-.sticky-wrapper--admin {
-	width: 280px !important;
-	height: 100em !important;
-	position: relative !important;
-    background: #fff;
-    box-shadow: 4px 0 20px -5px rgb(0 0 0 / 20%);
+#sticky-wrapper.sticky-wrapper--admin .shrink {
+	padding-top: 0!important;
+	padding-bottom: 0!important;
+}
+
+.site-navbar--admin{
+	border-bottom: none !important;
+}
+
+.site-blocks-cover--admin{
+	height: 100vh!important;
+	position: relative;
+}
+
+.site-blocks-cover--admin:after{
+	content : "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity : 0.2;
+    z-index: -1;
+	background-image: url(../images/hero_1.jpg);
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position: center center;
+}
+
+.site-blocks-cover > .container > .row {
+	height: auto!important;
 }
 
 .row-admin {
