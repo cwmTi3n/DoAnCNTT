@@ -30,7 +30,7 @@ public class XaphuongDaoImpl extends DBConnection implements IXaphuongDao {
 	@Override
 	public List<Xa> getByQuanhuyen(int id_h) {
 		
-		String sql = "select id, tenxaphuong from xaphuong where quanhuyenid = ?";
+		String sql = "select * from xaphuong where quanhuyenid = ?";
 		List<Xa> xas = new ArrayList<Xa>();
 		try
 		{
