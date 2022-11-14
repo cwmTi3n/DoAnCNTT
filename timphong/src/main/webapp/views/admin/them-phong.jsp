@@ -26,7 +26,7 @@
 				aria-label=".form-select-sm">
 				<option value="" selected>Chọn quận huyện</option>
 			</select> <select disabled class="form-select form-select-sm" id="ward"
-				aria-label=".form-select-sm">
+				aria-label=".form-select-sm" name="xa">
 				<option value="" selected>Chọn phường xã</option>
 			</select>
 		</div>
