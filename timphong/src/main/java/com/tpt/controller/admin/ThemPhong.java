@@ -102,6 +102,7 @@ public class ThemPhong extends HttpServlet
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
+		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
 		String id_tk = req.getParameter("id_tk");
 		phong.setId_tk(Integer.parseInt(id_tk));
 		phongService.insertPhong(phong, hinhanhs);

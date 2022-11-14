@@ -17,18 +17,18 @@
         <label>Địa chỉ chi tiết: </label><input type="text" name="dcchitiet"><br/>
         
          <div class="col-md-auto">
-          <select onchange="loadHuyen()" class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
+          <select onchange="loadHuyen()" class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm" name="tinh">
             <option value="" selected>Chọn tỉnh, thành phố</option>
             <c:forEach items="${tinhs }" var="tinh">
             	<option value="${tinh.matinh }" >${tinh.tentinh }</option>           
             </c:forEach>
           </select>
           
-          <select onchange="loadXa()" disabled class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm">
+          <select onchange="loadXa()" disabled class="form-select form-select-sm mb-3" id="district" aria-label=".form-select-sm" name="huyen">
             <option value="" selected>Chọn quận huyện</option>
           </select>
 
-          <select disabled class="form-select form-select-sm" id="ward" aria-label=".form-select-sm">
+          <select disabled class="form-select form-select-sm" id="ward" aria-label=".form-select-sm" name="xa">
             <option value="" selected>Chọn phường xã</option>
           </select>
         </div>    

@@ -90,7 +90,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean insertPhong(Phong newPhong)
 	{
-		String sql = "insert into phong(ten, anhchinh, trangthai, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into phong(ten, anhchinh, trangthai, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try
 		{
 			connection = super.getConnection();
@@ -105,7 +105,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(8, newPhong.getDcchitiet());
 			pStatement.setString(9, newPhong.getMota());
 			pStatement.setInt(10, newPhong.getId_lp());
-			pStatement.setInt(11, newPhong.getId_tk());
+			pStatement.setInt(11, newPhong.getMaxa());
+			pStatement.setInt(12, newPhong.getId_tk());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)
