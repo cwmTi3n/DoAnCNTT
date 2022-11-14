@@ -7,9 +7,15 @@ import java.util.List;
 import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.ILoaiphongDao;
 import com.tpt.dao.IPhongDao;
+import com.tpt.dao.IQuanHuyenDao;
+import com.tpt.dao.ITinhDao;
+import com.tpt.dao.IXaphuongDao;
 import com.tpt.dao.impl.HinhanhDaoImpl;
 import com.tpt.dao.impl.LoaiphongDaoImpl;
 import com.tpt.dao.impl.PhongDaoImpl;
+import com.tpt.dao.impl.QuanhuyenDaoImpl;
+import com.tpt.dao.impl.TinhDaoImpl;
+import com.tpt.dao.impl.XaphuongDaoImpl;
 import com.tpt.model.Dathen;
 import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
@@ -29,6 +35,7 @@ public class mapAttributeSQL
 	{
 		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
 		IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
+		IXaphuongDao xaphuongDao = new XaphuongDaoImpl();
 		Phong phong = new Phong();
 		try
 		{
@@ -46,6 +53,9 @@ public class mapAttributeSQL
 			phong.setMota(rSet.getString("mota"));
 			phong.setId_lp(id_lp);
 			phong.setId_tk(rSet.getInt("id_tk"));
+			phong.setMaxa(rSet.getInt("id_x"));
+			Xa xa = xaphuongDao.getXa(phong.getMaxa());
+			phong.setXa(xa);
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
 			phong.setHinhanhs(hinhanhDao.getHinhanhP(id_p));
 			//Chưa có ngaydang và maxa
@@ -122,11 +132,15 @@ public class mapAttributeSQL
 	
 	public Huyen mapHuyen(ResultSet rSet)
 	{
+		ITinhDao tinhDao = new TinhDaoImpl();
 		Huyen huyen = new Huyen();
 		try
 		{
 			huyen.setMahuyen(rSet.getInt("ID"));
 			huyen.setTenhuyen(rSet.getString("tenquanhuyen"));
+			huyen.setMatinh(rSet.getInt("tinhThanhPhoId"));
+			Tinh tinh = tinhDao.getTinh(huyen.getMatinh());
+			huyen.setTinh(tinh);
 			return huyen;
 		} catch (Exception e)
 		{
@@ -137,11 +151,15 @@ public class mapAttributeSQL
 	
 	public Xa mapXa(ResultSet rSet)
 	{
+		IQuanHuyenDao quanHuyenDao = new QuanhuyenDaoImpl();
 		Xa xa = new Xa();
 		try
 		{
 			xa.setMaxa(rSet.getInt("ID"));
 			xa.setTenxa(rSet.getString("tenxaphuong"));
+			xa.setMahuyen(rSet.getInt("quanHuyenId"));
+			Huyen huyen = quanHuyenDao.getHuyen(xa.getMahuyen());
+			xa.setHuyen(huyen);
 			return xa;
 		} catch (Exception e)
 		{

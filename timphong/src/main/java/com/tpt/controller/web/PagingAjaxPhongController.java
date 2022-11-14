@@ -40,6 +40,7 @@ public class PagingAjaxPhongController extends HttpServlet {
 					+ "\" alt=\"Free website template by Free-Template.co\" class=\"img-fluid\"></a>\r\n"
 					+ "                    <div class=\"ftco-media-details\">\r\n" + "                      <h3>"
 					+ p.getTen() + "</h3>\r\n" + "                      <p>" + p.getMota() + "</p>\r\n"
+					+ "<p> " + p.getXa().getTenxa()+ ", " + p.getXa().getHuyen().getTenhuyen() + ", " + p.getXa().getHuyen().getTinh().getTentinh() + "</p>\r\n"
 					+ "                      <strong>$" + p.getGia() + "</strong>\r\n"
 					+ "                    </div>\r\n" + "      \r\n" + "                  </div> \r\n"
 					+ "                </div>\r\n" + "          </div>");

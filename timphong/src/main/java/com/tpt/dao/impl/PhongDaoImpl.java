@@ -249,13 +249,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return 0;
 	}
-//	public static void main(String[] args)
-//	{
-//		IPhongDao phongDao = new PhongDaoImpl();
-//		Phong phong = phongDao.getPhong(1);
-//		for(Hinhanh hinhanh : phong.getHinhanhs())
-//		{
-//			System.out.println(hinhanh.getHinhanh());
-//		}
-//	}
+	public static void main(String[] args)
+	{
+		IPhongDao phongDao = new PhongDaoImpl();
+		Phong phong = phongDao.getPhong(13);
+		System.out.println(phong.getXa().getTenxa());
+	}
 }

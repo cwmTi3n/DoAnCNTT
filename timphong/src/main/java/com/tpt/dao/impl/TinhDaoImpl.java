@@ -40,5 +40,27 @@ public class TinhDaoImpl extends DBConnection implements ITinhDao {
 			return null;
 		
 	}
+	@Override
+	public Tinh getTinh(int id)
+	{
+		String sql = "select id, tentinhthanhpho from tinhthanhpho where id=?";
+		
+		try
+		{
+			Connection connection = super.getConnection();
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, id);
+			ResultSet rSet = pStatement.executeQuery();
+			mapAttributeSQL mapTinh = new mapAttributeSQL();
+			while (rSet.next())
+			{
+				return mapTinh.mapTinh(rSet);
+			}
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
+	}
 
 }

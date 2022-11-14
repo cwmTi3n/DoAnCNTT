@@ -8,5 +8,5 @@ public interface IXaphuongDao {
 	
 	public List<Xa> getAll();
 	public List<Xa> getByQuanhuyen(int id_h);
-	
+	public Xa getXa(int id);
 }
