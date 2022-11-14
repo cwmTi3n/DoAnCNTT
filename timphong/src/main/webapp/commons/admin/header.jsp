@@ -24,18 +24,18 @@
 								class="site-menu site-menu--admin main-menu js-clone-nav mr-auto d-none d-lg-block">
 								<li><a href="<c:url value='/trangchu'/>" class="nav-link">Tổng
 										quan</a></li>
-								<li><a href="#properties-section" class="nav-link">Quản
+								<li><a href="<c:url value='/admin/list-phong'/>" class="nav-link">Quản
 										lý Phòng</a></li>
-								<li><a href="/timphong/views/web/listings.jsp"
+								<li><a href="<c:url value='/admin/list-loaiphong'/>"
 									class="nav-link">Quản lý Loại phòng</a></li>
-								<li><a href="#footer" class="nav-link">Quản lý Tài
+								<li><a href="<c:url value='/admin/list-taikhoan'/>" class="nav-link">Quản lý Tài
 										khoản</a></li>
-								<li><a href="/timphong/views/web/login.jsp"
+								<li><a href="" class="nav-link">Quản lý Đặt hẹn</a></li>
+								<li><a href="<c:url value='/trangchu'/>"
 									class="nav-link">Đăng xuất</a></li>
 							</ul>
 						</nav>
 					</div>
-
 
 					<div class="col-6 d-inline-block d-xl-none ml-md-0 py-3">
 						<a href="#"

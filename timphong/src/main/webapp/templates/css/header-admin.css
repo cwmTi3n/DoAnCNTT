@@ -61,6 +61,7 @@
 .site-logo--admin {
 	text-align: center;
 	padding: 20px 0;
+	font-size: 2.4rem !important;
 }
 
 .site-logo--admin a {
@@ -79,6 +80,10 @@
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.site-menu--admin li a{
-    color: #000 !important;	
+#sticky-wrapper .site-menu--admin li a:hover{
+	color: rgb(255,255,255) !important;
+}
+
+#sticky-wrapper .site-menu--admin li a{
+    color: rgb(0, 0, 0);	
 }
