@@ -23,7 +23,8 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="${url }fonts/icomoon/style.css">
-
+<link rel="stylesheet" type="text/css"
+	href="${url }css/header-admin.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${url }css/jquery-ui.css">
@@ -33,7 +34,8 @@
 	href="${url }css/owl.theme.default.min.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/owl.theme.default.min.css">
-
+<link rel="stylesheet" type="text/css"
+	href="${url }css/base-admin.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/jquery.fancybox.min.css">
 
@@ -51,7 +53,8 @@
 <body data-spy="scroll" data-target=".site-navbar-target"
 	data-offset="300">
 
-	<div class="site-wrap">
+	<div class="site-wrap site-wrap--admin">
+		<!-- 
 		<div class="site-mobile-menu site-navbar-target">
 			<div class="site-mobile-menu-header">
 				<div class="site-mobile-menu-close mt-3">
@@ -60,9 +63,11 @@
 			</div>
 			<div class="site-mobile-menu-body"></div>
 		</div>
+	 	-->
 
 		<%@ include file="/commons/admin/header.jsp"%>
 
+		<!-- 
 		<div class="site-blocks-cover inner-page-cover overlay"
 			style="background-image: url(${url}images/hero_1.jpg);"
 			data-aos="fade">
@@ -77,6 +82,7 @@
 			<a href="#property-details" class="smoothscroll arrow-down"><span
 				class="icon-arrow_downward"></span></a>
 		</div>
+		-->
 
 		<dec:body />
 
