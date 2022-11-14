@@ -61,7 +61,7 @@
 			<div class="site-mobile-menu-body"></div>
 		</div>
 
-		<%@ include file="/commons/web/header.jsp"%>
+		<%@ include file="/commons/admin/header.jsp"%>
 
 		<div class="site-blocks-cover inner-page-cover overlay"
 			style="background-image: url(${url}images/hero_1.jpg);"

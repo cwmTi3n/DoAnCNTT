@@ -31,7 +31,7 @@
                         <button class="button-login btn-login">Đăng nhập</button>
                     </div>
                     <div class="container-login__content__forgot-password">
-                        <a class="forgot-password" href="../NUS_Register/index.html">Forgot Password</a>
+                        <a class="forgot-password" href="/timphong/views/web/forgotpassword.jsp">Forgot Password</a>
                     </div>
                     <div class="container-login__content__button-register">
                         <input type="checkbox" class="register--open" id="register" name="register">

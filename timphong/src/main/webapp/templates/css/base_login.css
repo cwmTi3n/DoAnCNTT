@@ -1,4 +1,3 @@
-
 /* button 
 .btn{
     width: auto;
@@ -30,90 +29,91 @@
 }*/
 
 /* Color */
-.y-btn{
-    background-color: #ffd205;
+.y-btn {
+	background-color: #ffd205;
 }
 
-.r-btn{
-    background-color: #f76570;
+.r-btn {
+	background-color: #f76570;
 }
 
-.p-btn{
-    background-color: #ba71da;
+.p-btn {
+	background-color: #ba71da;
 }
 
-.f-i-y{
-    background: linear-gradient(to right, #ffd205 0%, #ff9b05 100%);
+.f-i-y {
+	background: linear-gradient(to right, #ffd205 0%, #ff9b05 100%);
 }
 
-.f-i-r{
-    background: linear-gradient(to right, #f76570 0%, #f78d65 100%);
+.f-i-r {
+	background: linear-gradient(to right, #f76570 0%, #f78d65 100%);
 }
 
-.f-i-p{
-    background: linear-gradient(to right, #ba71da 0%, #da717b 100%);
+.f-i-p {
+	background: linear-gradient(to right, #ba71da 0%, #da717b 100%);
 }
 
-.f-i-g{
-    background: linear-gradient(to right, #1bbc9b 0%, #1bbc63 100%);
+.f-i-g {
+	background: linear-gradient(to right, #1bbc9b 0%, #1bbc63 100%);
 }
 
-.f-i-b{
-    background: linear-gradient(to right, #14b9d5 0%, #14d5b1 100%);
+.f-i-b {
+	background: linear-gradient(to right, #14b9d5 0%, #14d5b1 100%);
 }
 
-.f-i-o{
-    background: linear-gradient(to right, #f3a46b 0%, #f3c96b 100%);
+.f-i-o {
+	background: linear-gradient(to right, #f3a46b 0%, #f3c96b 100%);
 }
 
 /* Text underline */
-.text_underline{
-    position: relative;
-    z-index: 1;
+.text_underline {
+	position: relative;
+	z-index: 1;
 }
 
-.text_underline::after{
-    content: "";
-    position: absolute;
-    width: 100%;
-    left:0;
-    height: 5px;
-    z-index: -1;
+.text_underline::after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	left: 0;
+	height: 5px;
+	z-index: -1;
 }
 
-.btn-login{
-    min-width: 240px;
-    min-height: 48px;
-    margin: 16px;
-    font-size: 18px;
-    border-radius: 80px;
-    display: inline-block;
-    line-height: 48px;
-    
+.btn-login {
+	min-width: 240px;
+	min-height: 48px;
+	margin: 16px;
+	font-size: 18px;
+	border-radius: 80px;
+	display: inline-block;
+	line-height: 48px;
+	cursor: pointer;
+	border: none;
 }
 
-.btn-login:hover{
-    opacity: 0.8;
+.btn-login:hover {
+	opacity: 0.8;
 }
 
-.btn-login:active{
-    opacity: 0.9;
+.btn-login:active {
+	opacity: 0.9;
 }
 
-.input-login{
-    min-width: 240px;
-    border-radius: 24px;
-    border: 16px;
-    height: 48px;
-    padding: 0 12px;
-    margin: 12px;
-    font-size: 14px;
+.input-login {
+	min-width: 240px;
+	border-radius: 24px;
+	border: 16px;
+	height: 48px;
+	padding: 0 12px;
+	margin: 12px;
+	font-size: 14px;
 }
 
-.input-login--l{
-    width: calc(96% + 4px + 2.4px) !important
+.input-login--l {
+	width: calc(96% + 4px + 2.4px) !important
 }
 
-.input-login--border{
-    border: solid #000;
+.input-login--border {
+	border: solid #000;
 }
