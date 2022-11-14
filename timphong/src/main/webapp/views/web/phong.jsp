@@ -38,6 +38,7 @@
             <div class="mb-5">
               <h3 class="text-black mb-4">${phong.ten }</h3>
               <p>Diện tích: ${phong.chieudai } * ${phong.chieurong }</p>
+              <p>Địa chỉ: ${phong.getXa().getTenxa()}, ${phong.getXa().getHuyen().getTenhuyen()}, ${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
               <p>${phong.mota }</p>
               <!-- <p>Ex, esse? Obcaecati nam in cum eius quaerat repellendus adipisci ducimus dolorum sed quos. Amet recusandae cumque reprehenderit nam quia voluptatibus, repellat, aspernatur ut fuga perferendis consectetur excepturi neque in!</p>
               <p class="mb-4">Neque facilis iure earum, placeat odit ipsum, amet, optio accusantium voluptatem quasi obcaecati fugit? Explicabo eius dolorem provident quis non voluptas, dignissimos tempora eligendi, in, nam velit, quasi tenetur. Animi!</p> -->

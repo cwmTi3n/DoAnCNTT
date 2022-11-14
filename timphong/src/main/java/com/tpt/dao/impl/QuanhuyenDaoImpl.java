@@ -25,7 +25,7 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 	public List<Huyen> getAll() {
 		// TODO Auto-generated method stub
 		
-			String sql = "select id, tenquanhuyen from quanhuyen";
+			String sql = "select * from quanhuyen";
 			List<Huyen> huyens = new ArrayList<Huyen>();
 			
 			try
@@ -51,7 +51,7 @@ public class QuanhuyenDaoImpl extends DBConnection implements IQuanHuyenDao {
 	@Override
 	public List<Huyen> getByTinh(int id_t) {
 		
-		String sql = "select id, tenquanhuyen from quanhuyen where tinhthanhphoid = ?";
+		String sql = "select * from quanhuyen where tinhthanhphoid = ?";
 		List<Huyen> huyens = new ArrayList<Huyen>();
 		try
 		{
