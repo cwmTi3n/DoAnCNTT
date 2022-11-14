@@ -68,6 +68,7 @@
 			},
 			success : function(data) {
 				removeData(districts);
+				removeData(ward);
 				$("#district").append(data);
 			}
 		});
