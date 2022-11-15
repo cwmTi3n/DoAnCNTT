@@ -1,10 +1,8 @@
 package com.tpt.controller.admin;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -15,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
-import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
 import com.tpt.model.Tinh;
@@ -46,7 +43,6 @@ public class ThemPhong extends HttpServlet
 		String id_tk  = req.getParameter("id_tk");
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
-		List<Huyen> huyens = huyenService.getByTinh(0);
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("id_tk", id_tk);
