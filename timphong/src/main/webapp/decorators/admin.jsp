@@ -16,7 +16,7 @@
 <meta name="keywords" content="" />
 <meta name="author" content="Free-Template.co" />
 
-<link rel="shortcut icon" href="ftco-32x32.png">
+<link rel="shortcut icon" href="${url }images/Logo.png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
@@ -70,9 +70,9 @@
 
 
 		<dec:body />
-
-
 	</div>
+
+
 
 	<!-- .site-wrap -->
 

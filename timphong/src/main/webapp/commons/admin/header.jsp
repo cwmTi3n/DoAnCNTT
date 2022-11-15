@@ -12,7 +12,7 @@
 				<div class="row align-items-center row-admin">
 
 					<div class="col-12 col-xl-12">
-						<h1 class="mb-0 site-logo site-logo--admin m-0 p-12">
+						<h1 class="mb-0 site-logo site-logo--admin m-0 p-4">
 							<a href="<c:url value='/trangchu'/>" class="mb-0">Find Room</a>
 						</h1>
 					</div>
