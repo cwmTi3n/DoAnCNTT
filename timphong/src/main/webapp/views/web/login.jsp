@@ -6,13 +6,13 @@
 
 
     <div class="NUS">
-        <div class="container-login">
+        <div class="container-login py-5">
             <div class="grid wide">
 
-                <div class="container-login__header">
+                <div class="container-login__header mt-5">
                     <span class="container-login__header__logo">
-                        <a href="../warehouse-master/index.html">
-                            <img src="./assits/image/logo.jpg" class="container__header__img">
+                        <a href="<c:url value='/trangchu'/>">
+                            <img src="${url }images/Logo.png" class="container__header__img">
                         </a>
                     </span>
                     <span class="container-login__header__text">Find Room<br><span class="text_underline container__header__text--underline">Login</span></span>
