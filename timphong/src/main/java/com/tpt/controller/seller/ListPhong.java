@@ -13,6 +13,7 @@ import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 
+@WebServlet(urlPatterns = {"/seller/list-phong"})
 public class ListPhong extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
@@ -27,6 +28,6 @@ public class ListPhong extends HttpServlet{
 		String id_tk = req.getParameter("id_tk");
 		List<Phong> phongs = phongService.getPhongSeller(Integer.parseInt(id_tk));
 		req.setAttribute("phongs", phongs);
-		req.getRequestDispatcher("").forward(req, resp);
+		req.getRequestDispatcher("/views/seller/list-phong.jsp").forward(req, resp);
 	}
 }
