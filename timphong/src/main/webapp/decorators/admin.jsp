@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tìm phòng</title>
+<title>Quản lý Web</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +16,9 @@
 <meta name="keywords" content="" />
 <meta name="author" content="Free-Template.co" />
 
-<link rel="shortcut icon" href="ftco-32x32.png">
+<link rel="shortcut icon" href="${url }images/Logo.png">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
 <link type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700"
@@ -34,8 +36,7 @@
 	href="${url }css/owl.theme.default.min.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/owl.theme.default.min.css">
-<link rel="stylesheet" type="text/css"
-	href="${url }css/base-admin.css">
+<link rel="stylesheet" type="text/css" href="${url }css/base-admin.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/jquery.fancybox.min.css">
 
@@ -67,25 +68,11 @@
 
 		<%@ include file="/commons/admin/header.jsp"%>
 
-		<!-- 
-		<div class="site-blocks-cover inner-page-cover overlay"
-			style="background-image: url(${url}images/hero_1.jpg);"
-			data-aos="fade">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<div class="col-md-5 mx-auto mt-lg-5 text-center">
-						<h1>Quản lý web</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-		 -->
-		
 
 		<dec:body />
-
-
 	</div>
+
+
 
 	<!-- .site-wrap -->
 

@@ -4,7 +4,7 @@
 
 .sticky-wrapper--admin {
 	width: 280px !important;
-	height: 100em !important;
+	height: 100% !important;
 	position: relative !important;
     background: #fff;
     box-shadow: 4px 0 20px -5px rgb(0 0 0 / 20%);
