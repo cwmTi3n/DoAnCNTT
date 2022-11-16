@@ -13,4 +13,5 @@ public interface ITaikhoanDao
 	public boolean insertTaikhoan(Taikhoan taikhoan);
 	public boolean deleteTaikhoan(int id_tk);
 	public boolean editTaikhoan(Taikhoan taikhoan);
+	public int dangNhap(Taikhoan taikhoan);
 }

@@ -22,7 +22,7 @@ INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES
 INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller4', '123456', 3, 'seller4@gmail.com', '0986456654', 'Trần', 'Hoàng Phúc')
 
 
-/* INSERT TABLE theodoi */
+/* INSERT TABLE theodoi 
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (1, 11)
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (1, 12)
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (1, 13)
@@ -33,7 +33,7 @@ INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (3, 14)
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (4, 11)
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (4, 12)
 INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (4, 13)
-
+*/
 
 /* INSERT TABLE loaiphong */
 INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('trọ')
@@ -44,7 +44,7 @@ INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Pen House')
 INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Trung tâm thương mại')
 
 
-/* INSERT TABLE phong */
+/* INSERT TABLE phong 
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 0, 'abc', 3, 5, 500000, 0, '1 Trường Chinh', 'Phòng giá rẻ', 1,47, 11)
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 0, 'abc', 2.5, 5.5, 1000000, 0, '96 Nguyễn Tri Phương', 'Phòng giá rẻ', 1,47, 11)
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 1, 'abc', 3, 5, 500000, 0, '7 Phan Bội Châu', 'Phòng giá rẻ', 1,47, 11)
@@ -81,3 +81,4 @@ INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, ye
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 0, 'abc', 3, 5, 500000, 0, '118 Lý Tự Trọng', 'Phòng giá rẻ', 1,47, 11)
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 0, 'abc', 3, 5, 500000, 0, '156 Phan Đình Phùng', 'Phòng giá rẻ', 1,47, 11)
 INSERT INTO [dbo].[phong] (ten, trangthai, hinhanh, chieudai, chieurong, gia, yeuthich, dcchitiet, mota, id_lp, id_x, id_tk) VALUES ('Phòng giá rẻ', 0, 'abc', 3, 5, 500000, 0, '186 Phan Đăng Lưu', 'Phòng giá rẻ', 1,47, 11)
+*/

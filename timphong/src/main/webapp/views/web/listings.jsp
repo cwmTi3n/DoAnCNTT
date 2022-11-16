@@ -47,7 +47,7 @@
             <div class="mb-5">
               <h3 class="text-black mb-4 h5 font-family-2">Lọc theo giá phòng</h3>
               <div id="slider-range" class="border-primary"></div>
-              <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+              <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" />
             </div>
           </div>
           <div class="col-md-9 order-2 order-md-1">

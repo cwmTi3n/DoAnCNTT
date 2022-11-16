@@ -3,7 +3,6 @@ package com.tpt.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -194,4 +193,27 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 ////		System.out.println(taikhoanDao.getAll().size());
 ////		System.out.println(taikhoanDao.deleteTaikhoan(3));
 //	}
+	@Override
+	public int dangNhap(Taikhoan taikhoan) {
+		String sql = "select * from taikhoan where (tentk = ?) and (matkhau = ?)";
+		int quyen = 0;
+		try
+		{
+			Connection connection = super.getConnection();
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, taikhoan.getTentk());
+			pStatement.setString(2, taikhoan.getMatkhau());
+			ResultSet rSet = pStatement.executeQuery();
+			rSet.next();
+			quyen = rSet.getInt("quyen");
+			
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		//System.out.
+		return quyen;
+		//return 100;
+	}
 }
