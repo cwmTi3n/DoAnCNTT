@@ -30,6 +30,7 @@
 <link rel="stylesheet" type="text/css" href="${url }css/base_login.css">
 <link rel="stylesheet" type="text/css" href="${url }css/gird_login.css">
 <link rel="stylesheet" type="text/css" href="${url }css/main_login.css">
+<link rel="stylesheet" type="text/css" href="${url }css/style-web.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${url }css/jquery-ui.css">
