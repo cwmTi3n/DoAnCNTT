@@ -18,7 +18,9 @@ public class ThemLoaiPhong extends HttpServlet
 
 	/**
 	 * 
-	 */ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	 */
+	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
+	
 	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

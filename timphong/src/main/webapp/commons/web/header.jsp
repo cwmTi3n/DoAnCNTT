@@ -27,7 +27,7 @@
 							<li><a href="/timphong/views/web/listings.jsp"
 								class="nav-link">Tìm kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-							<li><a href="/timphong/views/web/login.jsp" class="nav-link">Đăng
+							<li><a href="<c:url value='/login'/>" class="nav-link">Đăng
 									nhập</a></li>
 						</ul>
 					</nav>

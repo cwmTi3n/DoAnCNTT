@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.tpt.dao.ITaikhoanDao;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
@@ -26,6 +25,7 @@ public class XoaTaikhoan extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
+		
 		String id_tkString = req.getParameter("id_tk");
 		int id_tk;
 		if(id_tkString != null)

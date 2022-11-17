@@ -18,14 +18,15 @@
 
 <link rel="shortcut icon" href="ftco-32x32.png">
 
+<link rel="shortcut icon" href="${url }images/Logo.png">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+
 <link type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="${url }fonts/icomoon/style.css">
-<!-- 
-
- -->
 <link rel="stylesheet" type="text/css" href="${url }css/base_login.css">
 <link rel="stylesheet" type="text/css" href="${url }css/gird_login.css">
 <link rel="stylesheet" type="text/css" href="${url }css/main_login.css">

@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 
-@WebServlet(urlPatterns = {"/admin/xoa-loaiphong"})
-public class XoaLoaiphong extends HttpServlet
-{
+@WebServlet(urlPatterns = { "/admin/xoa-loaiphong" })
+public class XoaLoaiphong extends HttpServlet {
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
-	
-	private static final long serialVersionUID = 1L; 
-	
+
+	private static final long serialVersionUID = 1L;
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
+
 		String id_lpString = req.getParameter("id_lp");
 		int id_lp = Integer.parseInt(id_lpString);
 		loaiphongService.deleteLoaiphong(id_lp);
