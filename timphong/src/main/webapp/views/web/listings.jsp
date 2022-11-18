@@ -30,24 +30,28 @@
 		<div class="row">
 			<div class="col-md-3 order-1 order-md-2">
 				<div class="mb-5">
-					<h3 class="text-black mb-4 h5 font-family-2">Tìm kiếm</h3>
-					<input type="text"
-						class="input-find input--border m-0 d-inline-block"
-						placeholder="Nhập phòng cần tìm">
+					<form action="#" method="post">
+						<h3 class="text-black mb-4 h5 font-family-2">Tìm kiếm</h3>
+						<input type="text"
+							class="input-find input--border m-0 d-inline-block"
+							placeholder="Nhập phòng cần tìm">
+						<button class="btn button mt-2 px-3 py-1 btn-find" type="submit">Tìm</button>
+					</form>
 				</div>
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc phòng theo</h3>
-					<form action="#">
+					<form name="myform" action="#" method="post">
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
+									onchange="Show()" name="agent" id="agent"
 									class="form-control px-3">
-									<option value="">Loại</option>
-									<option value="">Xu hướng</option>
-									<option value="">Đánh giá</option>
-									<option value="">Xã</option>
-									<option value="">Huyện</option>
-									<option value="">Tỉnh</option>
+									<option value="1">Loại</option>
+									<option value="2">Xu hướng</option>
+									<option value="3">Đánh giá</option>
+									<option value="4">Xã</option>
+									<option value="5">Huyện</option>
+									<option value="6">Tỉnh</option>
 								</select>
 							</div>
 						</div>
@@ -179,3 +183,20 @@
 
 	</div>
 </div>
+
+<script>
+	function SetData() {
+		var select = document.getElementById('agent');
+		var agent_id = select.options[select.selectedIndex].value;
+		document.myform.action = "#";
+		myform.submit();
+	}
+
+	function Show() {
+		var select = document.getElementById('agent');
+		var agent_id = select.options[select.selectedIndex].value;
+		console.log(agent_id);
+		document.myform.action = "load";
+		myform.submit();
+	}
+</script>
