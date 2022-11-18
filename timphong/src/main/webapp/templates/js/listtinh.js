@@ -1,61 +1,71 @@
-var citis = document.getElementById("city");
-var districts = document.getElementById("district");
-var wards = document.getElementById("ward");
 
-var id_t = $('#city').find(":selected").val();
-console.log()
-var Parameter = {
-  url: "/timphong/listhuyen", //Đường dẫn đến file chứa dữ liệu hoặc api do backend cung cấp
-  method: "GET", //do backend cung cấp
-  //responseType: "application/json", //kiểu Dữ liệu trả về do backend cung cấp
-  
-  data:{
-	
-				exits : id_t
-	},
-  
-  success: function(data) {
-				renderCity(data);
+function loadHuyen() {
+	var id_t = $('#city').find(":selected").val();
+	var labelXa = "<option value='0' selected>Chọn phường xã</option>"
+	var citis = document.getElementById("city");
+	var districts = document.getElementById("district");
+	var wards = document.getElementById("ward");
+
+	if (id_t != 0) {
+		districts.disabled = false;
+		//wards.disabled = true;
+		wards.innerHTML = labelXa;
+		$.ajax({
+			url: "/timphong/listhuyen", //send to Controller
+			type: "get", //send it through get method
+			data: {
+				exits: id_t
+			},
+			success: function(data) {
+				/* 					removeData(districts);
+				 removeData(ward);
+				 $("#district").append(data); */
+
+				districts.innerHTML = data;
 			}
-			
+		});
+	} else {
+		districts.disabled = true;
+		wards.disabled = true;
+
+		districts.value = 0;
+		wards.value = 0;
+	}
+
 };
-//gọi ajax = axios => nó trả về cho chúng ta là một promise
 
-var promise = axios(Parameter);
-//Xử lý khi request thành công
-promise.then(function (result) {
-  renderCity(result.data);
-});
+function loadXa() {
+	var id_h = $('#district').find(":selected").val();
 
+	var citis = document.getElementById("city");
+	var districts = document.getElementById("district");
+	var wards = document.getElementById("ward");
 
-function renderCity(data) {
-  //for (const x of data) {
-    //citis.options[citis.options.length] = new Option(x.tenTinhThanhPho, x.ID);
-  //}
+	if (id_h != 0) {
+		wards.disabled = false;
+		$.ajax({
+			url: "/timphong/listxa", //send to Controller
+			type: "get", //send it through get method
+			data: {
+				exits: id_h
+			},
+			success: function(data) {
+				/* 					removeData(wards);
+				 $("#ward").append(data); */
+				wards.innerHTML = data;
+			}
+		});
+	} else {
+		wards.disabled = true;
+		wards.value = 0;
+	}
+};
 
-  // xứ lý khi thay đổi tỉnh thành thì sẽ hiển thị ra quận huyện thuộc tỉnh thành đó
-  citis.onchange = function () {
-    district.length = 1;
-    ward.length = 1;
-    if(this.value != ""){
-      const result = data.filter(n => n.Id === this.value);
-
-      for (const k of result[0].Districts) {
-        district.options[district.options.length] = new Option(k.Name, k.Id);
-      }
-    }
-  };
-
-   // xứ lý khi thay đổi quận huyện thì sẽ hiển thị ra phường xã thuộc quận huyện đó
-  district.onchange = function () {
-    ward.length = 1;
-    const dataCity = data.filter((n) => n.Id === citis.value);
-    if (this.value != "") {
-      const dataWards = dataCity[0].Districts.filter(n => n.Id === this.value)[0].Wards;
-
-      for (const w of dataWards) {
-        wards.options[wards.options.length] = new Option(w.Name, w.Id);
-      }
-    }
-  };
-}
+/* 	function removeData(data) {
+ if (data !== undefined) {
+ var i, L = data.options.length - 1;
+ for (i = L; i >= 1; i--) {
+ data.remove(i);
+ }
+ }
+ } */

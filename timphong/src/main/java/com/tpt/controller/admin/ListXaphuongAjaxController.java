@@ -32,6 +32,7 @@ public class ListXaphuongAjaxController extends HttpServlet {
 	
 		
 		PrintWriter out = resp.getWriter();
+		out.print("<option value='0' selected>Chọn phường xã</option>");
 		for(Xa x : xas)
 		{
 			out.println("<option value=" + x.getMaxa() + " > " + x.getTenxa() + "</option>\n");

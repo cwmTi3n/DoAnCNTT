@@ -89,7 +89,8 @@
 	<script src="${url }js/jquery.fancybox.min.js"></script>
 	<script src="${url }js/jquery.sticky.js"></script>
 	<script src="${url }js/main.js"></script>
-
+	<script src="${url }js/listtinh.js"></script>
+	
 	<a href="#top" class="gototop"><span class="icon-angle-double-up"></span></a>
 </body>
 </html>

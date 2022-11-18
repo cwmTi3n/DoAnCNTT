@@ -29,6 +29,7 @@ public class ListQuanhuyenAjaxController extends HttpServlet {
 		int id_t = Integer.parseInt(id_tinh);
 		List<Huyen> huyens = quanhuyenService.getByTinh(id_t);
 		PrintWriter out = resp.getWriter();
+		out.print("<option value='0' selected>Chọn quận huyện</option>");
 		for (Huyen h : huyens) {
 			out.println("<option value=" + h.getMahuyen() + " > " + h.getTenhuyen() + "</option>\n");
 		}

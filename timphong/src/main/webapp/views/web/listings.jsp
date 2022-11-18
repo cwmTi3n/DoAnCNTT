@@ -40,18 +40,78 @@
 				</div>
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc phòng theo</h3>
-					<form name="myform" action="#" method="post">
+					<h4></h4>
+					<form action="#" method="post">
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="Show()" name="agent" id="agent"
+									onchange="LoadListings()" name="loaiphong" id="loaiphong"
 									class="form-control px-3">
-									<option value="1">Loại</option>
-									<option value="2">Xu hướng</option>
-									<option value="3">Đánh giá</option>
-									<option value="4">Xã</option>
-									<option value="5">Huyện</option>
-									<option value="6">Tỉnh</option>
+									<option value="0" selected>Loại phòng</option>
+									<c:forEach items="${loaiphongs }" var="lp">
+										<option value="${lp.id_lp }">${lp.tenloai }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="select-wrap">
+								<span class="icon icon-keyboard_arrow_down"></span> <select
+									onchange="LoadListings(); " name="danhgia" id="danhgia"
+									class="form-control px-3">
+									<option value="0" selected>Đánh giá</option>
+									<!-- 
+									<option value="1">
+									1 <span class="bi bi-plus-lg">asds</span></option>
+									<option value="2"><i class="bi bi-star-fill star"></i><i
+											class="bi bi-star-fill star"></i>
+									</option>
+									<option value="3"><i class="bi bi-star-fill star"></i><i
+											class="bi bi-star-fill star"></i><i class="bi star bi-star-fill"></i>
+									</option>
+									<option value="4"><i class="bi bi-star-fill star"></i><i
+											class="bi bi-star-fill star"></i><i class="bi star bi-star-fill"></i><i
+											class="bi bi-star-fill star"></i>
+									</option>
+									<option value="5"><i class="bi bi-star-fill star"></i><i
+											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i
+											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>.
+									</option>
+									 -->
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="select-wrap">
+								<span class="icon icon-keyboard_arrow_down"></span> <select
+									onchange="loadListingsByTinh()" name="city" id="city"
+									class="form-control px-3">
+									<option value="0" selected>Chọn tỉnh, thành phố</option>
+									<c:forEach items="${tinhs }" var="tinh">
+										<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="select-wrap">
+								<span class="icon icon-keyboard_arrow_down"></span> <select
+									onchange="loadListingsByXa()" name="district" id="district"
+									class="form-control px-3" disabled>
+									<option value="0" selected>Chọn quận huyện</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="select-wrap">
+								<span class="icon icon-keyboard_arrow_down"></span> <select
+									onchange="LoadListings()" name="ward" id="ward"
+									class="form-control px-3" disabled>
+									<option value="0" selected>Chọn phường xã</option>
 								</select>
 							</div>
 						</div>
@@ -94,18 +154,6 @@
 				<br>
 				<button onClick="loadMore()" class="btn btn-primary">Xem
 					tiếp</button>
-
-
-
-			</div>
-		</div>
-		<div class="row mt-4">
-			<div class="col-md-9">
-				<div class="custom-pagination text-center">
-					<span>1</span> <a href="#">2</a> <a href="#">3</a> <span
-						class="more-page">...</span> <a href="#">7</a>
-				</div>
-
 			</div>
 		</div>
 	</div>
@@ -185,18 +233,29 @@
 </div>
 
 <script>
-	function SetData() {
-		var select = document.getElementById('agent');
-		var agent_id = select.options[select.selectedIndex].value;
+	function LoadListings() {
+		var loaiphong = document.getElementById('loaiphong');
+		var loaiphong_id = loaiphong.options[loaiphong.selectedIndex].value;
+		
+		var city = document.getElementById('city');
+		var city_id = city.options[city.selectedIndex].value;
+
+		var district = document.getElementById('district');
+		var district_id = district.options[district.selectedIndex].value;
+		console.log(loaiphong_id);
+		console.log(city_id);
+		console.log(district_id);
 		document.myform.action = "#";
 		myform.submit();
 	}
-
-	function Show() {
-		var select = document.getElementById('agent');
-		var agent_id = select.options[select.selectedIndex].value;
-		console.log(agent_id);
-		document.myform.action = "load";
-		myform.submit();
+	
+	function loadListingsByTinh(){
+		loadHuyen();
+		LoadListings();
+	}
+	
+	function loadListingsByXa(){
+		loadXa();
+		LoadListings();
 	}
 </script>

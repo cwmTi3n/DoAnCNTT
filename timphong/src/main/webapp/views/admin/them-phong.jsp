@@ -20,7 +20,7 @@
 					aria-label=".form-select-sm">
 					<option value="0" selected>Chọn tỉnh, thành phố</option>
 					<c:forEach items="${tinhs }" var="tinh">
-						<option value="${tinh.matinh }">${tinh.tentinh }</option>
+						<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
 					</c:forEach>
 				</select> <select onchange="loadXa()" disabled
 					class="form-select form-select-sm mb-3" id="district"
@@ -46,76 +46,3 @@
 		</form>
 	</div>
 </div>
-
-<script>
-	function loadHuyen() {
-		var id_t = $('#city').find(":selected").val();
-		var labelXa = "<option value='0' selected>Chọn phường xã</option>"
-		var citis = document.getElementById("city");
-		var districts = document.getElementById("district");
-		var wards = document.getElementById("ward");
-
-		if (id_t != 0) {
-			districts.disabled = false;
-			//wards.disabled = true;
-			wards.innerHTML = labelXa;
-			$.ajax({
-				url : "/timphong/listhuyen", //send to Controller
-				type : "get", //send it through get method
-				data : {
-					exits : id_t
-				},
-				success : function(data) {
-					/* 					removeData(districts);
-					 removeData(ward);
-					 $("#district").append(data); */
-
-					districts.innerHTML = data;
-				}
-			});
-		} else {
-			districts.disabled = true;
-			wards.disabled = true;
-
-			districts.value = 0;
-			wards.value = 0;
-		}
-
-	};
-
-	function loadXa() {
-		var id_h = $('#district').find(":selected").val();
-
-		var citis = document.getElementById("city");
-		var districts = document.getElementById("district");
-		var wards = document.getElementById("ward");
-
-		if (id_h != 0) {
-			wards.disabled = false;
-			$.ajax({
-				url : "/timphong/listxa", //send to Controller
-				type : "get", //send it through get method
-				data : {
-					exits : id_h
-				},
-				success : function(data) {
-					/* 					removeData(wards);
-					 $("#ward").append(data); */
-					wards.innerHTML = data;
-				}
-			});
-		} else {
-			wards.disabled = true;
-			wards.value = 0;
-		}
-	};
-
-	/* 	function removeData(data) {
-	 if (data !== undefined) {
-	 var i, L = data.options.length - 1;
-	 for (i = L; i >= 1; i--) {
-	 data.remove(i);
-	 }
-	 }
-	 } */
-</script>
