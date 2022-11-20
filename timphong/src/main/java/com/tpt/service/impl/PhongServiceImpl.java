@@ -149,4 +149,10 @@ public class PhongServiceImpl implements IPhongService
 		}
 		return false;
 	}
+	@Override
+	public List<Phong> searchPhong(String keyword)
+	{
+		// TODO Auto-generated method stub
+		return phongDao.searchPhong(keyword);
+	}
 }

@@ -30,13 +30,11 @@
 		<div class="row">
 			<div class="col-md-3 order-1 order-md-2">
 				<div class="mb-5">
-					<form action="#" method="post">
 						<h3 class="text-black mb-4 h5 font-family-2">Tìm kiếm</h3>
 						<input type="text"
 							class="input-find input--border m-0 d-inline-block"
-							placeholder="Nhập phòng cần tìm">
-						<button class="btn button mt-2 px-3 py-1 btn-find" type="submit">Tìm</button>
-					</form>
+							placeholder="Nhập phòng cần tìm" name="keyword" id="keyword">
+						<button class="btn button mt-2 px-3 py-1 btn-find" onClick="searchPhong()">Tìm</button>
 				</div>
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc phòng theo</h3>
@@ -258,4 +256,21 @@
 		loadXa();
 		LoadListings();
 	}
+	
+	function searchPhong() {
+		/* tạo viên amount để Gọi và đếm classname là product */
+		var resultSearch = document.getElementById('load')
+		var keyword = document.getElementById('keyword').value;
+		console.log(resultSearch)
+		$.ajax({
+			url : "/timphong/listings", //send to Controller
+			type : "post", //send it through get method
+			data : {
+				key : keyword
+			},
+			success : function(data) {
+				resultSearch.innerHTML = data;
+			}
+		});
+	};
 </script>

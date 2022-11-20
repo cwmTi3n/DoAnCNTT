@@ -24,7 +24,7 @@
 									chủ</a></li>
 							<li><a href="#properties-section" class="nav-link">Phòng
 									đang hot</a></li>
-							<li><a href="/timphong/views/web/listings.jsp"
+							<li><a href="/timphong/listings"
 								class="nav-link">Tìm kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
 							<li><a href="<c:url value='/login'/>" class="nav-link">Đăng

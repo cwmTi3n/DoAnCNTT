@@ -17,4 +17,6 @@ public interface IPhongDao
 	public List<Phong> pagingPhong(int index);
 	public List<Phong> getAll();
 	public int getIdPhong(String anhchinh);
+	
+	public List<Phong> searchPhong(String keyword);
 }
