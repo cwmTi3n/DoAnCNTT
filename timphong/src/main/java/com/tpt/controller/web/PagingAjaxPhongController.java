@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
+import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = { "/more" })
 public class PagingAjaxPhongController extends HttpServlet {
@@ -28,8 +29,27 @@ public class PagingAjaxPhongController extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 
 		String coutString = req.getParameter("exits");
+		String keyword = req.getParameter("key");
+		if(keyword == null)
+		{
+			keyword = "";
+		}
 		int cout = Integer.parseInt(coutString);
-		List<Phong> phongs = phongService.pagingPhong(cout);
+		String[] locString= new String[4];
+		int[] loc = new int[4];
+		locString[0] = req.getParameter("loaiphong");
+		locString[1] = req.getParameter("tinh");
+		System.out.println("oke " + locString[1]);
+		locString[2] = req.getParameter("huyen");
+		locString[3] = req.getParameter("xa");
+		for(int i = 0; i < 4; i++)
+		{
+			if(locString[i] != null)
+			{
+				loc[i] = Integer.parseInt(locString[i]);
+			}
+		}
+		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
 		PrintWriter out = resp.getWriter();
 		for (Phong p : phongs) {
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"

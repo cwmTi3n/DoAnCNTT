@@ -2,7 +2,6 @@ package com.tpt.controller.web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -20,6 +19,7 @@ import com.tpt.service.ITinhService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
+import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = {"/listings"})
 public class ListtingController extends HttpServlet
@@ -35,11 +35,15 @@ public class ListtingController extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		
-		String keywordString = req.getParameter("keyword");
+		String keyword = req.getParameter("keyword");
+		if(keyword == null)
+		{
+			keyword = "";
+		}
 		List<Loaiphong> loaiphongs= loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
-		List<Phong> phongs = phongService.get9Phong();
+		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -51,7 +55,22 @@ public class ListtingController extends HttpServlet
 		resp.setCharacterEncoding("utf-8");
 		
 		String keyword = req.getParameter("key");
-		List<Phong> phongs = phongService.searchPhong(keyword);
+		String[] locString= new String[4];
+		int[] loc = new int[4];
+		locString[0] = req.getParameter("loaiphong");
+		locString[1] = req.getParameter("tinh");
+		System.out.println("oke " + locString[1]);
+		locString[2] = req.getParameter("huyen");
+		locString[3] = req.getParameter("xa");
+		for(int i = 0; i < 4; i++)
+		{
+			if(locString[i] != null)
+			{
+				loc[i] = Integer.parseInt(locString[i]);
+			}
+		}
+		List<Phong> searchPhong = phongService.searchPhong(keyword);
+		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{

@@ -129,9 +129,9 @@ public class PhongServiceImpl implements IPhongService
 	}
 	
 	@Override
-	public List<Phong> pagingPhong(int index)
+	public List<Phong> pagingPhong(int index, String keyword)
 	{
-		return phongDao.pagingPhong(index);
+		return phongDao.pagingPhong(index, keyword);
 	}
 	
 	@Override

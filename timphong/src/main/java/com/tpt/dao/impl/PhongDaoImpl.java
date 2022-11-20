@@ -187,15 +187,17 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public List<Phong> pagingPhong(int index)
+	public List<Phong> pagingPhong(int index, String keyword)
 	{
-		String sql = "select * from phong where trangthai=1 order by id_p OFFSET ? row fetch next 3 row only";
+		String sql = "select * from phong where trangthai=1 and (ten like ? or mota like ?) order by id_p OFFSET ? row fetch next 3 row only";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
-			pStatement.setInt(1, index);
+			pStatement.setString(1, "%" + keyword + "%");
+			pStatement.setString(2, "%" + keyword + "%");
+			pStatement.setInt(3, index);
 			rSet = pStatement.executeQuery();
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while(rSet.next())
@@ -260,7 +262,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<Phong> searchPhong(String keyword)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select * from Phong where ten like ? or mota like ?";
+		String sql = "select * from Phong where trangthai=1 and (ten like ? or mota like ?)";
 		try
 		{
 			connection = super.getConnection();
