@@ -1,4 +1,4 @@
-.input-find{
+.input-find {
 	border: 1.5px solid rgb(0, 0, 0);
 	border-radius: 12px;
 	height: 40px;
@@ -7,17 +7,38 @@
 	padding: 0 12px;
 }
 
-.btn-find{
+.btn-find {
 	border-radius: 4px;
 	color: #fff;
 	font-weight: 500;
 	background: #37cfa2;
 }
 
-.btn-find:hover{
+.btn-find:hover {
 	background: #343a40;
 }
 
-.star{
+.star {
 	color: #000;
+}
+
+.site-section-phong {
+	padding-top: 86px !important;
+	position: relative;
+}
+
+.site-section-phong:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: #000;
+	height: 86px;
+}
+
+.day-travel{
+	justify-content: space-between;
+	align-items: space-around;
+	align-items: center;
 }

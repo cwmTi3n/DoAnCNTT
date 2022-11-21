@@ -32,9 +32,9 @@
 							<td scope="row">${STT.index+1}</td>
 							<td class="main-name-object">${lp.tenloai}</td>
 							<td>${lp.phongs.size() }</td>
-							<td><a class="btn"
+							<td><a class="btn btn-success mr-4"
 								href="<c:url value='/admin/loaiphong?id_lp=${lp.id_lp }'/>">Chỉnh
-									sửa</a> <a class="btn"
+									sửa</a> <a class="btn btn-danger"
 								href="<c:url value='/admin/xoa-loaiphong?id_lp=${lp.id_lp }'/>">Xóa</a></td>
 						</tr>
 					</c:forEach>

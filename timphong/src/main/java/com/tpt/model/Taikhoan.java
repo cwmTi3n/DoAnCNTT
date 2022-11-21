@@ -132,9 +132,4 @@ public class Taikhoan
 	{
 		this.nguoiTheodoi = nguoiTheodoi;
 	}
-	
-	
-	
-	
-	
 }
