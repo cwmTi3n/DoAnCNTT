@@ -138,7 +138,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean editPhong(Phong newPhong)
 	{
-		String sql = "update phong set ten=?, anhchinh=?, trangthai=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=? where id_p=?";
+		String sql = "update phong set ten=?, anhchinh=?, trangthai=?, chieudai=?, chieurong=?, gia=?, yeuthich=?, dcchitiet=?, mota=?, id_tk=?, id_lp=?, id_x=? where id_p=?";
 		try
 		{
 			connection = super.getConnection();
@@ -154,7 +154,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(9, newPhong.getMota());
 			pStatement.setInt(10, newPhong.getId_tk());
 			pStatement.setInt(11, newPhong.getId_lp());
-			pStatement.setInt(12, newPhong.getId_p());
+			pStatement.setInt(12, newPhong.getMaxa());
+			pStatement.setInt(13, newPhong.getId_p());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)

@@ -26,9 +26,7 @@
 				</c:forEach>
 				<c:if test="${phong.getHinhanhs().size() < 2 }">
 					<button>
-						<a
-							href="<c:url value='/admin/them-anh-phong?id_p=${phong.id_p}'/>">Thêm
-							Ảnh</a>
+						<a href="<c:url value='/admin/them-anh-phong?id_p=${phong.id_p}'/>">Thêm Ảnh</a>
 					</button>
 					<br />
 				</c:if>
@@ -52,7 +50,27 @@
 					thích: </label><input type="text" name="yeuthich"
 					value="${phong.yeuthich }"><br /> <label>Địa chỉ
 					chi tiết: </label><input type="text" name="dcchitiet"
-					value="${phong.dcchitiet }"><br /> <label>Mô tả: </label><input
+					value="${phong.dcchitiet }"><br />
+					
+								<div class="col-md-auto">
+				<select onchange="loadHuyen()"
+					class="form-select form-select-sm mb-3" id="city"
+					aria-label=".form-select-sm">
+					<option value="${phong.getXa().getHuyen().matinh}" selected>${phong.getXa().getHuyen().getTinh().tentinh }</option>
+					<c:forEach items="${tinhs }" var="tinh">
+						<option value="${tinh.matinh }">${tinh.tentinh }</option>
+					</c:forEach>
+				</select> <select onchange="loadXa()" disabled
+					class="form-select form-select-sm mb-3" id="district"
+					aria-label=".form-select-sm">
+					<option value="${phong.getXa().getHuyen().mahuyen }" selected>${phong.getXa().getHuyen().tenhuyen}</option>
+				</select> <select disabled class="form-select form-select-sm" id="ward"
+					aria-label=".form-select-sm" name="xa">
+					<option value="${phong.maxa }" selected>${phong.getXa().tenxa }</option>
+				</select>
+			</div>
+					
+					 <label>Mô tả: </label><input
 					type="text" name="mota" value="${phong.mota }"><br /> <label>Loại
 					phòng: </label> <select name="id_lp">
 					<option value="${phong.loaiphong.id_lp }">${phong.loaiphong.tenloai }</option>
