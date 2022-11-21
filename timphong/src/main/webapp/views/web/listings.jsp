@@ -30,18 +30,16 @@
 		<div class="row">
 			<div class="col-md-3 order-1 order-md-2">
 				<div class="mb-5">
-					<form action="#" method="post">
 						<h3 class="text-black mb-4 h5 font-family-2">Tìm kiếm</h3>
 						<input type="text"
 							class="input-find input--border m-0 d-inline-block"
-							placeholder="Nhập phòng cần tìm">
-						<button class="btn button mt-2 px-3 py-1 btn-find" type="submit">Tìm</button>
-					</form>
+							placeholder="Nhập phòng cần tìm" name="keyword" id="keyword">
+						<button class="btn button mt-2 px-3 py-1 btn-find" onClick="searchPhong()">Tìm</button>
 				</div>
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc phòng theo</h3>
-					<h4></h4>
-					<form action="#" method="post">
+						<button class="btn button mt-2 px-3 py-1 btn-find" onClick="locPhong()">Lọc</button>
+						<h4></h4>
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
@@ -86,7 +84,7 @@
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="loadListingsByTinh()" name="city" id="city"
+									onchange="loadListingsByTinh()" name="tinh" id="city"
 									class="form-control px-3">
 									<option value="0" selected>Chọn tỉnh, thành phố</option>
 									<c:forEach items="${tinhs }" var="tinh">
@@ -99,7 +97,7 @@
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="loadListingsByXa()" name="district" id="district"
+									onchange="loadListingsByXa()" name="huyen" id="district"
 									class="form-control px-3" disabled>
 									<option value="0" selected>Chọn quận huyện</option>
 								</select>
@@ -109,22 +107,21 @@
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="LoadListings()" name="ward" id="ward"
+									onchange="LoadListings()" name="xa" id="ward"
 									class="form-control px-3" disabled>
 									<option value="0" selected>Chọn phường xã</option>
 								</select>
 							</div>
 						</div>
-					</form>
-				</div>
-
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc theo giá
 						phòng</h3>
 					<div id="slider-range" class="border-primary"></div>
-					<input type="text" name="text" id="amount"
+					<input type="text" name="gia" id="amount"
 						class="form-control border-0 pl-0 bg-white" />
 				</div>
+				</div>
+
 			</div>
 			<div class="col-md-9 order-2 order-md-1">
 
@@ -262,4 +259,71 @@
 		loadXa();
 		LoadListings();
 	}
+	
+	function searchPhong() {
+		/* tạo viên amount để Gọi và đếm classname là product */
+		var resultSearch = document.getElementById('load')
+		var keyword = document.getElementById('keyword').value;
+		$.ajax({
+			url : "/timphong/listings", //send to Controller
+			type : "post", //send it through get method
+			data : {
+				key : keyword
+			},
+			success : function(data) {
+				resultSearch.innerHTML = data;
+			}
+		});
+	};
+	
+	function locPhong() {
+		/* tạo viên amount để Gọi và đếm classname là product */
+		var resultSearch = document.getElementById('load')
+		var keyword = document.getElementById('keyword').value;
+		var lp = document.getElementById('loaiphong').value;
+		var city = document.getElementById('city').value;
+		var district = document.getElementById('district').value;
+		var ward = document.getElementById('ward').value;
+		$.ajax({
+			url : "/timphong/listings", //send to Controller
+			type : "post", //send it through get method
+			data : {
+				key : keyword,
+				loaiphong : lp,
+				tinh : city,
+				huyen : district,
+				xa : ward
+			},
+			success : function(data) {
+				resultSearch.innerHTML = data;
+			}
+		});
+	};
+	
+	
+	function loadMore() {
+		/* tạo viên amount để Gọi và đếm classname là product */
+		var amount = document.getElementsByClassName("phong").length;
+		var resultSearch = document.getElementById('load')
+		var keyword = document.getElementById('keyword').value;
+		var lp = document.getElementById('loaiphong').value;
+		var city = document.getElementById('city').value;
+		var district = document.getElementById('district').value;
+		var ward = document.getElementById('ward').value;
+		$.ajax({
+			url : "/timphong/more", //send to Controller
+			type : "get", //send it through get method
+			data : {
+				exits : amount,
+				key : keyword,
+				loaiphong : lp,
+				tinh : city,
+				huyen : district,
+				xa : ward
+			},
+			success : function(data) {
+				$("#load").append(data);
+			}
+		});
+	};
 </script>

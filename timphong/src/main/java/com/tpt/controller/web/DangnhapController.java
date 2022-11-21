@@ -12,36 +12,38 @@ import com.tpt.model.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 
-@WebServlet(urlPatterns = {"/login"})
+@WebServlet(urlPatterns = { "/login" })
 public class DangnhapController extends HttpServlet {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		
+
 		ITaikhoanService taikhoanService = new TaikhoanServiceImpl();
-		
+
 		Taikhoan taikhoan = new Taikhoan();
 		taikhoan.setTentk(req.getParameter("tentk"));
 		taikhoan.setMatkhau(req.getParameter("matkhau"));
-		
+
 		int quyen = taikhoanService.dangNhap(taikhoan);
 		
-		if(quyen == 1)
+		if (quyen == 1) {
 			resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
-		else
-			resp.sendRedirect(req.getContextPath() + "/trangchu");
-		
+			return;
+		} else if (quyen == 0) {
+			req.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
+			req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
+			return;
+		}
+		resp.sendRedirect(req.getContextPath() + "/trangchu");
 	}
 }

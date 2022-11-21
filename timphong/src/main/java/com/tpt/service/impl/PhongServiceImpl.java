@@ -129,9 +129,9 @@ public class PhongServiceImpl implements IPhongService
 	}
 	
 	@Override
-	public List<Phong> pagingPhong(int index)
+	public List<Phong> pagingPhong(int index, String keyword)
 	{
-		return phongDao.pagingPhong(index);
+		return phongDao.pagingPhong(index, keyword);
 	}
 	
 	@Override
@@ -148,5 +148,11 @@ public class PhongServiceImpl implements IPhongService
 			return true;
 		}
 		return false;
+	}
+	@Override
+	public List<Phong> searchPhong(String keyword)
+	{
+		// TODO Auto-generated method stub
+		return phongDao.searchPhong(keyword);
 	}
 }

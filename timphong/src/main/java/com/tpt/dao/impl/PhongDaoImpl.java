@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
+import org.hibernate.cfg.annotations.ListBinder;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IPhongDao;
@@ -186,15 +187,17 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public List<Phong> pagingPhong(int index)
+	public List<Phong> pagingPhong(int index, String keyword)
 	{
-		String sql = "select * from phong where trangthai=1 order by id_p OFFSET ? row fetch next 3 row only";
+		String sql = "select * from phong where trangthai=1 and (ten like ? or mota like ?) order by id_p OFFSET ? row fetch next 3 row only";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
-			pStatement.setInt(1, index);
+			pStatement.setString(1, "%" + keyword + "%");
+			pStatement.setString(2, "%" + keyword + "%");
+			pStatement.setInt(3, index);
 			rSet = pStatement.executeQuery();
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while(rSet.next())
@@ -254,5 +257,29 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		IPhongDao phongDao = new PhongDaoImpl();
 		Phong phong = phongDao.getPhong(13);
 		System.out.println(phong.getXa().getTenxa());
+	}
+	@Override
+	public List<Phong> searchPhong(String keyword)
+	{
+		List<Phong> phongs = new ArrayList<Phong>();
+		String sql = "select * from Phong where trangthai=1 and (ten like ? or mota like ?)";
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, "%" + keyword + "%");
+			pStatement.setString(2, "%" + keyword + "%");
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				phongs.add(mapPhong.mapPhong(rSet));
+			}
+			return phongs;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
 	}
 }
