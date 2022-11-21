@@ -242,9 +242,13 @@
 
 		var district = document.getElementById('district');
 		var district_id = district.options[district.selectedIndex].value;
+		
+		var ward = document.getElementById('ward');
+		var ward_id = ward.options[ward.selectedIndex].value;
 		console.log(loaiphong_id);
 		console.log(city_id);
 		console.log(district_id);
+		console.log(ward_id);
 		document.myform.action = "#";
 		myform.submit();
 	}
