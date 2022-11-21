@@ -18,7 +18,7 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="<c:url value='/login'/>" target="_blank"
+							<a href="<c:url value='/login'/>"
 								class="btn btn-primary px-5 py-3">Đăng nhập</a>
 						</p>
 
@@ -38,7 +38,7 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="<c:url value='/login'/>" target="_blank"
+							<a href="<c:url value='/login'/>"
 								class="btn btn-primary px-5 py-3">Đăng nhập</a>
 						</p>
 

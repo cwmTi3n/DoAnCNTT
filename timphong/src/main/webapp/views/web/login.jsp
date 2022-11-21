@@ -15,7 +15,7 @@
 						src="${url }images/Logo.png" class="container__header__img">
 				</a>
 				</span> <span class="container-login__header__text">Find Room<br>
-				<span class="text_underline container__header__text--underline">Login</span></span>
+					<span class="text_underline container__header__text--underline">Login</span></span>
 			</div>
 			<div class="containe-loginr__content">
 				<form action="login" method="post">
@@ -32,6 +32,9 @@
 						<label for="rememberMe" class="rememberMe-text">Remember
 							me</label>
 					</div>
+					<c:if test="${error }!=null">
+						<p>${error }</p>
+					</c:if>
 					<div class="container-login__content__button-login">
 						<button class="button-login btn-login" type="submit">Đăng
 							nhập</button>
@@ -56,8 +59,7 @@
 									class="container-login__header__img">
 								</span> <span
 									class="container-login__header__text register__container__header__text">FIND
-									ROOM<br>
-								<span
+									ROOM<br> <span
 									class="text_underline register__container__header__text--underline">Sign
 										Up</span>
 								</span>

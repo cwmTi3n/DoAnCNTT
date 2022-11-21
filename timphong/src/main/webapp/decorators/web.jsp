@@ -40,7 +40,8 @@
 	href="${url }css/owl.theme.default.min.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/owl.theme.default.min.css">
-
+<link rel="stylesheet" type="text/css"
+	href="${url }css/base-web.css">
 <link rel="stylesheet" type="text/css"
 	href="${url }css/jquery.fancybox.min.css">
 
