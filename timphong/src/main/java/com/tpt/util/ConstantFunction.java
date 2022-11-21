@@ -14,12 +14,10 @@ public class ConstantFunction
 		{
 			phongs.removeIf(p -> p.getId_lp() != loc[0]);
 		}
-		System.out.println("Xoa " + phongs.size());
 		if(loc[1] != 0)
 		{
 			phongs.removeIf(p -> p.getXa().getHuyen().getMatinh() != loc[1]);
 		}
-		System.out.println("Xoa " + phongs.size());
 		if(loc[2] != 0)
 		{
 			phongs.removeIf(p -> p.getXa().getMahuyen() != loc[2]);
