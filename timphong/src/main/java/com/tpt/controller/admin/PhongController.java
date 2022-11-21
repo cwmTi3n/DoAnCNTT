@@ -15,10 +15,13 @@ import javax.servlet.http.Part;
 
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
+import com.tpt.model.Tinh;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
+import com.tpt.service.ITinhService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
+import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
 
 @WebServlet(urlPatterns = {"/admin/phong"})
@@ -28,7 +31,7 @@ public class PhongController extends HttpServlet
 	private static final long serialVersionUID = 1L;
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
-	
+	ITinhService tinhService = new TinhServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -39,9 +42,11 @@ public class PhongController extends HttpServlet
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		String id_taikhoan = req.getParameter("id_taikhoan");
 		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
+		List<Tinh> tinhs = tinhService.getAll();
 		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
 		req.setAttribute("id_taikhoan", id_taikhoan);
+		req.setAttribute("tinhs", tinhs);
 		req.getRequestDispatcher("/views/admin/detail-phong.jsp").forward(req, resp);
 	}
 	
@@ -96,7 +101,9 @@ public class PhongController extends HttpServlet
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
 		String id_tk = req.getParameter("id_tk");
+		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
 		phong.setId_tk(Integer.parseInt(id_tk));
+		System.out.println(phong.getMaxa());
 		phongService.editPhong(phong, hinhanhs);
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 		
