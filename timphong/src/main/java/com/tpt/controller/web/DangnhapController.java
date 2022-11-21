@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.tpt.model.Taikhoan;
 import com.tpt.service.ITaikhoanService;
@@ -19,6 +20,7 @@ public class DangnhapController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		req.setCharacterEncoding("utf-8");
 		req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 	}
@@ -34,16 +36,18 @@ public class DangnhapController extends HttpServlet {
 		taikhoan.setTentk(req.getParameter("tentk"));
 		taikhoan.setMatkhau(req.getParameter("matkhau"));
 
-		int quyen = taikhoanService.dangNhap(taikhoan);
-		
-		if (quyen == 1) {
-			resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
-			return;
-		} else if (quyen == 0) {
+		Taikhoan user = taikhoanService.dangNhap(taikhoan);
+		if (user == null) {
 			req.setAttribute("error", "Sai tên đăng nhập hoặc mật khẩu");
 			req.getRequestDispatcher("/views/web/login.jsp").forward(req, resp);
 			return;
 		}
+		else if (user.getQuyen() == 1) {
+			resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
+			return;
+		}
+		HttpSession session = req.getSession();
+		session.setAttribute("user", user);
 		resp.sendRedirect(req.getContextPath() + "/trangchu");
 	}
 }

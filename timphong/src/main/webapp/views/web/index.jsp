@@ -18,8 +18,14 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="<c:url value='/login'/>"
-								class="btn btn-primary px-5 py-3">Đăng nhập</a>
+							<c:if test="${empty user }">
+								<a href="<c:url value='/login'/>"
+									class="btn btn-primary px-5 py-3">Đăng nhập</a>
+							</c:if>
+							<c:if test="${not empty user }">
+								<a href="<c:url value='/listings'/>"
+									class="btn btn-primary px-5 py-3">Tìm kiếm</a>
+							</c:if>
 						</p>
 
 					</div>
@@ -38,8 +44,14 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<a href="<c:url value='/login'/>"
-								class="btn btn-primary px-5 py-3">Đăng nhập</a>
+							<c:if test="${empty user }">
+								<a href="<c:url value='/login'/>"
+									class="btn btn-primary px-5 py-3">Đăng nhập</a>
+							</c:if>
+							<c:if test="${not empty user }">
+								<a href="<c:url value='/listings'/>"
+									class="btn btn-primary px-5 py-3">Tìm kiếm</a>
+							</c:if>
 						</p>
 
 					</div>
@@ -65,7 +77,9 @@
 							<div class="ftco-media-details">
 								<h3>${phong.ten }</h3>
 								<p>${phong.mota }</p>
-								<p>${phong.getXa().getTenxa()}, ${phong.getXa().getHuyen().getTenhuyen()}, ${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
+								<p>${phong.getXa().getTenxa()},
+									${phong.getXa().getHuyen().getTenhuyen()},
+									${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
 								<strong>$${phong.gia }</strong>
 							</div>
 						</div>

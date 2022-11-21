@@ -194,9 +194,8 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 ////		System.out.println(taikhoanDao.deleteTaikhoan(3));
 //	}
 	@Override
-	public int dangNhap(Taikhoan taikhoan) {
+	public Taikhoan dangNhap(Taikhoan taikhoan) {
 		String sql = "select * from taikhoan where (tentk = ?) and (matkhau = ?)";
-		int quyen = 0;
 		try
 		{
 			Connection connection = super.getConnection();
@@ -204,16 +203,17 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			pStatement.setString(1, taikhoan.getTentk());
 			pStatement.setString(2, taikhoan.getMatkhau());
 			ResultSet rSet = pStatement.executeQuery();
+			mapAttributeSQL mapTK = new mapAttributeSQL();
 			rSet.next();
-			quyen = rSet.getInt("quyen");
+			return mapTK.mapTaikhoan(rSet);
 			
 		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
-			System.out.println(e.getMessage());
+			//System.out.println(e.getMessage());
 		}
 		//System.out.
-		return quyen;
+		return null;
 		//return 100;
 	}
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="sticky-wrapper" class="sticky-wrapper">
 	<header class="site-navbar py-4 js-sticky-header site-navbar-target"
@@ -24,11 +25,17 @@
 									chủ</a></li>
 							<li><a href="#properties-section" class="nav-link">Phòng
 									đang hot</a></li>
-							<li><a href="/timphong/listings"
-								class="nav-link">Tìm kiếm</a></li>
+							<li><a href="/timphong/listings" class="nav-link">Tìm
+									kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-							<li><a href="<c:url value='/login'/>" class="nav-link">Đăng
-									nhập</a></li>
+							<li><c:if test="${empty user }">
+									<a href="<c:url value='/login'/>" class="nav-link">Đăng
+										nhập</a>
+								</c:if></li>
+							<li><c:if test="${not empty user }">
+									<a href="<c:url value='/logout'/>" class="nav-link">Đăng
+										xuất</a>
+								</c:if></li>
 						</ul>
 					</nav>
 				</div>

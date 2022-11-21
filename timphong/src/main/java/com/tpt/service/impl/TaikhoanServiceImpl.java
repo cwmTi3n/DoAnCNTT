@@ -49,7 +49,7 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 		return taikhoanDao.editTaikhoan(taikhoan);
 	}
 	@Override
-	public int dangNhap(Taikhoan taikhoan) {
+	public Taikhoan dangNhap(Taikhoan taikhoan) {
 		return taikhoanDao.dangNhap(taikhoan);
 	}
 	
