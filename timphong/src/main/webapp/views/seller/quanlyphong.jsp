@@ -63,7 +63,7 @@
 					<c:url value="/hinhanh?fname=${phong.anhchinh==null?'abc':phong.anhchinh}" var="anh" />
 					<img height="180" width="240" src="${anh }"> <input
 						type="file" name="hinhanh"> <a
-						href="<c:url value='/admin/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${phong.anhchinh }'/>">Xóa</a><br />
+						href="<c:url value='/seller/ql-phong/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${phong.anhchinh }'/>">Xóa</a><br />
 				</div>
 				<c:forEach items="${phong.getHinhanhs() }" var="ha">
 					<div>
@@ -71,7 +71,7 @@
 						<c:url value="/hinhanh?fname=${ha.hinhanh}" var="anh" />
 						<img height="180" width="240" src="${anh }"> <input
 							type="file" name="hinhanh"> <a
-							href="<c:url value='/admin/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${ha.hinhanh }'/>">Xóa</a><br />
+							href="<c:url value='/seller/ql-phong/xoa-anh-phong?id_p=${phong.id_p }&hinhanh=${ha.hinhanh }'/>">Xóa</a><br />
 					</div>
 				</c:forEach>
 				<c:if test="${phong==null }">

@@ -16,22 +16,25 @@ import javax.servlet.http.Part;
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
 import com.tpt.model.Tinh;
+import com.tpt.service.IHinhanhService;
 import com.tpt.service.ILoaiphongService;
 import com.tpt.service.IPhongService;
 import com.tpt.service.ITinhService;
+import com.tpt.service.impl.HinhanhServiceImpl;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
 
 @MultipartConfig()
-@WebServlet(urlPatterns = {"/seller/ql-phong", "/seller/ql-phong/select", "/seller/ql-phong/insert", "/seller/ql-phong/delete", "/seller/ql-phong/reset", "/seller/ql-phong/update"})
+@WebServlet(urlPatterns = {"/seller/ql-phong/xoa-anh-phong", "/seller/ql-phong", "/seller/ql-phong/select", "/seller/ql-phong/insert", "/seller/ql-phong/delete", "/seller/ql-phong/reset", "/seller/ql-phong/update"})
 public class crudPhongController extends HttpServlet
 {
 
 	/**
 	 * 
 	 */
+	IHinhanhService hinhanhService = new HinhanhServiceImpl();
 	ITinhService tinhService = new TinhServiceImpl();
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
@@ -44,6 +47,11 @@ public class crudPhongController extends HttpServlet
 		String url = req.getRequestURL().toString();
 		if(url.contains("select"))
 		{
+			getPhong(req, resp);
+		}
+		else if(url.contains("xoa-anh-p"))
+		{
+			deleteAnhPhong(req, resp);
 			getPhong(req, resp);
 		}
 		findAll(req, resp);
@@ -208,5 +216,13 @@ public class crudPhongController extends HttpServlet
 		phong.setMaxa(id_x);
 		System.out.println(phongService.editPhong(phong, hinhanhs, false));//false là seller edit
 		System.out.println(phong.getId_p());
+	}
+	
+	protected void deleteAnhPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		req.setCharacterEncoding("utf-8");
+		String id_pString = req.getParameter("id_p");
+		String hinhanh = req.getParameter("hinhanh");
+		hinhanhService.deleteHinhanh(hinhanh);
 	}
 }
