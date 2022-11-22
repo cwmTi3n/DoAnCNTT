@@ -56,7 +56,6 @@
 								<label for="register"> <i class="bi bi-x-circle"></i>
 								</label>
 							</div>
-
 							<div
 								class="container-login__header register__container__header row">
 								<span class="container-login__header__logo"> <a
