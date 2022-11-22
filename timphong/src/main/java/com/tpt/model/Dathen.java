@@ -8,7 +8,7 @@ public class Dathen
 	private String tentk;
 	private int id_p;
 	private Boolean luu;
-	private Boolean xacnhan;
+	private int xacnhan;
 	private Date ngay;
 	private Time gio;
 	private Taikhoan nguoidat;
@@ -16,7 +16,7 @@ public class Dathen
 	public Dathen()
 	{
 	}
-	public Dathen(String tentk, int id_p, Boolean luu, Boolean xacnhan, Date ngay, Time gio, Taikhoan nguoidat,
+	public Dathen(String tentk, int id_p, Boolean luu, int xacnhan, Date ngay, Time gio, Taikhoan nguoidat,
 			Phong phong)
 	{
 		super();
@@ -53,11 +53,11 @@ public class Dathen
 	{
 		this.luu = luu;
 	}
-	public Boolean getXacnhan()
+	public int getXacnhan()
 	{
 		return xacnhan;
 	}
-	public void setXacnhan(Boolean xacnhan)
+	public void setXacnhan(int xacnhan)
 	{
 		this.xacnhan = xacnhan;
 	}

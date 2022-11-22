@@ -175,7 +175,7 @@ public class mapAttributeSQL
 			dathen.setTentk(rSet.getString("tentk"));
 			dathen.setId_p(rSet.getInt("id_p"));
 			dathen.setLuu(rSet.getBoolean("luu"));
-			dathen.setXacnhan(rSet.getBoolean("xacnhan"));
+			dathen.setXacnhan(rSet.getInt("xacnhan"));
 			dathen.setNgay(rSet.getDate("ngay"));
 			dathen.setGio(rSet.getTime("gio"));
 			return dathen;
