@@ -79,7 +79,7 @@ public class crudPhongController extends HttpServlet
 	}
 	protected void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		List<Phong> phongs = phongService.getAll();
+		List<Phong> phongs = phongService.getPhongSeller(1); //Khi có đăng nhập thì chỉnh lại id_tk
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
 		req.setAttribute("tinhs", tinhs);
