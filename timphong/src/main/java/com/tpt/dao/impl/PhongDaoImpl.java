@@ -164,7 +164,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return false;
 	}
-
+	
 	@Override
 	public List<Phong> get9Phong()
 	{
@@ -253,12 +253,6 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return 0;
 	}
-	public static void main(String[] args)
-	{
-		IPhongDao phongDao = new PhongDaoImpl();
-		Phong phong = phongDao.getPhong(13);
-		System.out.println(phong.getXa().getTenxa());
-	}
 	@Override
 	public List<Phong> searchPhong(String keyword)
 	{
@@ -283,4 +277,40 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		}
 		return null;
 	}
+	@Override
+	public boolean sellerUpdatePhong(Phong newPhong)
+	{
+		String sql = "update phong set ten=?, anhchinh=?, chieudai=?, chieurong=?, gia=?, dcchitiet=?, mota=?, id_lp=?, id_x=? where id_p=?";
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, newPhong.getTen());
+			pStatement.setString(2, newPhong.getAnhchinh());
+			pStatement.setFloat(3, newPhong.getChieudai());
+			pStatement.setFloat(4, newPhong.getChieurong());
+			pStatement.setInt(5, newPhong.getGia());
+			pStatement.setString(6, newPhong.getDcchitiet());
+			pStatement.setString(7, newPhong.getMota());
+			pStatement.setInt(8, newPhong.getId_lp());
+			pStatement.setInt(9, newPhong.getMaxa());
+			pStatement.setInt(10, newPhong.getId_p());
+			pStatement.executeUpdate();
+			return true;
+		} catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+	
+//	public static void main(String[] args)
+//	{
+//		IPhongDao phongDao = new PhongDaoImpl();
+//		
+//		Phong phong = phongDao.getPhong(2);
+//		phong.setTen("OKe id 2");
+//		
+//		phongDao.sellerUpdatePhong(phong);
+//	}
 }

@@ -8,7 +8,7 @@
 	<decorator name="admin" page="admin.jsp">
 		<pattern>/admin*</pattern>
 	</decorator>
-	<decorator name="seller" page="seller.jsp">
+	<decorator name="seller" page="web.jsp">
 		<pattern>/seller*</pattern>
 	</decorator>
 	<decorator name="web" page="web.jsp">

@@ -32,9 +32,13 @@ public class PhongServiceImpl implements IPhongService
 		return phongDao.getPhong(id_p);
 	}
 	@Override
-	public boolean editPhong(Phong newPhong, String newHinhanhs[])
+	public boolean editPhong(Phong newPhong, String newHinhanhs[], boolean type)
 	{
 		Phong oldPhong = phongDao.getPhong(newPhong.getId_p());
+		if(newPhong.getMaxa() == 0)
+		{
+			newPhong.setMaxa(oldPhong.getMaxa());
+		}
 		for(int i = 0; i < Constant.SoHinh; i++)
 		{
 			if(newHinhanhs[i] == null)
@@ -70,7 +74,15 @@ public class PhongServiceImpl implements IPhongService
 				}
 			}
 		}
-		boolean check = phongDao.editPhong(newPhong);
+		boolean check;
+		if(type == true)
+		{
+			check = phongDao.editPhong(newPhong);
+		}
+		else 
+		{
+			check = phongDao.sellerUpdatePhong(newPhong);
+		}
 		if(check == true && chkDelete == true)
 		{
 			deleteHinhanh(oldPhong.getAnhchinh());

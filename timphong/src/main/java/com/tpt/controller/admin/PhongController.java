@@ -101,10 +101,17 @@ public class PhongController extends HttpServlet
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
 		String id_tk = req.getParameter("id_tk");
-		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
+		String id_xaString = req.getParameter("xa");
+		if(id_xaString!= null)
+		{
+			phong.setMaxa(Integer.parseInt(id_xaString));
+		}
+		else 
+		{
+			phong.setMaxa(0);
+		}
 		phong.setId_tk(Integer.parseInt(id_tk));
-		System.out.println(phong.getMaxa());
-		phongService.editPhong(phong, hinhanhs);
+		phongService.editPhong(phong, hinhanhs, true); //true là admin edit
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 		
 	}

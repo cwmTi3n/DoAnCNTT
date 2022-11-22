@@ -19,4 +19,5 @@ public interface IPhongDao
 	public int getIdPhong(String anhchinh);
 	
 	public List<Phong> searchPhong(String keyword);
+	public boolean sellerUpdatePhong(Phong phong);
 }

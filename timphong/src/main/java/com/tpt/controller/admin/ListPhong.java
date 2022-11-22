@@ -27,6 +27,6 @@ public class ListPhong extends HttpServlet {
 		
 		List<Phong> phongs = phongService.getAll();
 		req.setAttribute("phongs", phongs);
-		req.getRequestDispatcher("/views/admin/list-phong.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/seller/quanlyphong.jsp").forward(req, resp);
 	}
 }
