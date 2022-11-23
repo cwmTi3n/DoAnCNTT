@@ -12,46 +12,67 @@
 
 			</div>
 			<div class="col-8 text-black">
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="row my-4">
+					<div class="col-2 profile-block-item bg-primary bg-gradient" style="margin-left: 15px">Người theo dõi</div>
+					<div class="col-2 profile-block-item">Đang theo dõi</div>
+					<div class="col-2 profile-block-item">Phòng yêu thích</div>
+					<div class="col-2 profile-block-item">Phòng đã đặt</div>
+					<div class="col-2 profile-block-item mr-0">Quản lý phòng sở hữu</div>
+				</div>
+				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-						<p>${user.getHo()}${user.getTen()}</p>
+						<p>${user.getHo()} ${user.getTen()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
 					</div>
+					<div class="row col-12">
+						<div class="col-6">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="fname">Họ</label>
+								<input class="border-0 profile-content-input" type="text" id="fname" name="fname" value="${user.getHo()}">
+							</div>
+						</div>
+						<div class="col-6">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="lname">Tên</label>
+								<input class="border-0 profile-content-input" type="text" id="lname" name="lname" value="${user.getTen()}">
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Tên tài khoản</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" />
-							<c:forEach begin="2" end="${user.getTentk().length() - 1}">
-								<c:out value="*" />
-							</c:forEach>
-							<c:out
+							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out
 								value="${user.getTentk().substring(user.getTentk().length()-1) }" />
 						</p>
 					</div>
 
 				</div>
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Email</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" />
-							<c:forEach begin="2" end="${user.getEmail().indexOf(64) }">
-								<c:out value="*" />
-							</c:forEach>
-							<c:out
+							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out
 								value="${user.getEmail().substring(user.getEmail().indexOf(64)) }" />
 						</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
 					</div>
+					<div class="row col-12">
+						<div class="col-12">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="email">Email</label>
+								<input class="border-0 profile-content-input" type="text" id="email" name="email" value="${user.getEmail()}">
+							</div>
+						</div>						
+					</div>
 				</div>
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Số điện thoại</h4>
 						<p>${user.getSdt()}</p>
@@ -59,8 +80,16 @@
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
 					</div>
+					<div class="row col-12">
+						<div class="col-12">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="sdt">Số điện thoại</label>
+								<input class="border-0 profile-content-input" type="text" id="sdt" name="sdt" value="${user.getSdt()}">
+							</div>
+						</div>						
+					</div>
 				</div>
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Bạn đang là</h4>
 						<c:if test="${user.getQuyen() ==1}">
@@ -76,13 +105,28 @@
 						</c:if>
 					</div>
 				</div>
-				<div class="d-flex my-4 profile-content">
+				<div class="d-flex my-4 profile-content pb-3">
 					<div>
 						<h4>Mật khẩu</h4>
-						<p>${user.getMatkhau()}</p>
+						<c:forEach begin="1" end="${user.getMatkhau().length() }"><c:out value="*" /></c:forEach>
+						
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
+					</div>
+					<div class="row col-12">
+						<div class="col-6">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="oldpassword">Mật khẩu cũ</label>
+								<input class="border-0 profile-content-input" type="password" id="oldpassword" name="oldpassword" value="">
+							</div>
+						</div>	
+						<div class="col-6">
+							<div class=" border border-3 profile-content-change px-3 py-2">
+								<label class="" for="newpassword">Mật khẩu mới</label>
+								<input class="border-0 profile-content-input" type="password" id="newpassword" name="newpassword" value="">
+							</div>
+						</div>					
 					</div>
 				</div>
 			</div>
