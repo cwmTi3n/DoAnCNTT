@@ -10,7 +10,7 @@
 			<div class="row align-items-center">
 
 				<div class="col-6 col-xl-2">
-					<h1 class="mb-0 site-logo m-0 p-0">
+					<h1 class="mb-0 site-logo p-0">
 						<a href="<c:url value='/trangchu'/>" class="mb-0">Find Room</a>
 					</h1>
 				</div>
@@ -33,7 +33,9 @@
 										nhập</a>
 								</c:if></li>
 							<li><c:if test="${not empty user }">
-									<a href="<c:url value='/logout'/>" class="nav-link">Đăng
+									<a href="<c:url value='/profile'/>" class="nav-link">Đăng
+										xuất</a>
+										<a href="<c:url value='/logout'/>" class="nav-link">Đăng
 										xuất</a>
 								</c:if></li>
 						</ul>
