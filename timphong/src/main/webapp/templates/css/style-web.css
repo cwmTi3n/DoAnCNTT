@@ -88,9 +88,12 @@
 }
 
 .profile-img {
-	width: 52px;
-	height: 52px;
-	border-radius: 50%;
+	padding: 0.5rem !important;
+	width: 80px;
+	height: 80px;
+	border-radius: 50% !important;
+	box-shadow: rgb(0 0 0 / 12%) 0rem 0.3125rem 0.625rem 0rem;
+	
 }
 
 .profile-content {
@@ -100,4 +103,9 @@
 
 .profile-content div p {
 	font-size: 20px;
+}
+
+.profile-ques{
+	border-radius: 40px;
+	font-size: 12px;
 }

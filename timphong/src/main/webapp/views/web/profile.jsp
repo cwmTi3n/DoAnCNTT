@@ -7,17 +7,15 @@
 	<div class="container">
 		<div class="row profile-row p-4 my-5">
 			<div class="d-flex col-12" style="align-items: center;">
-				
-					<img class="profile-img" src="${url }images/Logo.png">
-					<h2 class="text-black mb-0 ml-3">Welcome, ${user.getTen() }</h2>
-				
+				<img class="profile-img img-thumbnail" src="${url }images/Logo.png">
+				<h2 class="text-black mb-0 ml-3">Welcome, ${user.getTen() }</h2>
 
 			</div>
 			<div class="col-8 text-black">
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-						<p>${user.getHo()}  ${user.getTen()}</p>
+						<p>${user.getHo()} ${user.getTen()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -26,14 +24,18 @@
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Tên tài khoản</h4>
-						<p>${user.getTentk()}</p>
+						<p>
+							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out value="${user.getTentk().substring(user.getTentk().length()-1) }" />
+						</p>
 					</div>
-					
+
 				</div>
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Email</h4>
-						<p>${user.getEmail()}</p>
+						<p>
+							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out value="${user.getEmail().substring(user.getEmail().indexOf(64)) }" />
+						</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -51,13 +53,19 @@
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Bạn đang là</h4>
+						<c:if test="${user.getQuyen() ==1}">
+							<p>User</p>
+						</c:if>
+						<c:if test="${user.getQuyen() ==2}">
+							<p>Seller</p>
+						</c:if>
 						<p>${user.getQuyen()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
 					</div>
 				</div>
-				<div class="d-flex my-4 profile-content border-bottom">
+				<div class="d-flex my-4 profile-content">
 					<div>
 						<h4>Mật khẩu</h4>
 						<p>${user.getMatkhau()}</p>
@@ -68,7 +76,7 @@
 				</div>
 			</div>
 			<div class="col-4">
-				<div class="_1heub6i">
+				<div class="_1heub6i border profile-ques p-4">
 					<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
 						aria-hidden="true" role="presentation" focusable="false"
 						style="display: block; height: 48px; width: 48px; fill: rgb(227, 28, 95); stroke: currentcolor;">
@@ -84,11 +92,10 @@
 							d="M4 24h22a1 1 0 0 1 1 1v20.99a.01.01 0 0 1-.01.01H4a1 1 0 0 1-1-1V25a1 1 0 0 1 1-1z"></path>
 						<path d="M21 25v-5a6 6 0 1 0-12 0v5"></path>
 						<circle cx="15" cy="35" r="2"></circle></g></g></svg>
-					<div class="_7ps69o">Tại sao thông tin của tôi không được
-						hiển thị ở đây?</div>
-					<div class="_1s84xre">Chúng tôi đang ẩn một số thông tin tài
-						khoản để bảo vệ danh tính của bạn.</div>
-					<div class="_1b01kjw"></div>
+					<h5 class="text-black my-2">Tại sao thông tin của tôi không
+						được hiển thị ở đây?</h5>
+					<p class="pb-2 mb-4 border-bottom">Chúng tôi đang ẩn một số
+						thông tin tài khoản để bảo vệ danh tính của bạn.</p>
 					<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
 						aria-hidden="true" role="presentation" focusable="false"
 						style="display: block; height: 48px; width: 48px; fill: rgb(227, 28, 95); stroke: currentcolor;">
@@ -96,14 +103,13 @@
 						<path d="m39 15.999v28.001h-30v-28.001z" fill-opacity=".2"></path>
 						<path
 							d="m24 0c5.4292399 0 9.8479317 4.32667079 9.9961582 9.72009516l.0038418.27990484v2h7c1.0543618 0 1.9181651.8158778 1.9945143 1.8507377l.0054857.1492623v32c0 1.0543618-.8158778 1.9181651-1.8507377 1.9945143l-.1492623.0054857h-34c-1.0543618 0-1.91816512-.8158778-1.99451426-1.8507377l-.00548574-.1492623v-32c0-1.0543618.81587779-1.9181651 1.85073766-1.9945143l.14926234-.0054857h7v-2c0-5.5228475 4.4771525-10 10-10zm17 14h-34v32h34zm-17 14c1.6568542 0 3 1.3431458 3 3s-1.3431458 3-3 3-3-1.3431458-3-3 1.3431458-3 3-3zm0 2c-.5522847 0-1 .4477153-1 1s.4477153 1 1 1 1-.4477153 1-1-.4477153-1-1-1zm0-28c-4.3349143 0-7.8645429 3.44783777-7.9961932 7.75082067l-.0038068.24917933v2h16v-2c0-4.418278-3.581722-8-8-8z"></path></g></svg>
-					<div class="_7ps69o">Bạn có thể chỉnh sửa những thông tin
-						nào?</div>
-					<div class="_1s84xre">Không thể thay đổi thông tin mà Airbnb
-						sử dụng để xác minh danh tính của bạn. Bạn có thể chỉnh sửa thông
-						tin liên hệ và một số thông tin cá nhân, nhưng chúng tôi có thể
-						yêu cầu bạn xác minh danh tính vào lần tới khi bạn đặt phòng hoặc
-						tạo mục cho thuê.</div>
-					<div class="_1b01kjw"></div>
+					<h5 class="text-black my-2">Bạn có thể chỉnh sửa những thông
+						tin nào?</h5>
+					<p class="pb-2 mb-4 border-bottom">Không thể thay đổi thông tin
+						mà FINDROOM sử dụng để xác minh danh tính của bạn. Bạn có thể
+						chỉnh sửa thông tin liên hệ và một số thông tin cá nhân, nhưng
+						chúng tôi có thể yêu cầu bạn xác minh danh tính vào lần tới khi
+						bạn đặt phòng hoặc tạo mục cho thuê.</p>
 					<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"
 						aria-hidden="true" role="presentation" focusable="false"
 						style="display: block; height: 48px; width: 48px; fill: rgb(227, 28, 95); stroke: currentcolor;">
@@ -113,11 +119,11 @@
 							fill-opacity=".2"></path>
 						<path
 							d="M24 5c11.18 0 20.794 7.705 23.346 18.413l.133.587-.133.587C44.794 35.295 35.181 43 24 43 12.82 43 3.206 35.295.654 24.588l-.133-.587.048-.216C2.985 12.884 12.69 5 24 5zm0 2C13.88 7 5.16 13.887 2.691 23.509l-.12.492.032.14c2.288 9.564 10.728 16.513 20.65 16.846l.377.01L24 41c10.243 0 19.052-7.056 21.397-16.861l.031-.14-.031-.138c-2.288-9.566-10.728-16.515-20.65-16.848l-.377-.01L24 7zm0 10a7 7 0 1 1 0 14 7 7 0 0 1 0-14zm0 2a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path></g></svg>
-					<div class="_7ps69o">Thông tin nào được chia sẻ với người
-						khác?</div>
-					<div class="_1s84xre">Airbnb chỉ tiết lộ thông tin liên lạc
+					<h5 class="text-black my-2">Thông tin nào được chia sẻ với
+						người khác?</h5>
+					<p class="pb-2 mb-4 ">FINDROOM chỉ tiết lộ thông tin liên lạc
 						cho Chủ nhà/Người tổ chức và khách sau khi đặt phòng/đặt chỗ được
-						xác nhận.</div>
+						xác nhận.</p>
 				</div>
 			</div>
 		</div>
