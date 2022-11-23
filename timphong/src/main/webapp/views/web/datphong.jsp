@@ -25,8 +25,8 @@
 					<div class="d-flex day-travel my-2">
 						<div>
 							<h5 class="text-black mb-2">Tên người đặt</h5>
-							<p class="text-black">${taikhoan.getHo() }
-								${taikhoan.getTen() }</p>
+							<p class="text-black">${user.getHo() }
+								${user.getTen() }</p>
 						</div>
 						<div>
 							<button onClick="test();">Chỉnh sửa</button>
@@ -35,7 +35,7 @@
 					<div class="d-flex day-travel my-2">
 						<div>
 							<h5 class="text-black mb-2">Số điện thoại</h5>
-							<p class="text-black">${taikhoan.getSdt() }</p>
+							<p class="text-black">${user.getSdt() }</p>
 						</div>
 						<div>
 							<button onClick="test();">Chỉnh sửa</button>

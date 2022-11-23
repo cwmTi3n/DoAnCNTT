@@ -15,7 +15,7 @@
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-						<p>${user.getHo()} ${user.getTen()}</p>
+						<p>${user.getHo()}${user.getTen()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -25,7 +25,12 @@
 					<div>
 						<h4>Tên tài khoản</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out value="${user.getTentk().substring(user.getTentk().length()-1) }" />
+							<c:out value="${user.getTentk().charAt(0) }" />
+							<c:forEach begin="2" end="${user.getTentk().length() - 1}">
+								<c:out value="*" />
+							</c:forEach>
+							<c:out
+								value="${user.getTentk().substring(user.getTentk().length()-1) }" />
 						</p>
 					</div>
 
@@ -34,7 +39,12 @@
 					<div>
 						<h4>Email</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out value="${user.getEmail().substring(user.getEmail().indexOf(64)) }" />
+							<c:out value="${user.getTentk().charAt(0) }" />
+							<c:forEach begin="2" end="${user.getEmail().indexOf(64) }">
+								<c:out value="*" />
+							</c:forEach>
+							<c:out
+								value="${user.getEmail().substring(user.getEmail().indexOf(64)) }" />
 						</p>
 					</div>
 					<div>
@@ -59,10 +69,11 @@
 						<c:if test="${user.getQuyen() ==2}">
 							<p>Seller</p>
 						</c:if>
-						<p>${user.getQuyen()}</p>
 					</div>
 					<div>
-						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
+						<c:if test="${user.getQuyen() ==1}">
+							<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
+						</c:if>
 					</div>
 				</div>
 				<div class="d-flex my-4 profile-content">
