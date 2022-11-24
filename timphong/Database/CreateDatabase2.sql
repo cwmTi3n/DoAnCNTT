@@ -58,8 +58,7 @@ CREATE TABLE [dbo].[hinhanh](
 CREATE TABLE [dbo].[dathen](
 	id_tk INT NOT NULL,
 	id_p INT NOT NULL,
-	luu INT,
-	xacnhan INT,
+	trangthai INT,
 	ngay DATE,
 	gio TIME
 	PRIMARY KEY (id_tk, id_p),
