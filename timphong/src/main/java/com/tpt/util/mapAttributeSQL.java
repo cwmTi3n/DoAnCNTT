@@ -172,12 +172,14 @@ public class mapAttributeSQL
 		Dathen dathen = new Dathen();
 		try
 		{
-			dathen.setTentk(rSet.getString("tentk"));
-			dathen.setId_p(rSet.getInt("id_p"));
-			dathen.setLuu(rSet.getBoolean("luu"));
-			dathen.setXacnhan(rSet.getInt("xacnhan"));
+			int id_p = rSet.getInt("id_p");
+			dathen.setId_tk(rSet.getInt("id_tk"));
+			dathen.setId_p(id_p);
+			dathen.setTrangthai(rSet.getInt("trangthai"));
 			dathen.setNgay(rSet.getDate("ngay"));
 			dathen.setGio(rSet.getTime("gio"));
+			IPhongDao phongDao = new PhongDaoImpl();
+			dathen.setPhong(phongDao.getPhong(id_p));
 			return dathen;
 		} catch (Exception e)
 		{

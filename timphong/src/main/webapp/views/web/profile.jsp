@@ -15,7 +15,7 @@
 				<div class="d-flex my-4 profile-content border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-						<p>${user.getHo()}${user.getTen()}</p>
+						<p>${user.getHo()} ${user.getTentk()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
