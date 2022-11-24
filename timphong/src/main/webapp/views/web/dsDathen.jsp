@@ -56,7 +56,7 @@
 									<th scope="col">Giá</th>
 									<th scope="col">Địa chỉ</th>
 									<th scope="col">Thời gian</th>
-									<th scope="col"></th>
+									<th scope="col">${hanhdong==2?"Liên hệ":""}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -72,8 +72,19 @@
 										<td>${dh.phong.gia}</td>
 										<td>${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen }, ${dh.phong.xa.huyen.tinh.tentinh }</td>
 										<td>${dh.ngay } ${dh.gio }</td>
+										<c:if test="${dh.trangthai==1 }">
 										<td><a href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a> / 
 											<a href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
+										</c:if>
+										<c:if test="${dh.trangthai==2 }">
+											<td>${dh.phong.taikhoan.sdt}</td>
+										</c:if>
+										<c:if test="${dh.trangthai==3 }">
+											<td>
+												<td><a href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a> / 
+												<a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt lại</a>
+											</td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</tbody>

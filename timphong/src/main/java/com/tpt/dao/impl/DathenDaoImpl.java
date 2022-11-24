@@ -122,6 +122,32 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 			}
 		} catch (Exception e)
 		{
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
+	@Override
+	public List<Dathen> findBySeller(int id_tk, int tt)
+	{
+		String sql = "select dathen.id_p, dathen.id_tk, dathen.trangthai, dathen.ngay, dathen.gio from  (select * from phong where id_tk = ?) p_tk "
+				+ "							join dathen on p_tk.id_p = dathen.id_p where dathen.trangthai = ?";
+		List<Dathen> dathens = new ArrayList<>();
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, id_tk);
+			pStatement.setInt(2, tt);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL map = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				dathens.add(map.mapDathen(rSet));
+			}
+			return dathens;
+		} catch (Exception e)
+		{
 			// TODO: handle exception
 		}
 		return null;
@@ -134,6 +160,6 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 //		dathen.setId_p(1);
 //		dathen.setId_tk(4);
 //		dathen.setTrangthai(0);
-//		System.out.println(dathenDaoImpl.insertDathen(dathen));
+//		System.out.println(dathenDaoImpl.findBySeller(1, 2).size());
 //	}
 }

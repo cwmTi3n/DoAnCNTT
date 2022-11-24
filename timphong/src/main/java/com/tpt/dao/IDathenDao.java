@@ -17,4 +17,6 @@ public interface IDathenDao
 
 	Dathen findDathen(int id_tk, int id_p);
 
+	List<Dathen> findBySeller(int id_tk, int tt);
+
 }

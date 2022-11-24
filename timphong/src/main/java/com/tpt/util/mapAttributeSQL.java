@@ -8,12 +8,14 @@ import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.ILoaiphongDao;
 import com.tpt.dao.IPhongDao;
 import com.tpt.dao.IQuanHuyenDao;
+import com.tpt.dao.ITaikhoanDao;
 import com.tpt.dao.ITinhDao;
 import com.tpt.dao.IXaphuongDao;
 import com.tpt.dao.impl.HinhanhDaoImpl;
 import com.tpt.dao.impl.LoaiphongDaoImpl;
 import com.tpt.dao.impl.PhongDaoImpl;
 import com.tpt.dao.impl.QuanhuyenDaoImpl;
+import com.tpt.dao.impl.TaikhoanDaoImpl;
 import com.tpt.dao.impl.TinhDaoImpl;
 import com.tpt.dao.impl.XaphuongDaoImpl;
 import com.tpt.model.Dathen;
@@ -173,13 +175,16 @@ public class mapAttributeSQL
 		try
 		{
 			int id_p = rSet.getInt("id_p");
-			dathen.setId_tk(rSet.getInt("id_tk"));
+			int id_tk = rSet.getInt("id_tk");
+			dathen.setId_tk(id_tk);
 			dathen.setId_p(id_p);
 			dathen.setTrangthai(rSet.getInt("trangthai"));
 			dathen.setNgay(rSet.getDate("ngay"));
 			dathen.setGio(rSet.getTime("gio"));
 			IPhongDao phongDao = new PhongDaoImpl();
+			ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
 			dathen.setPhong(phongDao.getPhong(id_p));
+			dathen.setNguoidat(taikhoanDao.getTaikhoan(id_tk));
 			return dathen;
 		} catch (Exception e)
 		{

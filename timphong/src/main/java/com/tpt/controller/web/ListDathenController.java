@@ -76,6 +76,7 @@ public class ListDathenController extends HttpServlet
 		List<Dathen> dhLuu = dathenService.findByTrangthai(id_tk, 0);
 		req.setAttribute("dhChoxn", dhChoxn);
 		req.setAttribute("dhLuu", dhLuu);
+		req.setAttribute("hanhdong", trangthai);
 	}
 	
 	protected void luuDathen(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
