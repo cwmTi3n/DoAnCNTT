@@ -92,20 +92,45 @@
 	width: 80px;
 	height: 80px;
 	border-radius: 50% !important;
-	box-shadow: rgb(0 0 0 / 12%) 0rem 0.3125rem 0.625rem 0rem;
-	
+	box-shadow: rgb(0 0 0/ 12%) 0rem 0.3125rem 0.625rem 0rem;
 }
 
 .profile-content {
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
+}
+
+.profile-content-change {
+	border-radius: 16px;
+}
+
+.profile-content-change:focus-within {
+	outline: -webkit-focus-ring-color auto 1px;
+}
+
+.profile-content-input {
+	font-size: 20px;
+	width: 100%;
+}
+
+.profile-content-input:focus-visible {
+	outline: none;
 }
 
 .profile-content div p {
 	font-size: 20px;
 }
 
-.profile-ques{
+.profile-ques {
 	border-radius: 40px;
 	font-size: 12px;
+}
+
+.profile-block-item {
+	aspect-ratio: 1/1;
+	color: #fff;
+	border-radius: 16px;
+	padding: 12px;
+	margin-right: 3%;
 }
