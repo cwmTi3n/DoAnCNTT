@@ -8,21 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = { "/datphong" })
-public class DatphongController extends HttpServlet {
+@WebServlet(urlPatterns = { "/trangcuatui"})
+public class TrangTkController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		req.setCharacterEncoding("utf-8");
-		req.getRequestDispatcher("/views/web/datphong.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/web/trangcanhan.jsp").forward(req, resp);
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
+
 	}
 }

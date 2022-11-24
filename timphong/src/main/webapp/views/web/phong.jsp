@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/templates/" var="url"></c:url>
 
-
+<h1 id="id_p" style="display:none;">${phong.id_p }</h1> <!-- Cần cách xử lý khác -->
 <div class="site-section site-section-phong" id="property-details">
 	<div class="container">
 		<div class="row">
@@ -19,15 +19,6 @@
 								alt="Image" class="img-fluid">
 						</div>
 					</c:forEach>
-					
-					<div>
-						<img src="${url }images/property_2.jpg" alt="Image"
-							class="img-fluid">
-					</div>
-					<div>
-						<img src="${url }images/property_3.jpg" alt="Image"
-							class="img-fluid">
-					</div>
 				</div>
 			</div>
 			<div class="col-lg-5 pl-lg-5 ml-auto">
@@ -37,10 +28,11 @@
 					<p>Địa chỉ: ${phong.getXa().getTenxa()},
 						${phong.getXa().getHuyen().getTenhuyen()},
 						${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
-					<p>${phong.getMoTa() }</p>
+					<p>${phong.mota }</p>
 					<p>
-						<a href="#" class="btn btn-primary">Đặt phòng</a>
+						<a href="<c:url value='/dathen?id_p=${phong.id_p }'/>" class="btn btn-primary">Đặt hẹn ngay</a>
 					</p>
+						<button onClick="luuPhong()" class="btn btn-primary">Lưu phòng</button>
 				</div>
 
 				<div class="mb-5">
@@ -58,3 +50,17 @@
 		</div>
 	</div>
 </div>
+<script>
+	function luuPhong() {
+		var id_p = document.getElementById('id_p').innerHTML;
+		$.ajax({
+			url : "/timphong/listdathen/luu", //send to Controller
+			type : "post", //send it through get method
+			data : {
+				id_p : id_p
+			},
+			success : function(data) {
+			}
+		});
+	};
+</script>

@@ -34,7 +34,7 @@
 							<th scope="row">${STT.index+1}</th>
 							<td><a
 								href="<c:url value="/admin/taikhoan?id_tk=${seller.id_tk }"/>">${seller.tentk}</a></td>
-							<td>${seller.ho}${seller.ten}</td>
+							<td>${seller.ho} ${seller.ten}</td>
 							<td>${seller.sdt}</td>
 							<td>${seller.email}</td>
 							<td><a
@@ -63,7 +63,7 @@
 								<th scope="row">${STT.index+1}</th>
 								<td><a
 									href="<c:url value="/admin/taikhoan?id_tk=${user.id_tk }"/>">${user.tentk}</a></td>
-								<td>${user.ho}${user.ten}</td>
+								<td>${user.ho} ${user.ten}</td>
 								<td>${user.sdt}</td>
 								<td>${user.email}</td>
 								<td><a

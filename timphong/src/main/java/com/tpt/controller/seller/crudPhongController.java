@@ -11,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.tpt.model.Loaiphong;
 import com.tpt.model.Phong;
+import com.tpt.model.Taikhoan;
 import com.tpt.model.Tinh;
 import com.tpt.service.IHinhanhService;
 import com.tpt.service.ILoaiphongService;
@@ -54,7 +56,7 @@ public class crudPhongController extends HttpServlet
 			deleteAnhPhong(req, resp);
 			getPhong(req, resp);
 		}
-		findAll(req, resp);
+		findPhongSeller(req, resp);
 		req.getRequestDispatcher("/views/seller/quanlyphong.jsp").forward(req, resp);
 	}
 	
@@ -77,9 +79,13 @@ public class crudPhongController extends HttpServlet
 		}
 		resp.sendRedirect(req.getContextPath() + "/seller/ql-phong");
 	}
-	protected void findAll(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	protected void findPhongSeller(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		List<Phong> phongs = phongService.getPhongSeller(1); //Khi có đăng nhập thì chỉnh lại id_tk
+		HttpSession session = req.getSession();
+		Object object = session.getAttribute("account");
+		Taikhoan taikhoan = (Taikhoan)object;
+		int id_tk = taikhoan.getId_tk();
+		List<Phong> phongs = phongService.getPhongSeller(id_tk); //Khi có đăng nhập thì chỉnh lại id_tk
 		List<Loaiphong> loaiphongs = loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
 		req.setAttribute("tinhs", tinhs);

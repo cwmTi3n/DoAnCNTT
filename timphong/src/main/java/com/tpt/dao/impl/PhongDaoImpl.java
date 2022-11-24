@@ -11,8 +11,10 @@ import org.hibernate.cfg.annotations.ListBinder;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IPhongDao;
+import com.tpt.dao.ITaikhoanDao;
 import com.tpt.model.Hinhanh;
 import com.tpt.model.Phong;
+import com.tpt.model.Taikhoan;
 import com.tpt.util.mapAttributeSQL;
 
 public class PhongDaoImpl extends DBConnection implements IPhongDao
@@ -79,7 +81,11 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while (rSet.next())
 			{
-				return mapPhong.mapPhong(rSet);
+				Phong phong = mapPhong.mapPhong(rSet);
+				ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
+				Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
+				phong.setTaikhoan(taikhoan);
+				return phong;
 			}
 		} catch (Exception e)
 		{

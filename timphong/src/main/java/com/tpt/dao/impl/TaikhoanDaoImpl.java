@@ -204,8 +204,10 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			pStatement.setString(2, taikhoan.getMatkhau());
 			ResultSet rSet = pStatement.executeQuery();
 			mapAttributeSQL mapTK = new mapAttributeSQL();
-			rSet.next();
-			return mapTK.mapTaikhoan(rSet);
+			while(rSet.next())
+			{
+				return mapTK.mapTaikhoan(rSet);
+			}
 			
 		} catch (Exception e)
 		{

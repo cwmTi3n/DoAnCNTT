@@ -22,7 +22,11 @@
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
+<<<<<<< HEAD
+						<p>${user.getHo()} ${user.getTentk()}</p>
+=======
 						<p>${user.getHo()} ${user.getTen()}</p>
+>>>>>>> 4ffc89409f332d912d5e9b99ec71f29565f6b861
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>

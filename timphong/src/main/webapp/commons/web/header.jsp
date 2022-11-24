@@ -11,7 +11,7 @@
 
 				<div class="col-6 col-xl-2">
 					<h1 class="mb-0 site-logo p-0">
-						<a href="<c:url value='/trangchu'/>" class="mb-0">Find Room</a>
+						<a href="<c:url value='/trangchu'/>" class="mb-0">Tìm phòng</a>
 					</h1>
 				</div>
 
@@ -21,23 +21,27 @@
 
 						<ul
 							class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+							<c:if test="${sessionScope.account.quyen == 1}">
+								<li><a href="<c:url value='/admin/list-taikhoan'/>" class="nav-link">Quản lý web</a></li>
+							</c:if>
 							<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang
 									chủ</a></li>
-							<li><a href="#properties-section" class="nav-link">Phòng
-									đang hot</a></li>
 							<li><a href="/timphong/listings" class="nav-link">Tìm
 									kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
-							<li><c:if test="${empty user }">
-									<a href="<c:url value='/login'/>" class="nav-link">Đăng
-										nhập</a>
-								</c:if></li>
-							<li><c:if test="${not empty user }">
-									<a href="<c:url value='/profile'/>" class="nav-link">Đăng
-										xuất</a>
+							<c:if test="${sessionScope.account == null}">
+								<li>
+									<a href="<c:url value='/login'/>" class="nav-link">Đăng nhập</a>
+								</li>
+							</c:if>
+							<c:if test="${sessionScope.account != null}">
+								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":"User:"} ${sessionScope.account.tentk }</a></li>
+								<li>
+									<a href="<c:url value='/profile'/>" class="nav-link"></a>
 										<a href="<c:url value='/logout'/>" class="nav-link">Đăng
 										xuất</a>
-								</c:if></li>
+								</li>
+							</c:if>
 						</ul>
 					</nav>
 				</div>

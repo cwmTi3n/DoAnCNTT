@@ -21,14 +21,14 @@
 				<form action="login" method="post">
 					<div class="containe-loginr__content__input-username input-login">
 						<input class="input-username input-login" type="text"
-							placeholder="Tên đăng nhập" name="tentk">
+							placeholder="Tên đăng nhập" name="tentk" value="${tentk}">
 					</div>
 					<div class="container-login__content__input-password input-login">
 						<input class="input-password input-login" type="password"
-							placeholder="Mật khẩu" name="matkhau">
+							placeholder="Mật khẩu" name="matkhau" value="${matkhau }">
 					</div>
 					<div class="container-login__content__remember-me">
-						<input type="checkbox" value="lsRememberMe" id="rememberMe">
+						<input type="checkbox" value="lsRememberMe" id="rememberMe" ${matkhau==null?"":"checked" } name="rmb">
 						<label for="rememberMe" class="rememberMe-text">Remember
 							me</label>
 					</div>

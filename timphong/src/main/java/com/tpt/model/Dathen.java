@@ -5,10 +5,9 @@ import java.sql.Time;
 
 public class Dathen
 {
-	private String tentk;
+	private int id_tk;
 	private int id_p;
-	private Boolean luu;
-	private int xacnhan;
+	private int trangthai;
 	private Date ngay;
 	private Time gio;
 	private Taikhoan nguoidat;
@@ -16,26 +15,24 @@ public class Dathen
 	public Dathen()
 	{
 	}
-	public Dathen(String tentk, int id_p, Boolean luu, int xacnhan, Date ngay, Time gio, Taikhoan nguoidat,
-			Phong phong)
+	public Dathen(int id_tk, int id_p, int trangthai, Date ngay, Time gio, Taikhoan nguoidat, Phong phong)
 	{
 		super();
-		this.tentk = tentk;
+		this.id_tk = id_tk;
 		this.id_p = id_p;
-		this.luu = luu;
-		this.xacnhan = xacnhan;
+		this.trangthai = trangthai;
 		this.ngay = ngay;
 		this.gio = gio;
 		this.nguoidat = nguoidat;
 		this.phong = phong;
 	}
-	public String getTentk()
+	public int getId_tk()
 	{
-		return tentk;
+		return id_tk;
 	}
-	public void setTentk(String tentk)
+	public void setId_tk(int id_tk)
 	{
-		this.tentk = tentk;
+		this.id_tk = id_tk;
 	}
 	public int getId_p()
 	{
@@ -45,21 +42,13 @@ public class Dathen
 	{
 		this.id_p = id_p;
 	}
-	public Boolean getLuu()
+	public int getTrangthai()
 	{
-		return luu;
+		return trangthai;
 	}
-	public void setLuu(Boolean luu)
+	public void setTrangthai(int trangthai)
 	{
-		this.luu = luu;
-	}
-	public int getXacnhan()
-	{
-		return xacnhan;
-	}
-	public void setXacnhan(int xacnhan)
-	{
-		this.xacnhan = xacnhan;
+		this.trangthai = trangthai;
 	}
 	public Date getNgay()
 	{
@@ -93,6 +82,5 @@ public class Dathen
 	{
 		this.phong = phong;
 	}
-	
 	
 }
