@@ -62,7 +62,7 @@ CREATE TABLE [dbo].[dathen](
 	ngay DATE,
 	gio TIME
 	PRIMARY KEY (id_tk, id_p),
-	CONSTRAINT FK_dathen_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk)
-	on delete cascade,
+	CONSTRAINT FK_dathen_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),
 	CONSTRAINT FK_dathen_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
+	on delete cascade
 );
