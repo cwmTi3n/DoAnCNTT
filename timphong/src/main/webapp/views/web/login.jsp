@@ -28,9 +28,9 @@
 							placeholder="Mật khẩu" name="matkhau" value="${matkhau }">
 					</div>
 					<div class="container-login__content__remember-me">
-						<input type="checkbox" value="lsRememberMe" id="rememberMe" ${matkhau==null?"":"checked" } name="rmb">
-						<label for="rememberMe" class="rememberMe-text">Remember
-							me</label>
+						<input type="checkbox" value="lsRememberMe" id="rememberMe"
+							${matkhau==null?"":"checked" } name="rmb"> <label
+							for="rememberMe" class="rememberMe-text">Remember me</label>
 					</div>
 					<c:if test="${not empty error}">
 						<p class="text-danger my-0">${error}</p>
@@ -52,7 +52,7 @@
 					<div class="register">
 						<div class="register__container container">
 							<div class="register__container__close">
-								
+
 								<label for="register"> <i class="bi bi-x-circle"></i>
 								</label>
 							</div>
@@ -70,55 +70,64 @@
 								</span>
 
 							</div>
-							<div class="register__container__body row">
-								<div class="col-md-6 my-1">
-									<!-- <label for="firstName" class="register__container__body__label">First Name</label> -->
-									<input type="text" class="register__container__body__input"
-										placeholder="Họ">
-								</div>
-								<div class="col-md-6 my-1">
+							<form action="register" method="post">
+								<div class="register__container__body row">
+									<div class="col-md-6 my-1">
+										<!-- <label for="firstName" class="register__container__body__label">First Name</label> -->
+										<input type="text" class="register__container__body__input"
+											placeholder="Họ" name="ho">
+									</div>
+									<div class="col-md-6 my-1">
 
-									<!-- <label for="lastName" class="register__container__body__label">last Name</label> -->
-									<input type="text" class="register__container__body__input"
-										placeholder="Tên">
-								</div>
-								<div class="col-md-6 my-1">
-									<!-- <label for="phoneNumber" class="register__container__body__label">Phone Number</label> -->
-									<input type="text" class="register__container__body__input"
-										placeholder="Tài khoản">
-								</div>
-								<div class="col-md-6 my-1">
-									<!-- <label for="userName" class="register__container__body__label">User Name</label> -->
-									<input type="text" class="register__container__body__input"
-										placeholder="Số điện thoại">
-								</div>
-								<div class="col-md-6 my-1">
-									<!-- <label for="email" class="register__container__body__label">Email</label> -->
-									<input type="password" class="register__container__body__input"
-										placeholder="Mật khẩu">
-								</div>
-								<div class="col-md-6 my-1">
-									<!-- <label for="password" class="register__container__body__label">Password</label> -->
-									<input type="password" class="register__container__body__input"
-										placeholder="Nhập lại mật khẩu">
-								</div>
-								<div class="col-md-12 my-1">
-									<!-- <label for="confirmPassword" class="register__container__body__label">Confirm Password</label> -->
-									<input type="email" class="register__container__body__input"
-										placeholder="Đại chỉ email" style="display: block">
-								</div>
-								<div class="col-md-12 my-2">
+										<!-- <label for="lastName" class="register__container__body__label">last Name</label> -->
+										<input type="text" class="register__container__body__input"
+											placeholder="Tên" name="ten">
+									</div>
+									<div class="col-md-6 my-1">
+										<!-- <label for="phoneNumber" class="register__container__body__label">Phone Number</label> -->
+										<input type="text" class="register__container__body__input"
+											placeholder="Tài khoản" name="taikhoanregister">
+									</div>
+									<div class="col-md-6 my-1">
+										<!-- <label for="userName" class="register__container__body__label">User Name</label> -->
+										<input type="text" class="register__container__body__input"
+											placeholder="Số điện thoại" name="sdt">
+									</div>
+									<div class="col-md-6 my-1">
+										<!-- <label for="email" class="register__container__body__label">Email</label> -->
+										<input type="password"
+											class="register__container__body__input"
+											placeholder="Mật khẩu" name="matkhauregister">
+									</div>
+									<div class="col-md-6 my-1">
+										<!-- <label for="password" class="register__container__body__label">Password</label> -->
+										<input type="password"
+											class="register__container__body__input"
+											placeholder="Nhập lại mật khẩu" name="confirmmatkhauregister">
+									</div>
+									<div class="col-md-12 my-1">
+										<!-- <label for="confirmPassword" class="register__container__body__label">Confirm Password</label> -->
+										<input type="email" class="register__container__body__input"
+											placeholder="Đại chỉ email" style="display: block"
+											name="email">
+									</div>
+									<div class="col-md-12 my-2">
 
-									<p class="register__container__body__text">
-										By clicking Sign Up, you agree to our Terms, Privacy Policy
-										and Cookies Policy.<br>You may receive SMS notifications
-										from us and can opt out at any time.
-									</p>
+										<p class="register__container__body__text">
+											By clicking Sign Up, you agree to our Terms, Privacy Policy
+											and Cookies Policy.<br>You may receive SMS notifications
+											from us and can opt out at any time.
+										</p>
+									</div>
+									<c:if test="${not empty errorverify}">
+										<p class="text-danger my-0">${errorverify}</p>
+									</c:if>
+									<div class="col-md-12 register__container__body__button">
+										<button class="button-signUp btn" type="submit">Sign
+											Up</button>
+									</div>
 								</div>
-								<div class="col-md-12 register__container__body__button">
-									<button class="button-signUp btn">Sign Up</button>
-								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
