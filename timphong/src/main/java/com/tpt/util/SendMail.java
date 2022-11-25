@@ -1,7 +1,6 @@
 package com.tpt.util;
 
 import java.util.Properties;
-import java.util.Random;
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -12,14 +11,8 @@ import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
 
 public class SendMail {
-	public String getRandom() {
-		Random rnd = new Random();
-		int number = rnd.nextInt(999999);
-		
-		return String.format("%06d", number);
-	}
 	
-	public boolean sendEmail(String userMail, String code, String subject, String text) {
+	public static final boolean sendEmail(String userMail, String subject, String text) {
 		
         final String username = "hokimtien0202@gmail.com";
         final String password = "ldjsimqduugmbqkc";
@@ -46,7 +39,7 @@ public class SendMail {
                     InternetAddress.parse(userMail)
             );
             message.setSubject(subject);
-            message.setText(text + code);
+            message.setText(text);
 
             Transport.send(message);
             System.out.println("Done");

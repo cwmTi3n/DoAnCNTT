@@ -1,13 +1,42 @@
 package com.tpt.util;
 
 import java.util.List;
+import java.util.Random;
 
 import javax.validation.Path.ReturnValueNode;
 
 import com.tpt.model.Phong;
+import com.tpt.model.Taikhoan;
 
 public class ConstantFunction
 {
+	public static final String getRandom() {
+		Random rnd = new Random();
+		int number = rnd.nextInt(999999);
+		
+		return String.format("%06d", number);
+	}
+	
+	public static final String textDathenUser(Taikhoan taikhoan)
+	{
+		String text;
+		text = "Chào " + taikhoan.getHo() + " " 
+		+ taikhoan.getTen() + ",\n" 
+		+ "Lịch hẹn của bạn đang chờ xác nhận.\n"
+		+ "Cảm ơn đã sử dụng dịch vụ của chúng tôi.";
+		return text;
+	}
+	
+	public static final String textDathenSeller(Taikhoan taikhoan, Phong phong)
+	{
+		String text;
+		text = "Chào " + taikhoan.getHo() + " " 
+		+ taikhoan.getTen() + ",\n" 
+		+ "Có người vừa muốn xem phòng: " + phong.getTen() + "\n"
+		+ "Cảm ơn đã sử dụng dịch vụ của chúng tôi.";
+		return text;
+	}
+	
 //	public static List<Phong> locPhong(List<Phong> phongs, int[] loc)
 //	{
 //		if(loc[0] != 0)

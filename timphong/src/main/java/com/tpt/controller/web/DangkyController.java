@@ -14,6 +14,7 @@ import com.tpt.model.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
 import com.tpt.util.Constant;
+import com.tpt.util.ConstantFunction;
 import com.tpt.util.SendMail;
 
 @WebServlet(urlPatterns = { "/register" })
@@ -28,10 +29,9 @@ public class DangkyController extends HttpServlet {
 		resp.setCharacterEncoding("utf-8");
 
 		String userMail = req.getParameter("email");
-		SendMail sm = new SendMail();
-		String code = sm.getRandom();
+		String code = ConstantFunction.getRandom();
 
-		boolean test = sm.sendEmail(userMail, code, Constant.subMailVerify, Constant.textMailVerify);
+		boolean test = SendMail.sendEmail(userMail, Constant.subMailVerify, Constant.textMailVerify+code);
 		if (test) {
 			HttpSession session = req.getSession();
 			session.setAttribute("code", code);
