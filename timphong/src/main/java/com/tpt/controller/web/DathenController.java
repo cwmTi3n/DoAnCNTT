@@ -96,11 +96,10 @@ public class DathenController extends HttpServlet
 		if(check)
 		{
 			Phong phong = phongService.getPhong(id_p);
-			String textSeller = ConstantFunction.textDathenSeller(phong.getTaikhoan(), phong);
+			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
 			String textUser = ConstantFunction.textDathenUser(taikhoan);
 			SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
 			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
-
 		}
 	}
 }

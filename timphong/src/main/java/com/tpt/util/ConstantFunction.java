@@ -5,6 +5,7 @@ import java.util.Random;
 
 import javax.validation.Path.ReturnValueNode;
 
+import com.tpt.model.Dathen;
 import com.tpt.model.Phong;
 import com.tpt.model.Taikhoan;
 
@@ -27,12 +28,13 @@ public class ConstantFunction
 		return text;
 	}
 	
-	public static final String textDathenSeller(Taikhoan taikhoan, Phong phong)
+	public static final String textDathenSeller(Phong phong, Dathen dathen)
 	{
 		String text;
-		text = "Chào " + taikhoan.getHo() + " " 
-		+ taikhoan.getTen() + ",\n" 
+		text = "Chào " + phong.getTaikhoan().getHo() + " " 
+		+ phong.getTaikhoan().getTen() + ",\n" 
 		+ "Có người vừa muốn xem phòng: " + phong.getTen() + "\n"
+		+ "Thời gian:" + dathen.getNgay().toString() + " " + dathen.getGio().toString() + "\n"
 		+ "Cảm ơn đã sử dụng dịch vụ của chúng tôi.";
 		return text;
 	}
