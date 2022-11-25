@@ -197,7 +197,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<Phong> pagingPhong(int index, String keyword, int loc[])
 	{
 		List<Phong> phongs = new ArrayList<>();
-		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
+		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
 				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
