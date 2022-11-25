@@ -14,9 +14,12 @@ public interface IPhongService
 	public boolean deletePhong(int id_p);
 	
 	public List<Phong> get9Phong();
-	public List<Phong> pagingPhong(int index, String keyword);
+	public List<Phong> pagingPhong(int index, String keyword, int loc[]);
 	public List<Phong> getAll();
 	
 	public List<Phong> searchPhong(String keyword);
+	
+	public List<Phong> locPhong(String keyword, int loc[]);
+
 
 }

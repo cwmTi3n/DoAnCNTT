@@ -26,6 +26,9 @@ import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.DathenServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TaikhoanServiceImpl;
+import com.tpt.util.Constant;
+import com.tpt.util.ConstantFunction;
+import com.tpt.util.SendMail;
 
 @WebServlet(urlPatterns = {"/dathen", "/dathen/dat"})
 public class DathenController extends HttpServlet
@@ -85,10 +88,18 @@ public class DathenController extends HttpServlet
 		Time time = Time.valueOf(gioString);
 		dathen.setGio(time);
 		dathen.setNgay(date);
-		
-		if(!dathenService.insertDathen(dathen));
+		boolean check = dathenService.insertDathen(dathen);
+		if(!check);
 		{
-			dathenService.editDathen(dathen);
+			check = dathenService.editDathen(dathen);
+		}
+		if(check)
+		{
+			Phong phong = phongService.getPhong(id_p);
+			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
+			//String textUser = ConstantFunction.textDathenUser(taikhoan);
+			//SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
+			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
 		}
 	}
 }
