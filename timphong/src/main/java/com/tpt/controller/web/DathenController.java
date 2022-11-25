@@ -97,8 +97,8 @@ public class DathenController extends HttpServlet
 		{
 			Phong phong = phongService.getPhong(id_p);
 			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
-			String textUser = ConstantFunction.textDathenUser(taikhoan);
-			SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
+			//String textUser = ConstantFunction.textDathenUser(taikhoan);
+			//SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
 			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
 		}
 	}
