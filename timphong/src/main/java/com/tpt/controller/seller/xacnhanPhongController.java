@@ -10,10 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
+
 import com.tpt.model.Dathen;
 import com.tpt.model.Taikhoan;
 import com.tpt.service.IDathenService;
 import com.tpt.service.impl.DathenServiceImpl;
+import com.tpt.util.Constant;
+import com.tpt.util.ConstantFunction;
+import com.tpt.util.SendMail;
 
 @WebServlet(urlPatterns = {"/xacnhan-p", "/xacnhan-p/huy", "/xacnhan-p/dongy"})
 public class xacnhanPhongController extends HttpServlet
@@ -86,7 +91,11 @@ public class xacnhanPhongController extends HttpServlet
 		if(dathen != null)
 		{		
 			dathen.setTrangthai(trangthai);
-			dathenService.editDathen(dathen);
+			if(dathenService.editDathen(dathen))
+			{
+				String text = ConstantFunction.textDathenUser(dathen);
+				SendMail.sendEmail(dathen.getNguoidat().getEmail(), Constant.subMailUserdh, text);
+			}
 		}
 	}	
 }

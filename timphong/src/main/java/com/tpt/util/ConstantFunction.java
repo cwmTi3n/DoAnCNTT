@@ -18,13 +18,24 @@ public class ConstantFunction
 		return String.format("%06d", number);
 	}
 	
-	public static final String textDathenUser(Taikhoan taikhoan)
+	public static final String textDathenUser(Dathen dathen)
 	{
 		String text;
-		text = "Chào " + taikhoan.getHo() + " " 
-		+ taikhoan.getTen() + ",\n" 
-		+ "Lịch hẹn của bạn đang chờ xác nhận.\n"
-		+ "Cảm ơn đã sử dụng dịch vụ của chúng tôi.";
+		text = "Chào " + dathen.getNguoidat().getHo() + " " 
+		+ dathen.getNguoidat().getTen() + ",\n" 
+		+ "Lịch hẹn của bạn đã ";
+		if(dathen.getTrangthai()==2)
+		{
+			text+="được xác nhận.\n"
+				+ "\tSố điện thoại chủ phòng: " + dathen.getPhong().getTaikhoan().getSdt()
+				+ "\n\tEmai: " + dathen.getPhong().getTaikhoan().getEmail()
+				+ "\n\tThời gian" + dathen.getNgay() + " " + dathen.getGio();
+		}
+		else
+		{
+			text+="bị hủy";
+		}
+		text+= "\nCảm ơn đã sử dụng dịch vụ của chúng tôi.";
 		return text;
 	}
 	
