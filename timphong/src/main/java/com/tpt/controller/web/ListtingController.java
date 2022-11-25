@@ -43,7 +43,8 @@ public class ListtingController extends HttpServlet
 		List<Loaiphong> loaiphongs= loaiphongService.getAll();
 		List<Tinh> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
-		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
+//		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
+		List<Phong> phongs = phongService.searchPhong(keyword);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);

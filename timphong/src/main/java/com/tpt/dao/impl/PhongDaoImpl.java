@@ -221,7 +221,6 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			sql += "and id_x = ? ";
 		}
 		sql += " order by id_p OFFSET ? row fetch next 3 row only";
-		System.out.println(sql);
 		try
 		{
 			connection = super.getConnection();
@@ -333,7 +332,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<Phong> searchPhong(String keyword)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select * from Phong where trangthai=1 and (ten like ? or mota like ?)";
+		String sql = "select top 9 * from Phong where trangthai=1 and (ten like ? or mota like ?)";
 		try
 		{
 			connection = super.getConnection();
