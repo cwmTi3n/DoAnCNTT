@@ -18,5 +18,8 @@ public interface IPhongService
 	public List<Phong> getAll();
 	
 	public List<Phong> searchPhong(String keyword);
+	
+	public List<Phong> locPhong(String keyword, int loc[]);
+
 
 }

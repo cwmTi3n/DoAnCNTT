@@ -39,7 +39,6 @@ public class PagingAjaxPhongController extends HttpServlet {
 		int[] loc = new int[4];
 		locString[0] = req.getParameter("loaiphong");
 		locString[1] = req.getParameter("tinh");
-		System.out.println("oke " + locString[1]);
 		locString[2] = req.getParameter("huyen");
 		locString[3] = req.getParameter("xa");
 		for(int i = 0; i < 4; i++)

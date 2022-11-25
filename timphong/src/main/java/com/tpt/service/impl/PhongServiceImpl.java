@@ -167,4 +167,10 @@ public class PhongServiceImpl implements IPhongService
 		// TODO Auto-generated method stub
 		return phongDao.searchPhong(keyword);
 	}
+	@Override
+	public List<Phong> locPhong(String keyword, int[] loc)
+	{
+		// TODO Auto-generated method stub
+		return phongDao.locPhong(keyword, loc);
+	}
 }

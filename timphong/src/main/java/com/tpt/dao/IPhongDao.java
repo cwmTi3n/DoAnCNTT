@@ -20,4 +20,5 @@ public interface IPhongDao
 	
 	public List<Phong> searchPhong(String keyword);
 	public boolean sellerUpdatePhong(Phong phong);
+	List<Phong> locPhong(String keyword, int loc[]);
 }

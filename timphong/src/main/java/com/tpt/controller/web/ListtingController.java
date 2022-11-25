@@ -69,8 +69,9 @@ public class ListtingController extends HttpServlet
 				loc[i] = Integer.parseInt(locString[i]);
 			}
 		}
-		List<Phong> searchPhong = phongService.searchPhong(keyword);
-		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
+//		List<Phong> searchPhong = phongService.searchPhong(keyword);
+//		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
+		List<Phong> phongs = phongService.locPhong(keyword, loc);
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{

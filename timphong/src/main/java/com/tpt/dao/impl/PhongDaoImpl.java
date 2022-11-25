@@ -310,13 +310,78 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return false;
 	}
 	
+	@Override
+	public List<Phong> locPhong(String keyword, int loc[])
+	{
+		List<Phong> phongs = new ArrayList<>();
+		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
+				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
+				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID where trangthai=1 and (ten like ? or mota like ?) \r\n";
+		if(loc[0] != 0)
+		{
+			
+			sql += "and id_lp = ? ";
+		}
+		if(loc[1] != 0)
+		{
+			sql += "and tinhThanhPhoId = ? ";
+			
+		}
+		if(loc[2] != 0)
+		{
+			sql += "and quanHuyenId = ? ";
+		}
+		if(loc[3] != 0)
+		{
+			sql += "and id_x = ? ";
+		}
+		System.out.println(sql);
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, "%" + keyword + "%");
+			pStatement.setString(2, "%" + keyword + "%");
+			int count = 2;
+			if(loc[0] != 0)
+			{
+				count++;
+				pStatement.setInt(count, loc[0]);
+			}
+			if(loc[1] != 0)
+			{
+				count++;
+				pStatement.setInt(count, loc[1]);
+			}
+			if(loc[2] != 0)
+			{
+				count++;
+				pStatement.setInt(count, loc[2]);
+			}
+			if(loc[3] != 0)
+			{
+				count++;
+				pStatement.setInt(count, loc[3]);
+			}
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL map = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				phongs.add(map.mapPhong(rSet));
+			}
+			return phongs;
+		} catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
 //	public static void main(String[] args)
 //	{
+//		int[] loc = {1, 50, 0, 0};
 //		IPhongDao phongDao = new PhongDaoImpl();
-//		
-//		Phong phong = phongDao.getPhong(2);
-//		phong.setTen("OKe id 2");
-//		
-//		phongDao.sellerUpdatePhong(phong);
+//		System.out.println(phongDao.locPhong("", loc).size());
 //	}
 }
