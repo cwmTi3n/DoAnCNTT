@@ -48,7 +48,8 @@ public class PagingAjaxPhongController extends HttpServlet {
 				loc[i] = Integer.parseInt(locString[i]);
 			}
 		}
-		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
+//		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
+		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc);
 		PrintWriter out = resp.getWriter();
 		for (Phong p : phongs) {
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
