@@ -77,6 +77,7 @@
 							<div class="ftco-media-details">
 								<h3>${phong.ten }</h3>
 								<p>${phong.mota }</p>
+								<p>Đang có ${phong.quantam } người quan tâm đến phòng này</p>
 								<p>${phong.getXa().getTenxa()},
 									${phong.getXa().getHuyen().getTenhuyen()},
 									${phong.getXa().getHuyen().getTinh().getTentinh()}</p>

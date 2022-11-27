@@ -56,6 +56,7 @@ public class mapAttributeSQL
 			phong.setId_lp(id_lp);
 			phong.setId_tk(rSet.getInt("id_tk"));
 			phong.setMaxa(rSet.getInt("id_x"));
+			phong.setNgaydang(rSet.getDate("ngaydang"));
 			Xa xa = xaphuongDao.getXa(phong.getMaxa());
 			phong.setXa(xa);
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));

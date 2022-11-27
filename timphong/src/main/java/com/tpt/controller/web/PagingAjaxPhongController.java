@@ -59,7 +59,9 @@ public class PagingAjaxPhongController extends HttpServlet {
 					+ "\" class=\"d-inline-block mb-4\"><img src=\"/timphong/hinhanh?fname=" + p.getAnhchinh()
 					+ "\" alt=\"Free website template by Free-Template.co\" class=\"img-fluid\"></a>\r\n"
 					+ "                    <div class=\"ftco-media-details\">\r\n" + "                      <h3>"
-					+ p.getTen() + "</h3>\r\n" + "                      <p>" + p.getMota() + "</p>\r\n" + "<p> "
+					+ p.getTen() + "</h3>\r\n" + "                      <p>" + p.getMota() + "</p>\r\n" 
+					+ "<p>Đang có " + p.getQuantam() +" người quan tâm đến phòng này</p> "
+					+ "<p> "
 					+ p.getXa().getTenxa() + ", " + p.getXa().getHuyen().getTenhuyen() + ", "
 					+ p.getXa().getHuyen().getTinh().getTentinh() + "</p>\r\n" + "                      <strong>$"
 					+ p.getGia() + "</strong>\r\n" + "                    </div>\r\n" + "      \r\n"
