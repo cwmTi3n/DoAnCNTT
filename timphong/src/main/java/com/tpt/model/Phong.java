@@ -19,6 +19,7 @@ public class Phong
 	private int id_lp;
 	private int maxa;
 	private int id_tk;
+	private int quantam;
 	private Loaiphong loaiphong;
 	private Xa xa;
 	private Taikhoan taikhoan;
@@ -28,7 +29,7 @@ public class Phong
 	{
 	}
 	public Phong(int id_p, String ten, String anhchinh, int trangthai, float chieudai, float chieurong, int gia,
-			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk,
+			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk, int quantam,
 			Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs, List<Hinhanh> hinhanhs)
 	{
 		super();
@@ -46,6 +47,7 @@ public class Phong
 		this.id_lp = id_lp;
 		this.maxa = maxa;
 		this.id_tk = id_tk;
+		this.quantam = quantam;
 		this.loaiphong = loaiphong;
 		this.xa = xa;
 		this.taikhoan = taikhoan;
@@ -164,6 +166,14 @@ public class Phong
 	{
 		this.id_tk = id_tk;
 	}
+	public int getQuantam()
+	{
+		return quantam;
+	}
+	public void setQuantam(int quantam)
+	{
+		this.quantam = quantam;
+	}
 	public Loaiphong getLoaiphong()
 	{
 		return loaiphong;
@@ -204,6 +214,5 @@ public class Phong
 	{
 		this.hinhanhs = hinhanhs;
 	}
-	
 	
 }

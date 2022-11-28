@@ -87,6 +87,7 @@ public class ListtingController extends HttpServlet
 					+ "									<div class=\"ftco-media-details\">\r\n"
 					+ "										<h3>" + p.getTen() + "</h3>\r\n"
 					+ "										<p>" + p.getMota() + "</p>\r\n"
+					+ " <p>Đang có " + p.getQuantam() + " người quan tâm đến phòng này</p> "
 					+ "										<p>" + p.getXa().getTenxa() + ",\r\n"
 					+ "											" + p.getXa().getHuyen().getTenhuyen() + ",\r\n"
 					+ "											" + p.getXa().getHuyen().getTinh().getTentinh() + "</p>\r\n"

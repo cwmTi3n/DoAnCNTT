@@ -174,17 +174,19 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<Phong> get9Phong()
 	{
-		String sql = "select top 9 * from phong where trangthai=1";
+		String sql = "select top 9 * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
-			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				phongs.add(mapPhong.mapPhong(rSet));
+				Phong phong = map.mapPhong(rSet);
+				phong.setQuantam(rSet.getInt("quantam") + 30);
+				phongs.add(phong);
 			}
 			return phongs;
 		} catch (Exception e)
@@ -199,9 +201,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
-				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
-				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID where trangthai=1 and (ten like ? or mota like ?) \r\n";
+				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?) \r\n";
 		if(loc[0] != 0)
 		{
 			
@@ -254,7 +256,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				phongs.add(map.mapPhong(rSet));
+				Phong phong = map.mapPhong(rSet);
+				phong.setQuantam(rSet.getInt("quantam") + 30);
+				phongs.add(phong);
 			}
 			return phongs;
 		} catch (Exception e)
@@ -297,9 +301,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			connection = super.getConnection();
 			pStatement = connection.prepareStatement(sql);
 			rSet = pStatement.executeQuery();
-			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next()) {
-				phongs.add(mapPhong.mapPhong(rSet));
+				phongs.add(map.mapPhong(rSet));
 			}
 			return phongs;
 		} catch(Exception e)
@@ -332,7 +336,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<Phong> searchPhong(String keyword)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select top 9 * from Phong where trangthai=1 and (ten like ? or mota like ?)";
+		String sql = "select top 9 * from Phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?)";
 		try
 		{
 			connection = super.getConnection();
@@ -340,10 +344,12 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(1, "%" + keyword + "%");
 			pStatement.setString(2, "%" + keyword + "%");
 			rSet = pStatement.executeQuery();
-			mapAttributeSQL mapPhong = new mapAttributeSQL();
+			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				phongs.add(mapPhong.mapPhong(rSet));
+				Phong phong = map.mapPhong(rSet);
+				phong.setQuantam(rSet.getInt("quantam") + 30);
+				phongs.add(phong);
 			}
 			return phongs;
 		} catch (Exception e)
@@ -385,9 +391,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
-				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
-				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID where trangthai=1 and (ten like ? or mota like ?) \r\n";
+				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?) \r\n";
 		if(loc[0] != 0)
 		{
 			
@@ -438,7 +444,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
 			{
-				phongs.add(map.mapPhong(rSet));
+				Phong phong = map.mapPhong(rSet);
+				phong.setQuantam(rSet.getInt("quantam") + 30);
+				phongs.add(phong);
 			}
 			return phongs;
 		} catch (Exception e)
@@ -451,6 +459,6 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 //	{
 //		int[] loc = {1, 50, 0, 0};
 //		IPhongDao phongDao = new PhongDaoImpl();
-//		System.out.println(phongDao.locPhong("", loc).size());
+//		System.out.println(phongDao.get9Phong().get(1).getQuantam());
 //	}
 }

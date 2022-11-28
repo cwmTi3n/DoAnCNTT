@@ -1,6 +1,19 @@
 USE [timphong]
 
 go
+create table danhgia(
+	id_dg int identity(1,1),
+	id_p int not null,
+	id_tk int not null,
+	ngay date,
+	sosao int,
+	noidung nvarchar(300),
+	PRIMARY KEY (id_dg, id_tk, id_p),
+	CONSTRAINT FK_danhgia_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),
+	CONSTRAINT FK_danhgia_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
+	on delete cascade
+)
+
 CREATE TABLE [dbo].[taikhoan](
 	id_tk INT IDENTITY(1,1) PRIMARY KEY,
 	tentk NVARCHAR(30) NOT NULL UNIQUE,
