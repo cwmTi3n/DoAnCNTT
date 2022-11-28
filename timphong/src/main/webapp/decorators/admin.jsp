@@ -47,7 +47,7 @@
 	href="${url }fonts/flaticon/font/flaticon.css">
 
 <link rel="stylesheet" type="text/css" href="${url }css/aos.css">
-
+<link rel="stylesheet" type="text/css" href="${url }css/style-admin.css">
 <link rel="stylesheet" type="text/css" href="${url }css/style.css">
 
 </head>

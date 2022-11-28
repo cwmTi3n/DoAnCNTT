@@ -102,11 +102,22 @@ public class LoaiphongDaoImpl extends DBConnection implements ILoaiphongDao
 		}
 		return false;
 	}
-
+	
 	@Override
-	public boolean editLoaiphong()
-	{
-		// TODO Auto-generated method stub
+	public boolean editLoaiphong(Loaiphong lp) {
+		String sql = "update loaiphong set tenloai = ? where id_lp=?";
+		try
+		{
+			Connection connection = super.getConnection();
+			PreparedStatement pStatement = connection.prepareStatement(sql);
+			pStatement.setString(1, lp.getTenloai());
+			pStatement.setInt(2, lp.getId_lp());
+			pStatement.executeUpdate();
+			return true;
+		} catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
 		return false;
 	}
 

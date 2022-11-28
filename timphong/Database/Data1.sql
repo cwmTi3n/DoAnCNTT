@@ -2,24 +2,24 @@
 
 /* INSERT TABLE taikhoan */
 /* admin */
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('admin1', '123456', 1, 'admin1.timphongtro@email.com', '0986111222', 'Lưu', 'Ngạn Lâm')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('admin2', '123456', 1, 'admin2.timphongtro@email.com', '0123456789', 'Hồ', 'Kim Tiền')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('admin1', '123456', 1, 'admin1.timphongtro@email.com', '0986111222', N'Lưu', N'Ngạn Lâm')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('admin2', '123456', 1, 'admin2.timphongtro@email.com', '0123456789', N'Hồ', N'Kim Tiền')
 /* user */
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user1', '123456', 2, 'user1@gmail.com', '0986123456', 'Lý', 'Tiến Thành')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user2', '123456', 2, 'user2@gmail.com', '0986123123', 'Trương', 'Thuận Hòa')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user3', '123456', 2, 'user3@gmail.com', '0986123789', 'Hà', 'Văn Nhân')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user4', '123456', 2, 'user4@gmail.com', '0986123654', 'Ngô', 'Anh Lượng')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user5', '123456', 2, 'user5@gmail.com', '0986123321', 'Nguyễn', 'Hoàng Nhật')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user6', '123456', 2, 'user6@gmail.com', '0986123987', 'Trương', 'Phạm Lý Hương')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user7', '123456', 2, 'user7@gmail.com', '0986123879', 'Đặng', 'Mai Hương')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user8', '123456', 2, 'user8@gmail.com', '0986123978', 'Ngô', 'Thanh Phú')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user9', '123456', 2, 'user9@gmail.com', '0986123645', 'Trần', 'Tiến Thành')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user10', '123456', 2, 'user10@gmail.com', '0986123564', 'Nguyễn', 'Tiến Dũng')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user1', '123456', 2, 'user1@gmail.com', '0986123456', N'Lý', N'Tiến Thành')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user2', '123456', 2, 'user2@gmail.com', '0986123123', N'Trương', N'Thuận Hòa')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user3', '123456', 2, 'user3@gmail.com', '0986123789', N'Hà', N'Văn Nhân')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user4', '123456', 2, 'user4@gmail.com', '0986123654', N'Ngô', N'Anh Lượng')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user5', '123456', 2, 'user5@gmail.com', '0986123321', N'Nguyễn', N'Hoàng Nhật')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user6', '123456', 2, 'user6@gmail.com', '0986123987', N'Trương', N'Phạm Lý Hương')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user7', '123456', 2, 'user7@gmail.com', '0986123879', N'Đặng', N'Mai Hương')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user8', '123456', 2, 'user8@gmail.com', '0986123978', N'Ngô', N'Thanh Phú')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user9', '123456', 2, 'user9@gmail.com', '0986123645', N'Trần', N'Tiến Thành')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('user10', '123456', 2, 'user10@gmail.com', '0986123564', N'Nguyễn', N'Tiến Dũng')
 /* seller */
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller1', '123456', 3, 'seller1@gmail.com', '0986456123', 'Phan', 'Thanh Sang')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller2', '123456', 3, 'seller2@gmail.com', '0986456456', 'Võ', 'Gia Bảo')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller3', '123456', 3, 'seller3@gmail.com', '0986456789', 'Võ', 'Nhật Lam')
-INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller4', '123456', 3, 'seller4@gmail.com', '0986456654', 'Trần', 'Hoàng Phúc')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller1', '123456', 3, 'seller1@gmail.com', '0986456123', N'Phan', N'Thanh Sang')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller2', '123456', 3, 'seller2@gmail.com', '0986456456', N'Võ', N'Gia Bảo')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller3', '123456', 3, 'seller3@gmail.com', '0986456789', N'Võ', N'Nhật Lam')
+INSERT INTO [dbo].[taikhoan] (tentk, matkhau, quyen, email, sdt, ho, ten) VALUES ('seller4', '123456', 3, 'seller4@gmail.com', '0986456654', N'Trần', N'Hoàng Phúc')
 
 
 /* INSERT TABLE theodoi 
@@ -36,12 +36,12 @@ INSERT INTO [dbo].[theodoi] (id_dc, id_td) VALUES (4, 13)
 */
 
 /* INSERT TABLE loaiphong */
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('trọ')
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('khách sạn')
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Home stay')
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Nhà nghỉ')
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Pen House')
-INSERT INTO [dbo].[loaiphong] (tenloai) VALUES ('Trung tâm thương mại')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'trọ')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'khách sạn')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'Home stay')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'Nhà nghỉ')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'Pen House')
+INSERT INTO [dbo].[loaiphong] (tenloai) VALUES (N'Trung tâm thương mại')
 
 
 /* INSERT TABLE phong 

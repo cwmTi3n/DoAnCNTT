@@ -16,9 +16,10 @@
 			</a>
 		</div>
 
-		<div class="col-12 col-xl-12">
+		<div class="col-12 col-xl-12 table-admin">
+			<div class="table-admin-layer">
 			<table class="table table-hover">
-				<thead class="thead-light table-header-admin">
+				<thead class="thead-light table-header-admin rounded">
 					<tr class="">
 						<th class="" scope="col">STT</th>
 						<th class="" scope="col">Tên loại phòng</th>

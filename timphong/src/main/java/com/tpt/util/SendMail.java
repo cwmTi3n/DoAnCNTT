@@ -14,11 +14,11 @@ public class SendMail {
 	
 	public static final boolean sendEmail(String userMail, String subject, String text) {
 		
-        final String username = "hokimtien0202@gmail.com";
-        final String password = "ldjsimqduugmbqkc";
+        final String username = "find-room@outlook.com";
+        final String password = "123456789FR";
 
         Properties prop = new Properties();
-		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.host", "smtp-mail.outlook.com");
         prop.put("mail.smtp.port", "587");
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.starttls.enable", "true"); //TLS
@@ -33,7 +33,7 @@ public class SendMail {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("hokimtien0202@gmail.com"));
+            message.setFrom(new InternetAddress("find-room@outlook.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(userMail)
@@ -42,7 +42,7 @@ public class SendMail {
             message.setText(text);
 
             Transport.send(message);
-            System.out.println("Done");
+            //System.out.println("Done");
             return true;
         } catch (MessagingException e) {
             e.printStackTrace();

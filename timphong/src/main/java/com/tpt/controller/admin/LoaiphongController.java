@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import com.tpt.service.IPhongService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 
+@MultipartConfig()
 @WebServlet(urlPatterns = {"/admin/loaiphong"})
 public class LoaiphongController extends HttpServlet
 {

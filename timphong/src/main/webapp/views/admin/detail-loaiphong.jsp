@@ -5,9 +5,9 @@
 <div class=container--admin>
 	<div>
 		<h2>Thông tin loại phòng</h2>
-		<form action="taikhoan" method="post">
-			<label>Id: </label><input type="text" name="id_tk"
-				value="${lp.id_lp }"><br /> <label>Tên loại phòng:
+		<form action="list-loaiphong" method="post">
+		<input hidden type="text" name="id_lp" value="${lp.id_lp }">
+			<label for="tenloai">Tên loại phòng:
 			</label><input type="text" name="tenloai" value="${lp.tenloai }"><br />
 			<button type="submit">Chỉnh sửa</button>
 		</form>
