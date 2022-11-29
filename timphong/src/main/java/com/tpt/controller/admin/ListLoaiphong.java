@@ -32,4 +32,24 @@ public class ListLoaiphong extends HttpServlet
 		
 		req.getRequestDispatcher("/views/admin/list-loaiphong.jsp").forward(req, resp);
 	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+		req.setCharacterEncoding("utf-8");
+		
+		String id_lpString = req.getParameter("id_lp");
+		String tenloai = req.getParameter("tenloai");
+		int id_lp = Integer.parseInt(id_lpString);
+		Loaiphong lp = new Loaiphong();
+		lp.setTenloai(tenloai);
+		lp.setId_lp(id_lp);
+		
+		loaiphongService.editLoaiphong(lp);
+		
+		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		req.setAttribute("loaiphongs", loaiphongs);
+		
+		resp.sendRedirect(req.getContextPath() + "/admin/list-loaiphong");
+	}
 }

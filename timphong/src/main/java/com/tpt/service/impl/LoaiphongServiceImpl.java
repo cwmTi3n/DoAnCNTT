@@ -39,5 +39,10 @@ public class LoaiphongServiceImpl implements ILoaiphongService
 	{
 		return loaiphongDao.deleteLoaiphong(id_lp);
 	}
+	@Override
+	public boolean editLoaiphong(Loaiphong lp) {
+		// TODO Auto-generated method stub
+		return loaiphongDao.editLoaiphong(lp);
+	}
 
 }

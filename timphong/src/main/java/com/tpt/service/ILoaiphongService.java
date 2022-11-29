@@ -10,4 +10,5 @@ public interface ILoaiphongService
 	public List<Loaiphong> getAll();
 	public Loaiphong getLoaiphong(int id_lp);
 	public boolean deleteLoaiphong(int id_lp);
+	public boolean editLoaiphong(Loaiphong lp);
 }

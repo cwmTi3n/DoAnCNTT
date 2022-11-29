@@ -12,5 +12,5 @@ public interface ILoaiphongDao
 	public Loaiphong getLoaiphong(int id_lp);
 	public boolean insertLoaiphong(Loaiphong lp);
 	public boolean deleteLoaiphong(int id_lp);
-	public boolean editLoaiphong();
+	public boolean editLoaiphong(Loaiphong lp);
 }
