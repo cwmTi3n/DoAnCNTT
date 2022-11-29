@@ -15,6 +15,7 @@
 			<div class="col-8 text-black">
 				<div class="row my-4">
 					<ul>
+						<li><a href="">Thông tin cá nhân</a></li>
 						<li><a href="/timphong/listdathen">Đặt hẹn</a></li>
 						<c:if test="${sessionScope.account.quyen == 3}">
 							<li><a href="/timphong/seller/ql-phong">Quản lý phòng</a></li>
