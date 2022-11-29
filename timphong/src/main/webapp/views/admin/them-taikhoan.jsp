@@ -2,7 +2,8 @@
 	pageEncoding="utf-8"%>
 
 <div class=container--admin>
-	<form action="themtk" method="post">
+	<form action="themtk" method="post" enctype="multipart/form-data">
+		<label>Ảnh đại diện: </label> <input type="file" name="anhdaidien"><br />
 		<input type="text" name="tentk" placeholder="Tên tài khoản"><br />
 		<input type="text" name="matkhau" placeholder="Mật khẩu"><br />
 		<input type="text" name="ho" placeholder="Họ"><br /> <input

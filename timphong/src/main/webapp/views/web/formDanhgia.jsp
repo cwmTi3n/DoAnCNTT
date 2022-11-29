@@ -14,14 +14,12 @@
 			</div>
 			<div class="col-8 text-black">
 				<div class="row my-4">
-					<ul>
-						<li><a href="">Thông tin cá nhân</a></li>
-						<li><a href="/timphong/listdathen">Đặt hẹn</a></li>
-						<c:if test="${sessionScope.account.quyen == 3}">
-							<li><a href="/timphong/seller/ql-phong">Quản lý phòng</a></li>
-							<li><a href="/timphong/xacnhan-p">Xác nhận</a></li>
-						</c:if>
-					</ul>
+					<form action="danhgia" method="post">
+						<input type="password" name="id_p" value="${id_p}" hidden>
+					    <label>Số sao: </label><input type="text" name="sosao">
+					    <label>Nội dung: </label><input type="text" name="noidung">
+					    <button type="submit">Đánh giá</button>
+					</form>
 				</div>
 			</div>
 		</div>

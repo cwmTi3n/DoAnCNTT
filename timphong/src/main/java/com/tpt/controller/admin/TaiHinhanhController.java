@@ -26,7 +26,12 @@ public class TaiHinhanhController extends HttpServlet
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		String fileName = req.getParameter("fname");
-		File file = new File(Constant.DIR + "/phong/" + fileName);
+		String path = req.getParameter("path");
+		if(path == null)
+		{
+			path = "phong";
+		}
+		File file = new File(Constant.DIR + "/"+ path + "/" + fileName);
 		resp.setContentType("image/jpeg");
 		if (file.exists())
 		{

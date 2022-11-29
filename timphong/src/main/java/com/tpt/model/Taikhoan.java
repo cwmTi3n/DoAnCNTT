@@ -5,6 +5,7 @@ import java.util.List;
 public class Taikhoan
 {
 	private int id_tk;
+	private String anhdaidien;
 	private String tentk;
 	private String matkhau;
 	private int quyen;
@@ -18,12 +19,15 @@ public class Taikhoan
 	List<Taikhoan> nguoiTheodoi;
 	public Taikhoan()
 	{
+		// TODO Auto-generated constructor stub
 	}
-	public Taikhoan(int id_tk, String tentk, String matkhau, int quyen, String email, String sdt, String ho, String ten,
-			List<Phong> chuPhongs, List<Phong> datPhongs, List<Taikhoan> dangTheodoi, List<Taikhoan> nguoiTheodoi)
+	public Taikhoan(int id_tk, String anhdaidien, String tentk, String matkhau, int quyen, String email, String sdt,
+			String ho, String ten, List<Phong> chuPhongs, List<Phong> datPhongs, List<Taikhoan> dangTheodoi,
+			List<Taikhoan> nguoiTheodoi)
 	{
 		super();
 		this.id_tk = id_tk;
+		this.anhdaidien = anhdaidien;
 		this.tentk = tentk;
 		this.matkhau = matkhau;
 		this.quyen = quyen;
@@ -43,6 +47,14 @@ public class Taikhoan
 	public void setId_tk(int id_tk)
 	{
 		this.id_tk = id_tk;
+	}
+	public String getAnhdaidien()
+	{
+		return anhdaidien;
+	}
+	public void setAnhdaidien(String anhdaidien)
+	{
+		this.anhdaidien = anhdaidien;
 	}
 	public String getTentk()
 	{
@@ -132,4 +144,5 @@ public class Taikhoan
 	{
 		this.nguoiTheodoi = nguoiTheodoi;
 	}
+	
 }

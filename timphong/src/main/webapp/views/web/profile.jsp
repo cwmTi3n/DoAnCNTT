@@ -8,7 +8,7 @@
 		<div class="row profile-row p-4 my-5">
 			<div class="d-flex col-12" style="align-items: center;">
 				<img class="profile-img img-thumbnail" src="${url }images/Logo.png">
-				<h2 class="text-black mb-0 ml-3">Welcome, ${user.getTen() }</h2>
+				<h2 class="text-black mb-0 ml-3">Welcome, ${sessionScope.account.getTen() }</h2>
 
 			</div>
 			<div class="col-8 text-black">
@@ -22,11 +22,9 @@
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-<<<<<<< HEAD
-						<p>${user.getHo()} ${user.getTentk()}</p>
-=======
-						<p>${user.getHo()} ${user.getTen()}</p>
->>>>>>> 4ffc89409f332d912d5e9b99ec71f29565f6b861
+						<p>${sessionScope.account.getHo()} ${sessionScope.account.getTentk()}</p>
+						<p>${sessionScope.account.getHo()} ${sessionScope.account.getTen()}</p>
+
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -35,13 +33,13 @@
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="fname">Họ</label>
-								<input class="border-0 profile-content-input" type="text" id="fname" name="fname" value="${user.getHo()}">
+								<input class="border-0 profile-content-input" type="text" id="fname" name="fname" value="${sessionScope.account.getHo()}">
 							</div>
 						</div>
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="lname">Tên</label>
-								<input class="border-0 profile-content-input" type="text" id="lname" name="lname" value="${user.getTen()}">
+								<input class="border-0 profile-content-input" type="text" id="lname" name="lname" value="${sessionScope.account.getTen()}">
 							</div>
 						</div>
 					</div>
@@ -50,7 +48,7 @@
 					<div>
 						<h4>Tên tài khoản</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out
+							<c:out value="${sessionScope.account.getTentk().charAt(0) }" /><c:forEach begin="2" end="${sessionScope.account.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out
 								value="${user.getTentk().substring(user.getTentk().length()-1) }" />
 						</p>
 					</div>
@@ -60,8 +58,8 @@
 					<div>
 						<h4>Email</h4>
 						<p>
-							<c:out value="${user.getTentk().charAt(0) }" /><c:forEach begin="2" end="${user.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out
-								value="${user.getEmail().substring(user.getEmail().indexOf(64)) }" />
+							<c:out value="${sessionScope.account.getTentk().charAt(0) }" /><c:forEach begin="2" end="${sessionScope.account.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out
+								value="${sessionScope.account.getEmail().substring(user.getEmail().indexOf(64)) }" />
 						</p>
 					</div>
 					<div>
@@ -79,7 +77,7 @@
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Số điện thoại</h4>
-						<p>${user.getSdt()}</p>
+						<p>${sessionScope.account.getSdt()}</p>
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -88,7 +86,7 @@
 						<div class="col-12">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="sdt">Số điện thoại</label>
-								<input class="border-0 profile-content-input" type="text" id="sdt" name="sdt" value="${user.getSdt()}">
+								<input class="border-0 profile-content-input" type="text" id="sdt" name="sdt" value="${sessionScope.account.getSdt()}">
 							</div>
 						</div>						
 					</div>
@@ -96,15 +94,15 @@
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Bạn đang là</h4>
-						<c:if test="${user.getQuyen() ==1}">
+						<c:if test="${sessionScope.account.getQuyen() ==1}">
 							<p>User</p>
 						</c:if>
-						<c:if test="${user.getQuyen() ==2}">
+						<c:if test="${sessionScope.account.getQuyen() ==2}">
 							<p>Seller</p>
 						</c:if>
 					</div>
 					<div>
-						<c:if test="${user.getQuyen() ==1}">
+						<c:if test="${sessionScope.account.getQuyen() ==1}">
 							<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
 						</c:if>
 					</div>
@@ -112,7 +110,7 @@
 				<div class="d-flex my-4 profile-content pb-3">
 					<div>
 						<h4>Mật khẩu</h4>
-						<c:forEach begin="1" end="${user.getMatkhau().length() }"><c:out value="*" /></c:forEach>
+						<c:forEach begin="1" end="${sessionScope.account.getMatkhau().length() }"><c:out value="*" /></c:forEach>
 						
 					</div>
 					<div>

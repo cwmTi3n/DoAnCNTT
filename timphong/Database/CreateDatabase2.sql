@@ -1,18 +1,5 @@
-USE [timphong]
-
+USE [timphong1]
 go
-create table danhgia(
-	id_dg int identity(1,1),
-	id_p int not null,
-	id_tk int not null,
-	ngay date,
-	sosao int,
-	noidung nvarchar(300),
-	PRIMARY KEY (id_dg, id_tk, id_p),
-	CONSTRAINT FK_danhgia_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),
-	CONSTRAINT FK_danhgia_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
-	on delete cascade
-)
 
 CREATE TABLE [dbo].[taikhoan](
 	id_tk INT IDENTITY(1,1) PRIMARY KEY,
@@ -22,7 +9,8 @@ CREATE TABLE [dbo].[taikhoan](
 	email NVARCHAR(40) NOT NULL UNIQUE,
 	sdt NVARCHAR(10) NOT NULL UNIQUE,
 	ho NVARCHAR(10) NOT NULL,
-	ten NVARCHAR(30) NOT NULL
+	ten NVARCHAR(30) NOT NULL,
+	anhdaidien VARCHAR(100)
 );
 
 CREATE TABLE [dbo].[theodoi](
@@ -79,3 +67,16 @@ CREATE TABLE [dbo].[dathen](
 	CONSTRAINT FK_dathen_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
 	on delete cascade
 );
+
+create table danhgia(
+	id_dg int identity(1,1),
+	id_p int not null,
+	id_tk int not null,
+	ngay date,
+	sosao int,
+	noidung nvarchar(300),
+	PRIMARY KEY (id_dg, id_tk, id_p),
+	CONSTRAINT FK_danhgia_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),
+	CONSTRAINT FK_danhgia_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
+	on delete cascade
+)

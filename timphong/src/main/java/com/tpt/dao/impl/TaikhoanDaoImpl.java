@@ -110,7 +110,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 	@Override
 	public boolean insertTaikhoan(Taikhoan taikhoan)
 	{
-		String sql = "insert into taikhoan(tentk, matkhau, quyen, email, sdt, ho, ten) values(?,?,?,?,?,?,?)";
+		String sql = "insert into taikhoan(tentk, matkhau, quyen, email, sdt, ho, ten, anhdaidien) values(?,?,?,?,?,?,?,?)";
 		try
 		{
 			Connection connection = super.getConnection();
@@ -122,6 +122,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			pStatement.setString(5, taikhoan.getSdt());
 			pStatement.setString(6, taikhoan.getHo());
 			pStatement.setString(7, taikhoan.getTen());
+			pStatement.setString(8, taikhoan.getAnhdaidien());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)
@@ -154,7 +155,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 	@Override
 	public boolean editTaikhoan(Taikhoan taikhoan)
 	{
-		String sql = "update taikhoan set tentk=?, matkhau=?, quyen=?, email=?, sdt=?, ho=?, ten=? where id_tk=?";
+		String sql = "update taikhoan set tentk=?, matkhau=?, quyen=?, email=?, sdt=?, ho=?, ten=?, anhdaidien=? where id_tk=?";
 		try
 		{
 			Connection connection = super.getConnection();
@@ -166,7 +167,8 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 			pStatement.setString(5, taikhoan.getSdt());
 			pStatement.setString(6, taikhoan.getHo());
 			pStatement.setString(7, taikhoan.getTen());
-			pStatement.setInt(8, taikhoan.getId_tk());
+			pStatement.setString(8, taikhoan.getAnhdaidien());
+			pStatement.setInt(9, taikhoan.getId_tk());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)
