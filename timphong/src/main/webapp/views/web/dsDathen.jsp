@@ -57,6 +57,9 @@
 									<th scope="col">Địa chỉ</th>
 									<th scope="col">Thời gian</th>
 									<th scope="col">${hanhdong==2?"Liên hệ":""}</th>
+									<c:if test="${hanhdong==2 }">
+									<th scope="col"></th>
+									</c:if>
 								</tr>
 							</thead>
 							<tbody>
@@ -78,6 +81,7 @@
 										</c:if>
 										<c:if test="${dh.trangthai==2 }">
 											<td>${dh.phong.taikhoan.sdt}</td>
+											<td><a href="/timphong/danhgia?id_p=${dh.phong.id_p }">Đánh giá</a></td>
 										</c:if>
 										<c:if test="${dh.trangthai==3 }">
 											<td>

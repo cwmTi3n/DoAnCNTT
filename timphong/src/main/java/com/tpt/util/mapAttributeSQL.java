@@ -18,6 +18,7 @@ import com.tpt.dao.impl.QuanhuyenDaoImpl;
 import com.tpt.dao.impl.TaikhoanDaoImpl;
 import com.tpt.dao.impl.TinhDaoImpl;
 import com.tpt.dao.impl.XaphuongDaoImpl;
+import com.tpt.model.Danhgia;
 import com.tpt.model.Dathen;
 import com.tpt.model.Huyen;
 import com.tpt.model.Loaiphong;
@@ -32,7 +33,30 @@ public class mapAttributeSQL
 	public mapAttributeSQL()
 	{
 	}
-
+	
+	public Danhgia mapDanhgia(ResultSet rSet)
+	{
+		Danhgia danhgia = new Danhgia();
+		ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
+		try
+		{
+			int id_p = rSet.getInt("id_p");
+			int id_tk = rSet.getInt("id_tk");
+			danhgia.setId_dg(rSet.getInt("id_dg"));
+			danhgia.setId_p(id_p);
+			danhgia.setId_tk(id_tk);
+			danhgia.setNgay(rSet.getDate("ngay"));
+			danhgia.setSosao(rSet.getInt("sosao"));
+			danhgia.setNoidung(rSet.getString("noidung"));
+			danhgia.setTaikhoan(taikhoanDao.getTaikhoan(id_tk));
+			return danhgia;
+		} catch (Exception e)
+		{
+			// TODO: handle exception
+		}
+		return null;
+	}
+	
 	public Phong mapPhong(ResultSet rSet)
 	{
 		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
@@ -74,6 +98,7 @@ public class mapAttributeSQL
 		Taikhoan taikhoan = new Taikhoan();
 		try
 		{
+			taikhoan.setAnhdaidien(rSet.getString("anhdaidien"));
 			taikhoan.setId_tk(rSet.getInt("id_tk"));
 			taikhoan.setTentk(rSet.getString("tentk"));
 			taikhoan.setMatkhau(rSet.getString("matkhau"));

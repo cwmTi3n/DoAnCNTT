@@ -12,6 +12,10 @@ public class Danhgia
 	private String noidung;
 	private Taikhoan taikhoan;
 	private Phong phong;
+	public Danhgia()
+	{
+		// TODO Auto-generated constructor stub
+	}
 	public Danhgia(int id_dg, int id_p, int id_tk, Date ngay, int sosao, String noidung, Taikhoan taikhoan, Phong phong)
 	{
 		super();

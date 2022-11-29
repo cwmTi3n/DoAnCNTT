@@ -23,6 +23,7 @@ import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
+import com.tpt.util.ThemAnh;
 
 @WebServlet(urlPatterns = {"/admin/phong"})
 @MultipartConfig()
@@ -56,35 +57,37 @@ public class PhongController extends HttpServlet
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
 		int temp = 0;
-		String hinhanhs[] = new String[3];
+		String realPath = Constant.DIR + "/phong";
+		String hinhanhs[] = new String[Constant.SoHinh];
 		for(Part part : req.getParts())
 		{
-			String filename = null;
-			String newFilename = part.getSubmittedFileName();
-			if(newFilename != null)
-			{
-				try
-				{
-					String realPath = Constant.DIR + "/phong";					
-					String realFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
-					int index = realFileName.lastIndexOf(".");
-					String ext = realFileName.substring(index+1);
-					Long time = System.currentTimeMillis() + temp;
-					filename = time.toString() + "." + ext;
-					if(!Files.exists(Paths.get(realPath)))
-					{
-						Files.createDirectories(Paths.get(realPath));
-					}
-					if(ext.length() != 0)
-					{
-						part.write(realPath + "/" + filename);
-					}
-					hinhanhs[temp++] = filename;
-				} catch (Exception e)
-				{
-					System.out.println("ERR");
-				}
-			}
+			hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+//			String filename = null;
+//			String newFilename = part.getSubmittedFileName();
+//			if(newFilename != null)
+//			{
+//				try
+//				{
+//					String realPath = Constant.DIR + "/phong";					
+//					String realFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
+//					int index = realFileName.lastIndexOf(".");
+//					String ext = realFileName.substring(index+1);
+//					Long time = System.currentTimeMillis() + temp;
+//					filename = time.toString() + "." + ext;
+//					if(!Files.exists(Paths.get(realPath)))
+//					{
+//						Files.createDirectories(Paths.get(realPath));
+//					}
+//					if(ext.length() != 0)
+//					{
+//						part.write(realPath + "/" + filename);
+//					}
+//					hinhanhs[temp++] = filename;
+//				} catch (Exception e)
+//				{
+//					System.out.println("ERR");
+//				}
+//			}
 
 		}
 

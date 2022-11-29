@@ -20,6 +20,14 @@
 						</div>
 					</c:forEach>
 				</div>
+				<h2>Đánh giá</h2>
+					<c:forEach items="${danhgias }" var="dg">
+						<div>
+							<h5>${dg.taikhoan.ho } ${dg.taikhoan.ten }</h5>
+							<p>Ngày: ${dg.ngay }, Số sao: ${dg.sosao }</p>
+							<p>Nội dung: ${dg.noidung }<p><hr/>
+						</div>
+					</c:forEach>
 			</div>
 			<div class="col-lg-5 pl-lg-5 ml-auto">
 				<div class="mb-5">
