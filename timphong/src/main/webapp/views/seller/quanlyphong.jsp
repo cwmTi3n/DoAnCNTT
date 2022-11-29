@@ -161,7 +161,7 @@
 											<th scope="col">Giá</th>
 											<th scope="col">Diện tích</th>
 											<th scope="col">Địa chỉ</th>
-											<th scope="col">Chức năng</th>
+											<th scope="col">Chủ phòng</th>
 										</tr>
 									</thead>
 									<tbody>
