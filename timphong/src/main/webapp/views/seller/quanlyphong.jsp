@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600"
 	rel="stylesheet" type="text/css">
 
-<<<<<<< HEAD
+
 <div class="container--admin container--admin--full" id="ds-phong">
 	<div class="row">
 		<div class="col-12">
@@ -65,19 +65,6 @@
 								</label><input type="text" name="gia" value="${phong.gia }"><br>
 								<label>Địa chỉ chi tiết: </label><input type="text"
 									name="dcchitiet" value="${phong.dcchitiet }"><br />
-=======
-   <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(${url}images/hero_1.jpg);" data-aos="fade">
-      <div class="container">
-        <div class="row align-items-center justify-content-center">
-          <div class="col-md-5 mx-auto mt-lg-5 text-center">
-            <h1>Quản lý phòng</h1>
-            <p class="mb-5"><strong class="text-white">Tài Khoản: ${sessionScope.account.tentk}</strong></p>
-            
-          </div>
-        </div>
-      </div>
->>>>>>> 768519d2afdcfcb0dfc41f8e93e079b921a4cb39
-
 								<div class="col-md-auto">
 									<select onchange="loadHuyen()"
 										class="form-select form-select-sm mb-3" id="city"
@@ -173,8 +160,8 @@
 											<th scope="col">Tên phòng</th>
 											<th scope="col">Giá</th>
 											<th scope="col">Diện tích</th>
-											<th scopr="col">Địa chỉ</th>
-											<th scopr="col">Chức năng</th>
+											<th scope="col">Địa chỉ</th>
+											<th scope="col">Chức năng</th>
 										</tr>
 									</thead>
 									<tbody>
