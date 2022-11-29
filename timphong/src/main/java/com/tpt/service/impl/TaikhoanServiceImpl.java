@@ -1,11 +1,13 @@
 package com.tpt.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import com.tpt.dao.ITaikhoanDao;
 import com.tpt.dao.impl.TaikhoanDaoImpl;
 import com.tpt.model.Taikhoan;
 import com.tpt.service.ITaikhoanService;
+import com.tpt.util.Constant;
 
 public class TaikhoanServiceImpl implements ITaikhoanService
 {
@@ -52,5 +54,15 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 	public Taikhoan dangNhap(Taikhoan taikhoan) {
 		return taikhoanDao.dangNhap(taikhoan);
 	}
-	
+	boolean deleteHinhanh(String filename)
+	{
+		String filePath = Constant.DIR + "/taikhoan/" + filename;
+		File file = new File(filePath);
+		if(file.exists())
+		{
+			file.delete();
+			return true;
+		}
+		return false;
+	}
 }

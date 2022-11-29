@@ -15,7 +15,9 @@
 
 	<div>
 		<h2>Thông tin cá nhân</h2>
-		<form action="taikhoan" method="post">
+		<form action="taikhoan" method="post" enctype="multipart/form-data">
+			<c:url value="/hinhanh?fname=${user.anhdaidien}&path=taikhoan" var="anh" />
+			<label>Ảnh đại diện: </label><img height="180" width="240" src="${anh }"><input type="file" name="anhdaidien"><br />
 			<label>Id: </label><input type="text" name="id_tk"
 				value="${user.id_tk }"><br /> <label>Tên tài khoản:
 			</label><input type="text" name="tentk" value="${user.tentk }"><br />

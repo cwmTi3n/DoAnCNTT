@@ -3,15 +3,19 @@ package com.tpt.controller.admin;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.tpt.model.Taikhoan;
 import com.tpt.service.ITaikhoanService;
 import com.tpt.service.impl.TaikhoanServiceImpl;
-
+import com.tpt.util.Constant;
+import com.tpt.util.ThemAnh;
+@MultipartConfig()
 @WebServlet(urlPatterns = {"/admin/themtk"})
 public class ThemTaikhoan extends HttpServlet
 {
@@ -33,7 +37,9 @@ public class ThemTaikhoan extends HttpServlet
 	{
 		req.setCharacterEncoding("utf-8");
 		resp.setCharacterEncoding("utf-8");
-		
+		Part part = req.getPart("anhdaidien");
+		String realPath = Constant.DIR + "/taikhoan";
+		String filename = ThemAnh.ThemAnh(part, realPath, 0);
 		Taikhoan taikhoan = new Taikhoan();
 		taikhoan.setTentk(req.getParameter("tentk"));
 		taikhoan.setMatkhau(req.getParameter("matkhau"));
@@ -42,6 +48,7 @@ public class ThemTaikhoan extends HttpServlet
 		taikhoan.setQuyen(Integer.parseInt(req.getParameter("quyen")));
 		taikhoan.setSdt(req.getParameter("sdt"));
 		taikhoan.setEmail(req.getParameter("email"));
+		taikhoan.setAnhdaidien(filename);
 		taikhoanService.insertTaikhoan(taikhoan);
 		resp.sendRedirect(req.getContextPath() + "/admin/list-taikhoan");
 	}

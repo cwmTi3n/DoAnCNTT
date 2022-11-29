@@ -98,7 +98,7 @@ public class mapAttributeSQL
 		Taikhoan taikhoan = new Taikhoan();
 		try
 		{
-			//taikhoan.setAnhdaidien(rSet.getString("anhdaidien"));
+			taikhoan.setAnhdaidien(rSet.getString("anhdaidien"));
 			taikhoan.setId_tk(rSet.getInt("id_tk"));
 			taikhoan.setTentk(rSet.getString("tentk"));
 			taikhoan.setMatkhau(rSet.getString("matkhau"));
