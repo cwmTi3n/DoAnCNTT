@@ -35,7 +35,7 @@
 								</li>
 							</c:if>
 							<c:if test="${sessionScope.account != null}">
-								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":"User:"} ${sessionScope.account.tentk }</a></li>
+								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":""} ${sessionScope.account.tentk }</a></li>
 								<li>
 									<a href="<c:url value='/profile'/>" class="nav-link"></a>
 										<a href="<c:url value='/logout'/>" class="nav-link">Đăng

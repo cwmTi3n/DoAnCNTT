@@ -11,9 +11,7 @@
 	<div class="container">
 		<div class="row align-items-center justify-content-center">
 			<div class="col-md-6 mt-lg-5 text-center">
-				<h1>Property Listings</h1>
-				<p class="mb-5">Tìm kiếm và cho thuê căn hộ, văn phòng một cách
-					nhanh chóng.</p>
+				<h1>Tìm kiếm phòng</h1>
 
 			</div>
 		</div>

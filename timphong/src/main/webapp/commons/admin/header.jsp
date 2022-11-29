@@ -13,7 +13,7 @@
 
 					<div class="col-12 col-xl-12">
 						<h1 class="mb-0 site-logo site-logo--admin m-0 p-4">
-							<a href="<c:url value='/trangchu'/>" class="mb-0">Find Room</a>
+							<a href="<c:url value='/trangchu'/>" class="mb-0">Tìm Phòng</a>
 						</h1>
 					</div>
 
