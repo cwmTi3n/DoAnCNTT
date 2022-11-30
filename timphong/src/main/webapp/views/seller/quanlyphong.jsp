@@ -93,7 +93,8 @@
 
 								<label>Mô tả: </label><input type="text" name="mota"
 									value="${phong.mota }"><br /> <label>Loại
-									phòng: </label> <select name="id_lp">
+									phòng: </label> 
+									<select name="id_lp">
 									<option value="${phong.loaiphong.id_lp }">${phong.loaiphong.tenloai }</option>
 									<c:if test="${phong == null }">
 										<option value="0" selected>Chọn loại phòng</option>

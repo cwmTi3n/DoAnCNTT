@@ -62,6 +62,7 @@ public class mapAttributeSQL
 		ILoaiphongDao loaiphongDao = new LoaiphongDaoImpl();
 		IHinhanhDao hinhanhDao = new HinhanhDaoImpl();
 		IXaphuongDao xaphuongDao = new XaphuongDaoImpl();
+		ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
 		Phong phong = new Phong();
 		try
 		{
@@ -82,10 +83,12 @@ public class mapAttributeSQL
 			phong.setMaxa(rSet.getInt("id_x"));
 			phong.setNgaydang(rSet.getDate("ngaydang"));
 			Xa xa = xaphuongDao.getXa(phong.getMaxa());
+			Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
+			phong.setTaikhoan(taikhoan);
 			phong.setXa(xa);
 			phong.setLoaiphong(loaiphongDao.getLoaiphong(id_lp));
 			phong.setHinhanhs(hinhanhDao.getHinhanhP(id_p));
-			//Chưa có ngaydang và maxa
+			
 			return phong;
 		} catch (Exception e)
 		{

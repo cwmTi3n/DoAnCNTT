@@ -134,3 +134,11 @@
 	padding: 12px;
 	margin-right: 3%;
 }
+
+.danhgia{
+	display: none;
+}
+
+#danhgia:checked ~ .danhgia{
+	display: flex;
+}

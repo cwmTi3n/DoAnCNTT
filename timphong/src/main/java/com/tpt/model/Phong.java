@@ -8,7 +8,7 @@ public class Phong
 	private int id_p;
 	private String ten;
 	private String anhchinh;
-	private int trangthai;
+	private int trangthai; // 0 Ẩn, 1 Hiện
 	private float chieudai;
 	private float chieurong;
 	private int gia;
