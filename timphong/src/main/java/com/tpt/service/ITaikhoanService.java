@@ -12,6 +12,6 @@ public interface ITaikhoanService
 	public Taikhoan getTaikhoan(int id_tk);
 	public boolean insertTaikhoan(Taikhoan taikhoan);
 	public boolean deleteTaikhoan(int id_tk);
-	public boolean editTaikhoan(Taikhoan taikhoan);
+	public boolean editTaikhoan(Taikhoan taikhoan, String filename);
 	public Taikhoan dangNhap(Taikhoan taikhoan);
 }

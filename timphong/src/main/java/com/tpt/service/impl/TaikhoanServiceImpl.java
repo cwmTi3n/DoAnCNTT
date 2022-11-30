@@ -42,13 +42,40 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 	@Override
 	public boolean deleteTaikhoan(int id_tk)
 	{
-		return taikhoanDao.deleteTaikhoan(id_tk);
+		Taikhoan taikhoan = taikhoanDao.getTaikhoan(id_tk);
+		if(taikhoanDao.deleteTaikhoan(id_tk))
+		{
+			deleteHinhanh(taikhoan.getAnhdaidien());
+			return true;
+		}
+		return false;
 	}
 
 	@Override
-	public boolean editTaikhoan(Taikhoan taikhoan)
+	public boolean editTaikhoan(Taikhoan taikhoan, String filename)
 	{
-		return taikhoanDao.editTaikhoan(taikhoan);
+		boolean chkDelete = false;
+		Taikhoan oldTaikhoan = taikhoanDao.getTaikhoan(taikhoan.getId_tk());
+		String oldfilename = oldTaikhoan.getAnhdaidien();
+		if(oldfilename == null)
+		{
+			oldfilename = "";
+		}
+		int chk = filename.lastIndexOf(".");
+		if(filename.substring(chk+1).length() != 0)
+		{
+			chkDelete = true;
+		}
+		else 
+		{
+			taikhoan.setAnhdaidien(oldfilename);
+		}
+		boolean test = taikhoanDao.editTaikhoan(taikhoan);
+		if(test==true && chkDelete==true)
+		{
+			deleteHinhanh(oldfilename);
+		}
+		return test;
 	}
 	@Override
 	public Taikhoan dangNhap(Taikhoan taikhoan) {
@@ -60,8 +87,8 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 		File file = new File(filePath);
 		if(file.exists())
 		{
-			file.delete();
-			return true;
+			
+			return file.delete();
 		}
 		return false;
 	}

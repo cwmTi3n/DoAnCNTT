@@ -61,7 +61,11 @@ public class PhongController extends HttpServlet
 		String hinhanhs[] = new String[Constant.SoHinh];
 		for(Part part : req.getParts())
 		{
-			hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			String newFilename = part.getSubmittedFileName();
+			if(newFilename != null)
+			{
+				hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			}
 //			String filename = null;
 //			String newFilename = part.getSubmittedFileName();
 //			if(newFilename != null)

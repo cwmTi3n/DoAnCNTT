@@ -60,7 +60,11 @@ public class ThemPhong extends HttpServlet
 		String realPath = Constant.DIR + "/phong";
 		for(Part part : req.getParts())
 		{
-			hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			String newFilename = part.getSubmittedFileName();
+			if(newFilename != null)
+			{
+				hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			}
 //			String filename = null;
 //			String newFilename = part.getSubmittedFileName();
 //			if(newFilename != null)
