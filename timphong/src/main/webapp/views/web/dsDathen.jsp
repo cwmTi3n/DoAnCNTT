@@ -2,6 +2,71 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<style>
+	.rating {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: center
+	}
+	
+	.rating>input {
+	display: none
+	}
+	
+	.rating>label {
+	position: relative;
+	width: 1em;
+	font-size: 30px;
+	font-weight: 300;
+	color: #FFD600;
+	cursor: pointer
+	}
+	
+	.rating>label::before {
+	content: "\2605";
+	position: absolute;
+	opacity: 0
+	}
+	
+	.rating>label:hover:before,
+	.rating>label:hover~label:before {
+	opacity: 1 !important
+	}
+	
+	.rating>input:checked~label:before {
+	opacity: 1
+	}
+	
+	.rating:hover>input:checked~label:before {
+	opacity: 0.4
+	}
+	
+	
+	.buttons{
+	top: 36px;
+	position: relative;
+	}
+	
+	
+	.rating-submit{
+	border-radius: 15px;
+	color: #fff;
+	    height: 49px;
+	}
+	
+	
+	.rating-submit:hover{
+	
+	color: #fff;
+	}
+
+
+</style>
+
+
+
+
+
 <div class="site-section site-section-phong">
 	<div class="container">
 		<div class="row">
@@ -97,11 +162,17 @@
 											<div class="danhgia">
 												<div class="col-8 text-black">
 													<div class="row my-4">
-														<form action="danhgia" method="post">
-															<input type="password" name="id_p" value="${id_p}" hidden>
-															<label>Số sao: </label><input type="text" name="sosao"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-															<label>Nội dung: </label><input type="text"
-																name="noidung">
+														<form action="/timphong/danhgia" method="post">
+															<input type="password" name="id_p" value="${dh.phong.id_p}" hidden>
+															<label>Số sao: </label>
+															            <div class="rating"> 
+                															<input type="radio" name="sosao" value="5" id="5"><label for="5">☆</label> 
+                															<input type="radio" name="sosao" value="4" id="4"><label for="4">☆</label> 
+                															<input type="radio" name="sosao" value="3" id="3"><label for="3">☆</label> 
+                															<input type="radio" name="sosao" value="2" id="2"><label for="2">☆</label> 
+                															<input type="radio" name="sosao" value="1" id="1"><label for="1">☆</label>
+            															</div>
+															<br/><label>Nội dung: </label><input type="text" name="noidung">
 															<button type="submit">Đánh giá</button>
 														</form>
 													</div>
@@ -124,4 +195,3 @@
 		</div>
 	</div>
 </div>
-

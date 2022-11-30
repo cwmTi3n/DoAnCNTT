@@ -3,6 +3,35 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/templates/" var="url"></c:url>
 
+<style>
+	.rating {
+	display: flex;
+	}
+	
+	.rating>label {
+	position: relative;
+	line-height: 0.8 !important;
+	width: 0.8em;
+	font-size: 20px;
+	font-weight: 100;
+	color: #FFD600;
+	}
+	
+	.rating>label::before {
+	content: "\2605";
+	position: absolute;
+	opacity: 0
+	}
+	
+	.rating>label:before,
+	.rating>label:before {
+	opacity: 1 !important
+	}
+</style>
+
+
+
+
 <h1 id="id_p" style="display:none;">${phong.id_p }</h1> <!-- Cần cách xử lý khác -->
 <div class="site-section site-section-phong" id="property-details">
 	<div class="container">
@@ -24,7 +53,12 @@
 					<c:forEach items="${danhgias }" var="dg">
 						<div>
 							<h5>${dg.taikhoan.ho } ${dg.taikhoan.ten }</h5>
-							<p>Ngày: ${dg.ngay }, Số sao: ${dg.sosao }</p>
+							<p>Ngày: ${dg.ngay }</p>
+							<div class="rating">
+								<c:forEach begin='1' end='${dg.sosao }'>
+                					<label>☆</label>
+								</c:forEach> 
+                			</div> 
 							<p>Nội dung: ${dg.noidung }<p><hr/>
 						</div>
 					</c:forEach>
@@ -71,4 +105,9 @@
 			}
 		});
 	};
+	
+	
+	$(document).ready(function() {
+		  $('#rateMe2').mdbRate();
+		});
 </script>

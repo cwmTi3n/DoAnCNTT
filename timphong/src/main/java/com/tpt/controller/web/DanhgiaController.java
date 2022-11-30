@@ -50,7 +50,6 @@ public class DanhgiaController extends HttpServlet
 		Taikhoan taikhoan = (Taikhoan)object;
 		int sosao = Integer.parseInt(req.getParameter("sosao"));
 		String noidung = req.getParameter("noidung");
-		System.out.println(noidung);
 		int id_p = Integer.parseInt(req.getParameter("id_p"));
 		Danhgia danhgia = new Danhgia();
 		danhgia.setId_p(id_p);
