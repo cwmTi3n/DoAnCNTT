@@ -28,13 +28,18 @@ public class ListtingController extends HttpServlet
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
 	ITinhService tinhService = new TinhServiceImpl();
-	
+	String[] thutu = {"id_p", "ngay", "ngay DESC", "gia", "gia DESC"};
 	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		req.setCharacterEncoding("utf-8");
-		
+		String thutuReq = req.getParameter("thutu");
+		int tt = 0;
+		if(thutuReq != null)
+		{
+			tt= Integer.parseInt(thutuReq);
+		}
 		String keyword = req.getParameter("keyword");
 		if(keyword == null)
 		{
@@ -44,7 +49,7 @@ public class ListtingController extends HttpServlet
 		List<Tinh> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
 //		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
-		List<Phong> phongs = phongService.searchPhong(keyword);
+		List<Phong> phongs = phongService.searchPhong(keyword, thutu[tt]);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -54,7 +59,12 @@ public class ListtingController extends HttpServlet
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		resp.setCharacterEncoding("utf-8");
-		
+		String thutuReq = req.getParameter("thutu");
+		int tt = 0;
+		if(thutuReq != null)
+		{
+			tt = Integer.parseInt(thutuReq);
+		}
 		String keyword = req.getParameter("key");
 		String[] locString= new String[4];
 		int[] loc = new int[4];
@@ -72,7 +82,7 @@ public class ListtingController extends HttpServlet
 		}
 //		List<Phong> searchPhong = phongService.searchPhong(keyword);
 //		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
-		List<Phong> phongs = phongService.locPhong(keyword, loc);
+		List<Phong> phongs = phongService.locPhong(keyword, loc, thutu[tt]);
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{

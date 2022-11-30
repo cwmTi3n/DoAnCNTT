@@ -122,7 +122,19 @@
 
 			</div>
 			<div class="col-md-9 order-2 order-md-1">
-
+				<div class="select-wrap">
+								<span class="icon icon-keyboard_arrow_down"></span> 
+								<select
+									onchange="" name="thutu" id="thutu"
+									class="form-control px-3">
+									<option value="0">Mặc định</option>
+									<option value="1">Mới nhất</option>
+									<option value="2">Cũ nhất</option>
+									<option value="3">Giá từ thấp đến cao</option>
+									<option value="4">Giá từ cao đến thấp</option>
+								</select>
+				</div>
+				<h4></h4>
 				<div id="load" class="row large-gutters">
 					<c:forEach items="${phongs }" var="phong">
 						<div class="phong col-md-6 col-lg-4 mb-5 mb-lg-5 ">
@@ -154,7 +166,7 @@
 		</div>
 	</div>
 </div>
-<div class="site-section" id="properties-section">
+<!-- <div class="site-section" id="properties-section">
 	<div class="container">
 		<div class="row mb-5 align-items-center">
 			<div class="col-md-7 text-left">
@@ -226,10 +238,10 @@
 		</div>
 
 	</div>
-</div>
+</div>-->
 
 <script>
-	function LoadListings() {
+/* 	function LoadListings() {
 		var loaiphong = document.getElementById('loaiphong');
 		var loaiphong_id = loaiphong.options[loaiphong.selectedIndex].value;
 		
@@ -247,7 +259,7 @@
 		console.log(ward_id);
 		document.myform.action = "#";
 		myform.submit();
-	}
+	} */
 	
 	function loadListingsByTinh(){
 		loadHuyen();
@@ -262,12 +274,14 @@
 	function searchPhong() {
 		/* tạo viên amount để Gọi và đếm classname là product */
 		var resultSearch = document.getElementById('load')
+		var thutu = document.getElementById('thutu').value;
 		var keyword = document.getElementById('keyword').value;
 		$.ajax({
 			url : "/timphong/listings", //send to Controller
 			type : "post", //send it through get method
 			data : {
-				key : keyword
+				key : keyword,
+				thutu: thutu
 			},
 			success : function(data) {
 				resultSearch.innerHTML = data;
@@ -283,6 +297,7 @@
 		var city = document.getElementById('city').value;
 		var district = document.getElementById('district').value;
 		var ward = document.getElementById('ward').value;
+		var thutu = document.getElementById('thutu').value;
 		$.ajax({
 			url : "/timphong/listings", //send to Controller
 			type : "post", //send it through get method
@@ -291,7 +306,8 @@
 				loaiphong : lp,
 				tinh : city,
 				huyen : district,
-				xa : ward
+				xa : ward,
+				thutu: thutu
 			},
 			success : function(data) {
 				resultSearch.innerHTML = data;
