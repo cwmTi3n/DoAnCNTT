@@ -153,7 +153,7 @@
 									</c:if>
 									<c:if test="${dh.trangthai==2 }">
 										<td>${dh.phong.taikhoan.sdt}</td>
-										<td><input hidden type="checkbox" id="danhgia"
+										<td><input hidden type="checkbox" class="danhgia"
 											name="danhgia"> <label for="danhgia"> <span
 												class="btn btn-info">Đánh giá</span>
 										</label>

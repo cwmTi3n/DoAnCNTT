@@ -139,6 +139,6 @@
 	display: none;
 }
 
-#danhgia:checked ~ .danhgia{
+.danhgia:checked ~ .danhgia{
 	display: flex;
 }
