@@ -19,6 +19,7 @@ import com.tpt.service.ITinhService;
 import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
+import com.tpt.util.Constant;
 import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = {"/listings"})
@@ -28,7 +29,6 @@ public class ListtingController extends HttpServlet
 	IPhongService phongService = new PhongServiceImpl();
 	ILoaiphongService loaiphongService = new LoaiphongServiceImpl();
 	ITinhService tinhService = new TinhServiceImpl();
-	String[] thutu = {"id_p", "ngay", "ngay DESC", "gia", "gia DESC"};
 	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -49,7 +49,7 @@ public class ListtingController extends HttpServlet
 		List<Tinh> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
 //		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
-		List<Phong> phongs = phongService.searchPhong(keyword, thutu[tt]);
+		List<Phong> phongs = phongService.searchPhong(keyword, Constant.thutu[tt]);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -82,7 +82,7 @@ public class ListtingController extends HttpServlet
 		}
 //		List<Phong> searchPhong = phongService.searchPhong(keyword);
 //		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
-		List<Phong> phongs = phongService.locPhong(keyword, loc, thutu[tt]);
+		List<Phong> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt]);
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{

@@ -2,6 +2,7 @@ package com.tpt.util;
 
 public class Constant
 {
+	public static final String[] thutu = {"id_p", "ngay", "ngay DESC", "gia", "gia DESC"};
 	public static final String DIR="E://upload";
 	public static final int SoHinh = 3;
 	
