@@ -38,10 +38,8 @@
 										href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
 										/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
 								</tr>
-<<<<<<< HEAD
 							</c:forEach>
 						</tbody>
-=======
 							</thead>
 							<tbody>
 								<c:forEach items="${dhLuu}" var="dh" varStatus="STT">
@@ -61,7 +59,6 @@
 									</tr>
 								</c:forEach>
 							</tbody>
->>>>>>> e84f5ae7985b02562bfbd3e5a860dea01e3f71d9
 					</table>
 				</div>
 
@@ -134,10 +131,8 @@
 												lại</a></td>
 									</c:if>
 								</tr>
-<<<<<<< HEAD
 							</c:forEach>
 						</tbody>
-=======
 							</thead>
 							<tbody>
 								<c:forEach items="${dhChoxn}" var="dh" varStatus="STT">
@@ -169,7 +164,6 @@
 									</tr>
 								</c:forEach>
 							</tbody>
->>>>>>> e84f5ae7985b02562bfbd3e5a860dea01e3f71d9
 					</table>
 				</div>
 			</div>
