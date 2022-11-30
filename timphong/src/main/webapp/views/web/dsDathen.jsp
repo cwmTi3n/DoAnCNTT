@@ -89,12 +89,26 @@
 											href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a>
 											/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
 									</c:if>
-									<c:if test="${dh.trangthai==2 }">
+								<c:if test="${dh.trangthai==2 }">
 										<td>${dh.phong.taikhoan.sdt}</td>
-										<td><a href="/timphong/danhgia?id_p=${dh.phong.id_p }">Đánh
-												giá</a></td>
-									</c:if>
-									<c:if test="${dh.trangthai==3 }">
+										<td><input hidden type="checkbox" id="danhgia"
+											name="danhgia"> <label for="danhgia"> <span
+												class="btn btn-info">Đánh giá</span>
+										</label>
+											<div class="danhgia">
+												<div class="col-8 text-black">
+													<div class="row my-4">
+														<form action="danhgia" method="post">
+															<input type="password" name="id_p" value="${id_p}" hidden>
+															<label>Số sao: </label><input type="text" name="sosao">
+															<label>Nội dung: </label><input type="text"
+																name="noidung">
+															<button type="submit">Đánh giá</button>
+														</form>
+													</div>
+												</div>
+											</div></td>
+									</c:if>									<c:if test="${dh.trangthai==3 }">
 										<td>
 										<td><a
 											href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>

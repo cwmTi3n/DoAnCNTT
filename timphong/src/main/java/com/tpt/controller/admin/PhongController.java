@@ -95,7 +95,7 @@ public class PhongController extends HttpServlet
 
 		}
 
-		Phong phong = new Phong();
+		Phong phong  l= new Phong();
 		phong.setId_p(Integer.parseInt(req.getParameter("id_p")));
 		phong.setTen(req.getParameter("ten"));
 		phong.setTrangthai(Integer.parseInt(req.getParameter("trangthai")));
