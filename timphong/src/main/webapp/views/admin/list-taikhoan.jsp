@@ -65,7 +65,7 @@
 						<c:forEach items="${users}" var="user" varStatus="STT">
 							<tr>
 								<th scope="row">${STT.index+1}</th>
-								<td>${user.tentk}</td>
+								<td>${user.tentk }</td>
 								<td>${user.ho}${user.ten}</td>
 								<td>${user.sdt}</td>
 								<td>${user.email}</td>
