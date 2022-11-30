@@ -3,6 +3,7 @@ package com.tpt.controller.seller;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -156,10 +157,14 @@ public class crudPhongController extends HttpServlet
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
-		System.out.println("Ma xa: " + req.getParameter("xa"));
 		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
-		String id_tk = req.getParameter("id_tk");
-		phong.setId_tk(1);
+		Date date = new Date(System.currentTimeMillis());
+		phong.setNgaydang(date);
+		HttpSession session = req.getSession();
+		Object object = session.getAttribute("account");
+		Taikhoan taikhoan = (Taikhoan)object;
+		int id_tk = taikhoan.getId_tk();
+		phong.setId_tk(id_tk);
 		phongService.insertPhong(phong, hinhanhs);
 	}
 	
@@ -234,8 +239,7 @@ public class crudPhongController extends HttpServlet
 			id_x = Integer.parseInt(id_xaString);
 		}
 		phong.setMaxa(id_x);
-		System.out.println(phongService.editPhong(phong, hinhanhs, false));//false là seller edit
-		System.out.println(phong.getId_p());
+		phongService.editPhong(phong, hinhanhs, false);//false là seller edit
 	}
 	
 	protected void deleteAnhPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException

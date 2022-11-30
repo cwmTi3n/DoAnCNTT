@@ -38,8 +38,30 @@
 										href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
 										/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
 								</tr>
+<<<<<<< HEAD
 							</c:forEach>
 						</tbody>
+=======
+							</thead>
+							<tbody>
+								<c:forEach items="${dhLuu}" var="dh" varStatus="STT">
+									<tr>
+										<th scope="row">${STT.index+1}</th>
+										<td><a
+											href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
+												<c:url value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
+												<img height="120" width="160" src="${hinhanh}" />
+										</a></td>
+										<td>${dh.phong.ten }</td>
+										<td>${dh.phong.mota }</td>
+										<td>${dh.phong.gia}</td>
+										<td>${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen }, ${dh.phong.xa.huyen.tinh.tentinh }</td>
+										<td><a href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a> / 
+											<a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+>>>>>>> e84f5ae7985b02562bfbd3e5a860dea01e3f71d9
 					</table>
 				</div>
 
@@ -112,8 +134,42 @@
 												lại</a></td>
 									</c:if>
 								</tr>
+<<<<<<< HEAD
 							</c:forEach>
 						</tbody>
+=======
+							</thead>
+							<tbody>
+								<c:forEach items="${dhChoxn}" var="dh" varStatus="STT">
+									<tr>
+										<th scope="row">${STT.index+1}</th>
+										<td><a
+											href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
+												<c:url value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
+												<img height="120" width="160" src="${hinhanh}" />
+										</a></td>
+										<td>${dh.phong.ten }</td>
+										<td>${dh.phong.gia}</td>
+										<td>${hanhdong==2?dh.phong.dcchitiet:""} ${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen }, ${dh.phong.xa.huyen.tinh.tentinh }</td>
+										<td>${dh.ngay } ${dh.gio }</td>
+										<c:if test="${dh.trangthai==1 }">
+										<td><a href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a> / 
+											<a href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
+										</c:if>
+										<c:if test="${dh.trangthai==2 }">
+											<td>${dh.phong.taikhoan.sdt}</td>
+											<td><a href="/timphong/danhgia?id_p=${dh.phong.id_p }">Đánh giá</a></td>
+										</c:if>
+										<c:if test="${dh.trangthai==3 }">
+											<td>
+												<td><a href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a> / 
+												<a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt lại</a>
+											</td>
+										</c:if>
+									</tr>
+								</c:forEach>
+							</tbody>
+>>>>>>> e84f5ae7985b02562bfbd3e5a860dea01e3f71d9
 					</table>
 				</div>
 			</div>

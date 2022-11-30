@@ -152,14 +152,4 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 		}
 		return null;
 	}
-	
-//	public static void main(String[] args)
-//	{
-//		IDathenDao dathenDaoImpl = new DathenDaoImpl();
-//		Dathen dathen = new Dathen();
-//		dathen.setId_p(1);
-//		dathen.setId_tk(4);
-//		dathen.setTrangthai(0);
-//		System.out.println(dathenDaoImpl.findBySeller(1, 2).size());
-//	}
 }

@@ -174,7 +174,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<Phong> get9Phong()
 	{
-		String sql = "select top 9 * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1";
+		String sql = "select top 9 * from phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 order by id_p";
 		List<Phong> phongs = new ArrayList<Phong>();
 		try
 		{
@@ -196,7 +196,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public List<Phong> pagingPhong(int index, String keyword, int loc[])
+	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu)
 	{
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
@@ -222,7 +222,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		{
 			sql += "and id_x = ? ";
 		}
-		sql += " order by id_p OFFSET ? row fetch next 3 row only";
+		sql += " order by " + thutu + " OFFSET ? row fetch next 3 row only";
 		try
 		{
 			connection = super.getConnection();
@@ -333,10 +333,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return 0;
 	}
 	@Override
-	public List<Phong> searchPhong(String keyword)
+	public List<Phong> searchPhong(String keyword, String thutu)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select top 9 * from Phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?)";
+		String sql = "select top 9 * from Phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?) order by " + thutu;
 		try
 		{
 			connection = super.getConnection();
@@ -386,7 +386,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 	
 	@Override
-	public List<Phong> locPhong(String keyword, int loc[])
+	public List<Phong> locPhong(String keyword, int loc[], String thutu)
 	{
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
@@ -412,7 +412,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		{
 			sql += "and id_x = ? ";
 		}
-		System.out.println(sql);
+		sql += " order by " + thutu;
 		try
 		{
 			connection = super.getConnection();
@@ -422,23 +422,19 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			int count = 2;
 			if(loc[0] != 0)
 			{
-				count++;
-				pStatement.setInt(count, loc[0]);
+				pStatement.setInt(++count, loc[0]);
 			}
 			if(loc[1] != 0)
 			{
-				count++;
-				pStatement.setInt(count, loc[1]);
+				pStatement.setInt(++count, loc[1]);
 			}
 			if(loc[2] != 0)
 			{
-				count++;
-				pStatement.setInt(count, loc[2]);
+				pStatement.setInt(++count, loc[2]);
 			}
 			if(loc[3] != 0)
 			{
-				count++;
-				pStatement.setInt(count, loc[3]);
+				pStatement.setInt(++count, loc[3]);
 			}
 			rSet = pStatement.executeQuery();
 			mapAttributeSQL map = new mapAttributeSQL();
@@ -457,8 +453,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 //	public static void main(String[] args)
 //	{
-//		int[] loc = {1, 50, 0, 0};
 //		IPhongDao phongDao = new PhongDaoImpl();
-//		System.out.println(phongDao.get9Phong().get(1).getQuantam());
+//		System.out.println(phongDao.getPhongSeller(1));
 //	}
 }

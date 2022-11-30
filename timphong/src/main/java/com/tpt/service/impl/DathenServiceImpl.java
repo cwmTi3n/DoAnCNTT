@@ -51,5 +51,4 @@ public class DathenServiceImpl implements IDathenService
 		// TODO Auto-generated method stub
 		return dathenDao.findBySeller(id_tk, tt);
 	}
-
 }

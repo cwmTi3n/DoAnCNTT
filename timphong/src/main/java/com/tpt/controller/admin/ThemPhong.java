@@ -3,6 +3,7 @@ package com.tpt.controller.admin;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -108,6 +109,8 @@ public class ThemPhong extends HttpServlet
 		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
 		String id_tk = req.getParameter("id_tk");
 		phong.setId_tk(Integer.parseInt(id_tk));
+		Date date = new Date(System.currentTimeMillis());
+		phong.setNgaydang(date);
 		phongService.insertPhong(phong, hinhanhs);
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tk);
 	}

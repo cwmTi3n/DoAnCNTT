@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
+import com.tpt.util.Constant;
 import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = { "/more" })
@@ -27,7 +28,12 @@ public class PagingAjaxPhongController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setCharacterEncoding("utf-8");
-
+		String thutuReq = req.getParameter("thutu");
+		int tt = 0;
+		if(thutuReq != null)
+		{
+			tt = Integer.parseInt(thutuReq);
+		}
 		String coutString = req.getParameter("exits");
 		String keyword = req.getParameter("key");
 		if(keyword == null)
@@ -49,7 +55,7 @@ public class PagingAjaxPhongController extends HttpServlet {
 			}
 		}
 //		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
-		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc);
+		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt]);
 		PrintWriter out = resp.getWriter();
 		for (Phong p : phongs) {
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"
