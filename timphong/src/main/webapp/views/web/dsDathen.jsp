@@ -59,8 +59,6 @@
 	
 	color: #fff;
 	}
-
-
 </style>
 
 

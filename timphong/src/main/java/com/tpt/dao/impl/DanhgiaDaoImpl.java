@@ -41,6 +41,30 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 	}
 	
 	@Override
+	public List<Danhgia> finhById_tk(int id_tk)
+	{
+		List<Danhgia> danhgias = new ArrayList<>();
+		String sql = "select * from Danhgia where id_tk = ?";
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, id_tk);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL map = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				danhgias.add(map.mapDanhgia(rSet));
+			}
+			return danhgias;
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public boolean insertDanhgia(Danhgia danhgia)
 	{
 		String sql = "insert into Danhgia(id_p, id_tk, ngay, sosao, noidung) values(?, ?, ?, ?, ?)";

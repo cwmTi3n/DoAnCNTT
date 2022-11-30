@@ -15,4 +15,6 @@ public interface IDanhgiaDao
 
 	List<Danhgia> findById_p(int id_p);
 
+	List<Danhgia> finhById_tk(int id_tk);
+
 }
