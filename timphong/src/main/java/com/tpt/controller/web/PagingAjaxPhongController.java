@@ -14,7 +14,6 @@ import com.tpt.model.Phong;
 import com.tpt.service.IPhongService;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.util.Constant;
-import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = { "/more" })
 public class PagingAjaxPhongController extends HttpServlet {

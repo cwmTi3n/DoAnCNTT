@@ -6,13 +6,10 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.jdt.internal.compiler.ast.ReturnStatement;
-import org.hibernate.cfg.annotations.ListBinder;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.dao.IPhongDao;
 import com.tpt.dao.ITaikhoanDao;
-import com.tpt.model.Hinhanh;
 import com.tpt.model.Phong;
 import com.tpt.model.Taikhoan;
 import com.tpt.util.mapAttributeSQL;
