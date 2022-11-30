@@ -1,8 +1,6 @@
 package com.tpt.util;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.tpt.dao.IHinhanhDao;
 import com.tpt.dao.ILoaiphongDao;

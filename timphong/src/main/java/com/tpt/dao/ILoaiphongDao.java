@@ -2,8 +2,6 @@ package com.tpt.dao;
 
 import java.util.List;
 
-import org.apache.el.parser.BooleanNode;
-
 import com.tpt.model.Loaiphong;
 
 public interface ILoaiphongDao

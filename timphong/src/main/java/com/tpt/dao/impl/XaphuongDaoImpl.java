@@ -4,14 +4,11 @@ package com.tpt.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.tpt.connection.DBConnection;
 import com.tpt.util.mapAttributeSQL;
-import com.tpt.dao.IQuanHuyenDao;
-import com.tpt.model.Huyen;
 import com.tpt.dao.IXaphuongDao;
 import com.tpt.model.Xa;
 

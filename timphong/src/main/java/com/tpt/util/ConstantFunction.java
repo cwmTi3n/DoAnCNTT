@@ -1,13 +1,10 @@
 package com.tpt.util;
 
-import java.util.List;
 import java.util.Random;
 
-import javax.validation.Path.ReturnValueNode;
 
 import com.tpt.model.Dathen;
 import com.tpt.model.Phong;
-import com.tpt.model.Taikhoan;
 
 public class ConstantFunction
 {

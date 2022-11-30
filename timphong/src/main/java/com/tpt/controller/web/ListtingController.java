@@ -20,7 +20,6 @@ import com.tpt.service.impl.LoaiphongServiceImpl;
 import com.tpt.service.impl.PhongServiceImpl;
 import com.tpt.service.impl.TinhServiceImpl;
 import com.tpt.util.Constant;
-import com.tpt.util.ConstantFunction;
 
 @WebServlet(urlPatterns = {"/listings"})
 public class ListtingController extends HttpServlet
