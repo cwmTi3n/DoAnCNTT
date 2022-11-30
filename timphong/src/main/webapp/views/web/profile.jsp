@@ -9,10 +9,15 @@
 			<div class="d-flex col-12" style="align-items: center;">
 				<img class="profile-img img-thumbnail" src="${url }images/Logo.png">
 				<h2 class="text-black mb-0 ml-3">Welcome, ${sessionScope.account.getTen() }</h2>
-
+													
 			</div>
 			<div class="col-8 text-black">
 				<div class="row my-4">
+				<form>
+					<div class="col-2 profile-block-item">Ảnh đại diện:
+						<img src="">
+					</div>
+				</form>
 					<div class="col-2 profile-block-item bg-primary bg-gradient" style="margin-left: 15px">Người theo dõi</div>
 					<div class="col-2 profile-block-item">Đang theo dõi</div>
 					<div class="col-2 profile-block-item">Phòng yêu thích</div>
