@@ -128,7 +128,7 @@ public class TaikhoanDaoImpl extends DBConnection implements ITaikhoanDao
 		} catch (Exception e)
 		{
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 		return false;
 		

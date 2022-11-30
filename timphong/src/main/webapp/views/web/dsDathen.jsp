@@ -25,7 +25,7 @@
 									<tr>
 										<th scope="row">${STT.index+1}</th>
 										<td><a
-											href="<c:url value='/dathen?id_p=${dh.phong.id_p }'/>">
+											href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
 												<c:url value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
 												<img height="120" width="160" src="${hinhanh}" />
 										</a></td>
@@ -67,13 +67,13 @@
 									<tr>
 										<th scope="row">${STT.index+1}</th>
 										<td><a
-											href="<c:url value='/dathen?id_p=${dh.phong.id_p }'/>">
+											href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
 												<c:url value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
 												<img height="120" width="160" src="${hinhanh}" />
 										</a></td>
 										<td>${dh.phong.ten }</td>
 										<td>${dh.phong.gia}</td>
-										<td>${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen }, ${dh.phong.xa.huyen.tinh.tentinh }</td>
+										<td>${hanhdong==2?dh.phong.dcchitiet:""} ${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen }, ${dh.phong.xa.huyen.tinh.tentinh }</td>
 										<td>${dh.ngay } ${dh.gio }</td>
 										<c:if test="${dh.trangthai==1 }">
 										<td><a href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a> / 
