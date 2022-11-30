@@ -72,7 +72,9 @@
 										<c:if test="${phong == null }">
 											<option value="0" selected>Chọn tỉnh thành phố</option>
 										</c:if>
-										<option value="${phong.getXa().getHuyen().matinh}">${phong.getXa().getHuyen().getTinh().getTenTinh() }</option>
+										<c:if test="${phong != null }">
+											<option value="${phong.getXa().getHuyen().matinh}" selected>${phong.getXa().getHuyen().getTinh().tentinh }</option>
+										</c:if>
 										<c:forEach items="${tinhs }" var="tinh">
 											<option value="${tinh.matinh }">${tinh.tentinh }</option>
 										</c:forEach>

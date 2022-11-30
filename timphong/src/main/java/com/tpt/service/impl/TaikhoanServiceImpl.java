@@ -42,13 +42,34 @@ public class TaikhoanServiceImpl implements ITaikhoanService
 	@Override
 	public boolean deleteTaikhoan(int id_tk)
 	{
-		return taikhoanDao.deleteTaikhoan(id_tk);
+		Taikhoan taikhoan = taikhoanDao.getTaikhoan(id_tk);
+		if(taikhoanDao.deleteTaikhoan(id_tk))
+		{
+			deleteHinhanh(taikhoan.getAnhdaidien());
+			return true;
+		}
+		return false;
 	}
 
 	@Override
-	public boolean editTaikhoan(Taikhoan taikhoan)
+	public boolean editTaikhoan(Taikhoan taikhoan, String filename)
 	{
-		return taikhoanDao.editTaikhoan(taikhoan);
+		boolean chkDelete = false;
+		int chk = filename.lastIndexOf(".");
+		if(filename.substring(chk+1).length() != 0)
+		{
+			chkDelete = true;
+		}
+		else 
+		{
+			Taikhoan oldTaikhoan = taikhoanDao.getTaikhoan(taikhoan.getId_tk());
+			taikhoan.setAnhdaidien(oldTaikhoan.getAnhdaidien());
+		}
+		if(taikhoanDao.editTaikhoan(taikhoan)==true && chkDelete==true)
+		{
+			deleteHinhanh(filename);
+		}
+		return chkDelete;
 	}
 	@Override
 	public Taikhoan dangNhap(Taikhoan taikhoan) {

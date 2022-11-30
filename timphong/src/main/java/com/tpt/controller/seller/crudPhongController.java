@@ -111,14 +111,18 @@ public class crudPhongController extends HttpServlet
 		String hinhanhs[] = new String[Constant.SoHinh];
 		for(Part part : req.getParts())
 		{
-			hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			String newFilename = part.getSubmittedFileName();
+			if(newFilename != null)
+			{
+				hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			}
 //			String filename = null;
 //			String newFilename = part.getSubmittedFileName();
 //			if(newFilename != null)
 //			{
 //				try
 //				{
-//					String realPath = Constant.DIR + "/phong";					
+//					//String realPath = Constant.DIR + "/phong";					
 //					String realFileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 //					int index = realFileName.lastIndexOf(".");
 //					String ext = realFileName.substring(index+1);
@@ -152,6 +156,7 @@ public class crudPhongController extends HttpServlet
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
+		System.out.println("Ma xa: " + req.getParameter("xa"));
 		phong.setMaxa(Integer.parseInt(req.getParameter("xa")));
 		String id_tk = req.getParameter("id_tk");
 		phong.setId_tk(1);
@@ -179,7 +184,11 @@ public class crudPhongController extends HttpServlet
 		String realPath = Constant.DIR + "/phong";
 		for(Part part : req.getParts())
 		{
-			hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			String newFilename = part.getSubmittedFileName();
+			if(newFilename != null)
+			{
+				hinhanhs[temp++] = ThemAnh.ThemAnh(part, realPath, temp);
+			}
 //			String filename = null;
 //			String newFilename = part.getSubmittedFileName();
 //			if(newFilename != null)

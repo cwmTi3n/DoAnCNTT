@@ -73,7 +73,7 @@ public class TaikhoanController extends HttpServlet
 		taikhoan.setHo(req.getParameter("ho"));
 		taikhoan.setTen(req.getParameter("ten"));
 		taikhoan.setAnhdaidien(filename);
-		taikhoanService.editTaikhoan(taikhoan);
+		taikhoanService.editTaikhoan(taikhoan, filename);
 		
 		resp.sendRedirect(req.getContextPath() + "/admin/taikhoan?id_tk=" + id_tkString);
 	}
