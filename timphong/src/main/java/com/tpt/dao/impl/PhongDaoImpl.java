@@ -340,7 +340,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public boolean sellerUpdatePhong(Phong newPhong)
 	{
-		String sql = "update phong set ten=?, anhchinh=?, chieudai=?, chieurong=?, gia=?, dcchitiet=?, mota=?, id_lp=?, id_x=? where id_p=?";
+		String sql = "update phong set ten=?, anhchinh=?, chieudai=?, chieurong=?, gia=?, dcchitiet=?, mota=?, id_lp=?, id_x=?, songuoi=? where id_p=?";
 		try
 		{
 			connection = super.getConnection();
@@ -354,7 +354,8 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(7, newPhong.getMota());
 			pStatement.setInt(8, newPhong.getId_lp());
 			pStatement.setInt(9, newPhong.getMaxa());
-			pStatement.setInt(10, newPhong.getId_p());
+			pStatement.setInt(10, newPhong.getSonguoi());
+			pStatement.setInt(11, newPhong.getId_p());
 			pStatement.executeUpdate();
 			return true;
 		} catch (Exception e)
@@ -381,7 +382,6 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			}
 		}
 		sql += " order by " + thutu;
-		System.out.println(sql);
 		try
 		{
 			connection = super.getConnection();
