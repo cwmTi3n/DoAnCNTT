@@ -94,6 +94,4 @@ public class Danhgia
 		this.phong = phong;
 	}
 	
-	
-	
 }

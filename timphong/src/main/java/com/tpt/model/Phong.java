@@ -12,7 +12,7 @@ public class Phong
 	private float chieudai;
 	private float chieurong;
 	private int gia;
-	private int yeuthich;
+	private int songuoi; // 1 2 4 8 >10
 	private String dcchitiet;
 	private String mota;
 	private Date ngaydang;
@@ -30,7 +30,7 @@ public class Phong
 	{
 	}
 	public Phong(int id_p, String ten, String anhchinh, int trangthai, float chieudai, float chieurong, int gia,
-			int yeuthich, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk, int quantam,
+			int songuoi, String dcchitiet, String mota, Date ngaydang, int id_lp, int maxa, int id_tk, int quantam,
 			float danhgia, Loaiphong loaiphong, Xa xa, Taikhoan taikhoan, List<Taikhoan> ngdatPhongs,
 			List<Hinhanh> hinhanhs)
 	{
@@ -42,7 +42,7 @@ public class Phong
 		this.chieudai = chieudai;
 		this.chieurong = chieurong;
 		this.gia = gia;
-		this.yeuthich = yeuthich;
+		this.songuoi = songuoi;
 		this.dcchitiet = dcchitiet;
 		this.mota = mota;
 		this.ngaydang = ngaydang;
@@ -113,13 +113,13 @@ public class Phong
 	{
 		this.gia = gia;
 	}
-	public int getYeuthich()
+	public int getSonguoi()
 	{
-		return yeuthich;
+		return songuoi;
 	}
-	public void setYeuthich(int yeuthich)
+	public void setSonguoi(int songuoi)
 	{
-		this.yeuthich = yeuthich;
+		this.songuoi = songuoi;
 	}
 	public String getDcchitiet()
 	{
@@ -225,6 +225,5 @@ public class Phong
 	{
 		this.hinhanhs = hinhanhs;
 	}
-	
 	
 }

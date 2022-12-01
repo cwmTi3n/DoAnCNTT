@@ -65,14 +65,14 @@ public class ListtingController extends HttpServlet
 			tt = Integer.parseInt(thutuReq);
 		}
 		String keyword = req.getParameter("key");
-		String[] locString= new String[4];
-		int[] loc = new int[4];
+		String[] locString= new String[Constant.BoLoc];
+		int[] loc = new int[Constant.BoLoc];
 		locString[0] = req.getParameter("loaiphong");
 		locString[1] = req.getParameter("tinh");
-		System.out.println("oke " + locString[1]);
 		locString[2] = req.getParameter("huyen");
 		locString[3] = req.getParameter("xa");
-		for(int i = 0; i < 4; i++)
+		locString[4] = req.getParameter("songuoi");
+		for(int i = 0; i < Constant.BoLoc; i++)
 		{
 			if(locString[i] != null)
 			{

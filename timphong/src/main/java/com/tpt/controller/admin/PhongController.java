@@ -103,7 +103,7 @@ public class PhongController extends HttpServlet
 		phong.setChieudai(Float.parseFloat(req.getParameter("chieudai")));
 		phong.setChieurong(Float.parseFloat(req.getParameter("chieurong")));
 		phong.setGia(Integer.parseInt(req.getParameter("gia")));
-		phong.setYeuthich(Integer.parseInt(req.getParameter("yeuthich")));
+		phong.setSonguoi(Integer.parseInt(req.getParameter("songuoi")));
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));

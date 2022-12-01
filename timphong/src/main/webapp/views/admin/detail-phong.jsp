@@ -45,10 +45,20 @@
 				</select> <br /> <label>Chiều dài: </label><input type="text" name="chieudai"
 					value="${phong.chieudai }"><br /> <label>Chiều
 					rộng: </label><input type="text" name="chieurong"
-					value="${phong.chieurong }"><br /> <label>Giá: </label><input
-					type="text" name="gia" value="${phong.gia }"><br /> <label>Yêu
-					thích: </label><input type="text" name="yeuthich"
-					value="${phong.yeuthich }"><br /> <label>Địa chỉ
+					value="${phong.chieurong }"><br /> 
+					
+				<label>Số người ở tối đa: </label> <select name="songuoi">
+					<option value="${phong.songuoi }" selected>${phong.songuoi } người</option>
+					<option value="1">1 người</option>
+					<option value="2">2 người</option>
+					<option value="4">4 người</option>
+					<option value="8">8 người</option>
+					<option value="10">10 người</option>
+				</select>
+					
+					<label>Giá: </label><input
+					type="text" name="gia" value="${phong.gia }"><br />
+					<label>Địa chỉ
 					chi tiết: </label><input type="text" name="dcchitiet"
 					value="${phong.dcchitiet }"><br />
 					

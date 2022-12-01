@@ -153,7 +153,7 @@ public class crudPhongController extends HttpServlet
 		phong.setChieudai(Float.parseFloat(req.getParameter("chieudai")));
 		phong.setChieurong(Float.parseFloat(req.getParameter("chieurong")));
 		phong.setGia(Integer.parseInt(req.getParameter("gia")));
-		phong.setYeuthich(0);
+		phong.setSonguoi(Integer.parseInt("songuoi"));
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
@@ -232,6 +232,7 @@ public class crudPhongController extends HttpServlet
 		phong.setDcchitiet(req.getParameter("dcchitiet"));
 		phong.setMota(req.getParameter("mota"));
 		phong.setId_lp(Integer.parseInt(req.getParameter("id_lp")));
+		phong.setSonguoi(Integer.parseInt("songuoi"));
 		String id_xaString = req.getParameter("xa");
 		int id_x = 0;
 		if(id_xaString != null)

@@ -73,7 +73,7 @@ public class mapAttributeSQL
 			phong.setChieudai(rSet.getFloat("chieudai"));
 			phong.setChieurong(rSet.getFloat("chieurong"));
 			phong.setGia(rSet.getInt("gia"));
-			phong.setYeuthich(rSet.getInt("yeuthich"));
+			phong.setSonguoi(rSet.getInt("songuoi"));
 			phong.setDcchitiet(rSet.getString("dcchitiet"));
 			phong.setMota(rSet.getString("mota"));
 			phong.setId_lp(id_lp);

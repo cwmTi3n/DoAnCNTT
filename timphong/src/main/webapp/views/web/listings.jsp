@@ -51,33 +51,20 @@
 							</div>
 						</div>
 
-<!-- 						<div class="form-group">
+ 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="LoadListings(); " name="danhgia" id="danhgia"
+									name="songuoi" id="songuoi"
 									class="form-control px-3">
-									<option value="0" selected>Đánh giá</option>
-									
-									<option value="1">
-									1 <span class="bi bi-plus-lg">asds</span></option>
-									<option value="2"><i class="bi bi-star-fill star"></i><i
-											class="bi bi-star-fill star"></i>
-									</option>
-									<option value="3"><i class="bi bi-star-fill star"></i><i
-											class="bi bi-star-fill star"></i><i class="bi star bi-star-fill"></i>
-									</option>
-									<option value="4"><i class="bi bi-star-fill star"></i><i
-											class="bi bi-star-fill star"></i><i class="bi star bi-star-fill"></i><i
-											class="bi bi-star-fill star"></i>
-									</option>
-									<option value="5"><i class="bi bi-star-fill star"></i><i
-											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i
-											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>.
-									</option>
-									
+									<option value="0" selected>Số người ở</option>
+									<option value="1">1 người</option>
+									<option value="2">2 người</option>
+									<option value="4">4 người</option>
+									<option value="8">8 người</option>
+									<option value="10">10 người</option>
 								</select>
 							</div>
-						</div> -->
+						</div>
 
 						<div class="form-group">
 							<div class="select-wrap">
@@ -300,16 +287,18 @@
 		var district = document.getElementById('district').value;
 		var ward = document.getElementById('ward').value;
 		var thutu = document.getElementById('thutu').value;
+		var songuoi = document.getElementById('songuoi').value;
 		$.ajax({
 			url : "/timphong/listings", //send to Controller
 			type : "post", //send it through get method
 			data : {
-				key : keyword,
-				loaiphong : lp,
-				tinh : city,
-				huyen : district,
-				xa : ward,
-				thutu: thutu
+				key: keyword,
+				loaiphong: lp,
+				tinh: city,
+				huyen: district,
+				xa: ward,
+				thutu: thutu,
+				songuoi: songuoi
 			},
 			success : function(data) {
 				resultSearch.innerHTML = data;

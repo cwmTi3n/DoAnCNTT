@@ -13,15 +13,6 @@ CREATE TABLE [dbo].[taikhoan](
 	anhdaidien VARCHAR(100)
 );
 
-CREATE TABLE [dbo].[theodoi](
-	id_dc INT PRIMARY KEY,
-	id_td INT,
-	CONSTRAINT FK_theodoi FOREIGN KEY (id_dc) REFERENCES [dbo].[taikhoan](id_tk)
-	on delete no action,
-	CONSTRAINT FK_duoctheodoi FOREIGN KEY (id_td) REFERENCES [dbo].[taikhoan](id_tk)
-	on delete cascade,
-);
-
 CREATE TABLE [dbo].[loaiphong](
 	id_lp INT IDENTITY(1,1) PRIMARY KEY,
 	tenloai NVARCHAR(30) NOT NULL
@@ -35,7 +26,7 @@ CREATE TABLE [dbo].[phong](
 	chieudai FLOAT NOT NULL,
 	chieurong FLOAT NOT NULL,
 	gia INT NOT NULL,
-	yeuthich INT,
+	songuoi INT,
 	dcchitiet NVARCHAR(100) NOT NULL,
 	mota NVARCHAR(500),
 	ngaydang DATE,

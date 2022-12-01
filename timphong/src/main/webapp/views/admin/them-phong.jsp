@@ -11,6 +11,15 @@
 				<option value="2">Ẩn</option>
 			</select> <br /> <label>Chiều dài: </label><input type="text" name="chieudai"><br />
 			<label>Chiều rộng: </label><input type="text" name="chieurong"><br />
+			
+			<label>Số người ở tối đa: </label> <select name="songuoi">
+				<option value="1" selected>1 người</option>
+				<option value="2">2 người</option>
+				<option value="4">4 người</option>
+				<option value="8">8 người</option>
+				<option value="10">10 người</option>
+			</select><br/>
+			
 			<label>Giá: </label><input type="text" name="gia"><br /> <label>Địa
 				chỉ chi tiết: </label><input type="text" name="dcchitiet"><br />
 
