@@ -86,7 +86,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 				Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
 				phong.setTaikhoan(taikhoan);
 				phong.setQuantam(rSet.getInt("quantam") + 30);
-				phong.setDanhgia(rSet.getFloat("danhgia"));
+				phong.setDanhgia((float)Math.round(rSet.getFloat("danhgia")*10)/10);
 				return phong;
 			}
 		} catch (Exception e)
@@ -456,7 +456,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 //	public static void main(String[] args)
 //	{
-//		IPhongDao phongDao = new PhongDaoImpl();
-//		System.out.println(phongDao.getPhongSeller(1));
+//		float a = (float) 3.6666666;
+//		System.out.println((float)Math.round(a*10)/10);
 //	}
 }
