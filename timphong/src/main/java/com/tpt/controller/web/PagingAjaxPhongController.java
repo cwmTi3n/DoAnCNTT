@@ -40,12 +40,13 @@ public class PagingAjaxPhongController extends HttpServlet {
 			keyword = "";
 		}
 		int cout = Integer.parseInt(coutString);
-		String[] locString= new String[4];
-		int[] loc = new int[4];
+		String[] locString= new String[Constant.BoLoc];
+		int[] loc = new int[Constant.BoLoc];
 		locString[0] = req.getParameter("loaiphong");
 		locString[1] = req.getParameter("tinh");
 		locString[2] = req.getParameter("huyen");
 		locString[3] = req.getParameter("xa");
+		locString[4] = req.getParameter("thutu");
 		for(int i = 0; i < 4; i++)
 		{
 			if(locString[i] != null)

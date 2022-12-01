@@ -324,6 +324,7 @@
 		var city = document.getElementById('city').value;
 		var district = document.getElementById('district').value;
 		var ward = document.getElementById('ward').value;
+		var thutu = document.getElementById('thutu').value;
 		var loading = document.getElementById('loading');
 		loading.style.display="block";
 		$.ajax({
@@ -335,7 +336,8 @@
 				loaiphong : lp,
 				tinh : city,
 				huyen : district,
-				xa : ward
+				xa : ward,
+				thutu: thutu
 			},
 			success : function(data) {
 				$("#load").append(data);
