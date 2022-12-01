@@ -32,7 +32,7 @@
 						<input type="text"
 							class="input-find input--border m-0 d-inline-block"
 							placeholder="Nhập phòng cần tìm" name="keyword" id="keyword">
-						<button class="btn button mt-2 px-3 py-1 btn-find" onClick="searchPhong()">Tìm</button>
+						 <button class="btn button mt-2 px-3 py-1 btn-find" onClick="searchPhong()">Tìm</button>
 				</div>
 				<div class="mb-5">
 					<h3 class="text-black mb-4 h5 font-family-2">Lọc phòng theo</h3>
@@ -149,8 +149,12 @@
 					</c:forEach>
 				</div>
 				<br>
-				<button onClick="loadMore()" class="btn btn-primary">Xem
-					tiếp</button>
+				<div class="spinner-border" role="status" style="display:none" id="loading">
+  					<span class="visually-hidden">Loading...</span>
+				</div>
+				<div>
+					<button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -265,6 +269,8 @@
 		var resultSearch = document.getElementById('load')
 		var thutu = document.getElementById('thutu').value;
 		var keyword = document.getElementById('keyword').value;
+		var loading = "<div class='spinner-border' role='status'><span class='visually-hidden'>Loading...</span></div>"
+		resultSearch.innerHTML = loading;
 		$.ajax({
 			url : "/timphong/listings", //send to Controller
 			type : "post", //send it through get method
@@ -288,6 +294,8 @@
 		var ward = document.getElementById('ward').value;
 		var thutu = document.getElementById('thutu').value;
 		var songuoi = document.getElementById('songuoi').value;
+		var loading = "<div class='spinner-border' role='status'><span class='visually-hidden'>Loading...</span></div>"
+		resultSearch.innerHTML = loading;
 		$.ajax({
 			url : "/timphong/listings", //send to Controller
 			type : "post", //send it through get method
@@ -316,6 +324,8 @@
 		var city = document.getElementById('city').value;
 		var district = document.getElementById('district').value;
 		var ward = document.getElementById('ward').value;
+		var loading = document.getElementById('loading');
+		loading.style.display="block";
 		$.ajax({
 			url : "/timphong/more", //send to Controller
 			type : "get", //send it through get method
@@ -331,5 +341,6 @@
 				$("#load").append(data);
 			}
 		});
+		loading.style.display="none";
 	};
 </script>

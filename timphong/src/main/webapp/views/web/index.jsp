@@ -89,6 +89,9 @@
 			</c:forEach>
 		</div>
 		<br>
+		<div class="spinner-border" role="status" style="display:none" id="loading">
+  			<span class="visually-hidden">Loading...</span>
+		</div>
 		<button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
 	</div>
 </div>
@@ -98,6 +101,8 @@
 	function loadMore() {
 		/* tạo viên amount để Gọi và đếm classname là product */
 		var amount = document.getElementsByClassName("phong").length;
+		var loading = document.getElementById('loading');
+		loading.style.display="block";
 		$.ajax({
 			url : "/timphong/more", //send to Controller
 			type : "get", //send it through get method
@@ -108,5 +113,6 @@
 				$("#load").append(data);
 			}
 		});
+		loading.style.display="none";
 	};
 </script>
