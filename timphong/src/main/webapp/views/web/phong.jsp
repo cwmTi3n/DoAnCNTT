@@ -49,7 +49,7 @@
 					</c:forEach>
 				</div>
 				<h4></h4>
-					<h3>Đánh giá: ${phong.danhgia }</h3>
+					<h3>Đánh giá: ${phong.danhgia==0?"Chưa có đánh giá":phong.danhgia}</h3>
 					<c:forEach items="${danhgias }" var="dg">
 						<div>
 							<h6>Người đánh giá: ${dg.taikhoan.ho } ${dg.taikhoan.ten }</h6>
