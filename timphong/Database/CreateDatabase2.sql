@@ -73,7 +73,7 @@ create table danhgia(
 	id_p int not null,
 	id_tk int not null,
 	ngay date,
-	sosao int,
+	sosao float,
 	noidung nvarchar(300),
 	PRIMARY KEY (id_dg, id_tk, id_p),
 	CONSTRAINT FK_danhgia_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),

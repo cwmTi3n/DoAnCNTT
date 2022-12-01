@@ -51,13 +51,13 @@
 							</div>
 						</div>
 
-						<div class="form-group">
+<!-- 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
 									onchange="LoadListings(); " name="danhgia" id="danhgia"
 									class="form-control px-3">
 									<option value="0" selected>Đánh giá</option>
-									<!-- 
+									
 									<option value="1">
 									1 <span class="bi bi-plus-lg">asds</span></option>
 									<option value="2"><i class="bi bi-star-fill star"></i><i
@@ -74,10 +74,10 @@
 											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i><i
 											class="bi bi-star-fill star"></i><i class="bi bi-star-fill star"></i>.
 									</option>
-									 -->
+									
 								</select>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="form-group">
 							<div class="select-wrap">
@@ -125,13 +125,15 @@
 				<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> 
 								<select
-									onchange="" name="thutu" id="thutu"
+									onchange="locPhong()" name="thutu" id="thutu"
 									class="form-control px-3">
 									<option value="0">Mặc định</option>
 									<option value="1">Mới nhất</option>
 									<option value="2">Cũ nhất</option>
 									<option value="3">Giá từ thấp đến cao</option>
 									<option value="4">Giá từ cao đến thấp</option>
+									<option value="5">Đánh giá thấp đến cao</option>
+									<option value="6">Đánh giá cao đến thấp</option>
 								</select>
 				</div>
 				<h4></h4>

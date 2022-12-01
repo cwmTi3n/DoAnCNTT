@@ -8,7 +8,7 @@ public class Danhgia
 	private int id_p;
 	private int id_tk;
 	private Date ngay;
-	private int sosao;
+	private float sosao;
 	private String noidung;
 	private Taikhoan taikhoan;
 	private Phong phong;
@@ -16,7 +16,8 @@ public class Danhgia
 	{
 		// TODO Auto-generated constructor stub
 	}
-	public Danhgia(int id_dg, int id_p, int id_tk, Date ngay, int sosao, String noidung, Taikhoan taikhoan, Phong phong)
+	public Danhgia(int id_dg, int id_p, int id_tk, Date ngay, float sosao, String noidung, Taikhoan taikhoan,
+			Phong phong)
 	{
 		super();
 		this.id_dg = id_dg;
@@ -60,11 +61,11 @@ public class Danhgia
 	{
 		this.ngay = ngay;
 	}
-	public int getSosao()
+	public float getSosao()
 	{
 		return sosao;
 	}
-	public void setSosao(int sosao)
+	public void setSosao(float sosao)
 	{
 		this.sosao = sosao;
 	}
@@ -92,5 +93,7 @@ public class Danhgia
 	{
 		this.phong = phong;
 	}
+	
+	
 	
 }

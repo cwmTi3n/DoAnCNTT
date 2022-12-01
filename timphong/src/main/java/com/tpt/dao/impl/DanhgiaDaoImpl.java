@@ -75,7 +75,7 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 			pStatement.setInt(1, danhgia.getId_p());
 			pStatement.setInt(2, danhgia.getId_tk());
 			pStatement.setDate(3, danhgia.getNgay());
-			pStatement.setInt(4, danhgia.getSosao());
+			pStatement.setFloat(4, danhgia.getSosao());
 			pStatement.setString(5, danhgia.getNoidung());
 			pStatement.executeUpdate();
 			return true;

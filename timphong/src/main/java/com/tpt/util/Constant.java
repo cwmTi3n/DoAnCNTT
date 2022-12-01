@@ -4,7 +4,7 @@ public class Constant
 {
 
 	//public static final String DIR="F://upload";
-	public static final String[] thutu = {"id_p", "ngay", "ngay DESC", "gia", "gia DESC"};
+	public static final String[] thutu = {"phong.id_p", "phong.ngay", "phong.ngay DESC", "phong.gia", "phong.gia DESC", "danhgia", "danhgia DESC"};
 	public static final String DIR="E://upload";
 	public static final int SoHinh = 3;
 	
