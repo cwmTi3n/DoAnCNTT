@@ -88,9 +88,8 @@
 }
 
 .profile-img {
-	padding: 0.5rem !important;
-	width: 80px;
-	height: 80px;
+	width: 100px;
+	height: 100px !important;
 	border-radius: 50% !important;
 	box-shadow: rgb(0 0 0/ 12%) 0rem 0.3125rem 0.625rem 0rem;
 }
@@ -141,4 +140,18 @@
 
 #btn-danhgia:checked ~ .danhgia{
 	display: flex;
+}
+
+.label-img{
+	font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    padding: 4px 8px;
+}
+
+.label-img:hover {
+    background-color: red;
+    cursor: pointer;
 }

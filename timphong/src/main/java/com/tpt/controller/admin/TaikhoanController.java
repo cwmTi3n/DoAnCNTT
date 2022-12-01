@@ -65,6 +65,7 @@ public class TaikhoanController extends HttpServlet
 			id_tk = Integer.parseInt(id_tkString);
 			taikhoan.setId_tk(id_tk);
 		}
+		if(id_tkString == null) System.out.println("gg");
 		taikhoan.setTentk(req.getParameter("tentk"));
 		taikhoan.setMatkhau(req.getParameter("matkhau"));
 		taikhoan.setQuyen(Integer.parseInt(req.getParameter("quyen")));

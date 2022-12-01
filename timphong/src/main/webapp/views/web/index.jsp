@@ -18,11 +18,11 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<c:if test="${empty user }">
+							<c:if test="${sessionScope.account == null}">
 								<a href="<c:url value='/login'/>"
 									class="btn btn-primary px-5 py-3">Đăng nhập</a>
 							</c:if>
-							<c:if test="${not empty user }">
+							<c:if test="${sessionScope.account != null}">
 								<a href="<c:url value='/listings'/>"
 									class="btn btn-primary px-5 py-3">Tìm kiếm</a>
 							</c:if>
@@ -44,11 +44,11 @@
 						<br>
 						<!-- <p class="mb-5 text-shadow">Free website template for Real Estate websites by the fine folks at <a href="https://free-template.co/" target="_blank">Free-Template.co</a>  </p> -->
 						<p>
-							<c:if test="${empty user }">
+							<c:if test="${sessionScope.account == null}">
 								<a href="<c:url value='/login'/>"
 									class="btn btn-primary px-5 py-3">Đăng nhập</a>
 							</c:if>
-							<c:if test="${not empty user }">
+							<c:if test="${sessionScope.account != null}">
 								<a href="<c:url value='/listings'/>"
 									class="btn btn-primary px-5 py-3">Tìm kiếm</a>
 							</c:if>

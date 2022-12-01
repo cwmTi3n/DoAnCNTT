@@ -2,84 +2,147 @@
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<div class=container--admin>
+<div class="container--admin container--admin--full">
 	<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 		crossorigin="anonymous">
-
-	<button>
-		<a href="<c:url value="/admin/them-phong?id_tk=${user.id_tk}"/>">Thêm
-			Phòng Cho Seller</a>
-	</button>
-
-	<div>
-		<h2>Thông tin cá nhân</h2>
-		<form action="taikhoan" method="post" enctype="multipart/form-data">
-			<c:url value="/hinhanh?fname=${user.anhdaidien}&path=taikhoan" var="anh" />
-			<label>Ảnh đại diện: </label><img height="180" width="240" src="${anh }"><input type="file" name="anhdaidien"><br />
-			<label>Id: </label><input type="text" name="id_tk"
-				value="${user.id_tk }"><br /> <label>Tên tài khoản:
-			</label><input type="text" name="tentk" value="${user.tentk }"><br />
-			<label>Mật khẩu: </label><input type="text" name="matkhau"
-				value="${user.matkhau }"><br /> <label>Họ: </label><input
-				type="text" name="ho" value="${user.ho }"><br /> <label>Tên:
-			</label><input type="text" name="ten" value="${user.ten }"><br /> <label>Quyền:
-			</label> <select name="quyen">
-				<c:if test="${user.quyen == 2 }">
-					<option value="2">User</option>
-					<option value="3">Seller</option>
-				</c:if>
-				<c:if test="${user.quyen == 3 }">
-					<option value="3">Seller</option>
-					<option value="2">User</option>
-				</c:if>
-			</select><br /> <label>SDT: </label><input type="text" name="sdt"
-				value="${user.sdt }"><br /> <label>Email: </label><input
-				type="text" name="email" value="${user.email }"><br />
-			<button type="submit">Chỉnh sửa</button>
-		</form>
-	</div>
-	<c:if test="${user.quyen==3}">
-		<div>
-			<h2>Phòng đang đăng: ${tongPhong }</h2>
-			<table class="table">
-				<thead class="thead-dark">
-					<tr>
-						<th scope="col">STT</th>
-						<th scope="col">Id</th>
-						<th scope="col">Hình ảnh</th>
-						<th scope="col">Tên phòng</th>
-						<th scope="col">Trạng thái</th>
-						<th scope="col">Giá</th>
-						<th scope="col">Diện tích</th>
-						<th scope="col"></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${phongcts}" var="phongct" varStatus="STT">
-						<tr>
-							<th scope="row">${STT.index+1}</th>
-							<td>${phongct.id_p}</td>
-							<td><a
-								href="<c:url value="/admin/phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">
-									<c:url value="/hinhanh?fname=${phongct.anhchinh}" var="hinhanh" />
-									<img height="120" width="160" src="${hinhanh}" />
-							</a></td>
-							<td>${phongct.ten }</td>
-							<td>${phongct.trangthai==1 ? "Hiện":"Ẩn"}</td>
-							<td>${phongct.gia}</td>
-							<td>${phongct.chieudai}*${phongct.chieurong}</td>
-							<td><a
-								href="<c:url value="/admin/xoa-phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">Xóa</a></td>
-
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
+	<c:if test="${user.quyen == 3 }">
+		<button>
+			<a href="<c:url value="/admin/them-phong?id_tk=${user.id_tk}"/>">Thêm
+				Phòng Cho Seller</a>
+		</button>
 	</c:if>
-	<h2>Đang theo dõi</h2>
-	<h2>Người theo dõi</h2>
-	<h2>Đặt hẹn</h2>
+
+	<div class="row">
+		<div class="col-12">
+			<h2 class="site-name py-4">Thông tin cá nhân</h2>
+			<form class="d-flex align-items-center" action="taikhoan"
+				method="post" enctype="multipart/form-data">
+				<input type="text" hidden name="id_tk" value="${user.id_tk }">
+				<c:url value="/hinhanh?fname=${user.anhdaidien}&path=taikhoan"
+					var="anh" />
+				<div class="row flex-wrap">
+					<div class="col-6">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3" for="">Ảnh: </label><img
+									id="previewImg"
+									class="rounded-circle profile-img img-thumbnail" src="${anh }">
+								<label class="label-img" for="anhdaidien"><i
+									class="bi bi-upload"></i> Upload</label> <input hidden type="file"
+									name="anhdaidien" id="anhdaidien" onchange="previewFile(this);"
+									class="inputfile"> <br>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3" for="tentk">Tài
+									khoản: </label><input class="col-12 py-2 border-radius-12" type="text" name="tentk" value="${user.tentk }">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3">Mật khẩu: </label><input class="col-12 py-2 border-radius-12"
+									type="password" name="matkhau" value="${user.matkhau }">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3">Quyền: </label> <select class="select-wrapper select--white"
+									name="quyen">
+									<c:if test="${user.quyen == 2 }">
+										<option selected value="2">User</option>
+										<option value="3">Seller</option>
+									</c:if>
+									<c:if test="${user.quyen == 3 }">
+										<option selected value="3">Seller</option>
+										<option value="2">User</option>
+									</c:if>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3">Họ: </label><input class="col-12 py-2 border-radius-12"
+									type="text" name="ho" value="${user.ho }">
+							</div>
+							<div class="col-12 mb-3">
+
+								<label class="label-info-admin pr-3">Tên: </label><input class="col-12 py-2 border-radius-12"
+									type="text" name="ten" value="${user.ten }">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3">SDT: </label><input class="col-12 py-2 border-radius-12"
+									type="text" name="sdt" value="${user.sdt }">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3">Email: </label><input class="col-12 py-2 border-radius-12"
+									type="text" name="email" value="${user.email }">
+							</div>
+								<button class="btn btn-info" type="submit">Chỉnh sửa</button>
+						</div>
+					</div>
+			</form>
+		</div>
+		<c:if test="${user.quyen==3}">
+			<div>
+				<h2>Phòng đang đăng: ${tongPhong }</h2>
+				<table class="table">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">STT</th>
+							<th scope="col">Id</th>
+							<th scope="col">Hình ảnh</th>
+							<th scope="col">Tên phòng</th>
+							<th scope="col">Trạng thái</th>
+							<th scope="col">Giá</th>
+							<th scope="col">Diện tích</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${phongcts}" var="phongct" varStatus="STT">
+							<tr>
+								<th scope="row">${STT.index+1}</th>
+								<td>${phongct.id_p}</td>
+								<td><a
+									href="<c:url value="/admin/phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">
+										<c:url value="/hinhanh?fname=${phongct.anhchinh}"
+											var="hinhanh" /> <img height="120" width="160"
+										src="${hinhanh}" />
+								</a></td>
+								<td>${phongct.ten }</td>
+								<td>${phongct.trangthai==1 ? "Hiện":"Ẩn"}</td>
+								<td>${phongct.gia}</td>
+								<td>${phongct.chieudai}*${phongct.chieurong}</td>
+								<td><a
+									href="<c:url value="/admin/xoa-phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">Xóa</a></td>
+
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:if>
+		<h2>Danh sách đặt hẹn</h2>
+	</div>
 </div>
+
+
+
+
+
+
+<script>
+	function previewFile(input) {
+		var file = $("input[type=file]").get(0).files[0];
+		console.log("hello");
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg").attr("src", reader.result);
+			}
+
+			console.log($('#previewImg'));
+			reader.readAsDataURL(file);
+		}
+	}
+</script>

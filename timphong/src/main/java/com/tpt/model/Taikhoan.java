@@ -8,7 +8,7 @@ public class Taikhoan
 	private String anhdaidien;
 	private String tentk;
 	private String matkhau;
-	private int quyen;
+	private int quyen; // admin: 1, user: 2, seller: 3
 	private String email;
 	private String sdt;
 	private String ho;

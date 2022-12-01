@@ -49,6 +49,7 @@
 <link rel="stylesheet" type="text/css" href="${url }css/aos.css">
 <link rel="stylesheet" type="text/css" href="${url }css/style-admin.css">
 <link rel="stylesheet" type="text/css" href="${url }css/style.css">
+<link rel="stylesheet" type="text/css" href="${url }css/style-web.css">
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
@@ -89,6 +90,7 @@
 	<script src="${url }js/jquery.sticky.js"></script>
 	<script src="${url }js/main.js"></script>
 	<script src="${url }js/listtinh.js"></script>
+	
 	<a href="#top" class="gototop"><span class="icon-angle-double-up"></span></a>
 </body>
 </html>
