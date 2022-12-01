@@ -112,14 +112,14 @@ public class DanhgiaDaoImpl extends DBConnection implements IDanhgiaDao
 	{
 		return false;
 	}
-	public static void main(String[] args)
-	{
-		IDanhgiaDao danhgiaDao = new DanhgiaDaoImpl();
-		Danhgia danhgia = new Danhgia();
-		danhgia.setId_p(5);
-		danhgia.setId_tk(1);
-		danhgia.setNoidung("ôk");
-		System.out.println(danhgiaDao.insertDanhgia(danhgia));
-	}
+//	public static void main(String[] args)
+//	{
+//		IDanhgiaDao danhgiaDao = new DanhgiaDaoImpl();
+//		Danhgia danhgia = new Danhgia();
+//		danhgia.setId_p(5);
+//		danhgia.setId_tk(1);
+//		danhgia.setNoidung("ôk");
+//		System.out.println(danhgiaDao.insertDanhgia(danhgia));
+//	}
 	
 }

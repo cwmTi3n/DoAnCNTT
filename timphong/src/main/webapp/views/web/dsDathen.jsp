@@ -145,7 +145,7 @@
 									<td>${hanhdong==2?dh.phong.dcchitiet:""}
 										${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen },
 										${dh.phong.xa.huyen.tinh.tentinh }</td>
-									<td>${dh.ngay }${dh.gio }</td>
+									<td>${dh.ngay } ${dh.gio }</td>
 									<c:if test="${dh.trangthai==1 }">
 										<td><a
 											href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a>
@@ -153,8 +153,8 @@
 									</c:if>
 									<c:if test="${dh.trangthai==2 }">
 										<td>${dh.phong.taikhoan.sdt}</td>
-										<td><input hidden type="checkbox" class="danhgia"
-											name="danhgia"> <label for="danhgia"> <span
+										<td><input hidden type="checkbox" id="btn-danhgia"
+											name="danhgia"> <label for="btn-danhgia"> <span
 												class="btn btn-info">Đánh giá</span>
 										</label>
 											<div class="danhgia">

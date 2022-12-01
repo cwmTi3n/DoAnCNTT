@@ -68,12 +68,15 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public Phong getPhong(int id_p)
 	{
-		String sql = "select * from phong where id_p=?";
+		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
+				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam from ((select * from phong where id_p=?) phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen where id_p=? group by id_p) qt on phong.id_p = qt.id)";
 		try
 		{
 			Connection connection = super.getConnection();
 			PreparedStatement pStatement = connection.prepareStatement(sql);
 			pStatement.setInt(1, id_p);
+			pStatement.setInt(2, id_p);
 			ResultSet rSet = pStatement.executeQuery();
 			mapAttributeSQL mapPhong = new mapAttributeSQL();
 			while (rSet.next())
@@ -82,11 +85,12 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 				ITaikhoanDao taikhoanDao = new TaikhoanDaoImpl();
 				Taikhoan taikhoan = taikhoanDao.getTaikhoan(phong.getId_tk());
 				phong.setTaikhoan(taikhoan);
+				phong.setQuantam(rSet.getInt("quantam") + 30);
 				return phong;
 			}
 		} catch (Exception e)
 		{
-			// TODO: handle exception
+			System.out.println(e.getMessage());
 		}
 		return null;
 	}
@@ -333,7 +337,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	public List<Phong> searchPhong(String keyword, String thutu)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select top 9 * from Phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?) order by " + thutu;
+		String sql = "select top 9 * from ((select * from Phong where trangthai=1 and (ten like ? or mota like ?)) phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id) order by " + thutu;
 		try
 		{
 			connection = super.getConnection();
@@ -388,9 +392,9 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.yeuthich, phong.dcchitiet, \r\n"
-				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam from phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam from ((select * from phong where trangthai=1 and (ten like ? or mota like ?)) phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
-				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id where trangthai=1 and (ten like ? or mota like ?) \r\n";
+				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id) where id_p!=0 \r\n";
 		if(loc[0] != 0)
 		{
 			

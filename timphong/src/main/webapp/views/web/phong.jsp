@@ -49,10 +49,11 @@
 						</div>
 					</c:forEach>
 				</div>
-				<h2>Đánh giá</h2>
+				<h4></h4>
+				<h3>Đánh giá</h3>
 					<c:forEach items="${danhgias }" var="dg">
 						<div>
-							<h5>${dg.taikhoan.ho } ${dg.taikhoan.ten }</h5>
+							<h6>Người đánh giá: ${dg.taikhoan.ho } ${dg.taikhoan.ten }</h6>
 							<p>Ngày: ${dg.ngay }</p>
 							<div class="rating">
 								<c:forEach begin='1' end='${dg.sosao }'>
@@ -71,6 +72,7 @@
 						${phong.getXa().getHuyen().getTenhuyen()},
 						${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
 					<p>${phong.mota }</p>
+					<p>Đang có ${phong.quantam } người quan tâm đến phòng này</p>
 					<p>
 						<a href="<c:url value='/dathen?id_p=${phong.id_p }'/>" class="btn btn-primary">Đặt hẹn ngay</a>
 					</p>
