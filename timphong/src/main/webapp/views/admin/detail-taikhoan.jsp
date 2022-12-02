@@ -35,8 +35,7 @@
 									type="text" name="tentk" value="${user.tentk }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Mật khẩu: </label><input
-									class="col-12 py-2 border-radius-12" type="password"
+								<label class="label-info-admin pr-3">Mật khẩu: </label><input class="col-12 py-2 border-radius-12" type="password"
 									name="matkhau" value="${user.matkhau }">
 							</div>
 							<div class="col-12 mb-3">
