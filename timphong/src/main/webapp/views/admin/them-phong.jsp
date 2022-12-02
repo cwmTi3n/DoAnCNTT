@@ -74,15 +74,15 @@
 										<option value="0" selected>Chọn phường xã</option>
 								</select></span>
 							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin pr-3 col-4">Mô tả: </label>
+								<textarea rows="4" cols="72" class="py-2 border-radius-12"
+									name="mota"></textarea>
+							</div>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="row">
-							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3 col-4">Mô tả: </label>
-								<textarea rows="4" cols="72"
-									class="py-2 border-radius-12" name="mota"></textarea>
-							</div>
 							<div class="col-12 mb-3">
 								<label class="label-info-admin pr-3 col-4">Loại phòng: </label>
 								<span class="select-wrapper select--dark"> <select
@@ -100,24 +100,76 @@
 							</div>
 							<div class="col-12 mb-3">
 								<label class="label-info-admin pr-3 col-4">Hình ảnh
-									chính: </label><input class="col-8 py-2 border-radius-12" type="file"
+									chính: </label> <img height="180" width="240" id="previewImg1"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh1"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh1"
+									type="file" hidden onchange="previewFile1(this);"
 									name="hinhanh">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3 col-4">Hình ảnh phụ:
-								</label><input class="col-8 py-2 border-radius-12" type="file"
+								<label class="label-info-admin pr-3 col-4">Hình ảnh phụ
+									1: </label><img height="180" width="240" id="previewImg2"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh2"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh2"
+									type="file" hidden onchange="previewFile2(this);"
 									name="hinhanh">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3 col-4">Hình ảnh phụ:
-								</label><input class="col-8 py-2 border-radius-12" type="file"
+								<label class="label-info-admin pr-3 col-4">Hình ảnh phụ
+									2: </label><img height="180" width="240" id="previewImg3"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh3"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh3"
+									type="file" hidden onchange="previewFile3(this);"
 									name="hinhanh">
 							</div>
-							<button type="submit">Thêm</button>
 						</div>
+					</div>
+					<div class="col-12">
+							<button class="btn btn-info" type="submit">Thêm</button>
+							<a href=<c:url value="/admin/taikhoan?id_tk=${id_tk }"/>
+							class="ml-3 d-inline-block text-white btn bg-danger">Quay lại</a>
 					</div>
 				</div>
 			</form>
 		</div>
 	</div>
 </div>
+
+<script>
+	function previewFile1(input) {
+		var file = $("#hinhanh1").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg1").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile2(input) {
+		var file = $("#hinhanh2").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg2").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile3(input) {
+		var file = $("#hinhanh3").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg3").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+</script>
