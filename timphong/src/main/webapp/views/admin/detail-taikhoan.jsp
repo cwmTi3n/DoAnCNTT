@@ -7,12 +7,7 @@
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 		crossorigin="anonymous">
-	<c:if test="${user.quyen == 3 }">
-		<button>
-			<a href="<c:url value="/admin/them-phong?id_tk=${user.id_tk}"/>">Thêm
-				Phòng Cho Seller</a>
-		</button>
-	</c:if>
+
 
 	<div class="row">
 		<div class="col-12">
@@ -29,62 +24,82 @@
 								<label class="label-info-admin pr-3" for="">Ảnh: </label><img
 									id="previewImg"
 									class="rounded-circle profile-img img-thumbnail" src="${anh }">
-								<label class="label-img" for="anhdaidien"><i
+								<label class="ml-3 label-img" for="anhdaidien"><i
 									class="bi bi-upload"></i> Upload</label> <input hidden type="file"
 									name="anhdaidien" id="anhdaidien" onchange="previewFile(this);"
 									class="inputfile"> <br>
 							</div>
 							<div class="col-12 mb-3">
 								<label class="label-info-admin pr-3" for="tentk">Tài
-									khoản: </label><input class="col-12 py-2 border-radius-12" type="text" name="tentk" value="${user.tentk }">
+									khoản: </label><input readonly class="col-12 py-2 border-radius-12"
+									type="text" name="tentk" value="${user.tentk }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Mật khẩu: </label><input class="col-12 py-2 border-radius-12"
-									type="password" name="matkhau" value="${user.matkhau }">
+								<label class="label-info-admin pr-3">Mật khẩu: </label><input
+									class="col-12 py-2 border-radius-12" type="password"
+									name="matkhau" value="${user.matkhau }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Quyền: </label> <span class="select-wrapper select--white"><select
+								<label class="label-info-admin pr-3">Quyền: </label> <span
+									class="select-wrapper select--white"><select
 									name="quyen">
-									<c:if test="${user.quyen == 2 }">
-										<option selected value="2">User</option>
-										<option value="3">Seller</option>
-									</c:if>
-									<c:if test="${user.quyen == 3 }">
-										<option selected value="3">Seller</option>
-										<option value="2">User</option>
-									</c:if>
-								</select>
-								</span>
+										<c:if test="${user.quyen == 2 }">
+											<option selected value="2">User</option>
+											<option value="3">Seller</option>
+										</c:if>
+										<c:if test="${user.quyen == 3 }">
+											<option selected value="3">Seller</option>
+											<option value="2">User</option>
+										</c:if>
+								</select> </span>
 							</div>
 						</div>
 					</div>
 					<div class="col-6">
 						<div class="row">
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Họ: </label><input class="col-12 py-2 border-radius-12"
-									type="text" name="ho" value="${user.ho }">
+								<label class="label-info-admin pr-3">Họ: </label><input
+									class="col-12 py-2 border-radius-12" type="text" name="ho"
+									value="${user.ho }">
 							</div>
 							<div class="col-12 mb-3">
 
-								<label class="label-info-admin pr-3">Tên: </label><input class="col-12 py-2 border-radius-12"
-									type="text" name="ten" value="${user.ten }">
+								<label class="label-info-admin pr-3">Tên: </label><input
+									class="col-12 py-2 border-radius-12" type="text" name="ten"
+									value="${user.ten }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">SDT: </label><input class="col-12 py-2 border-radius-12"
-									type="text" name="sdt" value="${user.sdt }">
+								<label class="label-info-admin pr-3">SDT: </label><input
+									class="col-12 py-2 border-radius-12" type="text" name="sdt"
+									value="${user.sdt }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Email: </label><input class="col-12 py-2 border-radius-12"
-									type="text" name="email" value="${user.email }">
+								<label class="label-info-admin pr-3">Email: </label><input
+									class="col-12 py-2 border-radius-12" type="text" name="email"
+									value="${user.email }">
 							</div>
-								<button class="btn btn-info" type="submit">Chỉnh sửa</button>
 						</div>
 					</div>
+
+					<div class="col-6">
+						<c:if test="${user.quyen == 3 }">
+							<a class="d-inline-flex mb-3 new-object-button"
+								href="<c:url value="/admin/them-phong?id_tk=${user.id_tk}"/>"><i
+								class="bi bi-plus-lg"></i> Thêm Phòng Cho Seller</a>
+						</c:if>
+					</div>
+					<div class="col-6>">
+						<button class="btn btn-info" type="submit">Chỉnh sửa</button>
+						<a href="<c:url value='/admin/list-taikhoan'/>"
+							class="ml-3 d-inline-block text-white btn bg-danger">Quay lại</a>
+					</div>
+				</div>
+
 			</form>
 		</div>
 		<c:if test="${user.quyen==3}">
-			<div>
-				<h2>Phòng đang đăng: ${tongPhong }</h2>
+			<div class="col-12">
+				<h2 class="site-name py-4">Phòng đang đăng: ${tongPhong }</h2>
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
@@ -122,7 +137,9 @@
 				</table>
 			</div>
 		</c:if>
-		<h2>Danh sách đặt hẹn</h2>
+		<div class="col-12">
+			<h2 class="site-name py-4">Danh sách đặt hẹn</h2>
+		</div>
 	</div>
 </div>
 
