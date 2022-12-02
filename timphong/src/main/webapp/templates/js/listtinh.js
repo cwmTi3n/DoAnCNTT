@@ -5,7 +5,7 @@ function loadHuyen() {
 	var citis = document.getElementById("city");
 	var districts = document.getElementById("district");
 	var wards = document.getElementById("ward");
-
+	console.log(id_t);
 	if (id_t != 0) {
 		districts.disabled = false;
 		//wards.disabled = true;

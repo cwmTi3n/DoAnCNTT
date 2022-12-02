@@ -48,7 +48,7 @@ public class ListtingController extends HttpServlet
 		List<Tinh> tinhs = tinhService.getAll();
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
 //		List<Phong> phongs = ConstantFunction.get9Phong(phongService.searchPhong(keyword));
-		List<Phong> phongs = phongService.searchPhong(keyword, Constant.thutu[tt]);
+		List<Phong> phongs = phongService.searchPhong(keyword, Constant.thutu[tt], 0);
 		req.setAttribute("tinhs", tinhs);
 		req.setAttribute("phongs", phongs);
 		req.setAttribute("loaiphongs", loaiphongs);
@@ -81,7 +81,7 @@ public class ListtingController extends HttpServlet
 		}
 //		List<Phong> searchPhong = phongService.searchPhong(keyword);
 //		List<Phong> phongs = ConstantFunction.get9Phong(ConstantFunction.locPhong(searchPhong, loc));
-		List<Phong> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt]);
+		List<Phong> phongs = phongService.locPhong(keyword, loc, Constant.thutu[tt], 0);
 		PrintWriter out = resp.getWriter();
 		for(Phong p : phongs)
 		{

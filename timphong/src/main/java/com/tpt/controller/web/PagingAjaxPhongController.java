@@ -47,7 +47,7 @@ public class PagingAjaxPhongController extends HttpServlet {
 		locString[2] = req.getParameter("huyen");
 		locString[3] = req.getParameter("xa");
 		locString[4] = req.getParameter("thutu");
-		for(int i = 0; i < 4; i++)
+		for(int i = 0; i < Constant.BoLoc; i++)
 		{
 			if(locString[i] != null)
 			{
@@ -55,7 +55,7 @@ public class PagingAjaxPhongController extends HttpServlet {
 			}
 		}
 //		List<Phong> phongs = ConstantFunction.locPhong(phongService.pagingPhong(cout, keyword), loc);
-		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt]);
+		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], 0);
 		PrintWriter out = resp.getWriter();
 		for (Phong p : phongs) {
 			out.println("        <div class=\"phong col-md-6 col-lg-4 mb-5 mb-lg-5 \">\r\n"

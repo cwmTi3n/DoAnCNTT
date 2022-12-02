@@ -92,7 +92,7 @@
 						<div class="form-group">
 							<div class="select-wrap">
 								<span class="icon icon-keyboard_arrow_down"></span> <select
-									onchange="LoadListings()" name="xa" id="ward"
+									onchange="" name="xa" id="ward"
 									class="form-control px-3" disabled>
 									<option value="0" selected>Chọn phường xã</option>
 								</select>
@@ -256,12 +256,10 @@
 	
 	function loadListingsByTinh(){
 		loadHuyen();
-		LoadListings();
 	}
 	
 	function loadListingsByXa(){
 		loadXa();
-		LoadListings();
 	}
 	
 	function searchPhong() {
@@ -346,3 +344,6 @@
 		loading.style.display="none";
 	};
 </script>
+
+
+

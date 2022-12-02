@@ -23,7 +23,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	@Override
 	public List<Phong> getPhongSeller(int id_tk)
 	{
-		String sql = "select * from phong where id_tk = ?";
+		String sql = "select top 9 * from phong where id_tk = ?";
 		List<Phong> phongSeller = new ArrayList<Phong>();
 		try
 		{
@@ -199,12 +199,17 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return null;
 	}
 	@Override
-	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu)
+	public List<Phong> pagingPhong(int index, String keyword, int loc[], String thutu,int isSeller)
 	{
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
-				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)) phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)";
+		if(isSeller != 0)
+		{
+			sql += " and id_tk=?";
+		}
+		sql +=") phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
 				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id left join (select id_p, AVG(sosao) danhgia from danhgia group by id_p) dg on phong.id_p = dg.id_p  where phong.id_p!=0  \r\n";
 		for(int i = 0; i < Constant.BoLoc; i++)
@@ -222,6 +227,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(1, "%" + keyword + "%");
 			pStatement.setString(2, "%" + keyword + "%");
 			int count = 2;
+			if(isSeller != 0)
+			{
+				pStatement.setInt(++count, isSeller);
+			}
 			for(int i = 0; i < Constant.BoLoc; i++)
 			{
 				if(loc[i] != 0)
@@ -311,10 +320,15 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 		return 0;
 	}
 	@Override
-	public List<Phong> searchPhong(String keyword, String thutu)
+	public List<Phong> searchPhong(String keyword, String thutu, int isSeller)
 	{
 		List<Phong> phongs = new ArrayList<Phong>();
-		String sql = "select top 9 * from (select * from Phong where trangthai=1 and (ten like ? or mota like ?)) phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id "
+		String sql = "select top 9 * from (select * from Phong where trangthai=1 and (ten like ? or mota like ?))";
+		if(isSeller != 0)
+		{
+			sql += " and id_tk = ?";
+		}
+		sql += " phong left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id "
 				+ " left join (select id_p, AVG(sosao) danhgia from danhgia group by id_p) dg on phong.id_p = dg.id_p order by " + thutu;
 		try
 		{
@@ -322,6 +336,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement = connection.prepareStatement(sql);
 			pStatement.setString(1, "%" + keyword + "%");
 			pStatement.setString(2, "%" + keyword + "%");
+			if(isSeller != 0)
+			{
+				pStatement.setInt(3, isSeller);
+			}
 			rSet = pStatement.executeQuery();
 			mapAttributeSQL map = new mapAttributeSQL();
 			while(rSet.next())
@@ -366,12 +384,17 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 	}
 	
 	@Override
-	public List<Phong> locPhong(String keyword, int loc[], String thutu)
+	public List<Phong> locPhong(String keyword, int loc[], String thutu, int isSeller)
 	{
 		List<Phong> phongs = new ArrayList<>();
 		String sql = "select top 9 phong.id_p, phong.ten, phong.anhchinh, phong.trangthai, phong.chieudai, \r\n"
 				+ "	   phong.chieurong, phong.gia, phong.songuoi, phong.dcchitiet, \r\n"
-				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)) phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
+				+ "	   phong.mota, phong.ngaydang, phong.id_lp, phong.id_x, phong.id_tk, qt.quantam, dg.danhgia from (select * from phong where trangthai=1 and (ten like ? or mota like ?)";
+		if(isSeller != 0)
+		{
+			sql += " and id_tk=?";
+		}
+		sql	+=	") phong join XaPhuong on phong.id_x = XaPhuong.ID \r\n"
 				+ "					join QuanHuyen on XaPhuong.quanHuyenId = QuanHuyen.ID \r\n"
 				+ "					join TinhThanhPho on QuanHuyen.tinhThanhPhoId = TinhThanhPho.ID left join (select COUNT(id_tk) as quantam, id_p as id from Dathen group by id_p) qt on phong.id_p = qt.id left join (select id_p, AVG(sosao) danhgia from danhgia group by id_p) dg on phong.id_p = dg.id_p where phong.id_p!=0 \r\n";
 		for(int i = 0; i < Constant.BoLoc; i++)
@@ -389,6 +412,10 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			pStatement.setString(1, "%" + keyword + "%");
 			pStatement.setString(2, "%" + keyword + "%");
 			int count = 2;
+			if(isSeller != 0)
+			{
+				pStatement.setInt(++count, isSeller);
+			}
 			for(int i = 0; i < Constant.BoLoc; i++)
 			{
 				if(loc[i] != 0)
