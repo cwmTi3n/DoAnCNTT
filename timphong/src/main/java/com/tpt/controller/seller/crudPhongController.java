@@ -52,16 +52,23 @@ public class crudPhongController extends HttpServlet
 		if(url.contains("select"))
 		{
 			getPhong(req, resp);
-			return;
 		}
-		else if(url.contains("xoa-anh-p"))
+		else 
 		{
-			deleteAnhPhong(req, resp);
-			getPhong(req, resp);
+			if(url.contains("xoa-anh-p"))
+			{
+				deleteAnhPhong(req, resp);
+			}
+			else if(url.contains("delete"))
+			{
+				delete(req, resp);
+			}
+			else 
+			{			
+				findPhongSeller(req, resp);
+				req.getRequestDispatcher("/views/seller/quanlyphong.jsp").forward(req, resp);
+			}
 		}
-		else
-		findPhongSeller(req, resp);
-		req.getRequestDispatcher("/views/seller/quanlyphong.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -72,10 +79,6 @@ public class crudPhongController extends HttpServlet
 		if(url.contains("insert"))
 		{
 			insert(req, resp);
-		}
-		else if(url.contains("delete"))
-		{
-			delete(req, resp);
 		}
 		else if(url.contains("update"))
 		{
@@ -111,7 +114,7 @@ public class crudPhongController extends HttpServlet
 		req.setAttribute("phong", phong);
 		req.setAttribute("id_taikhoan", id_taikhoan);
 		req.setAttribute("tinhs", tinhs);
-		req.getRequestDispatcher("/views/seller/crud-phong.jsp").forward(req, resp);
+		req.getRequestDispatcher("/views/seller/chinhsua-phong.jsp").forward(req, resp);
 	}
 	
 	protected void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -191,6 +194,8 @@ public class crudPhongController extends HttpServlet
 			id_p = Integer.parseInt(id_pString);
 			phongService.deletePhong(id_p);
 		}
+		resp.sendRedirect(req.getContextPath() + "/seller/ql-phong");
+
 	}
 	protected void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
@@ -258,13 +263,9 @@ public class crudPhongController extends HttpServlet
 	protected void deleteAnhPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		req.setCharacterEncoding("utf-8");
-		String id_pString = req.getParameter("id_p");
 		String hinhanh = req.getParameter("hinhanh");
 		hinhanhService.deleteHinhanh(hinhanh);
-	}
-	
-	protected void TaiPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
-	{
+		resp.sendRedirect(req.getContextPath() + "/seller/ql-phong");
 
 	}
 }

@@ -36,21 +36,9 @@
 								</div>
 							</div>
 							<div class="select-wrap">
-								<span class="icon icon-keyboard_arrow_down"></span> 
-								<select
-									onchange="locPhong()" name="thutu" id="thutu"
-									class="form-control px-3">
-									<option value="0">Mặc định</option>
-									<option value="1">Mới nhất</option>
-									<option value="2">Cũ nhất</option>
-									<option value="3">Giá từ thấp đến cao</option>
-									<option value="4">Giá từ cao đến thấp</option>
-									<option value="5">Đánh giá thấp đến cao</option>
-									<option value="6">Đánh giá cao đến thấp</option>
-								</select>
-								<h4></h4>
-		<div id="them-phong" style="display:none;">
-			<form action="<c:url value='/seller/ql-phong/insert'/>" method="post" enctype="multipart/form-data">
+							
+									<div id="them-phong" style="display:none;">
+			<form action="them-phong" method="post" enctype="multipart/form-data">
 				<div class="row flex-wrap">
 					<div class="col-6">
 						<div class="row">
@@ -160,7 +148,22 @@
 				</div>
 			</form>
 						 	</div>
+							
+								<span class="icon icon-keyboard_arrow_down"></span> 
+								<select
+									onchange="locPhong()" name="thutu" id="thutu"
+									class="form-control px-3">
+									<option value="0">Mặc định</option>
+									<option value="1">Mới nhất</option>
+									<option value="2">Cũ nhất</option>
+									<option value="3">Giá từ thấp đến cao</option>
+									<option value="4">Giá từ cao đến thấp</option>
+									<option value="5">Đánh giá thấp đến cao</option>
+									<option value="6">Đánh giá cao đến thấp</option>
+								</select>
+								<h4></h4>
 							</div>
+							<div>
 								<table class="table table-hover">
 									<thead class="thead-dark">
 										<tr>
@@ -169,7 +172,8 @@
 											<th scope="col">Giá</th>
 											<th scope="col">Diện tích</th>
 											<th scope="col">Địa chỉ</th>
-											<th scope="col">Chủ phòng</th>
+											<th scope="col"></th>
+											<th scope="col"></th>
 										</tr>
 									</thead>
 									<tbody id="load">
@@ -184,17 +188,20 @@
 												<td>${phong.ten }</td>
 												<td>${phong.gia}</td>
 												<td>${phong.chieudai}*${phong.chieurong}</td>
-												<td></td>
-												<td></td>
+												<td>${phong.getXa().getTenxa()}, ${phong.getXa().getHuyen().getTenhuyen()}, ${phong.getXa().getHuyen().getTinh().getTentinh()}</td>
+												<td><a href="<c:url value="/seller/ql-phong/select?id_p=${phong.id_p }"/>"><button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button></a>
+												</td>
+												<td><a href="<c:url value='/seller/ql-phong/delete?id_p=${phong.id_p }'/>"><button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button></a> 
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>
 								</table>
+								<div>
+									<button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
+								</div>						
+								</div>
 							</div>
-
-						<div>
-							<button onClick="loadMore()" class="btn btn-primary">Xem tiếp</button>
-						</div>
 						</div>
 					</div>
 

@@ -121,16 +121,6 @@
 										Chỉnh sửa <i class="fa fa-edit"></i>
 
 									</button>
-
-									<br /> <br />
-
-									<button class="btn btn-danger"
-										formaction="<c:url value='/seller/ql-phong/delete'/>">
-
-										Xóa <i class="fa fa-trash"></i>
-
-									</button>
-
 									<button class="btn btn-success"
 										formaction="${pageContext.request.contextPath }/seller/ql-phong/reset">
 
