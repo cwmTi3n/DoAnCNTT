@@ -10,17 +10,22 @@
 				<img class="profile-img img-thumbnail" src="${url }images/Logo.png">
 				<h2 class="text-black mb-0 ml-3">Welcome,
 					${sessionScope.account.getTen() }</h2>
-
 			</div>
 			<div class="col-8 text-black">
 				<div class="row my-4 justify-content-around">
 
-					<div class="col-2 profile-block-item bg-primary bg-gradient"
-						>Phòng đã lưu</div>
-					<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/listdathen">Quản lý đặt hẹn</a></div>
+					<div class="col-2 profile-block-item bg-primary bg-gradient">Phòng
+						đã lưu</div>
+					<div class="col-2 profile-block-item bg-primary bg-gradient">
+						<a href="/timphong/listdathen">Quản lý đặt hẹn</a>
+					</div>
 					<c:if test="${sessionScope.account.getQuyen() == 3}">
-						<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/seller/ql-phong">Quản lý phòng</a></div>
-						<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/xacnhan-p">Xác nhận</a></div>
+						<div class="col-2 profile-block-item bg-primary bg-gradient">
+							<a href="/timphong/seller/ql-phong">Quản lý phòng</a>
+						</div>
+						<div class="col-2 profile-block-item bg-primary bg-gradient">
+							<a href="/timphong/xacnhan-p">Xác nhận</a>
+						</div>
 					</c:if>
 				</div>
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -28,12 +33,13 @@
 						<h4>Họ và tên</h4>
 						<p>${sessionScope.account.getHo()}
 							${sessionScope.account.getTen()}</p>
+					</div>
+					<input type="checkbox" hidden id="edit-input--name"
+						name="edit-input--name"> <label for="edit-input--name"
+						class="label-edit-profile">Chỉnh sửa</label>
 
-					</div>
-					<div>
-						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
-					</div>
-					<div class="row col-12">
+
+					<div class="edit-input--content row col-12 ">
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="fname">Họ</label> <input
@@ -60,7 +66,7 @@
 								<c:out value="*" />
 							</c:forEach>
 							<c:out
-								value="${user.getTentk().substring(user.getTentk().length()-1) }" />
+								value="${sessionScope.account.getTentk().substring(sessionScope.account.getTentk().length()-1) }" />
 						</p>
 					</div>
 
@@ -75,16 +81,18 @@
 								<c:out value="*" />
 							</c:forEach>
 							<c:out
-								value="${sessionScope.account.getEmail().substring(user.getEmail().indexOf(64)) }" />
+								value="${sessionScope.account.getEmail().substring(sessionScope.account.getEmail().indexOf(64)) }" />
 						</p>
 					</div>
-					
-					<div class="row col-12">
+					<input type="checkbox" hidden id="edit-input--email"
+						name="edit-input--name"> <label for="edit-input--email"
+						class="label-edit-profile">Chỉnh sửa</label>
+					<div class="edit-input--content row col-12">
 						<div class="col-12">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="email">Email</label> <input
 									class="border-0 profile-content-input" type="text" id="email"
-									name="email" value="${user.getEmail()}">
+									name="email">
 							</div>
 						</div>
 					</div>
@@ -94,10 +102,10 @@
 						<h4>Số điện thoại</h4>
 						<p>${sessionScope.account.getSdt()}</p>
 					</div>
-					<div>
-						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
-					</div>
-					<div class="row col-12">
+					<input type="checkbox" hidden id="edit-input--sdt"
+						name="edit-input--name"> <label for="edit-input--sdt"
+						class="label-edit-profile">Chỉnh sửa</label>
+					<div class="edit-input--content row col-12">
 						<div class="col-12">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="sdt">Số điện thoại</label> <input
@@ -110,18 +118,20 @@
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Bạn đang là</h4>
-						<c:if test="${sessionScope.account.getQuyen() ==1}">
+						<c:if test="${sessionScope.account.getQuyen() ==2}">
 							<p>User</p>
 						</c:if>
-						<c:if test="${sessionScope.account.getQuyen() ==2}">
+						<c:if test="${sessionScope.account.getQuyen() ==3}">
 							<p>Seller</p>
 						</c:if>
 					</div>
-					<div>
-						<c:if test="${sessionScope.account.getQuyen() ==1}">
-							<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
-						</c:if>
-					</div>
+
+					<c:if test="${sessionScope.account.getQuyen() ==2}">
+						<input type="checkbox" hidden id="edit-input--sdt"
+							name="edit-input--name">
+						<label for="edit-input--sdt" class="label-edit-profile">Đăng ký làm Seller</label>
+					</c:if>
+
 				</div>
 				<div class="d-flex my-4 profile-content pb-3">
 					<div>
@@ -132,9 +142,7 @@
 						</c:forEach>
 
 					</div>
-					<div>
-						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
-					</div>
+
 					<div class="row col-12">
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
