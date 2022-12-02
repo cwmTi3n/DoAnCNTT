@@ -127,9 +127,10 @@
 					</div>
 
 					<c:if test="${sessionScope.account.getQuyen() ==2}">
-						<input type="checkbox" hidden id="edit-input--sdt"
-							name="edit-input--name">
-						<label for="edit-input--sdt" class="label-edit-profile">Đăng ký làm Seller</label>
+						<input type="checkbox" hidden id="edit-input--seller"
+							name="edit-input--seller">
+						<label for="edit-input--seller" class="label-edit-profile">Đăng
+							ký làm Seller</label>
 					</c:if>
 
 				</div>
@@ -142,8 +143,10 @@
 						</c:forEach>
 
 					</div>
-
-					<div class="row col-12">
+					<input type="checkbox" hidden id="edit-input--password"
+						name="edit-input--password"> <label
+						for="edit-input--password" class="label-edit-profile">Đổi mật khẩu</label>
+					<div class="edit-input--content row col-12">
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
 								<label class="" for="oldpassword">Mật khẩu cũ</label> <input

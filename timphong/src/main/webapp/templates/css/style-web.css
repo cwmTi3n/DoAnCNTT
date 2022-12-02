@@ -94,6 +94,13 @@
 	box-shadow: rgb(0 0 0/ 12%) 0rem 0.3125rem 0.625rem 0rem;
 }
 
+.profile-img__small {
+	padding:1px!important;
+	width: 44px;
+	height: 44px !important;
+	box-shadow: rgb(0 0 0/ 12%) 0rem 0.3125rem 0.625rem 0rem;
+}
+
 .profile-content {
 	justify-content: space-between;
 	align-items: center;
@@ -330,5 +337,9 @@ table thead tr th {
 }
 
 #edit-input--sdt:checked ~ .edit-input--content {
+	display: flex !important;
+}
+
+#edit-input--password:checked ~ .edit-input--content {
 	display: flex !important;
 }

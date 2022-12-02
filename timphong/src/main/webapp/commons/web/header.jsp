@@ -35,9 +35,13 @@
 										nhập</a></li>
 							</c:if>
 							<c:if test="${sessionScope.account != null}">
-								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":""}
-										${sessionScope.account.tentk }</a></li>
-								<li><a href="<c:url value='/trangcanhan'/>" class="nav-link">Profile</a></li>
+								<c:url
+									value="/hinhanh?fname=${sessionScope.account.getAnhdaidien()}&path=taikhoan"
+									var="anh" />
+								<li><a href="<c:url value='/trangcanhan'/>"
+									class="nav-link"><img id="previewImg"
+										class="rounded-circle profile-img__small img-thumbnail"
+										src="${anh }"></a></li>
 								<li><a href="<c:url value='/logout'/>" class="nav-link">Đăng
 										xuất</a></li>
 							</c:if>
