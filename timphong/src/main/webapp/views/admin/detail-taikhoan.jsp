@@ -43,7 +43,7 @@
 									type="password" name="matkhau" value="${user.matkhau }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Quyền: </label> <select class="select-wrapper select--white"
+								<label class="label-info-admin pr-3">Quyền: </label> <span class="select-wrapper select--white"><select
 									name="quyen">
 									<c:if test="${user.quyen == 2 }">
 										<option selected value="2">User</option>
@@ -54,6 +54,7 @@
 										<option value="2">User</option>
 									</c:if>
 								</select>
+								</span>
 							</div>
 						</div>
 					</div>

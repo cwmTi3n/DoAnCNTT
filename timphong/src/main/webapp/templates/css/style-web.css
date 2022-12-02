@@ -155,3 +155,134 @@
     background-color: red;
     cursor: pointer;
 }
+
+
+/******************************* 
+        Styles to copy
+*******************************/
+/*
+* Basic resets for select element
+*/
+.select-wrapper select {
+  width: auto;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  /*IOS*/
+}
+.select-wrapper select::-ms-expand {
+  display: none;
+  /*IE10*/
+}
+
+/*
+* Global styles
+*/
+.select-wrapper {
+  display: inline-block;
+  position: relative;
+}
+.select-wrapper:after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  right: 0;
+  top: 0;
+  pointer-events: none;
+  background-position: left center;
+}
+.select-wrapper:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  line-height: 1;
+  pointer-events: none;
+  text-align: center;
+  z-index: 2;
+}
+
+/******************************* 
+          Dark theme
+*******************************/
+.select--dark {
+  /*
+   * Customize options
+   */
+  /*
+   * Hover styles
+   */
+  /*
+   * Select element
+   */
+}
+.select--dark:after, .select--dark select {
+  color: white;
+  background-color: #302432;
+  transition: 100ms all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.select--dark:after {
+  width: 35px;
+  border: 1px solid #302432;
+  border-radius: 0 0px 0px 0;
+  border-left: 0;
+}
+.select--dark:before {
+  color: white;
+  right: 20px;
+  content: "▾";
+}
+.select--dark:hover:after, .select--dark:hover select {
+  background-color: #140f14;
+}
+.select--dark select {
+  padding: 10px 20px;
+  padding-right: 35px;
+  border: 1px solid #302432;
+  border-radius: 0px;
+  color: white;
+}
+
+/******************************* 
+          White theme
+*******************************/
+.select--white {
+  /*
+   * Customize options
+   */
+  /*
+   * Hover styles
+   */
+  /*
+   * Select element
+   */
+}
+.select--white:after, .select--white select {
+  color: black;
+  background-color: #fff;
+  transition: 100ms all cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.select--white:after {
+  width: 35px;
+  border: 1px solid #000;
+  border-radius: 0 20px 20px 0;
+  border-left: 0;
+}
+.select--white:before {
+  color: black;
+  right: 20px;
+  content: "▾";
+}
+.select--white:hover:after, .select--white:hover select {
+  background-color: #e6e6e6;
+}
+.select--white select {
+  padding: 10px 20px;
+  padding-right: 35px;
+  border: 1px solid #000;
+  border-radius: 20px;
+  color: black;
+}
