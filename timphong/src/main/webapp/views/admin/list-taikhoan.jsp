@@ -32,9 +32,9 @@
 					<tbody>
 						<c:forEach items="${sellers}" var="seller" varStatus="STT">
 							<tr>
-								<th scope="row">${STT.index+1}</th>
+								<td scope="row">${STT.index+1}</td>
 								<td>${seller.tentk}</td>
-								<td>${seller.ho}${seller.ten}</td>
+								<td>${seller.ho} ${seller.ten}</td>
 								<td>${seller.sdt}</td>
 								<td>${seller.email}</td>
 								<td><a class="btn btn-success mr-4"
@@ -64,9 +64,9 @@
 					<tbody>
 						<c:forEach items="${users}" var="user" varStatus="STT">
 							<tr>
-								<th scope="row">${STT.index+1}</th>
+								<td scope="row">${STT.index+1}</td>
 								<td>${user.tentk }</td>
-								<td>${user.ho}${user.ten}</td>
+								<td>${user.ho} ${user.ten}</td>
 								<td>${user.sdt}</td>
 								<td>${user.email}</td>
 								<td><a class="btn btn-success mr-4"

@@ -31,6 +31,7 @@ public class XoaPhong extends HttpServlet
 		{
 			id_p = Integer.parseInt(id_pString);
 			phongService.deletePhong(id_p);
+			resp.sendRedirect(req.getContextPath() + "/admin/list-phong");
 		}
 		String id_taikhoan  = req.getParameter("id_taikhoan");
 		String id_loaip = req.getParameter("id_loaip");

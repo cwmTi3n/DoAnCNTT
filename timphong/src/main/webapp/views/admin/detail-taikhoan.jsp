@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<div class="container--admin container--admin--full">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 		href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 		crossorigin="anonymous">
-
-
+<div class="container--admin container--admin--full">
 	<div class="row">
 		<div class="col-12">
 			<h2 class="site-name py-4">Thông tin cá nhân</h2>
@@ -27,7 +24,7 @@
 								<label class="ml-3 label-img" for="anhdaidien"><i
 									class="bi bi-upload"></i> Upload</label> <input hidden type="file"
 									name="anhdaidien" id="anhdaidien" onchange="previewFile(this);"
-									class="inputfile"> <br>
+									class="inputfile"> 
 							</div>
 							<div class="col-12 mb-3">
 								<label class="label-info-admin pr-3" for="tentk">Tài
@@ -35,7 +32,8 @@
 									type="text" name="tentk" value="${user.tentk }">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin pr-3">Mật khẩu: </label><input class="col-12 py-2 border-radius-12" type="password"
+								<label class="label-info-admin pr-3">Mật khẩu: </label><input
+									class="col-12 py-2 border-radius-12" type="password"
 									name="matkhau" value="${user.matkhau }">
 							</div>
 							<div class="col-12 mb-3">
@@ -115,7 +113,7 @@
 					<tbody>
 						<c:forEach items="${phongcts}" var="phongct" varStatus="STT">
 							<tr>
-								<th scope="row">${STT.index+1}</th>
+								<td scope="row">${STT.index+1}</td>
 								<td>${phongct.id_p}</td>
 								<td><a
 									href="<c:url value="/admin/phong?id_p=${phongct.id_p }&id_taikhoan=${user.id_tk }"/>">

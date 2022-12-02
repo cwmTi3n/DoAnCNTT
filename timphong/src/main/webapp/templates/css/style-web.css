@@ -283,3 +283,13 @@
 	width: 240px!important;
 	height: 180px!important;
 }
+
+.img--phong__small{
+	width: 180px!important;
+	height: 120px!important;
+}
+
+table thead tr th{
+	vertical-align: middle!important;
+	text-align: center;
+}

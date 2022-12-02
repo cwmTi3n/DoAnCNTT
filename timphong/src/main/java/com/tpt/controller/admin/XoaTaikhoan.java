@@ -31,6 +31,7 @@ public class XoaTaikhoan extends HttpServlet
 		if(id_tkString != null)
 		{
 			id_tk = Integer.parseInt(id_tkString);
+			taikhoanService.deleteTaikhoan(id_tk);
 		}
 		resp.sendRedirect(req.getContextPath() + "/admin/list-taikhoan");
 	}

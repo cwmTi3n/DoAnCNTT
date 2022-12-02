@@ -19,7 +19,6 @@
 <link rel="shortcut icon" href="${url }images/Logo.png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-
 <link type="text/css"
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,900|Oswald:300,400,700"
 	rel="stylesheet">

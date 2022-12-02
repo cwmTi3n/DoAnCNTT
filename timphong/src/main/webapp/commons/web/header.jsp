@@ -22,7 +22,7 @@
 						<ul
 							class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
 							<c:if test="${sessionScope.account.quyen == 1}">
-								<li><a href="<c:url value='/admin/list-taikhoan'/>" class="nav-link">Quản lý web</a></li>
+								<li><a href="<c:url value='/admin/statistics'/>" class="nav-link">Quản lý web</a></li>
 							</c:if>
 							<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang
 									chủ</a></li>
