@@ -8,27 +8,26 @@
 		<div class="row profile-row p-4 my-5">
 			<div class="d-flex col-12" style="align-items: center;">
 				<img class="profile-img img-thumbnail" src="${url }images/Logo.png">
-				<h2 class="text-black mb-0 ml-3">Welcome, ${sessionScope.account.getTen() }</h2>
-													
+				<h2 class="text-black mb-0 ml-3">Welcome,
+					${sessionScope.account.getTen() }</h2>
+
 			</div>
 			<div class="col-8 text-black">
-				<div class="row my-4">
-				<form>
-					<div class="col-2 profile-block-item">Ảnh đại diện:
-						<img src="">
-					</div>
-				</form>
-					<div class="col-2 profile-block-item bg-primary bg-gradient" style="margin-left: 15px">Người theo dõi</div>
-					<div class="col-2 profile-block-item">Đang theo dõi</div>
-					<div class="col-2 profile-block-item">Phòng yêu thích</div>
-					<div class="col-2 profile-block-item">Phòng đã đặt</div>
-					<div class="col-2 profile-block-item mr-0">Quản lý phòng sở hữu</div>
+				<div class="row my-4 justify-content-around">
+
+					<div class="col-2 profile-block-item bg-primary bg-gradient"
+						>Phòng đã lưu</div>
+					<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/listdathen">Quản lý đặt hẹn</a></div>
+					<c:if test="${sessionScope.account.getQuyen() == 3}">
+						<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/seller/ql-phong">Quản lý phòng</a></div>
+						<div class="col-2 profile-block-item bg-primary bg-gradient"><a href="/timphong/xacnhan-p">Xác nhận</a></div>
+					</c:if>
 				</div>
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
 					<div>
 						<h4>Họ và tên</h4>
-						<p>${sessionScope.account.getHo()} ${sessionScope.account.getTentk()}</p>
-						<p>${sessionScope.account.getHo()} ${sessionScope.account.getTen()}</p>
+						<p>${sessionScope.account.getHo()}
+							${sessionScope.account.getTen()}</p>
 
 					</div>
 					<div>
@@ -37,14 +36,16 @@
 					<div class="row col-12">
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="fname">Họ</label>
-								<input class="border-0 profile-content-input" type="text" id="fname" name="fname" value="${sessionScope.account.getHo()}">
+								<label class="" for="fname">Họ</label> <input
+									class="border-0 profile-content-input" type="text" id="fname"
+									name="fname" value="${sessionScope.account.getHo()}">
 							</div>
 						</div>
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="lname">Tên</label>
-								<input class="border-0 profile-content-input" type="text" id="lname" name="lname" value="${sessionScope.account.getTen()}">
+								<label class="" for="lname">Tên</label> <input
+									class="border-0 profile-content-input" type="text" id="lname"
+									name="lname" value="${sessionScope.account.getTen()}">
 							</div>
 						</div>
 					</div>
@@ -53,7 +54,12 @@
 					<div>
 						<h4>Tên tài khoản</h4>
 						<p>
-							<c:out value="${sessionScope.account.getTentk().charAt(0) }" /><c:forEach begin="2" end="${sessionScope.account.getTentk().length() - 1}"><c:out value="*" /></c:forEach><c:out
+							<c:out value="${sessionScope.account.getTentk().charAt(0) }" />
+							<c:forEach begin="2"
+								end="${sessionScope.account.getTentk().length() - 1}">
+								<c:out value="*" />
+							</c:forEach>
+							<c:out
 								value="${user.getTentk().substring(user.getTentk().length()-1) }" />
 						</p>
 					</div>
@@ -63,20 +69,24 @@
 					<div>
 						<h4>Email</h4>
 						<p>
-							<c:out value="${sessionScope.account.getTentk().charAt(0) }" /><c:forEach begin="2" end="${sessionScope.account.getEmail().indexOf(64) }"><c:out value="*" /></c:forEach><c:out
+							<c:out value="${sessionScope.account.getTentk().charAt(0) }" />
+							<c:forEach begin="2"
+								end="${sessionScope.account.getEmail().indexOf(64) }">
+								<c:out value="*" />
+							</c:forEach>
+							<c:out
 								value="${sessionScope.account.getEmail().substring(user.getEmail().indexOf(64)) }" />
 						</p>
 					</div>
-					<div>
-						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
-					</div>
+					
 					<div class="row col-12">
 						<div class="col-12">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="email">Email</label>
-								<input class="border-0 profile-content-input" type="text" id="email" name="email" value="${user.getEmail()}">
+								<label class="" for="email">Email</label> <input
+									class="border-0 profile-content-input" type="text" id="email"
+									name="email" value="${user.getEmail()}">
 							</div>
-						</div>						
+						</div>
 					</div>
 				</div>
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -90,10 +100,11 @@
 					<div class="row col-12">
 						<div class="col-12">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="sdt">Số điện thoại</label>
-								<input class="border-0 profile-content-input" type="text" id="sdt" name="sdt" value="${sessionScope.account.getSdt()}">
+								<label class="" for="sdt">Số điện thoại</label> <input
+									class="border-0 profile-content-input" type="text" id="sdt"
+									name="sdt" value="${sessionScope.account.getSdt()}">
 							</div>
-						</div>						
+						</div>
 					</div>
 				</div>
 				<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -115,8 +126,11 @@
 				<div class="d-flex my-4 profile-content pb-3">
 					<div>
 						<h4>Mật khẩu</h4>
-						<c:forEach begin="1" end="${sessionScope.account.getMatkhau().length() }"><c:out value="*" /></c:forEach>
-						
+						<c:forEach begin="1"
+							end="${sessionScope.account.getMatkhau().length() }">
+							<c:out value="*" />
+						</c:forEach>
+
 					</div>
 					<div>
 						<button class="btn btn-info py-2 px-3">Chỉnh sửa</button>
@@ -124,16 +138,18 @@
 					<div class="row col-12">
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="oldpassword">Mật khẩu cũ</label>
-								<input class="border-0 profile-content-input" type="password" id="oldpassword" name="oldpassword" value="">
+								<label class="" for="oldpassword">Mật khẩu cũ</label> <input
+									class="border-0 profile-content-input" type="password"
+									id="oldpassword" name="oldpassword" value="">
 							</div>
-						</div>	
+						</div>
 						<div class="col-6">
 							<div class=" border border-3 profile-content-change px-3 py-2">
-								<label class="" for="newpassword">Mật khẩu mới</label>
-								<input class="border-0 profile-content-input" type="password" id="newpassword" name="newpassword" value="">
+								<label class="" for="newpassword">Mật khẩu mới</label> <input
+									class="border-0 profile-content-input" type="password"
+									id="newpassword" name="newpassword" value="">
 							</div>
-						</div>					
+						</div>
 					</div>
 				</div>
 			</div>

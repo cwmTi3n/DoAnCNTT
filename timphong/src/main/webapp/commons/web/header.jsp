@@ -22,7 +22,8 @@
 						<ul
 							class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
 							<c:if test="${sessionScope.account.quyen == 1}">
-								<li><a href="<c:url value='/admin/statistics'/>" class="nav-link">Quản lý web</a></li>
+								<li><a href="<c:url value='/admin/statistics'/>"
+									class="nav-link">Quản lý web</a></li>
 							</c:if>
 							<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang
 									chủ</a></li>
@@ -30,17 +31,15 @@
 									kiếm</a></li>
 							<li><a href="#footer" class="nav-link">Liên hệ</a></li>
 							<c:if test="${sessionScope.account == null}">
-								<li>
-									<a href="<c:url value='/login'/>" class="nav-link">Đăng nhập</a>
-								</li>
+								<li><a href="<c:url value='/login'/>" class="nav-link">Đăng
+										nhập</a></li>
 							</c:if>
 							<c:if test="${sessionScope.account != null}">
-								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":""} ${sessionScope.account.tentk }</a></li>
-								<li>
-									<a href="<c:url value='/profile'/>" class="nav-link"></a>
-										<a href="<c:url value='/logout'/>" class="nav-link">Đăng
-										xuất</a>
-								</li>
+								<li><a href="/timphong/trangcuatui" class="nav-link">${sessionScope.account.quyen==3?"Seller:":""}
+										${sessionScope.account.tentk }</a></li>
+								<li><a href="<c:url value='/trangcanhan'/>" class="nav-link">Profile</a></li>
+								<li><a href="<c:url value='/logout'/>" class="nav-link">Đăng
+										xuất</a></li>
 							</c:if>
 						</ul>
 					</nav>

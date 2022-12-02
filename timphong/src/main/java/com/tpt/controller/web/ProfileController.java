@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(urlPatterns = {"/tt-canhan"})
+@WebServlet(urlPatterns = {"/trangcanhan"})
 public class ProfileController extends HttpServlet{
 
 	/**
