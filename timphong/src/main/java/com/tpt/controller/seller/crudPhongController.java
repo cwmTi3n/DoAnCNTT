@@ -52,12 +52,14 @@ public class crudPhongController extends HttpServlet
 		if(url.contains("select"))
 		{
 			getPhong(req, resp);
+			return;
 		}
 		else if(url.contains("xoa-anh-p"))
 		{
 			deleteAnhPhong(req, resp);
 			getPhong(req, resp);
 		}
+		else
 		findPhongSeller(req, resp);
 		req.getRequestDispatcher("/views/seller/quanlyphong.jsp").forward(req, resp);
 	}
@@ -97,9 +99,19 @@ public class crudPhongController extends HttpServlet
 	
 	protected void getPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
-		int id_p = Integer.parseInt(req.getParameter("id_p"));
-		Phong phong = phongService.getPhong(id_p);
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
+		String id_p =req.getParameter("id_p");
+		Phong phong = phongService.getPhong(Integer.parseInt(id_p));
+		List<Loaiphong> loaiphongs = loaiphongService.getAll();
+		String id_taikhoan = req.getParameter("id_taikhoan");
+		loaiphongs.removeIf(lp -> lp.getId_lp()==phong.getId_lp());
+		List<Tinh> tinhs = tinhService.getAll();
+		req.setAttribute("loaiphongs", loaiphongs);
 		req.setAttribute("phong", phong);
+		req.setAttribute("id_taikhoan", id_taikhoan);
+		req.setAttribute("tinhs", tinhs);
+		req.getRequestDispatcher("/views/seller/crud-phong.jsp").forward(req, resp);
 	}
 	
 	protected void insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
@@ -249,5 +261,10 @@ public class crudPhongController extends HttpServlet
 		String id_pString = req.getParameter("id_p");
 		String hinhanh = req.getParameter("hinhanh");
 		hinhanhService.deleteHinhanh(hinhanh);
+	}
+	
+	protected void TaiPhong(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
+	{
+
 	}
 }

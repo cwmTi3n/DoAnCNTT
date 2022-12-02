@@ -119,31 +119,30 @@ public class AjaxController extends HttpServlet
 		locString[4] = req.getParameter("thutu");
 		for(int i = 0; i < Constant.BoLoc; i++)
 		{
-//			if(locString[i] != null)
-//			{
-//				loc[i] = Integer.parseInt(locString[i]);
-//			}
-//			else 
-//			{
-//				loc[i] = 0;
-//			}
-			System.out.println("Oke:" + locString[i]);
+			if(locString[i] != null)
+			{
+				loc[i] = Integer.parseInt(locString[i]);
+			}
+			else 
+			{
+				loc[i] = 0;
+			}
 		}
-//		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], id_tk);
-//		PrintWriter out = resp.getWriter();
-//		for (Phong p : phongs) {
-//			out.println("											<tr class=\"phong\">\r\n"
-//					+ "												<td><a\r\n"
-//					+ "													href=\"/timphong/seller/ql-phong/select?id_p=" + p.getId_p()+ "\"/>\">\r\n"
-//					+ "													<img height=\"120\" width=\"160\"\r\n"
-//					+ "														src=\"/timphong/hinhanh?fname=" + p.getAnhchinh() + "\" />\r\n"
-//					+ "												</a></td>\r\n"
-//					+ "												<td>" + p.getTen() + "</td>\r\n"
-//					+ "												<td>"+ p.getGia() + "</td>\r\n"
-//					+ "												<td>"+ p.getChieudai() + "*" + p.getChieurong() + "</td>\r\n"
-//					+ "												<td></td>\r\n"
-//					+ "												<td></td>\r\n"
-//					+ "											</tr>");
-//		}
+		List<Phong> phongs = phongService.pagingPhong(cout, keyword, loc, Constant.thutu[tt], id_tk);
+		PrintWriter out = resp.getWriter();
+		for (Phong p : phongs) {
+			out.println("											<tr class=\"phong\">\r\n"
+					+ "												<td><a\r\n"
+					+ "													href=\"/timphong/seller/ql-phong/select?id_p=" + p.getId_p()+ "\">\r\n"
+					+ "													<img height=\"120\" width=\"160\"\r\n"
+					+ "														src=\"/timphong/hinhanh?fname=" + p.getAnhchinh() + "\" />\r\n"
+					+ "												</a></td>\r\n"
+					+ "												<td>" + p.getTen() + "</td>\r\n"
+					+ "												<td>"+ p.getGia() + "</td>\r\n"
+					+ "												<td>"+ p.getChieudai() + "*" + p.getChieurong() + "</td>\r\n"
+					+ "												<td></td>\r\n"
+					+ "												<td></td>\r\n"
+					+ "											</tr>");
+		}
 	}
 }
