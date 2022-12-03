@@ -38,7 +38,7 @@
 					<div class="select-wrap">
 
 						<div id="them-phong" style="display: none;">
-										<form class="text-dark" action="them-phong" method="post"
+										<form class="text-dark" action="/timphong/seller/ql-phong/insert" method="post"
 				enctype="multipart/form-data">
 				<div class="row flex-wrap">
 					<div class="col-5">
