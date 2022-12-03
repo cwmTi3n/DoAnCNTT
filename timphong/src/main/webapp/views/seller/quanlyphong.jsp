@@ -38,115 +38,121 @@
 					<div class="select-wrap">
 
 						<div id="them-phong" style="display: none;">
-							<form action="them-phong" method="post"
-								enctype="multipart/form-data">
-								<div class="row flex-wrap">
-									<div class="col-6">
-										<div class="row">
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Tên: </label><input
-													class="col-8 py-2 border-radius-12" type="text" name="ten">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Chiều
-													dài: </label><input class="col-8 py-2 border-radius-12" type="text"
-													name="chieudai">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Chiều
-													rộng: </label><input class="col-8 py-2 border-radius-12"
-													type="text" name="chieurong">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-5">Số người
-													ở tối đa: </label> <span class="select-wrapper select--white"><select
-													name="songuoi">
-														<option value="1" selected>1 người</option>
-														<option value="2">2 người</option>
-														<option value="4">4 người</option>
-														<option value="8">8 người</option>
-														<option value="10">10 người</option>
-												</select> </span>
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Giá: </label><input
-													class="col-8 py-2 border-radius-12" type="text" name="gia">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Địa chỉ
-													chi tiết: </label><input class="col-8 py-2 border-radius-12"
-													type="text" name="dcchitiet">
-											</div>
+										<form class="text-dark" action="/timphong/seller/ql-phong/insert" method="post"
+				enctype="multipart/form-data">
+				<div class="row flex-wrap">
+					<div class="col-5">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Tên: </label><input
+									class="col-8 py-2 border-radius-12" type="text" name="ten">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Chiều
+									dài: </label><input class="col-8 py-2 border-radius-12" type="text"
+									name="chieudai">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Chiều
+									rộng: </label><input class="col-8 py-2 border-radius-12" type="text"
+									name="chieurong">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-5">Số
+									người ở tối đa: </label> <span class="select-wrapper select--white"><select
+									name="songuoi">
+										<option value="1" selected>1 người</option>
+										<option value="2">2 người</option>
+										<option value="4">4 người</option>
+										<option value="8">8 người</option>
+										<option value="10">10 người</option>
+								</select> </span>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Giá: </label><input
+									class="col-8 py-2 border-radius-12" type="text" name="gia">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Địa
+									chỉ: </label><input class="col-8 py-2 border-radius-12" type="text"
+									name="dcchitiet">
+							</div>
 
-											<div class="col-12">
-												<span class="select-wrapper select--dark"> <select
-													onchange="loadHuyen()"
-													class="form-select form-select-sm mb-3" id="city"
-													aria-label=".form-select-sm">
-														<option value="0" selected>Chọn tỉnh, thành phố</option>
-														<c:forEach items="${tinhs }" var="tinh">
-															<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
-														</c:forEach>
-												</select>
-												</span> <span class="select-wrapper select--dark"> <select
-													onchange="loadXa()" disabled
-													class="form-select form-select-sm mb-3" id="district"
-													aria-label=".form-select-sm">
-														<option value="0" selected>Chọn quận huyện</option>
-												</select></span><span class="select-wrapper select--dark"> <select
-													disabled class="form-select form-select-sm" id="ward"
-													aria-label=".form-select-sm" name="xa">
-														<option value="0" selected>Chọn phường xã</option>
-												</select></span>
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Mô tả: </label>
-												<textarea rows="4" cols="72" class="py-2 border-radius-12"
-													name="mota"></textarea>
-											</div>
-										</div>
-									</div>
-									<div class="col-6">
-										<div class="row">
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Loại
-													phòng: </label> <span class="select-wrapper select--dark"> <select
-													name="id_lp">
-														<c:forEach items="${loaiphongs}" var="lp">
-															<option value="${lp.id_lp }">${lp.tenloai }</option>
-														</c:forEach>
-												</select>
-												</span>
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Hình ảnh
-													chính: </label> <label class="ml-3 label-img" for="hinhanh1"><i
-													class="bi bi-upload"></i> Upload</label> <input id="hinhanh1"
-													type="file" hidden onchange="previewFile1(this);"
-													name="hinhanh">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Hình ảnh
-													phụ 1: </label> <label class="ml-3 label-img" for="hinhanh2"><i
-													class="bi bi-upload"></i> Upload</label> <input id="hinhanh2"
-													type="file" hidden onchange="previewFile2(this);"
-													name="hinhanh">
-											</div>
-											<div class="col-12 mb-3">
-												<label class="label-info-admin pr-3 col-4">Hình ảnh
-													phụ 2: </label><label class="ml-3 label-img" for="hinhanh3"><i
-													class="bi bi-upload"></i> Upload</label> <input id="hinhanh3"
-													type="file" hidden onchange="previewFile3(this);"
-													name="hinhanh">
-											</div>
-										</div>
-									</div>
-									<div class="col-12">
-										<button class="btn btn-info" type="submit">Thêm</button>
-										<h4></h4>
-									</div>
-								</div>
-							</form>
+							<div class="col-12">
+								<span class="select-wrapper select--dark mb-3 mr-3"> <select
+									onchange="loadHuyen()" class="form-select form-select-sm"
+									id="city" aria-label=".form-select-sm">
+										<option value="0" selected>Chọn tỉnh, thành phố</option>
+										<c:forEach items="${tinhs }" var="tinh">
+											<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
+										</c:forEach>
+								</select>
+								</span> <span class="select-wrapper select--dark mb-3 mr-3"> <select
+									onchange="loadXa()" disabled class="form-select form-select-sm"
+									id="district" aria-label=".form-select-sm">
+										<option value="0" selected>Chọn quận huyện</option>
+								</select></span><span class="select-wrapper select--dark mb-3"> <select
+									disabled class="form-select form-select-sm" id="ward"
+									aria-label=".form-select-sm" name="xa">
+										<option value="0" selected>Chọn phường xã</option>
+								</select></span>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Mô tả:
+								</label>
+								<textarea rows="4" cols="50" class="py-2 border-radius-12"
+									name="mota"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="col-7">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Loại
+									phòng: </label> <span class="select-wrapper select--dark"> <select
+									name="id_lp">
+										<c:forEach items="${loaiphongs}" var="lp">
+											<option value="${lp.id_lp }">${lp.tenloai }</option>
+										</c:forEach>
+								</select>
+								</span>
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Hình
+									ảnh chính: </label> <img height="180" width="240" id="previewImg1"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh1"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh1"
+									type="file" hidden onchange="previewFile1(this);"
+									name="hinhanh">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Hình
+									ảnh phụ 1: </label><img id="previewImg2"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh2"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh2"
+									type="file" hidden onchange="previewFile2(this);"
+									name="hinhanh">
+							</div>
+							<div class="col-12 mb-3">
+								<label class="label-info-admin__small pr-3 col-4">Hình
+									ảnh phụ 2: </label><img height="180" width="240" id="previewImg3"
+									class="img-thumbnail img--phong" src=""> <label
+									class="ml-3 label-img" for="hinhanh3"><i
+									class="bi bi-upload"></i> Upload</label> <input id="hinhanh3"
+									type="file" hidden onchange="previewFile3(this);"
+									name="hinhanh">
+							</div>
+						</div>
+					</div>
+					<div class="col-10 text-right my-4">
+						<button class="btn btn-info" type="submit">Thêm</button>
+						<a href=<c:url value="/admin/taikhoan?id_tk=${id_tk }"/>
+							class="ml-3 d-inline-block text-white btn bg-danger">Quay lại</a>
+					</div>
+				</div>
+			</form>
 						</div>
 
 						<span class="icon icon-keyboard_arrow_down"></span> <select
@@ -251,7 +257,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadListingsByTinh()" id="city"
+							onchange="loadLocHuyen()" id="blcity"
 							class="form-control px-3">
 							<option value="0" selected>Chọn tỉnh, thành phố</option>
 							<c:forEach items="${tinhs }" var="tinh">
@@ -264,7 +270,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadListingsByXa()" id="district"
+							onchange="loadLocXa()" id="bldistrict"
 							class="form-control px-3" disabled>
 							<option value="0" selected>Chọn quận huyện</option>
 						</select>
@@ -274,7 +280,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="" id="ward" class="form-control px-3" disabled>
+							onchange="" id="blward" class="form-control px-3" disabled>
 							<option value="0" selected>Chọn phường xã</option>
 						</select>
 					</div>
@@ -337,9 +343,9 @@
 		var resultSearch = document.getElementById('load')
 		var keyword = document.getElementById('keyword').value;
 		var lp = document.getElementById('loaiphong').value;
-		var city = document.getElementById('city').value;
-		var district = document.getElementById('district').value;
-		var ward = document.getElementById('ward').value;
+		var city = document.getElementById('blcity').value;
+		var district = document.getElementById('bldistrict').value;
+		var ward = document.getElementById('blward').value;
 		var thutu = document.getElementById('thutu').value;
 		var songuoi = document.getElementById('songuoi').value;
 		var loading = "<div class='spinner-border' role='status'><span class='visually-hidden'>Loading...</span></div>"
@@ -402,6 +408,102 @@
 		}
 
 	};
+	
+	function loadLocHuyen() {
+		var id_t = $('#blcity').find(":selected").val();
+		var labelXa = "<option value='0' selected>Chọn phường xã</option>"
+		var citis = document.getElementById("blcity");
+		var districts = document.getElementById("bldistrict");
+		var wards = document.getElementById("blward");
+		console.log(id_t);
+		if (id_t != 0) {
+			districts.disabled = false;
+			//wards.disabled = true;
+			wards.innerHTML = labelXa;
+			$.ajax({
+				url: "/timphong/listhuyen", //send to Controller
+				type: "get", //send it through get method
+				data: {
+					exits: id_t
+				},
+				success: function(data) {
+					/* 					removeData(districts);
+					 removeData(ward);
+					 $("#district").append(data); */
+
+					districts.innerHTML = data;
+				}
+			});
+		} else {
+			districts.disabled = true;
+			wards.disabled = true;
+
+			districts.value = 0;
+			wards.value = 0;
+		}
+
+	};
+
+	function loadLocXa() {
+		var id_h = $('#bldistrict').find(":selected").val();
+
+		var citis = document.getElementById("blcity");
+		var districts = document.getElementById("bldistrict");
+		var wards = document.getElementById("blward");
+
+		if (id_h != 0) {
+			wards.disabled = false;
+			$.ajax({
+				url: "/timphong/listxa", //send to Controller
+				type: "get", //send it through get method
+				data: {
+					exits: id_h
+				},
+				success: function(data) {
+					/* 					removeData(wards);
+					 $("#ward").append(data); */
+					wards.innerHTML = data;
+				}
+			});
+		} else {
+			wards.disabled = true;
+			wards.value = 0;
+		}
+	};
+	
+	function previewFile1(input) {
+		var file = $("#hinhanh1").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg1").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile2(input) {
+		var file = $("#hinhanh2").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg2").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile3(input) {
+		var file = $("#hinhanh3").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg3").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
 </script>
 
 

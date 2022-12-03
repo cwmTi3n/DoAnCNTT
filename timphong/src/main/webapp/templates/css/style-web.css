@@ -141,7 +141,12 @@
 	margin-right: 3%;
 }
 
-.label-img {
+
+#btn-danhgia:checked ~ .danhgia{
+	display: flex;
+}
+
+.label-img{
 	font-size: 1.25em;
 	font-weight: 500;
 	color: white;
