@@ -141,7 +141,19 @@
 	margin-right: 3%;
 }
 
+<<<<<<< HEAD
 .label-img {
+=======
+.danhgia{
+	display: none;
+}
+
+#btn-danhgia:checked ~ .danhgia{
+	display: flex;
+}
+
+.label-img{
+>>>>>>> parent of 47d8e8e (Đánh giá)
 	font-size: 1.25em;
 	font-weight: 500;
 	color: white;

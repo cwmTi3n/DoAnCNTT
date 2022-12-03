@@ -38,7 +38,7 @@
 					<div class="select-wrap">
 
 						<div id="them-phong" style="display: none;">
-							<form action="them-phong" method="post"
+							<form action="<c:url value='/seller/ql-phong/insert'/>" method="post"
 								enctype="multipart/form-data">
 								<div class="row flex-wrap">
 									<div class="col-6">
@@ -81,8 +81,8 @@
 											<div class="col-12">
 												<span class="select-wrapper select--dark"> <select
 													onchange="loadHuyen()"
-													class="form-select form-select-sm mb-3" id="city"
-													aria-label=".form-select-sm">
+													class="form-select form-select-sm mb-3"
+													aria-label=".form-select-sm" id="city">
 														<option value="0" selected>Chọn tỉnh, thành phố</option>
 														<c:forEach items="${tinhs }" var="tinh">
 															<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
@@ -90,12 +90,12 @@
 												</select>
 												</span> <span class="select-wrapper select--dark"> <select
 													onchange="loadXa()" disabled
-													class="form-select form-select-sm mb-3" id="district"
-													aria-label=".form-select-sm">
+													class="form-select form-select-sm mb-3"
+													aria-label=".form-select-sm" id="district">
 														<option value="0" selected>Chọn quận huyện</option>
 												</select></span><span class="select-wrapper select--dark"> <select
-													disabled class="form-select form-select-sm" id="ward"
-													aria-label=".form-select-sm" name="xa">
+													disabled class="form-select form-select-sm"
+													aria-label=".form-select-sm" name="xa" id="ward">
 														<option value="0" selected>Chọn phường xã</option>
 												</select></span>
 											</div>
@@ -251,7 +251,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadListingsByTinh()" id="city"
+							onchange="loadLocHuyen()" id="blcity"
 							class="form-control px-3">
 							<option value="0" selected>Chọn tỉnh, thành phố</option>
 							<c:forEach items="${tinhs }" var="tinh">
@@ -264,7 +264,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadListingsByXa()" id="district"
+							onchange="loadLocXa()" id="bldistrict"
 							class="form-control px-3" disabled>
 							<option value="0" selected>Chọn quận huyện</option>
 						</select>
@@ -274,7 +274,7 @@
 				<div class="form-group">
 					<div class="select-wrap">
 						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="" id="ward" class="form-control px-3" disabled>
+							onchange="" id="blward" class="form-control px-3" disabled>
 							<option value="0" selected>Chọn phường xã</option>
 						</select>
 					</div>
@@ -337,9 +337,9 @@
 		var resultSearch = document.getElementById('load')
 		var keyword = document.getElementById('keyword').value;
 		var lp = document.getElementById('loaiphong').value;
-		var city = document.getElementById('city').value;
-		var district = document.getElementById('district').value;
-		var ward = document.getElementById('ward').value;
+		var city = document.getElementById('blcity').value;
+		var district = document.getElementById('bldistrict').value;
+		var ward = document.getElementById('blward').value;
 		var thutu = document.getElementById('thutu').value;
 		var songuoi = document.getElementById('songuoi').value;
 		var loading = "<div class='spinner-border' role='status'><span class='visually-hidden'>Loading...</span></div>"
@@ -401,6 +401,68 @@
 			them.style.display = "block";
 		}
 
+	};
+	
+	function loadLocHuyen() {
+		var id_t = $('#blcity').find(":selected").val();
+		var labelXa = "<option value='0' selected>Chọn phường xã</option>"
+		var citis = document.getElementById("blcity");
+		var districts = document.getElementById("bldistrict");
+		var wards = document.getElementById("blward");
+		console.log(id_t);
+		if (id_t != 0) {
+			districts.disabled = false;
+			//wards.disabled = true;
+			wards.innerHTML = labelXa;
+			$.ajax({
+				url: "/timphong/listhuyen", //send to Controller
+				type: "get", //send it through get method
+				data: {
+					exits: id_t
+				},
+				success: function(data) {
+					/* 					removeData(districts);
+					 removeData(ward);
+					 $("#district").append(data); */
+
+					districts.innerHTML = data;
+				}
+			});
+		} else {
+			districts.disabled = true;
+			wards.disabled = true;
+
+			districts.value = 0;
+			wards.value = 0;
+		}
+
+	};
+
+	function loadLocXa() {
+		var id_h = $('#bldistrict').find(":selected").val();
+
+		var citis = document.getElementById("blcity");
+		var districts = document.getElementById("bldistrict");
+		var wards = document.getElementById("blward");
+
+		if (id_h != 0) {
+			wards.disabled = false;
+			$.ajax({
+				url: "/timphong/listxa", //send to Controller
+				type: "get", //send it through get method
+				data: {
+					exits: id_h
+				},
+				success: function(data) {
+					/* 					removeData(wards);
+					 $("#ward").append(data); */
+					wards.innerHTML = data;
+				}
+			});
+		} else {
+			wards.disabled = true;
+			wards.value = 0;
+		}
 	};
 </script>
 

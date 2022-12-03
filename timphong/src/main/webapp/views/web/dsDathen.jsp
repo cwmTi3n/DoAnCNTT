@@ -113,25 +113,6 @@
 						<li><a href="/timphong/listdathen?hanhdong=2">Đã xác nhận</a></li>
 						<li><a href="/timphong/listdathen?hanhdong=3">Bị hủy</a></li>
 					</ul>
-					<div class="dg" id="dg" style="display:none;">
-						<div class="col-8 text-black">
-							<div class="row my-4">
-								<form action="/timphong/danhgia" method="post">
-									<input type="password" name="id_p" value="" hidden id="dg_id_p">
-									<label>Số sao: </label>
-										<div class="rating"> 
-                							<input type="radio" name="sosao" value="5" id="5"><label for="5">☆</label> 
-                							<input type="radio" name="sosao" value="4" id="4"><label for="4">☆</label> 
-                							<input type="radio" name="sosao" value="3" id="3"><label for="3">☆</label> 
-                							<input type="radio" name="sosao" value="2" id="2"><label for="2">☆</label> 
-                							<input type="radio" name="sosao" value="1" id="1"><label for="1">☆</label>
-            							</div>
-									<br/><label>Nội dung: </label><input type="text" name="noidung">
-									<button type="submit">Đánh giá</button>
-								</form>
-							</div>
-						</div>
-					</div>
 					<table class="table">
 						<thead class="thead-dark">
 							<tr>
@@ -172,7 +153,29 @@
 									</c:if>
 									<c:if test="${dh.trangthai==2 }">
 										<td>${dh.phong.taikhoan.sdt}</td>
-										<td><button class="btn button mt-2 px-3 py-1 btn-find" onClick="danhgia(${dh.phong.id_p})">Đánh giá</button></td>
+										<td><input hidden type="checkbox" id="btn-danhgia"
+											name="danhgia"> <label for="btn-danhgia"> <span
+												class="btn btn-info">Đánh giá</span>
+										</label>
+											<div class="danhgia">
+												<div class="col-8 text-black">
+													<div class="row my-4">
+														<form action="/timphong/danhgia" method="post">
+															<input type="password" name="id_p" value="${dh.phong.id_p}" hidden>
+															<label>Số sao: </label>
+															            <div class="rating"> 
+                															<input type="radio" name="sosao" value="5" id="5"><label for="5">☆</label> 
+                															<input type="radio" name="sosao" value="4" id="4"><label for="4">☆</label> 
+                															<input type="radio" name="sosao" value="3" id="3"><label for="3">☆</label> 
+                															<input type="radio" name="sosao" value="2" id="2"><label for="2">☆</label> 
+                															<input type="radio" name="sosao" value="1" id="1"><label for="1">☆</label>
+            															</div>
+															<br/><label>Nội dung: </label><input type="text" name="noidung">
+															<button type="submit">Đánh giá</button>
+														</form>
+													</div>
+												</div>
+											</div></td>
 									</c:if>
 									<c:if test="${dh.trangthai==3 }">
 										<td>
@@ -190,15 +193,3 @@
 		</div>
 	</div>
 </div>
-<script>
-	function danhgia(id_p) {
-		document.getElementById('dg_id_p').value = id_p;
-		var dg = document.getElementById('dg');
-		if(dg.style.display == "none"){
-			dg.style.display = "block";
-		}
-		else{
-			dg.style.display = "none";
-		}
-	};
-</script>
