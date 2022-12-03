@@ -220,6 +220,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 			}
 		}
 		sql += " order by " + thutu + " OFFSET ? row fetch next 3 row only";
+		System.out.println(sql);
 		try
 		{
 			connection = super.getConnection();
@@ -238,6 +239,7 @@ public class PhongDaoImpl extends DBConnection implements IPhongDao
 					pStatement.setInt(++count, loc[i]);
 				}
 			}
+			System.out.println("index: " + index);
 			pStatement.setInt(++count, index);
 			rSet = pStatement.executeQuery();
 			mapAttributeSQL map = new mapAttributeSQL();
