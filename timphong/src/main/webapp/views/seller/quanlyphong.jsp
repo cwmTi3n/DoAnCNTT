@@ -48,15 +48,6 @@
 									class="col-8 py-2 border-radius-12" type="text" name="ten">
 							</div>
 							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Trạng
-									thái: </label> <span class="select-wrapper select--white"> <select
-									name="trangthai">
-										<option selected value="1">Hiện</option>
-										<option value="2">Ẩn</option>
-								</select>
-								</span>
-							</div>
-							<div class="col-12 mb-3">
 								<label class="label-info-admin__small pr-3 col-4">Chiều
 									dài: </label><input class="col-8 py-2 border-radius-12" type="text"
 									name="chieudai">
@@ -125,11 +116,6 @@
 										</c:forEach>
 								</select>
 								</span>
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Chủ
-									phòng: </label><input class="col-8 py-2 border-radius-12" readonly
-									type="text" name="id_tk" value="${id_tk }">
 							</div>
 							<div class="col-12 mb-3">
 								<label class="label-info-admin__small pr-3 col-4">Hình
