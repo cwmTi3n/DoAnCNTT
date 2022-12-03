@@ -484,6 +484,40 @@
 			wards.value = 0;
 		}
 	};
+	
+	function previewFile1(input) {
+		var file = $("#hinhanh1").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg1").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile2(input) {
+		var file = $("#hinhanh2").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg2").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
+	function previewFile3(input) {
+		var file = $("#hinhanh3").get(0).files[0];
+		if (file) {
+			var reader = new FileReader();
+
+			reader.onload = function() {
+				$("#previewImg3").attr("src", reader.result);
+			}
+			reader.readAsDataURL(file);
+		}
+	}
 </script>
 
 
