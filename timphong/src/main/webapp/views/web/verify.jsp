@@ -5,7 +5,7 @@
 
 <form action="verifycode" method="post" style="position: relative; top: 100px;">
 	<input name="currentCode">
-	<button type="submit">send</button>
+	<button type="submit">Send</button>
 	<c:if test="${not empty verifysuccess}">
 		<p class="text-danger my-0">${verifysuccess}</p>
 	</c:if>

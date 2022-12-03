@@ -73,16 +73,17 @@
 								class="d-inline-block mb-4"> <img
 								src="<c:url value="/hinhanh?fname=${phong.anhchinh}"/>"
 								alt="Image" class="img-fluid">
+								<div class="ftco-media-details text-dark">
+									<h3 class="mt-3 mb-1" style="font-weight: 400!important">${phong.ten }</h3>
+									<p>Loại phòng: ${phong.getLoaiphong().getTenloai() }</p>
+									<strong>Giá: ${phong.gia } VNĐ</strong>
+									<p class="pr-3">Địa chỉ: ${phong.getXa().getTenxa()},
+										${phong.getXa().getHuyen().getTenhuyen()},
+										${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
+									<p>Số người ở tối đa: ${phong.getSonguoi() }</p>
+									<p>Đánh giá: ${phong.getDanhgia() }</p>
+								</div>
 							</a>
-							<div class="ftco-media-details">
-								<h3>${phong.ten }</h3>
-								<p>${phong.mota }</p>
-								<p>Đang có ${phong.quantam } người quan tâm đến phòng này</p>
-								<p>${phong.getXa().getTenxa()},
-									${phong.getXa().getHuyen().getTenhuyen()},
-									${phong.getXa().getHuyen().getTinh().getTentinh()}</p>
-								<strong>$${phong.gia }</strong>
-							</div>
 						</div>
 					</div>
 				</div>

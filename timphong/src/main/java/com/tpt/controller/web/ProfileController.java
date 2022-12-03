@@ -48,11 +48,27 @@ public class ProfileController extends HttpServlet{
 		String ten = req.getParameter("lname");
 		String email = req.getParameter("email");
 		String sdt = req.getParameter("sdt");
+		String oldpassword = req.getParameter("oldpassword");
+		String newpassword = req.getParameter("newpassword");
+		String quyen_str = req.getParameter("quyen");
+		
 		
 		if(!ho.isEmpty()) taikhoan.setHo(ho);
 		if(!ten.isEmpty()) taikhoan.setTen(ten);
 		if(!email.isEmpty()) taikhoan.setEmail(email);
 		if(!sdt.isEmpty()) taikhoan.setSdt(sdt);
+		taikhoan.setQuyen(Integer.parseInt(quyen_str));
+
+		if(!oldpassword.isEmpty()) { 
+			if(oldpassword.equals(taikhoan.getMatkhau())) {
+				taikhoan.setMatkhau(newpassword);
+			}
+			else {
+				System.out.print(taikhoan.getMatkhau());
+				req.setAttribute("wrongOldPassword", "Bạn nhập sai mật khẩu cũ");
+				req.getRequestDispatcher("/views/web/profile.jsp").forward(req, resp);
+			}
+		}
 		
 		taikhoan.setAnhdaidien(filename);
 		taikhoanService.editTaikhoan(taikhoan, filename);

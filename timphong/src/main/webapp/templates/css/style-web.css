@@ -95,7 +95,7 @@
 }
 
 .profile-img__small {
-	padding:1px!important;
+	padding: 1px !important;
 	width: 44px;
 	height: 44px !important;
 	box-shadow: rgb(0 0 0/ 12%) 0rem 0.3125rem 0.625rem 0rem;
@@ -141,12 +141,11 @@
 	margin-right: 3%;
 }
 
-
-#btn-danhgia:checked ~ .danhgia{
+#btn-danhgia:checked ~ .danhgia {
 	display: flex;
 }
 
-.label-img{
+.label-img {
 	font-size: 1.25em;
 	font-weight: 500;
 	color: white;
@@ -315,6 +314,15 @@
 	height: 120px !important;
 }
 
+.btn-save-profile {
+	border-radius: 8px !important;;
+	padding: 8px 22px !important;;
+}
+
+.btn-save-profile:hover {
+	opacity: 0.8 !important;;
+}
+
 table thead tr th {
 	vertical-align: middle !important;
 	text-align: center;
@@ -347,4 +355,34 @@ table thead tr th {
 
 #edit-input--password:checked ~ .edit-input--content {
 	display: flex !important;
+}
+
+#edit-input--seller:checked ~ .edit-input--content__seller{
+	display: flex !important;
+}
+
+.edit-input--content__seller {
+	position: fixed !important;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.4);
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	display: none !important;
+}
+
+.edit-input--content__seller-layer{
+	background: #fff;
+    width: 440px;
+    max-width: calc(100% - 32px);
+    min-height: 280px;
+    position: relative;
+    animation: modalFadeIn ease 0.6s;
+    padding: 12px;
+    
+    line-height: 24px;
+    text-align: center;
 }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:url value="/templates/" var="url"></c:url>
+
 <form action="trangcanhan" method="post" enctype="multipart/form-data">
 	<div id="profile" class="site-section-phong">
 		<div class="container">
@@ -16,15 +17,17 @@
 					<h2 class="text-black mb-0 ml-3">Welcome,
 						${sessionScope.account.getTen() }</h2>
 					<label class="ml-3 label-img" for="anhdaidien"><i
-						class="bi bi-upload"></i> Upload</label> <input type="file"
+						class="bi bi-upload"></i> Upload</label> <input hidden type="file"
 						name="anhdaidien" id="anhdaidien" onchange="previewFile(this);"
 						class="inputfile">
+					<button hidden id="btn-luu-anh"
+						class="btn btn-dark ml-4 btn-save-profile" type="submit">Lưu</button>
+				<c:if test="${not empty wrongOldPassword}">
+					<p class="text-danger my-0">${wrongOldPassword}</p>
+				</c:if>
 				</div>
 				<div class="col-8 text-black">
-
-					<button type="submit">Lưu</button>
 					<div class="row my-4 justify-content-around">
-
 						<div class="col-2 profile-block-item bg-primary bg-gradient">Phòng
 							đã lưu</div>
 						<div class="col-2 profile-block-item bg-primary bg-gradient">
@@ -50,7 +53,7 @@
 							class="label-edit-profile">Chỉnh sửa</label>
 
 
-						<div class="edit-input--content row col-12 ">
+						<div class="edit-input--content row col-12 justify-content-end">
 							<div class="col-6">
 								<div class=" border border-3 profile-content-change px-3 py-2">
 									<label class="" for="fname">Họ</label> <input
@@ -65,6 +68,8 @@
 										name="lname" value="${sessionScope.account.getTen()}">
 								</div>
 							</div>
+							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
+
 						</div>
 					</div>
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -107,6 +112,8 @@
 										name="email">
 								</div>
 							</div>
+							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
+
 						</div>
 					</div>
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -125,6 +132,7 @@
 										name="sdt" value="${sessionScope.account.getSdt()}">
 								</div>
 							</div>
+							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
 						</div>
 					</div>
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">
@@ -138,11 +146,42 @@
 							</c:if>
 						</div>
 
+						<input hidden readonly type="text" id="quyen" name="quyen"
+							value="${sessionScope.account.getQuyen()}">
 						<c:if test="${sessionScope.account.getQuyen() ==2}">
 							<input type="checkbox" hidden id="edit-input--seller"
 								name="edit-input--seller">
 							<label for="edit-input--seller" class="label-edit-profile">Đăng
 								ký làm Seller</label>
+							<div class="edit-input--content__seller row col-12">
+
+
+								<div class="edit-input--content__seller-layer">
+									<div
+										class="container-login__header register__container__header row">
+										<span class="container-login__header__logo"> <a
+											href="<c:url value='/trangchu'/>"> <img
+												style="width: 120px; height: 120px;"
+												src="${url }images/Logo.png" class="container__header__img">
+										</a>
+										</span> <span
+											class="container-login__header__text register__container__header__text text_underline register__container__header__text--underline">FIND
+											ROOM </span>
+									</div>
+									<p style="font-size: 14px">
+										Bằng việc nhấn vào nút đăng ký, bạn sẽ cam kết với chúng tôi
+										về các <u>Khoản điều lệ</u> mà chúng tôi đưa ra<br>Bạn
+										cũng sẽ chịu mọi trách nhiệm nếu vi phạm điều khoản, pháp
+										luật.
+									</p>
+									<div>
+										<button class="btn btn-dark btn-save-profile mr-4"
+											type="submit" onClick="dangKySeller();">Đồng ý</button>
+										<label class="btn btn-light btn-save-profile mb-0 ml-4"
+											for="edit-input--seller">Hủy</label>
+									</div>
+								</div>
+							</div>
 						</c:if>
 
 					</div>
@@ -162,9 +201,9 @@
 						<div class="edit-input--content row col-12">
 							<div class="col-6">
 								<div class=" border border-3 profile-content-change px-3 py-2">
-									<label class="" for="oldpassword">Mật khẩu cũ</label> <input
+									<label class="" for="">Mật khẩu cũ</label> <input
 										class="border-0 profile-content-input" type="password"
-										id="oldpassword" name="oldpassword" value="">
+										id="oldpassword" name="oldpassword">
 								</div>
 							</div>
 							<div class="col-6">
@@ -174,6 +213,8 @@
 										id="newpassword" name="newpassword" value="">
 								</div>
 							</div>
+														<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
+							
 						</div>
 					</div>
 				</div>
@@ -236,16 +277,21 @@
 
 <script>
 	function previewFile(input) {
+		var btnLuuAnh = document.getElementById("btn-luu-anh");
 		var file = $("input[type=file]").get(0).files[0];
 		if (file) {
 			var reader = new FileReader();
 
 			reader.onload = function() {
-				console.log(reader.result);
 				$("#previewImg").attr("src", reader.result);
+				btnLuuAnh.removeAttribute("hidden");
 			}
-			console.log("hello");
 			reader.readAsDataURL(file);
 		}
+	}
+
+	function dangKySeller() {
+		var quyen = document.getElementById("quyen");
+		quyen.value = 3;
 	}
 </script>

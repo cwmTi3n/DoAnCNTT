@@ -60,12 +60,3 @@ function loadXa() {
 		wards.value = 0;
 	}
 };
-
-/* 	function removeData(data) {
- if (data !== undefined) {
- var i, L = data.options.length - 1;
- for (i = L; i >= 1; i--) {
- data.remove(i);
- }
- }
- } */
