@@ -241,8 +241,10 @@
 			var reader = new FileReader();
 
 			reader.onload = function() {
+				console.log(reader.result);
 				$("#previewImg").attr("src", reader.result);
 			}
+			console.log("hello");
 			reader.readAsDataURL(file);
 		}
 	}

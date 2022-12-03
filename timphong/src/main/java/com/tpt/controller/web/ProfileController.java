@@ -39,6 +39,7 @@ public class ProfileController extends HttpServlet{
 		HttpSession session = req.getSession();
 		Object ob = session.getAttribute("account");
 		Taikhoan taikhoan = (Taikhoan) ob;
+		
 		Part part = req.getPart("anhdaidien");
 		String realPath = Constant.DIR + "/taikhoan";
 		String filename = ThemAnh.ThemAnh(part, realPath, 0);
@@ -53,7 +54,7 @@ public class ProfileController extends HttpServlet{
 		if(!email.isEmpty()) taikhoan.setEmail(email);
 		if(!sdt.isEmpty()) taikhoan.setSdt(sdt);
 		
-		
+		taikhoan.setAnhdaidien(filename);
 		taikhoanService.editTaikhoan(taikhoan, filename);
 		
 		resp.sendRedirect(req.getContextPath() + "/trangcanhan");
