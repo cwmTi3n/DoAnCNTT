@@ -59,12 +59,14 @@
 	
 	color: #fff;
 	}
+	.modal{
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
 </style>
-
-
-
-
-
 <div class="site-section site-section-phong">
 	<div class="container">
 		<div class="row">
@@ -113,7 +115,8 @@
 						<li><a href="/timphong/listdathen?hanhdong=2">Đã xác nhận</a></li>
 						<li><a href="/timphong/listdathen?hanhdong=3">Bị hủy</a></li>
 					</ul>
-					-					<div class="dg" id="dg" style="display:none;">
+					<div id="goto-dg"></div>
+					<div class="dg" id="dg" style="display:none;">
 						<div class="col-8 text-black">
 							<div class="row my-4">
 								<form action="/timphong/danhgia" method="post">
