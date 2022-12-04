@@ -95,7 +95,7 @@
 									</div>
 									<div class="col-md-6 my-1">
 										<!-- <label for="email" class="register__container__body__label">Email</label> -->
-										<input type="password"
+										<input type="password" onkeyup="checkPassword(this.value)"
 											class="register__container__body__input"
 											placeholder="Mật khẩu" name="matkhauregister">
 									</div>
@@ -111,7 +111,42 @@
 											placeholder="Đại chỉ email" style="display: block"
 											name="email">
 									</div>
-									<div class="col-md-12 my-2">
+
+									<div class="col-12 checkPasswordRegister">
+										<ul class="flex flex-column gap-2 text-dark">
+											<li id="lower" class="ease-in-out"><i
+												id="iconNotCheckLower"
+												class="bi bi-x-circle mr-1 text-danger d-inline"></i><i
+												id="iconCheckLower"
+												class="bi bi-check-circle mr-1 text-success d-none"></i>Ít nhất có
+												một ký tự viết thường</li>
+											<li id="upper" class="ease-in-out"><i
+												id="iconNotCheckUpper"
+												class="bi bi-x-circle mr-1 text-danger d-inline"></i><i
+												id="iconCheckUpper"
+												class="bi bi-check-circle mr-1 text-success d-none"></i>Ít nhất có
+												một ký tự viết hoa</li>
+											<li id="number" class="ease-in-out"><i
+												id="iconNotCheckNumber"
+												class="bi bi-x-circle mr-1 text-danger d-inline"></i><i
+												id="iconCheckNumber"
+												class="bi bi-check-circle mr-1 text-success d-none"></i>Ít nhất có
+												một ký tự số</li>
+											<li id="special" class="ease-in-out"><i
+												id="iconNotCheckSpecial"
+												class="bi bi-x-circle mr-1 text-danger d-inline"></i><i
+												id="iconCheckSpecial"
+												class="bi bi-check-circle mr-1 text-success d-none"></i>Ít nhất có
+												một ký tự đặc biệt</li>
+											<li id="length" class="ease-in-out"><i
+												id="iconNotCheckLength"
+												class="bi bi-x-circle mr-1 text-danger d-inline"></i><i
+												id="iconCheckLength"
+												class="bi bi-check-circle mr-1 text-success d-none"></i>Độ dài ngắn
+												nhất là 8 ký tự</li>
+										</ul>
+									</div>
+									<div class="col-md-12">
 
 										<p class="register__container__body__text">
 											By clicking Sign Up, you agree to our Terms, Privacy Policy
@@ -123,7 +158,7 @@
 										<p class="text-danger my-0">${errorverify}</p>
 									</c:if>
 									<div class="col-md-12 register__container__body__button">
-										<button class="button-signUp btn" type="submit">Sign
+										<button id="btn-signup" class="button-signUp btn" type="submit">Sign
 											Up</button>
 									</div>
 								</div>
@@ -135,3 +170,113 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	let lowerCase = document.getElementById("lower");
+	let upperCase = document.getElementById("upper");
+	let digit = document.getElementById("number");
+	let specialChar = document.getElementById("special");
+	let minLength = document.getElementById("length");
+
+	let iconNotCheckLower = document.getElementById("iconNotCheckLower");
+	let iconNotCheckUpper = document.getElementById("iconNotCheckUpper");
+	let iconNotCheckNumber = document.getElementById("iconNotCheckNumber");
+	let iconNotCheckSpecial = document.getElementById("iconNotCheckSpecial");
+	let iconNotCheckLength = document.getElementById("iconNotCheckLength");
+
+	let iconCheckLower = document.getElementById("iconCheckLower");
+	let iconCheckUpper = document.getElementById("iconCheckUpper");
+	let iconCheckNumber = document.getElementById("iconCheckNumber");
+	let iconCheckSpecial = document.getElementById("iconCheckSpecial");
+	let iconCheckLength = document.getElementById("iconCheckLength");
+	let btnSignUp = document.getElementById("btn-signup");
+	function checkPassword(data) {
+		const lower = new RegExp("(?=.*[a-z])");
+		const upper = new RegExp("(?=.*[A-Z])");
+		const number = new RegExp("(?=.*[0-9])");
+		const special = new RegExp("(?=.*[!@#$%^&*])");
+		const length = new RegExp("(?=.{8,})");
+		//Lower Case validation check
+		if (lower.test(data)) {
+			lowerCase.classList.add("text-black-50");
+			iconNotCheckLower.classList.remove("d-inline");
+			iconNotCheckLower.classList.add("d-none");
+			iconCheckLower.classList.remove("d-none");
+			iconCheckLower.classList.add("d-inline");
+		} else {
+			lowerCase.classList.remove("text-black-50");
+			iconNotCheckLower.classList.add("d-inline");
+			iconNotCheckLower.classList.remove("d-none");
+			iconCheckLower.classList.add("d-none");
+			iconCheckLower.classList.remove("d-inline");
+		}
+
+		if (upper.test(data)) {
+			upperCase.classList.add("text-black-50");
+			iconNotCheckUpper.classList.remove("d-inline");
+			iconNotCheckUpper.classList.add("d-none");
+			iconCheckUpper.classList.remove("d-none");
+			iconCheckUpper.classList.add("d-inline");
+		} else {
+			upperCase.classList.remove("text-black-50");
+			iconNotCheckUpper.classList.add("d-inline");
+			iconNotCheckUpper.classList.remove("d-none");
+			iconCheckUpper.classList.add("d-none");
+			iconCheckUpper.classList.remove("d-inline");
+		}
+
+		if (number.test(data)) {
+			digit.classList.add("text-black-50");
+			iconNotCheckNumber.classList.remove("d-inline");
+			iconNotCheckNumber.classList.add("d-none");
+			iconCheckNumber.classList.remove("d-none");
+			iconCheckNumber.classList.add("d-inline");
+		} else {
+			digit.classList.remove("text-black-50");
+			iconNotCheckNumber.classList.add("d-inline");
+			iconNotCheckNumber.classList.remove("d-none");
+			iconCheckNumber.classList.add("d-none");
+			iconCheckNumber.classList.remove("d-inline");
+		}
+
+		if (special.test(data)) {
+			specialChar.classList.add("text-black-50");
+			iconNotCheckSpecial.classList.remove("d-inline");
+			iconNotCheckSpecial.classList.add("d-none");
+			iconCheckSpecial.classList.remove("d-none");
+			iconCheckSpecial.classList.add("d-inline");
+		} else {
+			specialChar.classList.remove("text-black-50");
+			iconNotCheckSpecial.classList.add("d-inline");
+			iconNotCheckSpecial.classList.remove("d-none");
+			iconCheckSpecial.classList.add("d-none");
+			iconCheckSpecial.classList.remove("d-inline");
+		}
+
+		if (length.test(data)) {
+			minLength.classList.add("text-black-50");
+			iconNotCheckLength.classList.remove("d-inline");
+			iconNotCheckLength.classList.add("d-none");
+			iconCheckLength.classList.remove("d-none");
+			iconCheckLength.classList.add("d-inline");
+		} else {
+			minLength.classList.remove("text-black-50");
+			iconNotCheckLength.classList.add("d-inline");
+			iconNotCheckLength.classList.remove("d-none");
+			iconCheckLength.classList.add("d-none");
+			iconCheckLength.classList.remove("d-inline");
+		}
+
+		if (
+			lower.test(data) &&
+			upper.test(data) &&
+			number.test(data) &&
+			special.test(data) &&
+			length.test(data)
+		) {
+			btnSignUp.disabled = false;
+		} else
+			btnSignUp.disabled = true;
+	};
+	
+</script>

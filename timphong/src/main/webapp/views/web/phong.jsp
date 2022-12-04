@@ -79,7 +79,7 @@
 						<a href="<c:url value='/dathen?id_p=${phong.id_p }'/>"
 							class="btn btn-primary">Đặt hẹn ngay</a>
 					</p>
-					<button onClick="luuPhong()" class="btn btn-primary">Lưu
+					<button id="saveButton" onClick="luuPhong()" class="btn btn-primary">Lưu
 						phòng</button>
 				</div>
 
@@ -113,6 +113,9 @@
 			success : function(data) {
 			}
 		});
+		
+		var btn = document.getElementById('saveButton');
+		btn.innerHTML = "Đã lưu <i class='bi bi-check-lg'></i>";
 	};
 
 	$(document).ready(function() {

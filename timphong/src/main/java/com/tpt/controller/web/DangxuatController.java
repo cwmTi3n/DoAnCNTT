@@ -20,6 +20,6 @@ public class DangxuatController extends HttpServlet {
 		req.setCharacterEncoding("utf-8");
 		HttpSession session = req.getSession();
 		session.invalidate();
-		req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
+		resp.sendRedirect(req.getContextPath() + "/trangchu");
 	}
 }

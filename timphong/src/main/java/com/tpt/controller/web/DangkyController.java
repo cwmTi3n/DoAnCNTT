@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tpt.model.Taikhoan;
 import com.tpt.util.Constant;
 import com.tpt.util.ConstantFunction;
 import com.tpt.util.SendMail;
@@ -27,9 +28,22 @@ public class DangkyController extends HttpServlet {
 		String code = ConstantFunction.getRandom();
 
 		boolean test = SendMail.sendEmail(userMail, Constant.subMailVerify, Constant.textMailVerify+code);
-		if (test) {
+		if (test && (req.getParameter("matkhauregister").equals(req.getParameter("confirmmatkhauregister")))) {
+			Taikhoan taikhoan = new Taikhoan();
+			taikhoan.setAnhdaidien("x");
+			taikhoan.setTentk(req.getParameter("taikhoanregister"));
+			taikhoan.setHo(req.getParameter("ho"));
+			taikhoan.setTen(req.getParameter("ten"));
+			taikhoan.setSdt(req.getParameter("sdt"));
+			taikhoan.setMatkhau(req.getParameter("matkhauregister"));
+			taikhoan.setEmail(req.getParameter("email"));
+			taikhoan.setQuyen(2);
+			
 			HttpSession session = req.getSession();
 			session.setAttribute("code", code);
+			session.setAttribute("taikhoan", taikhoan);
+			
+			
 			resp.sendRedirect(req.getContextPath() + "/verifycode");
 		}
 		else {

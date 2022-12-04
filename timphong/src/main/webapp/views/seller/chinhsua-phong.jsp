@@ -133,7 +133,7 @@
 								<c:forEach items="${phong.getHinhanhs() }" var="ha">
 
 									<div class="col-12 mb-3">
-										<label class="label-info-web pr-3 col-3">Hình
+										<label class="label-info-web pr-3 col-">Hình
 											ảnh phụ: </label>
 										<c:url value="/hinhanh?fname=${ha.hinhanh}" var="anh" />
 										<img class="img-thumbnail img--phong"
