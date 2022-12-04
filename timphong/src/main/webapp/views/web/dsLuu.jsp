@@ -5,38 +5,43 @@
 <div class="site-section site-section-phong">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
-				<div class=" border-bottom my-4">
-					<h4 class="text-black mb-4">Đang lưu</h4>
-					<table class="table">
+			<div class="col-lg-12 col-12 table-web">
+				<div class="table-web-layer">
+					<h2 class="text-black mb-4 text-center">Đang lưu</h2>
+					<table class="table table-hover text-dark">
 						<thead class="thead-dark">
 							<tr>
-								
-								<th scope="col">Hình ảnh</th>
-								<th scope="col">Tên phòng</th>
-								<th scope="col">Mô tả</th>
-								<th scope="col">Giá</th>
-								<th scope="col">Địa chỉ</th>
-								<th scope="col"></th>
+
+								<th class="col-2" scope="col">Hình ảnh</th>
+								<th class="col-2" scope="col">Tên phòng</th>
+								<th class="col-1" scope="col">Giá</th>
+								<th class="col-1" scope="col">Diện tích</th>
+								<th class="col-3" scope="col">Địa chỉ</th>
+								<th class="col-2" scope="col">Chủ phòng</th>
+								<th class="" scope="col"></th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:forEach items="${dhLuu}" var="dh">
 								<tr>
+
+									<td class="col-2"><a
+										href="<c:url value='/dathen?id_p=${dh.phong.id_p }'/>"><c:url
+											value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
+										<img class="img-thumbnail img--phong__small" src="${hinhanh}" /></a>
+									</td>
+									<td class="col-2">${dh.phong.ten }</td>
+									<td class="col-1">${dh.phong.gia}</td>
+									<td class="col-1">${dh.phong.chieudai}*${dh.phong.chieurong}</td>
+									<td class="col-3">${dh.phong.getXa().getTenxa()},
+										${dh.phong.getXa().getHuyen().getTenhuyen()},
+										${dh.phong.getXa().getHuyen().getTinh().getTentinh() }</td>
+									<td class="col-2">${dh.phong.getTaikhoan().getTen()}</td>
 									
-									<td><a
-										href="<c:url value='/dathen?id_p=${dh.phong.id_p }'/>"> <c:url
-												value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
-											<img height="120" width="160" src="${hinhanh}" />
-									</a></td>
-									<td>${dh.phong.ten }</td>
-									<td>${dh.phong.mota }</td>
-									<td>${dh.phong.gia}</td>
-									<td>${dh.phong.xa.tenxa },${dh.phong.xa.huyen.tenhuyen },
-										${dh.phong.xa.huyen.tinh.tentinh }</td>
-									<td><a
-										href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
-										/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
+									<td class="col-1"><a
+										 class="btn btn-danger btn-save-profile mb-1" href="/timphong/favorites/xoa?id_p=${dh.phong.id_p }">Xóa</a>
+										<a class="btn btn-dark btn-save-profile" href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
+
 								</tr>
 							</c:forEach>
 						</tbody>
