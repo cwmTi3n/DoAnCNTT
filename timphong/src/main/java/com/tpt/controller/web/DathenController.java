@@ -100,20 +100,20 @@ public class DathenController extends HttpServlet
 		int id_dh = Integer.parseInt(id_dhString);
 		dathen.setId_dh(id_dh);
 		Dathen check = dathenService.findDathen(id_dh, id_tk, id_p);
+		boolean kt = false;
 		if(check != null)
 		{
-			dathenService.editDathen(dathen);
+			kt = dathenService.editDathen(dathen);
 		}
-		else
+		else 
 		{
-			if(dathenService.insertDathen(dathen))
-			{
+			kt = dathenService.insertDathen(dathen);
+		}
+		if(kt)
+		{
 			Phong phong = phongService.getPhong(id_p);
 			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
-			//String textUser = ConstantFunction.textDathenUser(taikhoan);
-			//SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
 			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
-			}
 		}
 	}
 }

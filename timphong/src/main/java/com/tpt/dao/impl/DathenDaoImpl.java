@@ -179,11 +179,11 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 		return null;
 	}
 	
-//	public static void main(String[] args)
-//	{
-//		IDathenDao dathenDao = new DathenDaoImpl();
-//		Dathen dathen = dathenDao.findDathen(1, 7, 1);
-//		dathen.setTrangthai(0);
-//		System.out.println(dathenDao.editDathen(dathen));
-//	}
+	public static void main(String[] args)
+	{
+		IDathenDao dathenDao = new DathenDaoImpl();
+		Dathen dathen = dathenDao.findDathen(1, 7, 1);
+		dathen.setTrangthai(0);
+		System.out.println(dathenDao.findBySeller(1, 1).size());
+	}
 }
