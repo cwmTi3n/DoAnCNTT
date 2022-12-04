@@ -51,4 +51,10 @@ public class DathenServiceImpl implements IDathenService
 		// TODO Auto-generated method stub
 		return dathenDao.findBySeller(id_tk, tt);
 	}
+
+	@Override
+	public List<Dathen> findAll(int tt)
+	{
+		return dathenDao.findAll(tt);
+	}
 }

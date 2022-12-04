@@ -30,7 +30,7 @@
 									class="nav-link">Quản lý Loại phòng</a></li>
 								<li><a href="<c:url value='/admin/list-taikhoan'/>"
 									class="nav-link">Quản lý Tài khoản</a></li>
-								<li><a href="" class="nav-link">Quản lý Đặt hẹn</a></li>
+								<li><a href="/timphong/admin/ql-dathen" class="nav-link">Quản lý Đặt hẹn</a></li>
 								<li><a href="<c:url value='/trangchu'/>" class="nav-link">Trang chủ</a></li>
 								<li><a href="<c:url value='/logout'/>" class="nav-link">Đăng xuất</a></li>
 							</ul>

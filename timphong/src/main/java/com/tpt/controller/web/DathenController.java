@@ -64,8 +64,13 @@ public class DathenController extends HttpServlet
 	protected void taiTrang(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
 		// trangthai {0}: luu, {1}: dang cho xac nha, {2}: duoc xac nhan, {3} bi huy
+		HttpSession session = req.getSession();
+		Object object = session.getAttribute("account");
+		Taikhoan taikhoan = (Taikhoan)object;
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
+		Dathen dathen = dathenService.findDathen(taikhoan.getId_tk(), id_p);
+		req.setAttribute("dathen", dathen);
 		Phong phong = phongService.getPhong(id_p);
 		req.setAttribute("phong", phong);
 	}
@@ -88,18 +93,21 @@ public class DathenController extends HttpServlet
 		Time time = Time.valueOf(gioString);
 		dathen.setGio(time);
 		dathen.setNgay(date);
-		boolean check = dathenService.insertDathen(dathen);
-		if(!check);
+		Dathen check = dathenService.findDathen(id_tk, id_p);
+		if(check != null)
 		{
-			check = dathenService.editDathen(dathen);
+			dathenService.editDathen(dathen);
 		}
-		if(check)
+		else
 		{
+			if(dathenService.insertDathen(dathen))
+			{
 			Phong phong = phongService.getPhong(id_p);
 			String textSeller = ConstantFunction.textDathenSeller(phong, dathen);
 			//String textUser = ConstantFunction.textDathenUser(taikhoan);
 			//SendMail.sendEmail(taikhoan.getEmail(), Constant.subMailUserdh, textUser);
 			SendMail.sendEmail(phong.getTaikhoan().getEmail(), Constant.subMailSellerdh, textSeller);
+			}
 		}
 	}
 }

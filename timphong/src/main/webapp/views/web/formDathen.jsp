@@ -19,7 +19,7 @@
 									<h5 class="text-black mb-2">Tên người đặt</h5>
 									<span class="form-label"></span> <input readonly class="form-control"
 										type="text" placeholder="Enter your name"
-										value="${sessionScope.account.ho } ${sessionScope.account.ten }">
+										value="${tk.ho } ${tk.ten }">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -27,7 +27,7 @@
 									<h5 class="text-black mb-2">Số điện thoại</h5>
 									<span class="form-label"></span> <input readonly class="form-control"
 										type="tel" placeholder="Enter your phone number"
-										value="${sessionScope.account.getSdt() }">
+										value="${tk.getSdt() }">
 								</div>
 							</div>
 						</div>
@@ -35,14 +35,14 @@
 							<h5 class="text-black mb-2">Email</h5>
 							<span class="form-label"></span> <input readonly class="form-control"
 								type="email" placeholder="Enter your email"
-								value="${sessionScope.account.getEmail() }">
+								value="${tk.getEmail() }">
 						</div>
 						<div class="row">
 							<div class="col-sm-5">
 								<div class="form-group">
 									<h5 class="text-black mb-2">Ngày đi</h5>
 									<span class="form-label"></span> <input class="form-control"
-										type="date" required name="ngay">
+										type="date" required name="ngay" value="${dathen.ngay }">
 								</div>
 							</div>
 							<div class="col-sm-3">
@@ -50,6 +50,7 @@
 									<h5 class="text-black mb-2">Giờ</h5>
 									<span class="select-wrapper select--white"> <select style="padding-top:7px;padding-bottom:7px;"
 										name="gio">
+											<option value="${dahen.gio}" selected>${dathen.gio}</option>
 											<c:forEach begin="1" end="24" var="i">
 												<option value="${i}">${i}</option>
 											</c:forEach>

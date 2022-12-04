@@ -152,4 +152,34 @@ public class DathenDaoImpl extends DBConnection implements IDathenDao
 		}
 		return null;
 	}
+	
+	@Override
+	public List<Dathen> findAll(int tt)
+	{
+		String sql = "select * from dathen where dathen.trangthai = ?";
+		List<Dathen> dathens = new ArrayList<>();
+		try
+		{
+			connection = super.getConnection();
+			pStatement = connection.prepareStatement(sql);
+			pStatement.setInt(1, tt);
+			rSet = pStatement.executeQuery();
+			mapAttributeSQL map = new mapAttributeSQL();
+			while(rSet.next())
+			{
+				dathens.add(map.mapDathen(rSet));
+			}
+			return dathens;
+		} catch (Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return null;
+	}
+	
+//	public static void main(String[] args)
+//	{
+//		IDathenDao dathenDao = new DathenDaoImpl();
+//		System.out.println(dathenDao.findAll(2).size());
+//	}
 }
