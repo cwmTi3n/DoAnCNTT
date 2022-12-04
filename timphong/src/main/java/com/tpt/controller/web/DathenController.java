@@ -71,7 +71,11 @@ public class DathenController extends HttpServlet
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
 		String id_dhString = req.getParameter("id_dh");
-		int id_dh = Integer.parseInt(id_dhString);
+		int id_dh = 0;
+		if(id_dhString != null)
+		{
+			id_dh = Integer.parseInt(id_dhString);
+		}
 		Dathen dathen = dathenService.findDathen(id_dh,taikhoan.getId_tk(), id_p);
 		req.setAttribute("dathen", dathen);
 		Phong phong = phongService.getPhong(id_p);
@@ -98,11 +102,11 @@ public class DathenController extends HttpServlet
 		dathen.setNgay(date);
 		String id_dhString = req.getParameter("id_dh");
 		int id_dh = Integer.parseInt(id_dhString);
-		dathen.setId_dh(id_dh);
 		Dathen check = dathenService.findDathen(id_dh, id_tk, id_p);
 		boolean kt = false;
 		if(check != null)
 		{
+			dathen.setId_dh(id_dh);
 			kt = dathenService.editDathen(dathen);
 		}
 		else 
