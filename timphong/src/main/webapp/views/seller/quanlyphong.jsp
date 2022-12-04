@@ -16,273 +16,282 @@
 <div class="site-section site-section-phong" id="property-details">
 	<h4></h4>
 	<h4></h4>
-	<div class="row">
-		<div class="col-9">
-			<div class="row">
-				<div class="col-12 table-admin">
-					<div class="table-admin-layer">
-						<h3>Danh sách phòng</h3>
+	<div class="mx-5">
+		<div class="row">
+			<div class="col-9">
+				<div class="row">
+					<div class="col-12 table-admin">
+						<div class="table-admin-layer">
+							<h3>Danh sách phòng</h3>
+							<div>
+								<input type="text"
+									class="input-find input--border m-0 d-inline-block"
+									placeholder="Nhập phòng cần tìm" name="keyword" id="keyword">
+								<button class="btn button mt-2 px-3 py-1 btn-find"
+									onClick="searchPhong()">Tìm</button>
+								<button class="btn button mt-2 px-3 py-1 btn-find"
+									onClick="themPhong()">Thêm phòng</button>
+								<h4></h4>
+								<h4></h4>
+
+							</div>
+						</div>
+						<div class="select-wrap">
+
+							<div id="them-phong" style="display: none;">
+								<form class="text-dark"
+									action="/timphong/seller/ql-phong/insert" method="post"
+									enctype="multipart/form-data">
+									<div class="row flex-wrap">
+										<div class="col-5">
+											<div class="row">
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Tên:
+													</label><input class="col-8 py-2 border-radius-12" type="text"
+														name="ten">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Chiều
+														dài: </label><input class="col-8 py-2 border-radius-12"
+														type="text" name="chieudai">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Chiều
+														rộng: </label><input class="col-8 py-2 border-radius-12"
+														type="text" name="chieurong">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-5">Số
+														người ở tối đa: </label> <span
+														class="select-wrapper select--white"><select
+														name="songuoi">
+															<option value="1" selected>1 người</option>
+															<option value="2">2 người</option>
+															<option value="4">4 người</option>
+															<option value="8">8 người</option>
+															<option value="10">10 người</option>
+													</select> </span>
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Giá:
+													</label><input class="col-8 py-2 border-radius-12" type="text"
+														name="gia">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Địa
+														chỉ: </label><input class="col-8 py-2 border-radius-12"
+														type="text" name="dcchitiet">
+												</div>
+
+												<div class="col-12">
+													<span class="select-wrapper select--dark mb-3 mr-3">
+														<select onchange="loadHuyen()"
+														class="form-select form-select-sm" id="city"
+														aria-label=".form-select-sm">
+															<option value="0" selected>Chọn tỉnh, thành phố</option>
+															<c:forEach items="${tinhs }" var="tinh">
+																<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
+															</c:forEach>
+													</select>
+													</span> <span class="select-wrapper select--dark mb-3 mr-3">
+														<select onchange="loadXa()" disabled
+														class="form-select form-select-sm" id="district"
+														aria-label=".form-select-sm">
+															<option value="0" selected>Chọn quận huyện</option>
+													</select>
+													</span><span class="select-wrapper select--dark mb-3"> <select
+														disabled class="form-select form-select-sm" id="ward"
+														aria-label=".form-select-sm" name="xa">
+															<option value="0" selected>Chọn phường xã</option>
+													</select></span>
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Mô
+														tả: </label>
+													<textarea rows="4" cols="50" class="py-2 border-radius-12"
+														name="mota"></textarea>
+												</div>
+											</div>
+										</div>
+										<div class="col-7">
+											<div class="row">
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Loại
+														phòng: </label> <span class="select-wrapper select--dark">
+														<select name="id_lp">
+															<c:forEach items="${loaiphongs}" var="lp">
+																<option value="${lp.id_lp }">${lp.tenloai }</option>
+															</c:forEach>
+													</select>
+													</span>
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Hình
+														ảnh chính: </label> <img height="180" width="240" id="previewImg1"
+														class="img-thumbnail img--phong" src=""> <label
+														class="ml-3 label-img" for="hinhanh1"><i
+														class="bi bi-upload"></i> Upload</label> <input id="hinhanh1"
+														type="file" hidden onchange="previewFile1(this);"
+														name="hinhanh">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Hình
+														ảnh phụ 1: </label><img id="previewImg2"
+														class="img-thumbnail img--phong" src=""> <label
+														class="ml-3 label-img" for="hinhanh2"><i
+														class="bi bi-upload"></i> Upload</label> <input id="hinhanh2"
+														type="file" hidden onchange="previewFile2(this);"
+														name="hinhanh">
+												</div>
+												<div class="col-12 mb-3">
+													<label class="label-info-admin__small pr-3 col-4">Hình
+														ảnh phụ 2: </label><img height="180" width="240" id="previewImg3"
+														class="img-thumbnail img--phong" src=""> <label
+														class="ml-3 label-img" for="hinhanh3"><i
+														class="bi bi-upload"></i> Upload</label> <input id="hinhanh3"
+														type="file" hidden onchange="previewFile3(this);"
+														name="hinhanh">
+												</div>
+											</div>
+										</div>
+										<div class="col-10 text-right my-4">
+											<button class="btn btn-info" type="submit">Thêm</button>
+											<a href=<c:url value="/admin/taikhoan?id_tk=${id_tk }"/>
+												class="ml-3 d-inline-block text-white btn bg-danger">Quay
+												lại</a>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								onchange="locPhong()" name="thutu" id="thutu"
+								class="form-control px-3">
+								<option value="0">Mặc định</option>
+								<option value="1">Mới nhất</option>
+								<option value="2">Cũ nhất</option>
+								<option value="3">Giá từ thấp đến cao</option>
+								<option value="4">Giá từ cao đến thấp</option>
+								<option value="5">Đánh giá thấp đến cao</option>
+								<option value="6">Đánh giá cao đến thấp</option>
+							</select>
+							<h4></h4>
+						</div>
 						<div>
-							<input type="text"
-								class="input-find input--border m-0 d-inline-block"
-								placeholder="Nhập phòng cần tìm" name="keyword" id="keyword">
-							<button class="btn button mt-2 px-3 py-1 btn-find"
-								onClick="searchPhong()">Tìm</button>
-							<button class="btn button mt-2 px-3 py-1 btn-find"
-								onClick="themPhong()">Thêm phòng</button>
-							<h4></h4>
-							<h4></h4>
-
-						</div>
-					</div>
-					<div class="select-wrap">
-
-						<div id="them-phong" style="display: none;">
-										<form class="text-dark" action="/timphong/seller/ql-phong/insert" method="post"
-				enctype="multipart/form-data">
-				<div class="row flex-wrap">
-					<div class="col-5">
-						<div class="row">
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Tên: </label><input
-									class="col-8 py-2 border-radius-12" type="text" name="ten">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Chiều
-									dài: </label><input class="col-8 py-2 border-radius-12" type="text"
-									name="chieudai">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Chiều
-									rộng: </label><input class="col-8 py-2 border-radius-12" type="text"
-									name="chieurong">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-5">Số
-									người ở tối đa: </label> <span class="select-wrapper select--white"><select
-									name="songuoi">
-										<option value="1" selected>1 người</option>
-										<option value="2">2 người</option>
-										<option value="4">4 người</option>
-										<option value="8">8 người</option>
-										<option value="10">10 người</option>
-								</select> </span>
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Giá: </label><input
-									class="col-8 py-2 border-radius-12" type="text" name="gia">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Địa
-									chỉ: </label><input class="col-8 py-2 border-radius-12" type="text"
-									name="dcchitiet">
-							</div>
-
-							<div class="col-12">
-								<span class="select-wrapper select--dark mb-3 mr-3"> <select
-									onchange="loadHuyen()" class="form-select form-select-sm"
-									id="city" aria-label=".form-select-sm">
-										<option value="0" selected>Chọn tỉnh, thành phố</option>
-										<c:forEach items="${tinhs }" var="tinh">
-											<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
-										</c:forEach>
-								</select>
-								</span> <span class="select-wrapper select--dark mb-3 mr-3"> <select
-									onchange="loadXa()" disabled class="form-select form-select-sm"
-									id="district" aria-label=".form-select-sm">
-										<option value="0" selected>Chọn quận huyện</option>
-								</select></span><span class="select-wrapper select--dark mb-3"> <select
-									disabled class="form-select form-select-sm" id="ward"
-									aria-label=".form-select-sm" name="xa">
-										<option value="0" selected>Chọn phường xã</option>
-								</select></span>
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Mô tả:
-								</label>
-								<textarea rows="4" cols="50" class="py-2 border-radius-12"
-									name="mota"></textarea>
-							</div>
-						</div>
-					</div>
-					<div class="col-7">
-						<div class="row">
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Loại
-									phòng: </label> <span class="select-wrapper select--dark"> <select
-									name="id_lp">
-										<c:forEach items="${loaiphongs}" var="lp">
-											<option value="${lp.id_lp }">${lp.tenloai }</option>
-										</c:forEach>
-								</select>
-								</span>
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Hình
-									ảnh chính: </label> <img height="180" width="240" id="previewImg1"
-									class="img-thumbnail img--phong" src=""> <label
-									class="ml-3 label-img" for="hinhanh1"><i
-									class="bi bi-upload"></i> Upload</label> <input id="hinhanh1"
-									type="file" hidden onchange="previewFile1(this);"
-									name="hinhanh">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Hình
-									ảnh phụ 1: </label><img id="previewImg2"
-									class="img-thumbnail img--phong" src=""> <label
-									class="ml-3 label-img" for="hinhanh2"><i
-									class="bi bi-upload"></i> Upload</label> <input id="hinhanh2"
-									type="file" hidden onchange="previewFile2(this);"
-									name="hinhanh">
-							</div>
-							<div class="col-12 mb-3">
-								<label class="label-info-admin__small pr-3 col-4">Hình
-									ảnh phụ 2: </label><img height="180" width="240" id="previewImg3"
-									class="img-thumbnail img--phong" src=""> <label
-									class="ml-3 label-img" for="hinhanh3"><i
-									class="bi bi-upload"></i> Upload</label> <input id="hinhanh3"
-									type="file" hidden onchange="previewFile3(this);"
-									name="hinhanh">
-							</div>
-						</div>
-					</div>
-					<div class="col-10 text-right my-4">
-						<button class="btn btn-info" type="submit">Thêm</button>
-						<a href=<c:url value="/admin/taikhoan?id_tk=${id_tk }"/>
-							class="ml-3 d-inline-block text-white btn bg-danger">Quay lại</a>
-					</div>
-				</div>
-			</form>
-						</div>
-
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="locPhong()" name="thutu" id="thutu"
-							class="form-control px-3">
-							<option value="0">Mặc định</option>
-							<option value="1">Mới nhất</option>
-							<option value="2">Cũ nhất</option>
-							<option value="3">Giá từ thấp đến cao</option>
-							<option value="4">Giá từ cao đến thấp</option>
-							<option value="5">Đánh giá thấp đến cao</option>
-							<option value="6">Đánh giá cao đến thấp</option>
-						</select>
-						<h4></h4>
-					</div>
-					<div>
-						<table class="table table-hover">
-							<thead class="thead-dark">
-								<tr>
-									<th scope="col">Hình ảnh</th>
-									<th scope="col">Tên phòng</th>
-									<th scope="col">Giá</th>
-									<th scope="col">Diện tích</th>
-									<th scope="col">Địa chỉ</th>
-									<th scope="col"></th>
-									<th scope="col"></th>
-								</tr>
-							</thead>
-							<tbody id="load">
-								<c:forEach items="${phongs}" var="phong">
-									<tr class="phong">
-										<td><a
-											href="<c:url value="/seller/ql-phong/select?id_p=${phong.id_p }"/>">
-												<c:url value="/hinhanh?fname=${phong.anhchinh}"
-													var="hinhanh" /> <img height="120" width="160"
-												src="${hinhanh}" />
-										</a></td>
-										<td>${phong.ten }</td>
-										<td>${phong.gia}</td>
-										<td>${phong.chieudai}*${phong.chieurong}</td>
-										<td>${phong.getXa().getTenxa()},
-											${phong.getXa().getHuyen().getTenhuyen()},
-											${phong.getXa().getHuyen().getTinh().getTentinh()}</td>
-										<td><a
-											href="<c:url value="/seller/ql-phong/select?id_p=${phong.id_p }"/>"><button
-													class="btn btn-success btn-sm rounded-0" type="button"
-													data-toggle="tooltip" data-placement="top" title="Edit">
-													<i class="fa fa-edit"></i>
-												</button></a></td>
-										<td><a
-											href="<c:url value='/seller/ql-phong/delete?id_p=${phong.id_p }'/>"><button
-													class="btn btn-danger btn-sm rounded-0" type="button"
-													data-toggle="tooltip" data-placement="top" title="Delete">
-													<i class="fa fa-trash"></i>
-												</button></a></td>
+							<table class="table table-hover">
+								<thead class="thead-dark">
+									<tr>
+										<th scope="col">Hình ảnh</th>
+										<th scope="col">Tên phòng</th>
+										<th scope="col">Giá</th>
+										<th scope="col">Diện tích</th>
+										<th scope="col">Địa chỉ</th>
+										<th scope="col"></th>
+										<th scope="col"></th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
-						<div>
-							<button onClick="loadMore()" class="btn btn-primary">Xem
-								tiếp</button>
+								</thead>
+								<tbody id="load">
+									<c:forEach items="${phongs}" var="phong">
+										<tr class="phong">
+											<td><a
+												href="<c:url value="/seller/ql-phong/select?id_p=${phong.id_p }"/>">
+													<c:url value="/hinhanh?fname=${phong.anhchinh}"
+														var="hinhanh" /> <img height="120" width="160"
+													src="${hinhanh}" />
+											</a></td>
+											<td>${phong.ten }</td>
+											<td>${phong.gia}</td>
+											<td>${phong.chieudai}*${phong.chieurong}</td>
+											<td>${phong.getXa().getTenxa()},
+												${phong.getXa().getHuyen().getTenhuyen()},
+												${phong.getXa().getHuyen().getTinh().getTentinh()}</td>
+											<td><a
+												href="<c:url value="/seller/ql-phong/select?id_p=${phong.id_p }"/>"><button
+														class="btn btn-success btn-sm rounded-0" type="button"
+														data-toggle="tooltip" data-placement="top" title="Edit">
+														<i class="fa fa-edit"></i>
+													</button></a></td>
+											<td><a
+												href="<c:url value='/seller/ql-phong/delete?id_p=${phong.id_p }'/>"><button
+														class="btn btn-danger btn-sm rounded-0" type="button"
+														data-toggle="tooltip" data-placement="top" title="Delete">
+														<i class="fa fa-trash"></i>
+													</button></a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+							<div>
+								<button onClick="loadMore()" class="btn btn-primary">Xem
+									tiếp</button>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 
-		<div class="col-3">
-			<div class="mb-5">
-				<h3 class="text-black h5  font-family-2">Lọc phòng theo</h3>
-				<button class="btn button mt-2 px-3 py-1 btn-find"
-					onClick="locPhong()">Lọc</button>
-				<h4></h4>
-				<div class="form-group">
-					<div class="select-wrap">
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="LoadListings()" id="loaiphong"
-							class="form-control px-3">
-							<option value="0" selected>Loại phòng</option>
-							<c:forEach items="${loaiphongs }" var="lp">
-								<option value="${lp.id_lp }">${lp.tenloai }</option>
-							</c:forEach>
-						</select>
+			<div class="col-3">
+				<div class="mb-5">
+					<h3 class="text-black h5  font-family-2">Lọc phòng theo</h3>
+					<button class="btn button mt-2 px-3 py-1 btn-find"
+						onClick="locPhong()">Lọc</button>
+					<h4></h4>
+					<div class="form-group">
+						<div class="select-wrap">
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								onchange="LoadListings()" id="loaiphong"
+								class="form-control px-3">
+								<option value="0" selected>Loại phòng</option>
+								<c:forEach items="${loaiphongs }" var="lp">
+									<option value="${lp.id_lp }">${lp.tenloai }</option>
+								</c:forEach>
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<div class="select-wrap">
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							id="songuoi" class="form-control px-3">
-							<option value="0" selected>Số người ở</option>
-							<option value="1">1 người</option>
-							<option value="2">2 người</option>
-							<option value="4">4 người</option>
-							<option value="8">8 người</option>
-							<option value="10">10 người</option>
-						</select>
+					<div class="form-group">
+						<div class="select-wrap">
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								id="songuoi" class="form-control px-3">
+								<option value="0" selected>Số người ở</option>
+								<option value="1">1 người</option>
+								<option value="2">2 người</option>
+								<option value="4">4 người</option>
+								<option value="8">8 người</option>
+								<option value="10">10 người</option>
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<div class="select-wrap">
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadLocHuyen()" id="blcity"
-							class="form-control px-3">
-							<option value="0" selected>Chọn tỉnh, thành phố</option>
-							<c:forEach items="${tinhs }" var="tinh">
-								<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
-							</c:forEach>
-						</select>
+					<div class="form-group">
+						<div class="select-wrap">
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								onchange="loadLocHuyen()" id="blcity" class="form-control px-3">
+								<option value="0" selected>Chọn tỉnh, thành phố</option>
+								<c:forEach items="${tinhs }" var="tinh">
+									<option value="${tinh.getMatinh() }">${tinh.getTentinh() }</option>
+								</c:forEach>
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<div class="select-wrap">
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="loadLocXa()" id="bldistrict"
-							class="form-control px-3" disabled>
-							<option value="0" selected>Chọn quận huyện</option>
-						</select>
+					<div class="form-group">
+						<div class="select-wrap">
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								onchange="loadLocXa()" id="bldistrict" class="form-control px-3"
+								disabled>
+								<option value="0" selected>Chọn quận huyện</option>
+							</select>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<div class="select-wrap">
-						<span class="icon icon-keyboard_arrow_down"></span> <select
-							onchange="" id="blward" class="form-control px-3" disabled>
-							<option value="0" selected>Chọn phường xã</option>
-						</select>
+					<div class="form-group">
+						<div class="select-wrap">
+							<span class="icon icon-keyboard_arrow_down"></span> <select
+								onchange="" id="blward" class="form-control px-3" disabled>
+								<option value="0" selected>Chọn phường xã</option>
+							</select>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -408,7 +417,7 @@
 		}
 
 	};
-	
+
 	function loadLocHuyen() {
 		var id_t = $('#blcity').find(":selected").val();
 		var labelXa = "<option value='0' selected>Chọn phường xã</option>"
@@ -421,12 +430,12 @@
 			//wards.disabled = true;
 			wards.innerHTML = labelXa;
 			$.ajax({
-				url: "/timphong/listhuyen", //send to Controller
-				type: "get", //send it through get method
-				data: {
-					exits: id_t
+				url : "/timphong/listhuyen", //send to Controller
+				type : "get", //send it through get method
+				data : {
+					exits : id_t
 				},
-				success: function(data) {
+				success : function(data) {
 					/* 					removeData(districts);
 					 removeData(ward);
 					 $("#district").append(data); */
@@ -454,12 +463,12 @@
 		if (id_h != 0) {
 			wards.disabled = false;
 			$.ajax({
-				url: "/timphong/listxa", //send to Controller
-				type: "get", //send it through get method
-				data: {
-					exits: id_h
+				url : "/timphong/listxa", //send to Controller
+				type : "get", //send it through get method
+				data : {
+					exits : id_h
 				},
-				success: function(data) {
+				success : function(data) {
 					/* 					removeData(wards);
 					 $("#ward").append(data); */
 					wards.innerHTML = data;
@@ -470,7 +479,7 @@
 			wards.value = 0;
 		}
 	};
-	
+
 	function previewFile1(input) {
 		var file = $("#hinhanh1").get(0).files[0];
 		if (file) {

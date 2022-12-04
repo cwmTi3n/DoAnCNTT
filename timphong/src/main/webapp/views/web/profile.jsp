@@ -29,21 +29,13 @@
 				</div>
 				<div class="col-8 text-black">
 					<div class="row my-4 justify-content-around">
-						<div class="col-2 profile-block-item bg-primary bg-gradient">
-							<a href="/timphong/favorites">
+							<a class="btn btn-info" href="/timphong/favorites">
 							Phòng đã lưu
 							</a>
-						</div>
-						<div class="col-2 profile-block-item bg-primary bg-gradient">
-							<a href="/timphong/listdathen">Quản lý đặt hẹn</a>
-						</div>
+							<a class="btn btn-success" href="/timphong/listdathen">Quản lý đặt hẹn</a>
 						<c:if test="${sessionScope.account.getQuyen() == 3}">
-							<div class="col-2 profile-block-item bg-primary bg-gradient">
-								<a href="/timphong/seller/ql-phong">Quản lý phòng</a>
-							</div>
-							<div class="col-2 profile-block-item bg-primary bg-gradient">
-								<a href="/timphong/xacnhan-p">Xác nhận</a>
-							</div>
+								<a class="btn btn-warning" href="/timphong/seller/ql-phong">Quản lý phòng</a>
+								<a class="btn btn-danger" href="/timphong/xacnhan-p">Xác nhận</a>
 						</c:if>
 					</div>
 					<div class="d-flex my-4 profile-content pb-3 border-bottom">

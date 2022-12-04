@@ -415,3 +415,9 @@ table thead tr th {
     background-color: #b5c7e3;
     margin-bottom: 15px;
 }
+
+.label-info-web{
+	
+	font-size: 18px;
+    font-weight: 400;
+}
