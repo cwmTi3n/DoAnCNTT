@@ -22,14 +22,15 @@
 						class="inputfile">
 					<button hidden id="btn-luu-anh"
 						class="btn btn-dark ml-4 btn-save-profile" type="submit">Lưu</button>
-				<c:if test="${not empty wrongOldPassword}">
-					<p class="text-danger my-0">${wrongOldPassword}</p>
-				</c:if>
+					<c:if test="${not empty wrongOldPassword}">
+						<p class="text-danger my-0">${wrongOldPassword}</p>
+					</c:if>
 				</div>
 				<div class="col-8 text-black">
 					<div class="row my-4 justify-content-around">
-						<div class="col-2 profile-block-item bg-primary bg-gradient">Phòng
-							đã lưu</div>
+						<div class="col-2 profile-block-item bg-primary bg-gradient">
+							<a href="/timphong/favorites">Phòng đã lưu</a>
+						</div>
 						<div class="col-2 profile-block-item bg-primary bg-gradient">
 							<a href="/timphong/listdathen">Quản lý đặt hẹn</a>
 						</div>
@@ -213,8 +214,8 @@
 										id="newpassword" name="newpassword" value="">
 								</div>
 							</div>
-														<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
-							
+							<button class="btn btn-dark mt-4 btn-save-profile" type="submit">Lưu</button>
+
 						</div>
 					</div>
 				</div>

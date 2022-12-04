@@ -64,7 +64,6 @@ public class ProfileController extends HttpServlet{
 				taikhoan.setMatkhau(newpassword);
 			}
 			else {
-				System.out.print(taikhoan.getMatkhau());
 				req.setAttribute("wrongOldPassword", "Bạn nhập sai mật khẩu cũ");
 				req.getRequestDispatcher("/views/web/profile.jsp").forward(req, resp);
 			}
