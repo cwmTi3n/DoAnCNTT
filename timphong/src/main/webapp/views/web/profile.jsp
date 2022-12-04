@@ -30,7 +30,9 @@
 				<div class="col-8 text-black">
 					<div class="row my-4 justify-content-around">
 						<div class="col-2 profile-block-item bg-primary bg-gradient">
-							<a href="/timphong/favorites">Phòng đã lưu</a>
+							<a href="/timphong/favorites">
+							Phòng đã lưu
+							</a>
 						</div>
 						<div class="col-2 profile-block-item bg-primary bg-gradient">
 							<a href="/timphong/listdathen">Quản lý đặt hẹn</a>
