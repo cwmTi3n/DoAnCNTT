@@ -417,7 +417,16 @@ table thead tr th {
 }
 
 .label-info-web{
-	
 	font-size: 18px;
     font-weight: 400;
+}
+
+.checkPasswordRegister{
+	font-size: 10px;
+	text-align: center;
+}
+
+.checkPasswordRegister ul{
+	list-style: none;
+	margin-bottom: 4px;
 }
