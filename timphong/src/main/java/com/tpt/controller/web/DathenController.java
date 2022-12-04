@@ -53,6 +53,7 @@ public class DathenController extends HttpServlet
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	{
+		req.setCharacterEncoding("utf-8");
 		String url = req.getRequestURI().toString();
 		if(url.contains("dat"))
 		{
@@ -69,7 +70,9 @@ public class DathenController extends HttpServlet
 		Taikhoan taikhoan = (Taikhoan)object;
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
-		Dathen dathen = dathenService.findDathen(taikhoan.getId_tk(), id_p);
+		String id_dhString = req.getParameter("id_dh");
+		int id_dh = Integer.parseInt(id_dhString);
+		Dathen dathen = dathenService.findDathen(id_dh,taikhoan.getId_tk(), id_p);
 		req.setAttribute("dathen", dathen);
 		Phong phong = phongService.getPhong(id_p);
 		req.setAttribute("phong", phong);
@@ -93,7 +96,10 @@ public class DathenController extends HttpServlet
 		Time time = Time.valueOf(gioString);
 		dathen.setGio(time);
 		dathen.setNgay(date);
-		Dathen check = dathenService.findDathen(id_tk, id_p);
+		String id_dhString = req.getParameter("id_dh");
+		int id_dh = Integer.parseInt(id_dhString);
+		dathen.setId_dh(id_dh);
+		Dathen check = dathenService.findDathen(id_dh, id_tk, id_p);
 		if(check != null)
 		{
 			dathenService.editDathen(dathen);

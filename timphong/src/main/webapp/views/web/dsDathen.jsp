@@ -138,9 +138,9 @@
 										<td>${dh.ngay }<br>${dh.gio }</td>
 										<c:if test="${dh.trangthai==1 }">
 											<td><a class="btn btn-danger btn-save-profile mb-1 mr-3"
-												href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a><a
+												href="/timphong/listdathen/huy?id_p=${dh.id_p }&id_dh=${dh.id_dh}">Hủy</a><a
 												class="btn btn-dark btn-save-profile"
-												href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
+												href="/timphong/dathen?id_p=${dh.id_p }&id_dh=${dh.id_dh}">Sửa</a></td>
 										</c:if>
 										<c:if test="${dh.trangthai==2 }">
 											<td>${dh.phong.taikhoan.sdt}</td>
@@ -149,9 +149,9 @@
 										</c:if>
 										<c:if test="${dh.trangthai==3 }">
 											<td><a class="btn btn-danger btn-save-profile mb-1 mr-3"
-												href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
+												href="/timphong/listdathen/xoa?id_p=${dh.id_p }&id_dh=${dh.id_dh}">Xóa</a>
 												<a class="btn btn-dark btn-save-profile"
-												href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt lại</a></td>
+												href="/timphong/dathen?id_p=${dh.id_p }&id_dh=${dh.id_dh}">Đặt lại</a></td>
 										</c:if>
 									</tr>
 								</c:forEach>

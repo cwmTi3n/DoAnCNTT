@@ -5,6 +5,7 @@ import java.sql.Time;
 
 public class Dathen
 {
+	private int id_dh;
 	private int id_tk;
 	private int id_p;
 	private int trangthai;
@@ -15,9 +16,10 @@ public class Dathen
 	public Dathen()
 	{
 	}
-	public Dathen(int id_tk, int id_p, int trangthai, Date ngay, Time gio, Taikhoan nguoidat, Phong phong)
+	public Dathen(int id_dh, int id_tk, int id_p, int trangthai, Date ngay, Time gio, Taikhoan nguoidat, Phong phong)
 	{
 		super();
+		this.id_dh = id_dh;
 		this.id_tk = id_tk;
 		this.id_p = id_p;
 		this.trangthai = trangthai;
@@ -25,6 +27,14 @@ public class Dathen
 		this.gio = gio;
 		this.nguoidat = nguoidat;
 		this.phong = phong;
+	}
+	public int getId_dh()
+	{
+		return id_dh;
+	}
+	public void setId_dh(int id_dh)
+	{
+		this.id_dh = id_dh;
 	}
 	public int getId_tk()
 	{

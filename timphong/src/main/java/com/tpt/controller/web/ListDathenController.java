@@ -102,7 +102,9 @@ public class ListDathenController extends HttpServlet
 		int id_tk = taikhoan.getId_tk();
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
-		Dathen dathen = dathenService.findDathen(id_tk, id_p);
+		String id_dhString = req.getParameter("id_dh");
+		int id_dh = Integer.parseInt(id_dhString);
+		Dathen dathen = dathenService.findDathen(id_dh, id_tk, id_p);
 		dathen.setTrangthai(0);
 		dathenService.editDathen(dathen);
 		resp.sendRedirect(req.getContextPath() + "/listdathen?id_tk=");
@@ -115,8 +117,10 @@ public class ListDathenController extends HttpServlet
 		Taikhoan taikhoan = (Taikhoan)object;
 		int id_tk = taikhoan.getId_tk();
 		String id_pString = req.getParameter("id_p");
+		String id_dhString = req.getParameter("id_dh");
 		int id_p = Integer.parseInt(id_pString);
-		dathenService.deleteDathen(id_tk, id_p);
+		int id_dh = Integer.parseInt(id_dhString);
+		dathenService.deleteDathen(id_dh, id_tk, id_p);
 		resp.sendRedirect(req.getContextPath() + "/listdathen?id_tk=");
 	}
 	

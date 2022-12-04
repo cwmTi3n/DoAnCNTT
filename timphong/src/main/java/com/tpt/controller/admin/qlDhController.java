@@ -70,7 +70,9 @@ public class qlDhController extends HttpServlet
 		int id_tk = Integer.parseInt(id_tkString);
 		String id_pString = req.getParameter("id_p");
 		int id_p = Integer.parseInt(id_pString);
-		dathenService.deleteDathen(id_tk, id_p);
+		String id_dhString = req.getParameter("id_dh");
+		int id_dh = Integer.parseInt(id_dhString);
+		dathenService.deleteDathen(id_dh, id_tk, id_p);
 		resp.sendRedirect(req.getContextPath() + "/admin/ql-dathen");
 	}
 

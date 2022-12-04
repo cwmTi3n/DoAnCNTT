@@ -19,10 +19,10 @@ public class DathenServiceImpl implements IDathenService
 	}
 
 	@Override
-	public boolean deleteDathen(int id_tk, int id_p)
+	public boolean deleteDathen(int id_dh, int id_tk, int id_p)
 	{
 		// TODO Auto-generated method stub
-		return dathenDao.deleteDathen(id_tk, id_p);
+		return dathenDao.deleteDathen(id_dh, id_tk, id_p);
 	}
 
 	@Override
@@ -39,10 +39,10 @@ public class DathenServiceImpl implements IDathenService
 	}
 
 	@Override
-	public Dathen findDathen(int id_tk, int id_p)
+	public Dathen findDathen(int id_dh, int id_tk, int id_p)
 	{
 		// TODO Auto-generated method stub
-		return dathenDao.findDathen(id_tk, id_p);
+		return dathenDao.findDathen(id_dh, id_tk, id_p);
 	}
 
 	@Override

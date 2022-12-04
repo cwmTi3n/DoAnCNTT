@@ -26,7 +26,7 @@
 								<tr>
 
 									<td class="col-2"><a
-										href="<c:url value='/dathen?id_p=${dh.phong.id_p }'/>"><c:url
+										href="<c:url value='/dathen?id_p=${dh.id_p }&id_dh=${dh.id_dh }'/>"><c:url
 											value="/hinhanh?fname=${dh.phong.anhchinh}" var="hinhanh" />
 										<img class="img-thumbnail img--phong__small" src="${hinhanh}" /></a>
 									</td>
@@ -39,8 +39,8 @@
 									<td class="col-2">${dh.phong.getTaikhoan().getTen()}</td>
 									
 									<td class="col-1"><a
-										 class="btn btn-danger btn-save-profile mb-3" href="/timphong/favorites/xoa?id_p=${dh.phong.id_p }">Xóa</a>
-										<a class="btn btn-dark btn-save-profile" href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
+										 class="btn btn-danger btn-save-profile mb-3" href="/timphong/favorites/xoa?id_p=${dh.phong.id_p }&id_dh=${dh.id_dh}">Xóa</a>
+										<a class="btn btn-dark btn-save-profile" href="/timphong/dathen?id_p=${dh.phong.id_p }&id_dh=${dh.id_dh}">Đặt</a></td>
 
 								</tr>
 							</c:forEach>

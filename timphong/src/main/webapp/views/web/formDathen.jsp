@@ -13,13 +13,14 @@
 					<h3 class="text-black mb-4">Thông tin đặt phòng</h3>
 					<form action="dathen/dat" method="post">
 						<input type="password" value="${phong.id_p }" hidden name="id_p">
+						<input type="password" value="${dathen.id_dh }" hidden name="id_dh">
 						<div class="row">
 							<div class="col-sm-6">
 								<div class="form-group">
 									<h5 class="text-black mb-2">Tên người đặt</h5>
 									<span class="form-label"></span> <input readonly class="form-control"
 										type="text" placeholder="Enter your name"
-										value="${tk.ho } ${tk.ten }">
+										value="${sessionScope.account.ho } ${sessionScope.account.ten }">
 								</div>
 							</div>
 							<div class="col-sm-6">
@@ -27,7 +28,7 @@
 									<h5 class="text-black mb-2">Số điện thoại</h5>
 									<span class="form-label"></span> <input readonly class="form-control"
 										type="tel" placeholder="Enter your phone number"
-										value="${tk.getSdt() }">
+										value="${sessionScope.account.getSdt() }">
 								</div>
 							</div>
 						</div>
@@ -35,7 +36,7 @@
 							<h5 class="text-black mb-2">Email</h5>
 							<span class="form-label"></span> <input readonly class="form-control"
 								type="email" placeholder="Enter your email"
-								value="${tk.getEmail() }">
+								value="${sessionScope.account.getEmail() }">
 						</div>
 						<div class="row">
 							<div class="col-sm-5">
@@ -50,7 +51,7 @@
 									<h5 class="text-black mb-2">Giờ</h5>
 									<span class="select-wrapper select--white"> <select style="padding-top:7px;padding-bottom:7px;"
 										name="gio">
-											<option value="${dahen.gio}" selected>${dathen.gio}</option>
+											<option value="${dathen.gio}" selected>${dathen.gio}</option>
 											<c:forEach begin="1" end="24" var="i">
 												<option value="${i}">${i}</option>
 											</c:forEach>

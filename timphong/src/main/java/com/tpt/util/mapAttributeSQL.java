@@ -203,6 +203,7 @@ public class mapAttributeSQL
 		{
 			int id_p = rSet.getInt("id_p");
 			int id_tk = rSet.getInt("id_tk");
+			dathen.setId_dh(rSet.getInt("id_dh"));
 			dathen.setId_tk(id_tk);
 			dathen.setId_p(id_p);
 			dathen.setTrangthai(rSet.getInt("trangthai"));

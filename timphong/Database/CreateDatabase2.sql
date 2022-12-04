@@ -48,12 +48,13 @@ CREATE TABLE [dbo].[hinhanh](
 );
 
 CREATE TABLE [dbo].[dathen](
+	id_dh INT IDENTITY(1,1),
 	id_tk INT NOT NULL,
 	id_p INT NOT NULL,
 	trangthai INT,
 	ngay DATE,
 	gio TIME
-	PRIMARY KEY (id_tk, id_p),
+	PRIMARY KEY (id_dh, id_tk, id_p),
 	CONSTRAINT FK_dathen_taikhoan FOREIGN KEY (id_tk) REFERENCES [dbo].[taikhoan](id_tk),
 	CONSTRAINT FK_dathen_phong FOREIGN KEY (id_p) REFERENCES [dbo].[phong](id_p)
 	on delete cascade

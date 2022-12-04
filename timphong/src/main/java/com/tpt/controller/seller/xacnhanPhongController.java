@@ -78,7 +78,8 @@ public class xacnhanPhongController extends HttpServlet
 	{
 		String id_tkString = req.getParameter("id_tk");
 		String id_pString = req.getParameter("id_p");
-		int id_tk = 0, id_p = 0;
+		String id_dhString = req.getParameter("id_dh");
+		int id_tk = 0, id_p = 0, id_dh = 0;
 		if(id_tkString != null)
 		{
 			id_tk = Integer.parseInt(id_tkString);
@@ -87,7 +88,11 @@ public class xacnhanPhongController extends HttpServlet
 		{
 			id_p = Integer.parseInt(id_pString);
 		}
-		Dathen dathen = dathenService.findDathen(id_tk, id_p);
+		if(id_dhString != null)
+		{
+			id_dh = Integer.parseInt(id_dhString);
+		}
+		Dathen dathen = dathenService.findDathen(id_dh, id_tk, id_p);
 		if(dathen != null)
 		{		
 			dathen.setTrangthai(trangthai);
