@@ -32,6 +32,11 @@
 
 		</dependency>
 
+<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina-ha</artifactId>
+			<version>9.0.40</version>
+		</dependency>
 		<!-- Hibernate Validator -->
 
 		<dependency>
