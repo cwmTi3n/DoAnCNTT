@@ -66,95 +66,98 @@
 <div class="site-section site-section-phong">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-12">
-				
+			<div class="col-lg-12 col-12 table-web">
+				<div class="table-web-layer">
+					<h2 class="text-black mb-4 text-center">Danh sách đặt hẹn</h2>
 
-				<div class=" border-bottom my-4">
-					<ul class="row justify-content-around">
-						<li class="d-inline-block"><a class="px-5 py-2 text-dark a-hanhdong"
-							href="/timphong/listdathen?hanhdong=1">Chờ xác nhận</a></li>
-						<li class="d-inline-block"><a class="px-5 py-2 text-dark a-hanhdong"
-							href="/timphong/listdathen?hanhdong=2">Đã xác nhận</a></li>
-						<li class="d-inline-block"><a class="px-5 py-2 text-dark a-hanhdong"
-							href="/timphong/listdathen?hanhdong=3">Bị hủy</a></li>
-					</ul>
-					<div id="goto-dg"></div>
-					<div class="dg" id="dg" style="display: none;">
-						<div class="col-8 text-black">
-							<div class="row my-4">
-								<form action="/timphong/danhgia" method="post">
-									<input type="password" name="id_p" value="" hidden id="dg_id_p">
-									<label>Số sao: </label>
-									<div class="rating">
-										<input type="radio" name="sosao" value="5" id="5"><label
-											for="5">☆</label> <input type="radio" name="sosao" value="4"
-											id="4"><label for="4">☆</label> <input type="radio"
-											name="sosao" value="3" id="3"><label for="3">☆</label>
-										<input type="radio" name="sosao" value="2" id="2"><label
-											for="2">☆</label> <input type="radio" name="sosao" value="1"
-											id="1"><label for="1">☆</label>
-									</div>
-									<br /> <label>Nội dung: </label><input type="text"
-										name="noidung">
-									<button type="submit">Đánh giá</button>
-								</form>
+					<div class=" border-bottom my-4">
+						<ul class="row justify-content-around">
+							<li class="d-inline-block"><a
+								class="px-5 py-2 text-dark a-hanhdong"
+								href="/timphong/listdathen?hanhdong=1">Chờ xác nhận</a></li>
+							<li class="d-inline-block"><a
+								class="px-5 py-2 text-dark a-hanhdong"
+								href="/timphong/listdathen?hanhdong=2">Đã xác nhận</a></li>
+							<li class="d-inline-block"><a
+								class="px-5 py-2 text-dark a-hanhdong"
+								href="/timphong/listdathen?hanhdong=3">Bị hủy</a></li>
+						</ul>
+						<div id="goto-dg"></div>
+						<div class="dg" id="dg" style="display: none;">
+							<div class="col-8 text-black">
+								<div class="row my-4">
+									<form action="/timphong/danhgia" method="post">
+										<input type="password" name="id_p" value="" hidden
+											id="dg_id_p"> <label>Số sao: </label>
+										<div class="rating">
+											<input type="radio" name="sosao" value="5" id="5"><label
+												for="5">☆</label> <input type="radio" name="sosao" value="4"
+												id="4"><label for="4">☆</label> <input type="radio"
+												name="sosao" value="3" id="3"><label for="3">☆</label>
+											<input type="radio" name="sosao" value="2" id="2"><label
+												for="2">☆</label> <input type="radio" name="sosao" value="1"
+												id="1"><label for="1">☆</label>
+										</div>
+										<br /> <label>Nội dung: </label><input type="text"
+											name="noidung">
+										<button type="submit">Đánh giá</button>
+									</form>
+								</div>
 							</div>
 						</div>
-					</div>
-					<table class="table">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">STT</th>
-								<th scope="col">Hình ảnh</th>
-								<th scope="col">Tên phòng</th>
-								<th scope="col">Giá</th>
-								<th scope="col">Địa chỉ</th>
-								<th scope="col">Thời gian</th>
-								<th scope="col">${hanhdong==2?"Liên hệ":""}</th>
-								<c:if test="${hanhdong==2 }">
-									<th scope="col"></th>
-								</c:if>
-							</tr>
-						</thead>
-
-						</tbody>
-						<tbody>
-							<c:forEach items="${dhChoxn}" var="dh" varStatus="STT">
+						<table class="table table-hover text-dark">
+							<thead class="thead-dark">
 								<tr>
-									<th scope="row">${STT.index+1}</th>
-									<td><a
-										href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
-											<c:url value="/hinhanh?fname=${dh.phong.anhchinh}"
-												var="hinhanh" /> <img height="120" width="160"
-											src="${hinhanh}" />
-									</a></td>
-									<td>${dh.phong.ten }</td>
-									<td>${dh.phong.gia}</td>
-									<td>${hanhdong==2?dh.phong.dcchitiet:""}
-										${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen },
-										${dh.phong.xa.huyen.tinh.tentinh }</td>
-									<td>${dh.ngay }${dh.gio }</td>
-									<c:if test="${dh.trangthai==1 }">
-										<td><a
-											href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a>
-											/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
-									</c:if>
-									<c:if test="${dh.trangthai==2 }">
-										<td>${dh.phong.taikhoan.sdt}</td>
-										<td><button class="btn button mt-2 px-3 py-1 btn-find"
-												onClick="danhgia(${dh.phong.id_p})">Đánh giá</button></td>
-									</c:if>
-									<c:if test="${dh.trangthai==3 }">
-										<td>
-										<td><a
-											href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
-											/ <a href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt
-												lại</a></td>
+									<th scope="col">Hình ảnh</th>
+									<th scope="col">Tên phòng</th>
+									<th scope="col">Giá</th>
+									<th scope="col">Địa chỉ</th>
+									<th scope="col">Thời gian</th>
+									<th scope="col">${hanhdong==2?"Liên hệ":""}</th>
+									<c:if test="${hanhdong==2 }">
+										<th scope="col"></th>
 									</c:if>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+
+							</tbody>
+							<tbody>
+								<c:forEach items="${dhChoxn}" var="dh">
+									<tr>
+										<td><a
+											href="<c:url value='/detail-phong?id_p=${dh.phong.id_p }'/>">
+												<c:url value="/hinhanh?fname=${dh.phong.anhchinh}"
+													var="hinhanh" /> <img
+												class="img-thumbnail img--phong__small" src="${hinhanh}" />
+										</a></td>
+										<td>${dh.phong.ten }</td>
+										<td>${dh.phong.gia}</td>
+										<td>${hanhdong==2?dh.phong.dcchitiet:""}
+											${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen },
+											${dh.phong.xa.huyen.tinh.tentinh }</td>
+										<td>${dh.ngay }<br>${dh.gio }</td>
+										<c:if test="${dh.trangthai==1 }">
+											<td><a class="btn btn-danger btn-save-profile mb-1 mr-3"
+												href="/timphong/listdathen/huy?id_p=${dh.phong.id_p }">Hủy</a><a
+												class="btn btn-dark btn-save-profile"
+												href="/timphong/dathen?id_p=${dh.phong.id_p }">Sửa</a></td>
+										</c:if>
+										<c:if test="${dh.trangthai==2 }">
+											<td>${dh.phong.taikhoan.sdt}</td>
+											<td><button class="btn button mt-2 px-3 py-1 btn-find"
+													onClick="danhgia(${dh.phong.id_p})">Đánh giá</button></td>
+										</c:if>
+										<c:if test="${dh.trangthai==3 }">
+											<td><a class="btn btn-danger btn-save-profile mb-1 mr-3"
+												href="/timphong/listdathen/xoa?id_p=${dh.phong.id_p }">Xóa</a>
+												<a class="btn btn-dark btn-save-profile"
+												href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt lại</a></td>
+										</c:if>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -39,7 +39,7 @@
 									<td class="col-2">${dh.phong.getTaikhoan().getTen()}</td>
 									
 									<td class="col-1"><a
-										 class="btn btn-danger btn-save-profile mb-1" href="/timphong/favorites/xoa?id_p=${dh.phong.id_p }">Xóa</a>
+										 class="btn btn-danger btn-save-profile mb-3" href="/timphong/favorites/xoa?id_p=${dh.phong.id_p }">Xóa</a>
 										<a class="btn btn-dark btn-save-profile" href="/timphong/dathen?id_p=${dh.phong.id_p }">Đặt</a></td>
 
 								</tr>
