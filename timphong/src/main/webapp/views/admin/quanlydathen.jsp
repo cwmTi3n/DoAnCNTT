@@ -135,9 +135,14 @@
 											${dh.phong.xa.tenxa }, ${dh.phong.xa.huyen.tenhuyen },
 											${dh.phong.xa.huyen.tinh.tentinh }</td>
 										<td>${dh.ngay }<br>${dh.gio }</td>
-										<td><a href="<c:url value="/admin/taikhoan?id_tk=${dh.phong.taikhoan.id_tk }"/>">${dh.phong.taikhoan.tentk }</a></td>
-										<td><a href="<c:url value="/admin/taikhoan?id_tk=${dh.nguoidat.id_tk }"/>">${dh.nguoidat.tentk }</a></td>
-										<td><a href="<c:url value='/admin/ql-dathen/xoa?id_p=${dh.id_p }&id_tk=${dh.id_tk }'/>">Xóa</a></td>
+										<td><a
+											href="<c:url value="/admin/taikhoan?id_tk=${dh.phong.taikhoan.id_tk }"/>">${dh.phong.taikhoan.tentk }</a></td>
+										<td><a
+											href="<c:url value="/admin/taikhoan?id_tk=${dh.nguoidat.id_tk }"/>">${dh.nguoidat.tentk }</a></td>
+										<c:if test="${dh.trangthai == 1 }">
+											<td><a
+												href="<c:url value='/admin/ql-dathen/xoa?id_p=${dh.id_p }&id_tk=${dh.id_tk }'/>">Xóa</a></td>
+										</c:if>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -152,32 +157,39 @@
 	function danhgia(id_p) {
 		document.getElementById('dg_id_p').value = id_p;
 		var dg = document.getElementById('dg');
-		if(dg.style.display == "none"){
+		if (dg.style.display == "none") {
 			dg.style.display = "block";
-		}
-		else{
+		} else {
 			dg.style.display = "none";
 		}
 	};
-	
-	function active(){
-		var link1 = document.querySelector("a[href='/timphong/listdathen?hanhdong=1']");
-		var char1 = link1.getAttribute("href").charAt(link1.getAttribute("href").length-1);
-		var link2 = document.querySelector("a[href='/timphong/listdathen?hanhdong=2']");
-		var char2 = link2.getAttribute("href").charAt(link2.getAttribute("href").length-1);
-		var link3 = document.querySelector("a[href='/timphong/listdathen?hanhdong=3']");
-		var char3 = link3.getAttribute("href").charAt(link3.getAttribute("href").length-1);
-		
+
+	function active() {
+		var link1 = document
+				.querySelector("a[href='/timphong/admin/ql-dathen?hanhdong=1']");
+		var char1 = link1.getAttribute("href").charAt(
+				link1.getAttribute("href").length - 1);
+		var link2 = document
+				.querySelector("a[href='/timphong/admin/ql-dathen?hanhdong=2']");
+		var char2 = link2.getAttribute("href").charAt(
+				link2.getAttribute("href").length - 1);
+		var link3 = document
+				.querySelector("a[href='/timphong/admin/ql-dathen?hanhdong=3']");
+		var char3 = link3.getAttribute("href").charAt(
+				link3.getAttribute("href").length - 1);
+		var xoa = document
+				.querySelector("a[href='/admin/ql-dathen/xoa?id_p=']");
+
 		var currentUrl = window.location.href;
-		var temp = currentUrl.charAt(currentUrl.length-1);
-		
-		if(char1.localeCompare(temp) == 0){
+		var temp = currentUrl.charAt(currentUrl.length - 1);
+
+		if (char1.localeCompare(temp) == 0) {
 			link1.classList.add("text-white", "bg-dark");
 			link1.classList.remove("text-dark", "a-hanhdong");
-		} else if(char2.localeCompare(temp) == 0){
+		} else if (char2.localeCompare(temp) == 0) {
 			link2.classList.add("text-white", "bg-dark");
 			link2.classList.remove("text-dark", "a-hanhdong");
-		} else if(char3.localeCompare(temp) == 0){
+		} else if (char3.localeCompare(temp) == 0) {
 			link3.classList.add("text-white", "bg-dark");
 			link3.classList.remove("text-dark", "a-hanhdong");
 		} else {

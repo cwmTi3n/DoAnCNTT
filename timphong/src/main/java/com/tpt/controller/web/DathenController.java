@@ -101,7 +101,11 @@ public class DathenController extends HttpServlet
 		dathen.setGio(time);
 		dathen.setNgay(date);
 		String id_dhString = req.getParameter("id_dh");
-		int id_dh = Integer.parseInt(id_dhString);
+		int id_dh = 0;
+		if(!id_dhString.isEmpty()) {
+			id_dh = Integer.parseInt(id_dhString);
+		}
+		
 		Dathen check = dathenService.findDathen(id_dh, id_tk, id_p);
 		boolean kt = false;
 		if(check != null)

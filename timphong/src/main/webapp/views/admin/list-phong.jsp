@@ -10,10 +10,10 @@
 	<div class="row">
 		<div class="col-12 col-xl-12">
 			<h2 class="site-name py-4">Quản lý phòng</h2>
-			<a class="d-inline-flex mb-3 new-object-button"
+			<!-- <a class="d-inline-flex mb-3 new-object-button"
 				href="<c:url value='/admin/them-loaiphong'/>"> <i
 				class="bi bi-plus-lg"></i> Thêm phòng
-			</a>
+			</a> -->
 		</div>
 		<div class="col-12 col-xl-12 table-admin">
 			<div class="table-admin-layer">

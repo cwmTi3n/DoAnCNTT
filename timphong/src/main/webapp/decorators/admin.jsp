@@ -52,7 +52,7 @@
 
 </head>
 <body data-spy="scroll" data-target=".site-navbar-target"
-	data-offset="300">
+	data-offset="300" onLoad="active()">
 
 	<div class="site-wrap site-wrap--admin">
 		<!-- 

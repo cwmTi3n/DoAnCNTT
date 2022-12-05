@@ -31,6 +31,6 @@ public class TrangchuController extends HttpServlet
 		// Hiện ra 9 phòng đầu tiên cho trang chủ
 		List<Phong> phongs = phongService.get9Phong();
 		req.setAttribute("phongs", phongs);
-		req.getRequestDispatcher("/views/web/index.jsp").forward(req, resp);
+		req.getRequestDispatcher("/index.jsp").forward(req, resp);
 	}
 }
